@@ -6,10 +6,14 @@
 // Import required packages
 const path = require('path');
 const restify = require('restify');
+const fs = require('fs');
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter } = require('botbuilder');
 const { DispatchBot } = require('./bots/dispatchBot');
+
+// This is the share manager class.
+const { ShareManager } = require('./shareManager');
 
 // Note: Ensure you have a .env file and include all necessary credentials to access services like LUIS and QnAMaker.
 const ENV_FILE = path.join(__dirname, '.env');
@@ -32,11 +36,34 @@ adapter.onTurnError = async (context, error) => {
     await context.sendActivity(`Oops. Something went wrong!`);
 };
 
+function readTextFile(file) {
+    return fs.readFileSync(file)
+        .toString() // convert Buffer to string
+        .split('\n') // split string to lines
+        .map(e => e.trim()) // remove white spaces for each line
+        .map(e => e.split(',').map(e => e.trim())); // split each line to array
+}
+
+const pricesArray = readTextFile('data/input_prices.csv');
+const recAlgArray = readTextFile('data/input_rec_alg.csv');
+const recExpArray = readTextFile('data/input_rec_exp.csv');
+const recPeerArray = readTextFile('data/input_rec_peer.csv');
+
+// Create share manager
+const shareManager = new ShareManager(
+    2000,
+    0,
+    pricesArray,
+    recAlgArray,
+    recExpArray,
+    recPeerArray
+);
+
 // Pass in a logger to the bot. For this sample, the logger is the console, but alternatives such as Application Insights and Event Hub exist for storing the logs of the bot.
 const logger = console;
 
 // Create the main dialog.
-let bot = new DispatchBot(logger);
+let bot = new DispatchBot(logger, shareManager);
 
 // Create HTTP server
 let server = restify.createServer();
