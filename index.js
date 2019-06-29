@@ -53,3 +53,9 @@ server.post('/api/messages', (req, res) => {
         await bot.run(turnContext);
     });
 });
+
+// Public Directory files
+server.get('/*', restify.plugins.serveStatic({
+    directory: './public',
+    default: 'index.html'
+}));

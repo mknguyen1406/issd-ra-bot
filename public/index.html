@@ -1,0 +1,580 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_KIT.svg/1200px-Logo_KIT.svg.png"
+         height="30">
+    <h5 class="my-0 ml-3 mr-md-auto font-weight-normal">ISSD Robo Advisor</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a id="nav_lan" class="p-2 text-dark" href="#" onclick="changeLanguage()">German</a>
+        <a id="nav_help" class="p-2 text-dark" href="#">Help</a>
+    </nav>
+    <a id="next" class="btn-next btn-outline-primary" href="#">Start</a>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col col-7">
+            <div class="">
+                <div class="card-custom mb-2 shadow-sm">
+                    <div class="card-header">
+                        <div class="d-flex flex-column flex-md-row align-items-center p-0 bg-transparent">
+                            <h4 id="header_share_prices" class="my-0 mr-md-auto font-weight-normal">Share Prices</h4>
+                            <a id="price_link_prices" class="vis-links" onclick="showPrices()" href="#">Prices</a>
+                            <a id="price_link_invest" class="vis-links" onclick="showInvestments()" href="#">Transactions</a>
+                            <a id="price_link_chart" class="vis-links" onclick="showChart()" href="#">Chart</a>
+                        </div>
+                    </div>
+                    <div class="card-body-custom-chart">
+                        <div id="chart"></div>
+                        <div id="prices">
+                            <table class="table table-sm table-hover table-responsive">
+                                <thead>
+                                <tr>
+                                    <th style="width: 30px" scope="col"></th>
+                                    <th style="width: 32px" scope="col">0</th>
+                                    <th style="width: 32px" scope="col">1</th>
+                                    <th style="width: 32px" scope="col">2</th>
+                                    <th style="width: 32px" scope="col">3</th>
+                                    <th style="width: 32px" scope="col">4</th>
+                                    <th style="width: 32px" scope="col">5</th>
+                                    <th style="width: 32px" scope="col">6</th>
+                                    <th style="width: 32px" scope="col">7</th>
+                                    <th style="width: 32px" scope="col">8</th>
+                                    <th style="width: 32px" scope="col">9</th>
+                                    <th style="width: 32px" scope="col">10</th>
+                                    <th style="width: 32px" scope="col">11</th>
+                                    <th style="width: 32px" scope="col">10</th>
+                                    <th style="width: 32px" scope="col">13</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr id="tab-row-price-a">
+                                    <th scope="row">A</th>
+                                </tr>
+                                <tr id="tab-row-price-b">
+                                    <th scope="row">B</th>
+                                </tr>
+                                <tr id="tab-row-price-c">
+                                    <th scope="row">C</th>
+                                </tr>
+                                <tr id="tab-row-price-d">
+                                    <th scope="row">D</th>
+                                </tr>
+                                <tr id="tab-row-price-e">
+                                    <th scope="row">E</th>
+                                </tr>
+                                <tr id="tab-row-price-f">
+                                    <th scope="row">F</th>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="investments">
+                            <table class="table table-sm table-hover table-responsive">
+                                <thead>
+                                <tr>
+                                    <th style="width: 30px" scope="col"></th>
+                                    <th style="width: 32px" scope="col">0</th>
+                                    <th style="width: 32px" scope="col">1</th>
+                                    <th style="width: 32px" scope="col">2</th>
+                                    <th style="width: 32px" scope="col">3</th>
+                                    <th style="width: 32px" scope="col">4</th>
+                                    <th style="width: 32px" scope="col">5</th>
+                                    <th style="width: 32px" scope="col">6</th>
+                                    <th style="width: 32px" scope="col">7</th>
+                                    <th style="width: 32px" scope="col">8</th>
+                                    <th style="width: 32px" scope="col">9</th>
+                                    <th style="width: 32px" scope="col">10</th>
+                                    <th style="width: 32px" scope="col">11</th>
+                                    <th style="width: 32px" scope="col">10</th>
+                                    <th style="width: 32px" scope="col">13</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr id="tab-row-invest-a">
+                                    <th scope="row">A</th>
+                                </tr>
+                                <tr id="tab-row-invest-b">
+                                    <th scope="row">B</th>
+                                </tr>
+                                <tr id="tab-row-invest-c">
+                                    <th scope="row">C</th>
+                                </tr>
+                                <tr id="tab-row-invest-d">
+                                    <th scope="row">D</th>
+                                </tr>
+                                <tr id="tab-row-invest-e">
+                                    <th scope="row">E</th>
+                                </tr>
+                                <tr id="tab-row-invest-f">
+                                    <th scope="row">F</th>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="card-custom shadow-sm">
+                    <div class="card-header">
+                        <div class="d-flex flex-column flex-md-row align-items-center p-0 bg-transparent">
+                            <h4 id="header_transactions" class="my-0 mr-md-auto font-weight-normal">Transactions</h4>
+                            <div id="endowment" class="p-0 bd-highlight list-text">Your endowment:</div>
+                            <div class="p-0 bd-highlight">
+                                <button id="budget" type="button" class="btn btn-outline-secondary">--</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body-custom">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item font-weight-light">
+                                <div class="d-flex bd-highlight">
+                                    <div id="share1" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share A</div>
+                                    <div id="price1" class="p-0 bd-highlight list-text">Price:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="v0" type="button" class="btn btn-light-value">100€</button>
+                                    </div>
+                                    <div id="owned1" class="p-0 bd-highlight list-text">Owned:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="s0" type="button" class="btn btn-light">0</button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_buy1" type="button"
+                                                class="btn btn-secondary">Buy
+                                        </button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_sell1" type="button"
+                                                class="btn btn-secondary">Sell
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item font-weight-light">
+                                <div class="d-flex bd-highlight">
+                                    <div id="share2" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share B</div>
+                                    <div id="price2" class="p-0 bd-highlight list-text">Price:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="v1" type="button" class="btn btn-light-value">100€</button>
+                                    </div>
+                                    <div id="owned2" class="p-0 bd-highlight list-text">Owned:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="s1" type="button" class="btn btn-light">0</button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_buy2" type="button"
+                                                class="btn btn-secondary">Buy
+                                        </button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_sell2" type="button"
+                                                class="btn btn-secondary">Sell
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item font-weight-light">
+                                <div class="d-flex bd-highlight">
+                                    <div id="share3" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share C</div>
+                                    <div id="price3" class="p-0 bd-highlight list-text">Price:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="v2" type="button" class="btn btn-light-value">100€</button>
+                                    </div>
+                                    <div id="owned3" class="p-0 bd-highlight list-text">Owned:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="s2" type="button" class="btn btn-light">0</button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_buy3" type="button"
+                                                class="btn btn-secondary">Buy
+                                        </button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_sell3" type="button"
+                                                class="btn btn-secondary">Sell
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item font-weight-light">
+                                <div class="d-flex bd-highlight">
+                                    <div id="share4" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share D</div>
+                                    <div id="price4" class="p-0 bd-highlight list-text">Price:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="v3" type="button" class="btn btn-light-value">100€</button>
+                                    </div>
+                                    <div id="owned4" class="p-0 bd-highlight list-text">Owned:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="s3" type="button" class="btn btn-light">0</button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_buy4" type="button"
+                                                class="btn btn-secondary">Buy
+                                        </button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_sell4" type="button"
+                                                class="btn btn-secondary">Sell
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item font-weight-light">
+                                <div class="d-flex bd-highlight">
+                                    <div id="share5" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share E</div>
+                                    <div id="price5" class="p-0 bd-highlight list-text">Price:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="v4" type="button" class="btn btn-light-value">100€</button>
+                                    </div>
+                                    <div id="owned5" class="p-0 bd-highlight list-text">Owned:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="s4" type="button" class="btn btn-light">0</button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_buy5" type="button"
+                                                class="btn btn-secondary">Buy
+                                        </button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_sell5" type="button"
+                                                class="btn btn-secondary">Sell
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item font-weight-light">
+                                <div class="d-flex bd-highlight">
+                                    <div id="share6" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share F</div>
+                                    <div id="price6" class="p-0 bd-highlight list-text">Price:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="v5" type="button" class="btn btn-light-value">100€</button>
+                                    </div>
+                                    <div id="owned6" class="p-0 bd-highlight list-text">Owned:</div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="s5" type="button" class="btn btn-light">0</button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_buy6" type="button"
+                                                class="btn btn-secondary">Buy
+                                        </button>
+                                    </div>
+                                    <div class="p-0 bd-highlight">
+                                        <button id="button_sell6" type="button"
+                                                class="btn btn-secondary">Sell
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-5">
+            <div class="card-custom shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Robo Advisor</h4>
+                </div>
+                <div class="card-body-custom-chat">
+                    <!--  <img src="chat.JPG" width="100%"/></div> -->
+                    <!--<iframe src='https://webchat.botframework.com/embed/issd-ra-bot?s=2hP5Kj4Of4g.jGVDQk7lbplESBMgBfIPR7flQbNPLNNAc1KslUEJvwE'  style='width: 100%; height: 542px;'></iframe>-->
+                    <div id="webchat" role="main"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="./js/bootstrap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+<script src="./jquery.csv.js"></script>
+<!--<script src="https://unpkg.com/simple-update-in/dist/simple-update-in.production.min.js"></script> use this to add data to outgoing activities-->
+<script src="./chart.js"></script>
+<script src="./functions.js"></script>
+<script>
+    // Individual ID of a LimeSurvey
+    let surveyId = "";
+
+    // Create chart
+    const chart = new ApexCharts(
+        document.querySelector("#chart"),
+        options
+    );
+    chart.render();
+
+    // Round number is managed delocally
+    let round = 0;
+
+    // Show price table and hide chart and investment table
+    let x = document.getElementById("chart");
+    x.style.display = "none";
+    x = document.getElementById("investments");
+    x.style.display = "none";
+
+    // Get token from secret and start chat bot
+    let token_ = "";
+    // let conversationId_ = "";
+    getToken(startChatBot);
+    function startChatBot() {
+        // We are adding a new middleware to customize the behavior of DIRECT_LINE/INCOMING_ACTIVITY.
+        const store = window.WebChat.createStore(
+            {},
+            ({dispatch}) => next => action => {
+                if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
+                    const event = new Event('webchatincomingactivity');
+
+                    event.data = action.payload.activity;
+                    window.dispatchEvent(event);
+                }
+
+                if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+                    dispatch({
+                        type: 'WEB_CHAT/SEND_EVENT',
+                        payload: {
+                            name: 'webchat/join',
+                            value: {language: window.navigator.language}
+                        }
+                    });
+                }
+
+                // Use this to add custom data to channelData of the immutable action object
+                // if (action.type === 'DIRECT_LINE/POST_ACTIVITY') {
+                //     action = window.simpleUpdateIn(action, ['payload', 'activity', 'channelData', 'email'], () => 'johndoe@example.com');
+                // }
+
+                return next(action);
+            }
+        );
+
+        window.WebChat.renderWebChat(
+            {
+                directLine: window.WebChat.createDirectLine({token: token_}),
+                store
+                // ,userID: 'YOUR_USER_ID'
+                // ,username: 'Web Chat User'
+                , locale: 'de-de'
+                // ,botAvatarInitials: 'WC'
+                // ,userAvatarInitials: 'WW'
+            },
+            document.getElementById('webchat')
+        );
+
+        document.querySelector('#next').addEventListener('click', () => {
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'next',
+                    value: round
+                }
+            });
+            round ++;
+        });
+
+        document.querySelector('#button_buy1').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'buy',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_buy2').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'buy',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_buy3').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'buy',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_buy4').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'buy',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_buy5').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'buy',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_sell1').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'sell',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_sell2').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'sell',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_sell3').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'sell',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_sell4').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'sell',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        document.querySelector('#button_sell5').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'sell',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        window.addEventListener('webchatincomingactivity', ({data}) => {
+            console.log(`Received an activity of type "${ data.type }":`);
+            console.log(data);
+            // Don't jump into if clause at messages and webchat/join event
+            if (data.type === "event" && data.name !== "webchat/join") {
+                const channelData = data.channelData;
+                const correctEvent = !channelData.hasOwnProperty("clientActivityID"); // because bot sends two events
+                if (data.name === 'buy' && correctEvent) {
+
+                }
+                if (data.name === 'sell' && correctEvent) {
+
+                }
+                if (data.name === 'next' && correctEvent && channelData.reload === false) {
+                    const data = channelData.appendData;
+                    chart.appendData(data.prices);
+                    appendTable("price", data.prices);
+                    appendTable("invest", data.invests);
+                } else if (channelData.reload === true) {
+                    // This is round 14
+                    window.location.reload();
+                }
+                // Rename elements only for correct events
+                if (correctEvent) {
+                    const renameArray = channelData.rename;
+                    for (let i = 0; i < renameArray.length; i++) {
+                        const obj = renameArray[i];
+                        document.getElementById(obj.id).innerHTML = obj.content;
+                    }
+                }
+            }
+        });
+    }
+
+    // Get URL from parent
+    window.document.addEventListener('myParentEvent', handleEvent, false);
+    function handleEvent(e) {
+        //console.log(e.detail.url)
+        const url_string = e.detail.url;
+        // const url = new URL(url_string);
+        // const param = url.searchParams.get("_ijt");
+        // console.log(url_string);
+
+        // Get survey ID replace this with url_string
+        surveyId = getSurveyId("https://issd-ra.limequery.com/322313?lang=en");
+        console.log(surveyId);
+    }
+
+    const data = {foo: 'bar'};
+    const event = new CustomEvent('myChildEvent', {detail: data});
+    window.parent.document.dispatchEvent(event);
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
