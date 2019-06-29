@@ -34,6 +34,7 @@ class DispatchBot extends ActivityHandler {
         this.dispatchRecognizer = dispatchRecognizer;
         this.qnaMaker = qnaMaker;
         this.shareManager = sm;
+        this.openForTrading = false;
 
         this.onMessage(async (context, next) => {
             this.logger.log('Processing Message Activity.');
@@ -70,18 +71,18 @@ class DispatchBot extends ActivityHandler {
         this.onEvent(async (context, next) => {
             console.log(context.activity);
             if (context.activity.name === 'next') {
-                const res = await nextRound(context.activity.value);
+                const res = await this.nextRound(context.activity.value);
                 await context.sendActivity({ name: 'next', type: 'event', channelData: res });
             }
             if (context.activity.name === 'buy') {
                 const id = context.activity.value;
-                const res = this.shareManager.buyGood(id, openForTrading);
+                const res = this.shareManager.buyGood(id, this.openForTrading);
                 await context.sendActivity({ name: 'buy', type: 'event', channelData: res });
             }
 
             if (context.activity.name === 'sell') {
                 const id = context.activity.value;
-                const res = this.shareManager.sellGood(id, openForTrading);
+                const res = this.shareManager.sellGood(id, this.openForTrading);
                 await context.sendActivity({ name: 'sell', type: 'event', channelData: res });
             }
             // By calling next() you ensure that the next BotHandler is run.
@@ -144,7 +145,7 @@ class DispatchBot extends ActivityHandler {
                 id: 'budget',
                 content: '2000€'
             });
-            openForTrading = true;
+            this.openForTrading = true;
             obj.appendData = {
                 prices: data.prices,
                 invests: data.invests
