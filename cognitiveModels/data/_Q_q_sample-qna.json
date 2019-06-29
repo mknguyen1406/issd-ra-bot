@@ -1,0 +1,46 @@
+{
+  "qnaDocuments": [
+    {
+      "id": 1,
+      "answer": "Hello!",
+      "source": "QnAMaker.tsv",
+      "questions": [
+        "hi",
+        "greetings",
+        "good morning",
+        "good evening"
+      ],
+      "metadata": [],
+      "alternateQuestions": "",
+      "alternateQuestionClusters": [],
+      "changeStatus": "NoChange",
+      "kbId": "fc13149a-6daf-4eeb-bd34-126811505088",
+      "context": {
+        "isContextOnly": false,
+        "prompts": []
+      }
+    },
+    {
+      "id": 2,
+      "answer": "I am the LUIS-QnAMaker Dispatch bot! This sample demonstrates using several LUIS applications and QnA Maker knowledge base using dispatch.",
+      "source": "QnAMaker.tsv",
+      "questions": [
+        "What are you?",
+        "What?",
+        "What do you do?",
+        "Who are you?",
+        "What is your name?",
+        "What should I call you?"
+      ],
+      "metadata": [],
+      "alternateQuestions": "",
+      "alternateQuestionClusters": [],
+      "changeStatus": "NoChange",
+      "kbId": "fc13149a-6daf-4eeb-bd34-126811505088",
+      "context": {
+        "isContextOnly": false,
+        "prompts": []
+      }
+    }
+  ]
+}
