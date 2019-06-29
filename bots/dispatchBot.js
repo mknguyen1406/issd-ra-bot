@@ -33,6 +33,7 @@ class DispatchBot extends ActivityHandler {
         this.logger = logger;
         this.dispatchRecognizer = dispatchRecognizer;
         this.qnaMaker = qnaMaker;
+        this.shareManager = sm;
 
         this.onMessage(async (context, next) => {
             this.logger.log('Processing Message Activity.');
@@ -45,6 +46,8 @@ class DispatchBot extends ActivityHandler {
 
             // Next, we call the dispatcher with the top intent.
             await this.dispatchToTopIntentAsync(context, intent, recognizerResult);
+
+            console.log(this.nextRound(0));
 
             await next();
         });
@@ -72,13 +75,13 @@ class DispatchBot extends ActivityHandler {
             }
             if (context.activity.name === 'buy') {
                 const id = context.activity.value;
-                const res = sm.buyGood(id, openForTrading);
+                const res = this.shareManager.buyGood(id, openForTrading);
                 await context.sendActivity({ name: 'buy', type: 'event', channelData: res });
             }
 
             if (context.activity.name === 'sell') {
                 const id = context.activity.value;
-                const res = sm.sellGood(id, openForTrading);
+                const res = this.shareManager.sellGood(id, openForTrading);
                 await context.sendActivity({ name: 'sell', type: 'event', channelData: res });
             }
             // By calling next() you ensure that the next BotHandler is run.
@@ -100,7 +103,7 @@ class DispatchBot extends ActivityHandler {
         // Get data only up until round 14. In round 14 reload the page
         let data = null;
         if (round !== 14) {
-            const res = sm.nextRound(round);
+            const res = this.shareManager.nextRound(round);
             data = res.data;
             // Includes an array with all buttons whose value is to be changed
             const renameArray = res.rename;
@@ -126,7 +129,7 @@ class DispatchBot extends ActivityHandler {
                 invests: data.invests
             };
             // round++;
-            const cash = sm.cashout();
+            const cash = this.shareManager.cashout();
             obj.alert = 'Congratulations!\nYour total cash out is ' + Math.round(cash) + '€!';
             obj.rename = [
                 {
