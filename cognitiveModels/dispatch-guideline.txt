@@ -1,4 +1,6 @@
 Dispatching:
+https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch/readme.md
+
 Create .dispatch file:
 dispatch init -n issd-ra-dispatcher --luisAuthoringKey "edf6fa4c15e949aa9b42ba3963d69391" --luisAuthoringRegion westus
 
