@@ -1,0 +1,148 @@
+{
+  "luis_schema_version": "3.2.0",
+  "versionId": "0.1",
+  "name": "ISSD-RA-LUIS",
+  "desc": "A LUIS model that uses intent and entities.",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "Buy share"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Sell share"
+    }
+  ],
+  "entities": [],
+  "composites": [
+    {
+      "name": "share",
+      "children": [
+        "share type"
+      ],
+      "roles": []
+    }
+  ],
+  "closedLists": [
+    {
+      "name": "share type",
+      "subLists": [
+        {
+          "canonicalForm": "A",
+          "list": [
+            "a"
+          ]
+        },
+        {
+          "canonicalForm": "B",
+          "list": [
+            "b"
+          ]
+        },
+        {
+          "canonicalForm": "C",
+          "list": [
+            "c"
+          ]
+        },
+        {
+          "canonicalForm": "D",
+          "list": [
+            "d"
+          ]
+        },
+        {
+          "canonicalForm": "E",
+          "list": [
+            "e"
+          ]
+        },
+        {
+          "canonicalForm": "F",
+          "list": [
+            "f"
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "buy a",
+      "intent": "Buy share",
+      "entities": [
+        {
+          "entity": "share",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "buy share a",
+      "intent": "Buy share",
+      "entities": [
+        {
+          "entity": "share",
+          "startPos": 10,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "can you please buy share b for me",
+      "intent": "Buy share",
+      "entities": [
+        {
+          "entity": "share",
+          "startPos": 25,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "please sell share d",
+      "intent": "Sell share",
+      "entities": [
+        {
+          "entity": "share",
+          "startPos": 18,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "sell c",
+      "intent": "Sell share",
+      "entities": [
+        {
+          "entity": "share",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "sell share c",
+      "intent": "Sell share",
+      "entities": [
+        {
+          "entity": "share",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    }
+  ],
+  "settings": []
+}

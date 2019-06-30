@@ -1,0 +1,29 @@
+Why did Microsoft develop the Bot Framework
+What is the v4 SDK
+What is Microsoft plan for supporting existing V3 bots? What happens to my V3 Bots? Will my V3 bots stop working
+What happens to my bot written to REST & Bot Framework Protocol 3.1
+Will there be more updates, additional development for the V3 SDK or just bugfixes
+Why V4 is not backwards compatible with V3
+What is the general migration strategy? I have a V3 bot, how can I migrate it to V4/ Can I migrate my V3 bot to V4
+Should I build new a bot using V3 or V4
+How can I migrate Azure Bot Service from one region to another
+When will you add more conversation experiences to the Bot Framework
+I have a communication channel I’d like to be configurable with Bot Framework. Can I work with Microsoft to do that
+If I want to create a bot for Skype, what tools and services should I use
+Do the bots registered with the Bot Framework collect personal information? If yes, how can I be sure the data is safe and secure? What about privacy
+Can I host my bot on my own servers
+How do you ban or remove bots from the service
+Which specific URLs do I need to whitelist in my corporate firewall to access Bot Framework services
+Can I block all traffic to my bot except traffic from the Bot Connector Service
+What keeps my bot secure from clients impersonating the Bot Framework Connector Service
+What is rate limiting
+How will I know if I’m impacted
+How does rate limiting occur
+What are the rate limits
+How does the Bot Framework relate to Cognitive Services
+What is Cortana Intelligence
+What is the Direct Line channel
+I need to manually create my App Registration. How do I create my own App Registration
+Hi
+Hello
+Hey

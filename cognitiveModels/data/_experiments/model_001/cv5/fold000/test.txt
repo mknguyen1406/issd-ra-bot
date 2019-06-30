@@ -1,16 +1,8 @@
 Label	Weight	Text
-l_HomeAutomation	1	illuminate please
-l_HomeAutomation	1	turn off ac please
-l_HomeAutomation	1	breezeway on please
-l_HomeAutomation	1	turn dimmer off
-l_HomeAutomation	1	set lights to bright
-l_HomeAutomation	1	set lights to concentrate
-l_HomeAutomation	1	play dvd
-l_HomeAutomation	1	turn on my bedroom lights.
-l_Weather	1	current weather
-l_Weather	1	how much rain does chambersburg get a year
-l_Weather	1	what is the rain volume in sonoma county
-l_Weather	1	what is the weather in redmond
-l_Weather	1	get for me the weather conditions in sonoma county
-q_sample-qna	1	Who are you
-q_sample-qna	1	What do you do
+l_luis	1	buy share a
+q_qnamaker	1	Should I build new a bot using V3 or V4
+q_qnamaker	1	How does rate limiting occur
+q_qnamaker	1	What is the v4 SDK
+q_qnamaker	1	Can I block all traffic to my bot except traffic from the Bot Connector Service
+q_qnamaker	1	If I want to create a bot for Skype, what tools and services should I use
+q_qnamaker	1	What is rate limiting

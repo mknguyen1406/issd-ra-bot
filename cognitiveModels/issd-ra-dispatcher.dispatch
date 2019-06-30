@@ -1,0 +1,37 @@
+{
+  "authoringRegion": "westus",
+  "hierarchical": true,
+  "useAllTrainingData": false,
+  "dontReviseUtterance": false,
+  "copyLuisData": true,
+  "services": [
+    {
+      "intentName": "l_luis",
+      "appId": "a243b942-0397-4254-a7ce-bad8b1352852",
+      "authoringKey": "edf6fa4c15e949aa9b42ba3963d69391",
+      "version": "0.1",
+      "region": "westus",
+      "type": "luis",
+      "name": "ISSD-RA-LUIS",
+      "id": "1"
+    },
+    {
+      "intentName": "q_qnamaker",
+      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "subscriptionKey": "71b0e296fd3f4594909e692c234e07d8",
+      "type": "qna",
+      "name": "ISSD-RA-QnA-KB",
+      "id": "2"
+    }
+  ],
+  "serviceIds": [
+    "1",
+    "2"
+  ],
+  "appId": "9e0c106d-f298-41f2-983b-9055f629f377",
+  "authoringKey": "edf6fa4c15e949aa9b42ba3963d69391",
+  "version": "Dispatch",
+  "region": "westus",
+  "type": "dispatch",
+  "name": "issd-ra-dispatcher"
+}
