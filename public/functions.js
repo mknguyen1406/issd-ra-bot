@@ -136,7 +136,7 @@ function start() {
     }else if (this.round === 14) {
         window.location.reload();
     } else if (this.round === 2) {
-        document.getElementById("budget").innerHTML = "2000€";
+        document.getElementById("budget").innerHTML = "2000 GE";
         this.openForTrading = true;
         var data = sm.nextRound(this.round);
         chart.appendData(data.prices);
@@ -262,7 +262,7 @@ function getSurveyId(url) {
 
 function alertInsufficientEndowment() {
     var language = document.getElementById("nav_lan").innerText;
-    if (language === "German") {
+    if (language === "Englisch") {
        window.alert("Nicht genug Budget.");
     } else {
        window.alert("Insufficient endowment.");
@@ -271,7 +271,7 @@ function alertInsufficientEndowment() {
 
 function alertInsufficientHoldings() {
     var language = document.getElementById('nav_lan').innerText;
-    if (language === 'German') {
+    if (language === 'Englisch') {
         window.alert('Nicht genug Anteile.');
     } else {
         window.alert('Insufficient holdings.');
@@ -280,9 +280,18 @@ function alertInsufficientHoldings() {
 
 function alertNotOpen() {
     var language = document.getElementById("nav_lan").innerText;
-    if (language === "German") {
+    if (language === "Englisch") {
        window.alert("Handel ist erst ab der dritten Periode möglich.");
     } else {
        window.alert("Trading is not possible before 3rd period.");
+    }
+}
+
+function alertEarnings(cash) {
+    var language = document.getElementById("nav_lan").innerText;
+    if (language === "Englisch") {
+        window.alert("Glückwunsch!\nDeine Auszahlung beträgt " + Math.round(cash) + " GE!");
+    } else {
+        window.alert("Congratulations!\nYour total cash out is " + Math.round(cash) + " MU!");
     }
 }

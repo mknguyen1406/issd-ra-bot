@@ -17,8 +17,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="543" column="52" selection-start-line="543" selection-start-column="52" selection-end-line="543" selection-end-column="52" />
+            <state relative-caret-position="447">
+              <caret line="580" column="45" lean-forward="true" selection-start-line="580" selection-start-column="45" selection-end-line="580" selection-end-column="45" />
               <folding>
                 <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -58,8 +58,8 @@
       <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="262" column="35" selection-start-line="262" selection-start-column="9" selection-end-line="262" selection-end-column="35" />
+            <state relative-caret-position="457">
+              <caret line="292" column="60" selection-start-line="292" selection-start-column="60" selection-end-line="292" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -67,8 +67,8 @@
       <file leaf-file-name="iframe.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iframe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+            <state relative-caret-position="255">
+              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -86,11 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>goodValues</find>
-      <find>.col</find>
-      <find>&gt;</find>
-      <find>btn-light-value</find>
-      <find>.card-body-custom-chart</find>
       <find>col</find>
       <find>chart</find>
       <find>-</find>
@@ -111,11 +106,16 @@
       <find>getToken</find>
       <find>appendTable</find>
       <find>appendTable(&quot;price&quot;, data.prices);</find>
-      <find>next</find>
       <find>reload</find>
       <find>for</find>
       <find>help</find>
       <find>alert</find>
+      <find>button_buy6</find>
+      <find>GE</find>
+      <find>next</find>
+      <find>#next</find>
+      <find>alertInsufficientEndowment</find>
+      <find>€</find>
     </findStrings>
     <replaceStrings>
       <replace>Value</replace>
@@ -132,6 +132,9 @@
       <replace>Share</replace>
       <replace>5:</replace>
       <replace>Sell</replace>
+      <replace>MU</replace>
+      <replace>GE</replace>
+      <replace>GE</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -264,12 +267,12 @@
       <workItem from="1561366536270" duration="3541000" />
       <workItem from="1561388906488" duration="874000" />
       <workItem from="1561532215109" duration="2273000" />
-      <workItem from="1562068027473" duration="1330000" />
+      <workItem from="1562068027473" duration="2885000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178611000" />
+    <option name="totallyTimeSpent" value="180166000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -621,22 +624,22 @@
     <entry file="file://$PROJECT_DIR$/stockManager.js" />
     <entry file="file://$PROJECT_DIR$/iframe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        <state relative-caret-position="255">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="262" column="35" selection-start-line="262" selection-start-column="9" selection-end-line="262" selection-end-column="35" />
+        <state relative-caret-position="457">
+          <caret line="292" column="60" selection-start-line="292" selection-start-column="60" selection-end-line="292" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="543" column="52" selection-start-line="543" selection-start-column="52" selection-end-line="543" selection-end-column="52" />
+        <state relative-caret-position="447">
+          <caret line="580" column="45" lean-forward="true" selection-start-line="580" selection-start-column="45" selection-end-line="580" selection-end-column="45" />
           <folding>
             <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />

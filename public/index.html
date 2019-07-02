@@ -145,7 +145,7 @@
                                     <div id="share1" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share A</div>
                                     <div id="price1" class="p-0 bd-highlight list-text">Price:</div>
                                     <div class="p-0 bd-highlight">
-                                        <button id="v0" type="button" class="btn btn-light-value">100€</button>
+                                        <button id="v0" type="button" class="btn btn-light-value">100 GE</button>
                                     </div>
                                     <div id="owned1" class="p-0 bd-highlight list-text">Owned:</div>
                                     <div class="p-0 bd-highlight">
@@ -168,7 +168,7 @@
                                     <div id="share2" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share B</div>
                                     <div id="price2" class="p-0 bd-highlight list-text">Price:</div>
                                     <div class="p-0 bd-highlight">
-                                        <button id="v1" type="button" class="btn btn-light-value">100€</button>
+                                        <button id="v1" type="button" class="btn btn-light-value">100 GE</button>
                                     </div>
                                     <div id="owned2" class="p-0 bd-highlight list-text">Owned:</div>
                                     <div class="p-0 bd-highlight">
@@ -191,7 +191,7 @@
                                     <div id="share3" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share C</div>
                                     <div id="price3" class="p-0 bd-highlight list-text">Price:</div>
                                     <div class="p-0 bd-highlight">
-                                        <button id="v2" type="button" class="btn btn-light-value">100€</button>
+                                        <button id="v2" type="button" class="btn btn-light-value">100 GE</button>
                                     </div>
                                     <div id="owned3" class="p-0 bd-highlight list-text">Owned:</div>
                                     <div class="p-0 bd-highlight">
@@ -214,7 +214,7 @@
                                     <div id="share4" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share D</div>
                                     <div id="price4" class="p-0 bd-highlight list-text">Price:</div>
                                     <div class="p-0 bd-highlight">
-                                        <button id="v3" type="button" class="btn btn-light-value">100€</button>
+                                        <button id="v3" type="button" class="btn btn-light-value">100 GE</button>
                                     </div>
                                     <div id="owned4" class="p-0 bd-highlight list-text">Owned:</div>
                                     <div class="p-0 bd-highlight">
@@ -237,7 +237,7 @@
                                     <div id="share5" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share E</div>
                                     <div id="price5" class="p-0 bd-highlight list-text">Price:</div>
                                     <div class="p-0 bd-highlight">
-                                        <button id="v4" type="button" class="btn btn-light-value">100€</button>
+                                        <button id="v4" type="button" class="btn btn-light-value">100 GE</button>
                                     </div>
                                     <div id="owned5" class="p-0 bd-highlight list-text">Owned:</div>
                                     <div class="p-0 bd-highlight">
@@ -260,7 +260,7 @@
                                     <div id="share6" class="p-0 flex-grow-1 bd-highlight font-weight-bold">Share F</div>
                                     <div id="price6" class="p-0 bd-highlight list-text">Price:</div>
                                     <div class="p-0 bd-highlight">
-                                        <button id="v5" type="button" class="btn btn-light-value">100€</button>
+                                        <button id="v5" type="button" class="btn btn-light-value">100 GE</button>
                                     </div>
                                     <div id="owned6" class="p-0 bd-highlight list-text">Owned:</div>
                                     <div class="p-0 bd-highlight">
@@ -458,6 +458,19 @@
             });
         });
 
+        document.querySelector('#button_buy6').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'buy',
+                    value: lastChar - 1
+                }
+            });
+        });
+
         document.querySelector('#button_sell1').addEventListener('click', (e) => {
             const buttonId = e.target.id;
             const lastChar = buttonId.substr(buttonId.length-1);
@@ -523,6 +536,20 @@
             });
         });
 
+        document.querySelector('#button_sell6').addEventListener('click', (e) => {
+            const buttonId = e.target.id;
+            const lastChar = buttonId.substr(buttonId.length-1);
+            console.log(lastChar);
+            store.dispatch({
+                type: 'WEB_CHAT/SEND_EVENT',
+                payload: {
+                    name: 'sell',
+                    value: lastChar - 1
+                }
+            });
+        });
+
+        // Listening for incoming response events of type buy, sell or next
         window.addEventListener('webchatincomingactivity', ({data}) => {
             console.log(`Received an activity of type "${ data.type }":`);
             console.log(data);
@@ -541,7 +568,7 @@
                     if (channelData.open === false) {
                         alertNotOpen();
                     } else if (channelData.open === false) {
-                        alertInsufficientEndowment();
+                        alertInsufficientHoldings();
                     }
                 }
                 if (data.name === 'next' && correctEvent && channelData.reload === false) {
@@ -552,6 +579,7 @@
                 } else if (channelData.reload === true) {
                     // This is round 14
                     window.location.reload();
+                    alertEarnings(channelData.cashout);
                 }
                 // Rename elements only for correct events
                 if (correctEvent) {
