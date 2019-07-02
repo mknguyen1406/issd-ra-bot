@@ -1,7 +1,6 @@
 function changeLanguage() {
-    var language = document.getElementById("nav_lan").innerText;
     if(language === "German"){
-        document.getElementById("nav_lan").innerText = "Englisch";
+        // document.getElementById("nav_lan").innerText = "Englisch";
         document.getElementById("nav_help").innerText = "Hilfe";
         document.getElementById("header_share_prices").innerText = "Preisübersicht";
         document.getElementById("header_transactions").innerText = "Transaktionen";
@@ -41,7 +40,7 @@ function changeLanguage() {
         document.getElementById("button_sell6").innerText = "Verkaufen";
 
     } else {
-        document.getElementById("nav_lan").innerText = "German";
+        // document.getElementById("nav_lan").innerText = "German";
         document.getElementById("nav_help").innerText = "Help";
         document.getElementById("header_share_prices").innerText = "Share Prices";
         document.getElementById("header_transactions").innerText = "Transactions";
@@ -261,17 +260,17 @@ function getSurveyId(url) {
 }
 
 function alertInsufficientEndowment() {
-    var language = document.getElementById("nav_lan").innerText;
-    if (language === "Englisch") {
-       window.alert("Nicht genug Budget.");
+    // var language = document.getElementById("nav_lan").innerText;
+    if (language === "German") {
+        window.alert("Nicht genug Budget.");
     } else {
-       window.alert("Insufficient endowment.");
+        window.alert("Insufficient endowment.");
     }
 }
 
 function alertInsufficientHoldings() {
-    var language = document.getElementById('nav_lan').innerText;
-    if (language === 'Englisch') {
+    // var language = document.getElementById('nav_lan').innerText;
+    if (language === "German") {
         window.alert('Nicht genug Anteile.');
     } else {
         window.alert('Insufficient holdings.');
@@ -279,17 +278,17 @@ function alertInsufficientHoldings() {
 }
 
 function alertNotOpen() {
-    var language = document.getElementById("nav_lan").innerText;
-    if (language === "Englisch") {
-       window.alert("Handel ist erst ab der dritten Periode möglich.");
+    // var language = document.getElementById("nav_lan").innerText;
+    if (language === "German") {
+        window.alert("Handel ist erst ab der dritten Periode möglich.");
     } else {
-       window.alert("Trading is not possible before 3rd period.");
+        window.alert("Trading is not possible before 3rd period.");
     }
 }
 
 function alertEarnings(cash) {
-    var language = document.getElementById("nav_lan").innerText;
-    if (language === "Englisch") {
+    // var language = document.getElementById("nav_lan").innerText;
+    if (language === "German") {
         window.alert("Glückwunsch!\nDeine Auszahlung beträgt " + Math.round(cash) + " GE!");
     } else {
         window.alert("Congratulations!\nYour total cash out is " + Math.round(cash) + " MU!");

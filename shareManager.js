@@ -103,7 +103,7 @@ class ShareManager {
                     },
                     {
                         id: 'budget',
-                        content: Math.round(this.budget) + '€'
+                        content: Math.round(this.budget) + ' GE'
                     }
                 ];
             } else {
@@ -133,7 +133,7 @@ class ShareManager {
                     },
                     {
                         id: 'budget',
-                        content: Math.round(this.budget) + '€'
+                        content: Math.round(this.budget) + ' GE'
                     }
                 ];
             } else {
