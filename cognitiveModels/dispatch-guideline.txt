@@ -7,7 +7,7 @@ dispatch init -n issd-ra-dispatcher --luisAuthoringKey "edf6fa4c15e949aa9b42ba39
 Add LUIS and QnA Models to dispatch file:
 dispatch add -t luis -i "a243b942-0397-4254-a7ce-bad8b1352852" -n "ISSD-RA-LUIS" -v 0.1 -k "edf6fa4c15e949aa9b42ba3963d69391" --intentName l_luis
 
-dispatch add -t qna -i "40989c9b-3ba2-4a4f-94f8-c5abf9611375" -n "ISSD-RA-QnA-KB" -k "71b0e296fd3f4594909e692c234e07d8" --intentName q_qnamaker
+dispatch add -t qna -i "18d30015-52f3-494e-baba-32dfe10ae415" -n "ISSD-RA-QNA" -k "dbef1e09d3e743199ebac983b8e07644" --intentName q_qnamaker
 
 dispatch create
 Result:

@@ -531,10 +531,18 @@
                 const channelData = data.channelData;
                 const correctEvent = !channelData.hasOwnProperty("clientActivityID"); // because bot sends two events
                 if (data.name === 'buy' && correctEvent) {
-
+                    if (channelData.open === false) {
+                        alertNotOpen();
+                    } else if (channelData.open === false) {
+                        alertInsufficientEndowment();
+                    }
                 }
                 if (data.name === 'sell' && correctEvent) {
-
+                    if (channelData.open === false) {
+                        alertNotOpen();
+                    } else if (channelData.open === false) {
+                        alertInsufficientEndowment();
+                    }
                 }
                 if (data.name === 'next' && correctEvent && channelData.reload === false) {
                     const data = channelData.appendData;

@@ -259,3 +259,30 @@ function getSurveyId(url) {
     const partArray = endPart.split("?");
     return partArray[0];
 }
+
+function alertInsufficientEndowment() {
+    var language = document.getElementById("nav_lan").innerText;
+    if (language === "German") {
+       window.alert("Nicht genug Budget.");
+    } else {
+       window.alert("Insufficient endowment.");
+    }
+}
+
+function alertInsufficientHoldings() {
+    var language = document.getElementById('nav_lan').innerText;
+    if (language === 'German') {
+        window.alert('Nicht genug Anteile.');
+    } else {
+        window.alert('Insufficient holdings.');
+    }
+}
+
+function alertNotOpen() {
+    var language = document.getElementById("nav_lan").innerText;
+    if (language === "German") {
+       window.alert("Handel ist erst ab der dritten Periode möglich.");
+    } else {
+       window.alert("Trading is not possible before 3rd period.");
+    }
+}
