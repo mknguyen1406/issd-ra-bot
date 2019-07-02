@@ -2,16 +2,16 @@
   "qnaDocuments": [
     {
       "id": 1,
-      "answer": "While the Conversation User Interface (CUI) is upon us, at this point few developers have the expertise and tools needed to create new conversational experiences or enable existing applications and services with a conversational interface their users can enjoy. We have created the Bot Framework to make it easier for developers to build and connect great bots to users, wherever they converse, including on Microsoft's premier channels.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Bevor das Conversation User Interface (CUI) verfügbar ist, verfügen nur wenige Entwickler über die erforderlichen Kenntnisse und Tools, um neue Benutzeroberflächen für Konversationen zu erstellen oder vorhandene Anwendungen und Dienste um eine Konversationsschnittstelle zu erweitern, von der ihre Benutzer profitieren können.While the Conversation User Interface (CUI) is upon us, at this point few developers have the expertise and tools needed to create new conversational experiences or enable existing applications and services with a conversational interface their users can enjoy. Wir haben Bot Framework entwickelt, um Entwicklern das Erstellen und Verbinden ihrer Bots für Benutzer zu erleichtern, und zwar unabhängig vom Ort der Konversation – einschließlich der Microsoft-Premiumkanäle.We have created the Bot Framework to make it easier for developers to build and connect great bots to users, wherever they converse, including on Microsoft's premier channels.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Why did Microsoft develop the Bot Framework?"
+        "Warum hat Microsoft Bot Framework entwickelt? Why did Microsoft develop the Bot Framework?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -19,16 +19,16 @@
     },
     {
       "id": 2,
-      "answer": "Bot Framework v4 SDK builds on the feedback and learnings from the prior Bot Framework SDKs. It introduces the right levels of abstraction while enabling rich componentization of the bot building blocks. You can start with a simple bot and grow your bot in sophistication using a modular and extensible framework. You can find [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) for the SDK on GitHub.\n\n ## Bot Framework SDK Version 3 Lifetime Support \n\nSDK V3 bots continue to run and be supported by Azure Bot Service. Since the release of Bot Framework SDK V4, as with other frameworks, we continue supporting SDK V3 with security, high priority bug fixes, and connector / protocol layer updates. Customers can expect v3 support to continue through 2019.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Das Bot Framework v4 SDK basiert auf dem Feedback und den Erfahrungen aus früheren Bot Framework SDKs.Bot Framework v4 SDK builds on the feedback and learnings from the prior Bot Framework SDKs. Es verfügt über die erforderlichen Abstraktionsebenen und ermöglicht gleichzeitig die Umsetzung umfassender Bot-Bausteine mit vielen Komponenten.It introduces the right levels of abstraction while enabling rich componentization of the bot building blocks. Sie können mit einem einfachen Bot beginnen und ihn dann über ein modulares und erweiterbares Framework immer komplexer machen.You can start with a simple bot and grow your bot in sophistication using a modular and extensible framework. Sie finden die [häufig gestellten Fragen](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) für das SDK auf GitHub.You can find [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) for the SDK on GitHub.\n\n ## Support für die Lebensdauer von Version 3 des Bot Framework SDKBot Framework SDK Version 3 Lifetime Support \n\nSDK V3-Bots werden weiterhin von Azure Bot Service ausgeführt und unterstützt.SDK V3 bots continue to run and be supported by Azure Bot Service. Genau wie bei anderen Frameworks bieten wir auch nach der Veröffentlichung von Version 4 des Bot Framework SDK weiterhin Support für Version 3 des SDK in Form von Sicherheitsupdates, Fehlerbehebungen mit hoher Priorität und Updates auf Connector-/Protokollebene.Since the release of Bot Framework SDK V4, as with other frameworks, we continue supporting SDK V3 with security, high priority bug fixes, and connector / protocol layer updates. Der Support für Version 3 wird bis Ende 2019 fortgeführt.Customers can expect v3 support to continue through 2019.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What is the v4 SDK?"
+        "Was ist das v4 SDK? What is the v4 SDK?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -36,16 +36,16 @@
     },
     {
       "id": 3,
-      "answer": "SDK V3 bots continue to run and be supported by Azure Bot Service. Since the release of Bot Framework SDK V4, as with other frameworks, we continue supporting SDK V3 with security, high priority bug fixes, and connector / protocol layer updates. Customers can expect v3 support to continue through 2019.\n\n * Azure Bot Service and Bot Framework V3 are both GA products and are fully supported. The underlying Bot Framework protocol and connector libraries have not changed and are shared between both V3 and V4 SDKs.\n * Bots created with Bot Framework (BotBuilder) V3 SDK continue to be supported through 2019.\n * Customers can continue creating V3 bots using Azure portal or Azure CLI tools.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "SDK V3-Bots werden weiterhin von Azure Bot Service ausgeführt und unterstützt.SDK V3 bots continue to run and be supported by Azure Bot Service. Genau wie bei anderen Frameworks bieten wir auch nach der Veröffentlichung von Version 4 des Bot Framework SDK weiterhin Support für Version 3 des SDK in Form von Sicherheitsupdates, Fehlerbehebungen mit hoher Priorität und Updates auf Connector-/Protokollebene.Since the release of Bot Framework SDK V4, as with other frameworks, we continue supporting SDK V3 with security, high priority bug fixes, and connector / protocol layer updates. Der Support für Version 3 wird bis Ende 2019 fortgeführt.Customers can expect v3 support to continue through 2019.\n\n * Azure Bot Service und Bot Framework V3 sind beides allgemein verfügbare Produkte und werden vollständig unterstützt.Azure Bot Service and Bot Framework V3 are both GA products and are fully supported. Das zugrunde liegende Bot Framework-Protokoll und die Connectorbibliotheken haben sich nicht geändert und werden sowohl vom V3-SDK als auch vom V4-SDK genutzt.The underlying Bot Framework protocol and connector libraries have not changed and are shared between both V3 and V4 SDKs.\n * Mit dem V3-SDK für Bot Framework (BotBuilder) erstellte Bots werden bis Ende 2019 unterstützt.Bots created with Bot Framework (BotBuilder) V3 SDK continue to be supported through 2019.\n * Kunden können weiterhin V3-Bots über das Azure-Portal oder mithilfe von Azure CLI-Tools erstellen.Customers can continue creating V3 bots using Azure portal or Azure CLI tools.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What is Microsoft plan for supporting existing V3 bots? What happens to my V3 Bots? Will my V3 bots stop working?"
+        "Welche Supportpläne hat Microsoft für bereits vorhandene V3-Bots? What is Microsoft plan for supporting existing V3 bots? Was geschieht mit meinen V3-Bots? What happens to my V3 Bots? Funktionieren meine V3-Bots nicht mehr? Will my V3 bots stop working?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -53,16 +53,16 @@
     },
     {
       "id": 4,
-      "answer": "* Azure Bot Service and Bot Framework V3 are both GA products and are fully supported.\n * The Bot Framework protocol has not changed and are shared between both V3 and V4 SDKs.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "* Azure Bot Service und Bot Framework V3 sind beides allgemein verfügbare Produkte und werden vollständig unterstützt.Azure Bot Service and Bot Framework V3 are both GA products and are fully supported.\n * Das Bot Framework-Protokoll hat sich nicht geändert und wird sowohl vom V3-SDK als auch vom V4-SDK genutzt.The Bot Framework protocol has not changed and are shared between both V3 and V4 SDKs.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What happens to my bot written to REST & Bot Framework Protocol 3.1?"
+        "Was geschieht mit meinem für REST und das Bot Framework-Protokoll 3.1 entwickelten Bot? What happens to my bot written to REST & Bot Framework Protocol 3.1?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -70,16 +70,16 @@
     },
     {
       "id": 5,
-      "answer": "* We will update V3 with minor enhancements, mainly at the connector layer, and with security and high priority bug fixes.\n * Updates to V3 will be released twice yearly and as needed, based on bug fixes and/or required protocol changes.\n * Current plan is to publish minor and patch versions of V3 to NuGet and NPM for our C# and JavaScript SDKs.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "* V3 erhält kleinere Verbesserungen (insbesondere auf der Connectorebene) sowie Sicherheitsupdates und Fehlerkorrekturen mit hoher Priorität.We will update V3 with minor enhancements, mainly at the connector layer, and with security and high priority bug fixes.\n * Updates für V3 werden zweimal jährlich und nach Bedarf (basierend auf Fehlerkorrekturen und/oder erforderlichen Protokolländerungen) veröffentlicht.Updates to V3 will be released twice yearly and as needed, based on bug fixes and/or required protocol changes.\n * Aktuell ist geplant, über NuGet und NPM Neben- und Patchversionen von V3 für unsere C#- und JavaScript-SDKs zu veröffentlichen.Current plan is to publish minor and patch versions of V3 to NuGet and NPM for our C# and JavaScript SDKs.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Will there be more updates, additional development for the V3 SDK or just bugfixes?"
+        "Werden weitere Updates bereitgestellt, und wird das V3-SDK weiterentwickelt, oder werden lediglich Probleme behandelt? Will there be more updates, additional development for the V3 SDK or just bugfixes?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -87,16 +87,16 @@
     },
     {
       "id": 6,
-      "answer": "* At the protocol level, communication between your conversational app (aka your bot) to different channels uses the Bot Framework Activity protocol which is identical between V3 and V4. The same underlying Azure Bot Service (AZURE BOT SERVICE) infrastructure supports both V3 and V4 bots.\n * Bot Framework SDK V4 offers conversational centric development experience with an SDK architecture that is modular and extensible, empowering developers to create robust and sophisticated chat applications. V4 extendable design was based on customer feedback, suggesting SDK V3 dialog models and primitives are too ridged and constraining extendibility.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "* Auf der Protokollebene wird für die Kommunikation zwischen Ihrer Konversations-App (also Ihrem Bot) und verschiedenen Kanälen das Bot Framework Activity-Protokoll verwendet. Dieses Protokoll hat sich zwischen V3 und V4 nicht verändert.At the protocol level, communication between your conversational app (aka your bot) to different channels uses the Bot Framework Activity protocol which is identical between V3 and V4. Die gleiche zugrunde liegende Azure Bot Service-Infrastruktur unterstützt sowohl V3- als auch V4-Bots.The same underlying Azure Bot Service (AZURE BOT SERVICE) infrastructure supports both V3 and V4 bots.\n * Version 4 des Bot Framework SDK bietet eine konversationsorientierte Entwicklungsumgebung mit einer modularen und erweiterbaren SDK-Architektur, mit der Entwickler stabile und komplexe Chatanwendungen entwickeln können.Bot Framework SDK V4 offers conversational centric development experience with an SDK architecture that is modular and extensible, empowering developers to create robust and sophisticated chat applications. Das erweiterbare Design von V4 geht auf Kundenfeedback zurück, in dem bemängelt wurde, dass die Dialogmodelle und Primitive des SDK V3 zu unflexibel sind und die Erweiterbarkeit einschränken.V4 extendable design was based on customer feedback, suggesting SDK V3 dialog models and primitives are too ridged and constraining extendibility.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Why V4 is not backwards compatible with V3?"
+        "Warum ist V4 nicht abwärtskompatibel mit V3? Why V4 is not backwards compatible with V3?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -104,16 +104,16 @@
     },
     {
       "id": 7,
-      "answer": "* See [Differences between the v3 and v4 .NET SDK](https://docs.microsoft.com/en-us/azure/bot-service/migration/migration-about?view=azure-bot-service-4.0) for information on migrating V3 bots to V4.\n * At this time, migration help for bots created with SDK V3 to SDK V4 will come in the form of documentation and samples. We currently do not have plans to provide any SDK V3 compatibility layer in SDK V4 that would allow V3 build bots to work within a V4 bot.\n * If you already have Bot Framework SDK V3 bots in production, don’t worry, they continue to work as is for the foreseeable future.\n * Bot Framework SDK V4 is an evolution of the very successful V3 SDK. V4 is a major version release which includes breaking changes that prevent V3 bots from running on the newer V4 SDK.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "* Informationen zum Migrieren von V3-Bots zu V4 finden Sie unter [Unterschiede zwischen Version 3 und Version 4 des .NET SDK](https://docs.microsoft.com/de-de/azure/bot-service/migration/migration-about?view=azure-bot-service-4.0).See [Differences between the v3 and v4 .NET SDK](https://docs.microsoft.com/de-de/azure/bot-service/migration/migration-about?view=azure-bot-service-4.0) for information on migrating V3 bots to V4.\n * Aktuell werden Dokumentation und Beispiele bereitgestellt, um Sie bei der Migration von Bots, die mit der SDK-Version 3 erstellt wurden, zu SDK V4-Bots zu unterstützen.At this time, migration help for bots created with SDK V3 to SDK V4 will come in the form of documentation and samples. Es ist derzeit nicht geplant, das SDK V4 mit einer Kompatibilitätsebene für das SDK V3 auszustatten, damit in V3 erstellte Bots in einem V4-Bot funktionieren.We currently do not have plans to provide any SDK V3 compatibility layer in SDK V4 that would allow V3 build bots to work within a V4 bot.\n * Falls Sie Bots, die mit Version 3 des Bot Framework SDK erstellt wurden, bereits in Ihrer Produktionsumgebung verwenden, ist das kein Problem, da diese Bots auf absehbare Zeit weiter funktionieren.If you already have Bot Framework SDK V3 bots in production, don’t worry, they continue to work as is for the foreseeable future.\n * Bot Framework SDK V4 ist eine Weiterentwicklung der äußerst erfolgreichen Version 3 des SDK.Bot Framework SDK V4 is an evolution of the very successful V3 SDK. V4 ist eine neue Hauptversion und enthält Breaking Changes, die dazu führen, dass V3-Bots nicht unter dem neueren V4 SDK funktionieren.V4 is a major version release which includes breaking changes that prevent V3 bots from running on the newer V4 SDK.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What is the general migration strategy? I have a V3 bot, how can I migrate it to V4/ Can I migrate my V3 bot to V4?"
+        "Wie sieht die allgemeine Migrationsstrategie aus? What is the general migration strategy? Wie kann ich meinen V3-Bot zu einem V4-Bot migrieren?/Kann ich meinen V3-Bot zu einem V4-Bot migrieren? I have a V3 bot, how can I migrate it to V4/ Can I migrate my V3 bot to V4?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -121,16 +121,16 @@
     },
     {
       "id": 8,
-      "answer": "* For new conversational experiences, we recommend you start a new bot using Bot Framework SDK V4.\n * If you are already familiar with Bot Framework SDK V3, you should take the time to learn about the new version and features offered with the new [Bot Framework SDK V4](http://aka.ms/botframeowrkoverview).\n * If you already have Bot Framework SDK V3 bots in production, don’t worry, they continue to work as is for the foreseeable future.\n * You can create Bot Framework SDK V4 and older V3 bots via Azure portal and Azure Command Line.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "* Für neue Konversationserfahrungen empfiehlt es sich, den neuen Bot mithilfe des Bot Framework SDK V4 zu erstellen.For new conversational experiences, we recommend you start a new bot using Bot Framework SDK V4.\n * Wenn Sie bereits mit dem Bot Framework SDK V3 vertraut sind, sollten Sie sich über die neue Version und die Features des neuen [Bot Framework SDK V4](http://aka.ms/botframeowrkoverview) informieren.If you are already familiar with Bot Framework SDK V3, you should take the time to learn about the new version and features offered with the new [Bot Framework SDK V4](http://aka.ms/botframeowrkoverview).\n * Falls Sie Bots, die mit Version 3 des Bot Framework SDK erstellt wurden, bereits in Ihrer Produktionsumgebung verwenden, ist das kein Problem, da diese Bots auf absehbare Zeit weiter funktionieren.If you already have Bot Framework SDK V3 bots in production, don’t worry, they continue to work as is for the foreseeable future.\n * Über das Azure-Portal und die Azure-Befehlszeile können Sie sowohl Bot Framework SDK V4-Bots als auch ältere V3-Bots erstellen.You can create Bot Framework SDK V4 and older V3 bots via Azure portal and Azure Command Line.\n\n ## KanäleChannels",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Should I build new a bot using V3 or V4?"
+        "Soll ich für die Erstellung eines neuen Bots V3 oder V4 verwenden? Should I build new a bot using V3 or V4?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -138,16 +138,16 @@
     },
     {
       "id": 9,
-      "answer": "Azure Bot Service does not support region move. It’s a global service that is not tied to any specific region.\n\n ## Channels",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Wir planen fortlaufende Verbesserungen an Bot Framework, einschließlich zusätzlicher Kanäle. Wir können zu diesem Zeitplan aber keine Angaben zum Zeitplan machen.We plan on making continuous improvements to the Bot Framework, including additional channels, but cannot provide a schedule at this time.\n\nWenn Sie möchten, dass dem Framework ein bestimmter Kanal hinzugefügt wird, [teilen Sie uns dies mit](https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0).If you would like a specific channel added to the framework, [let us know](https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0).",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "How can I migrate Azure Bot Service from one region to another?"
+        "Wann werden dem Bot Framework weitere Konversationsmöglichkeiten hinzugefügt? When will you add more conversation experiences to the Bot Framework?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -155,16 +155,16 @@
     },
     {
       "id": 10,
-      "answer": "We plan on making continuous improvements to the Bot Framework, including additional channels, but cannot provide a schedule at this time.\n\nIf you would like a specific channel added to the framework, [let us know](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0).",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Wir bieten bisher keinen allgemeinen Mechanismus für Entwickler, um Bot Framework neue Kanäle hinzuzufügen, aber Sie können Ihren Bot über die [Direct Line-API](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts) mit Ihrer App verbinden.We have not provided a general mechanism for developers to add new channels to Bot Framework, but you can connect your bot to your app via the [Direct Line API](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts). Wenn Sie ein Entwickler eines Kommunikationskanals sind und mit uns zusammenarbeiten möchten, Ihren Kanal in Bot Framework zu aktivieren, [würden wir gerne von Ihnen hören](https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0).If you are a developer of a communication channel and would like to work with us to enable your channel in the Bot Framework [we’d love to hear from you](https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0).",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "When will you add more conversation experiences to the Bot Framework?"
+        "Ich habe einen Kommunikationskanal, den ich gerne mit Bot Framework konfigurierbar machen möchte. I have a communication channel I’d like to be configurable with Bot Framework. Kann ich daran mit Microsoft zusammenarbeiten? Can I work with Microsoft to do that?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -172,16 +172,16 @@
     },
     {
       "id": 11,
-      "answer": "We have not provided a general mechanism for developers to add new channels to Bot Framework, but you can connect your bot to your app via the [Direct Line API](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts). If you are a developer of a communication channel and would like to work with us to enable your channel in the Bot Framework [we’d love to hear from you](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0).",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Bot Framework dient zum Erstellen, Verbinden und Bereitstellen hochwertiger, schneller, leistungsstarker und skalierbarer Bots für Skype und viele andere Kanäle.The Bot Framework is designed to build, connect, and deploy high quality, responsive, performant and scalable bots for Skype and many other channels. Das SDK kann zum Erstellen von Text-/SMS-, Bild-, Schaltflächen- und kartenfähigen Bots (die heute einen Großteil der Botinteraktionen für Konversationen ausmachen) verwendet werden sowie von Botinteraktionen, die Skype-spezifisch sind, z.B. umfangreichen Audio- und Videoumgebungen.The SDK can be used to create text/sms, image, button and card-capable bots (which constitute the majority of bot interactions today across conversation experiences) as well as bot interactions which are Skype-specific such as rich audio and video experiences.\n\nWenn Sie bereits über einen hervorragenden Bot verfügen und die Skype-Zielgruppe erreichen möchten, können Sie Ihren Bot ganz einfach mit Skype (oder allen anderen unterstützten Kanälen) verbinden. Verwenden Sie dazu Bot Framework für die REST-API (vorausgesetzt, er verfügt über einen über das Internet zugänglichen REST-Endpunkt).If you already have a great bot and would like to reach the Skype audience, your bot can easily be connected to Skype (or any supported channel) via the Bot Framework for REST API (provided it has an internet-accessible REST endpoint).\n\n ## Sicherheit und DatenschutzSecurity and Privacy",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "I have a communication channel I’d like to be configurable with Bot Framework. Can I work with Microsoft to do that?"
+        "Welche Tools und Dienste sollte ich verwenden, wenn ich einen Bot für Skype erstellen möchte? If I want to create a bot for Skype, what tools and services should I use?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -189,16 +189,16 @@
     },
     {
       "id": 12,
-      "answer": "The Bot Framework is designed to build, connect, and deploy high quality, responsive, performant and scalable bots for Skype and many other channels. The SDK can be used to create text/sms, image, button and card-capable bots (which constitute the majority of bot interactions today across conversation experiences) as well as bot interactions which are Skype-specific such as rich audio and video experiences.\n\nIf you already have a great bot and would like to reach the Skype audience, your bot can easily be connected to Skype (or any supported channel) via the Bot Framework for REST API (provided it has an internet-accessible REST endpoint).\n\n ## Security and Privacy",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Jeder Bot ist ein eigener Dienst, und die Entwickler dieser Dienste sind aufgefordert, Nutzungsbedingungen und Datenschutzrichtlinien in ihre Verhaltensregeln für Entwickler einzubinden.Each bot is its own service, and developers of these services are required to provide Terms of Service and Privacy Statements per their Developer Code of Conduct. Sie finden diese Informationen auf der Botkarte im Botverzeichnis.You can access this information from the bot’s card in the Bot Directory.\n\nFür den E/A-Dienst überträgt Bot Framework Ihre Nachricht und deren Inhalt (einschließlich Ihrer ID) aus dem von Ihnen verwendeten Chatdienst an den Bot.to provide the I/O service, the Bot Framework transmits your message and message content (including your ID), from the chat service you used to the bot.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "If I want to create a bot for Skype, what tools and services should I use?"
+        "Sammeln Bots, die bei Bot Framework registriert sind, personenbezogene Informationen? Do the bots registered with the Bot Framework collect personal information? Wenn dies der Fall ist: Wie kann ich sicherstellen, dass die Daten sicher und geschützt sind? If yes, how can I be sure the data is safe and secure? Was ist mit Datenschutz? What about privacy?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -206,16 +206,16 @@
     },
     {
       "id": 13,
-      "answer": "Each bot is its own service, and developers of these services are required to provide Terms of Service and Privacy Statements per their Developer Code of Conduct. You can access this information from the bot’s card in the Bot Directory.\n\nto provide the I/O service, the Bot Framework transmits your message and message content (including your ID), from the chat service you used to the bot.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Ja.Yes. Ihr Bot kann überall im Internet gehostet werden –Your bot can be hosted anywhere on the Internet. auf Ihren eigenen Servern, in Azure oder in jedem beliebigen anderen Datencenter.On your own servers, in Azure, or in any other datacenter. Die einzige Voraussetzung ist, dass der Bot einen öffentlich zugänglichen HTTPS-Endpunkt verfügbar machen muss.The only requirement is that the bot must expose a publicly-accessible HTTPS endpoint.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Do the bots registered with the Bot Framework collect personal information? If yes, how can I be sure the data is safe and secure? What about privacy?"
+        "Kann ich meinen Bot auf meinen eigenen Servern hosten? Can I host my bot on my own servers?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -223,16 +223,16 @@
     },
     {
       "id": 14,
-      "answer": "Yes. Your bot can be hosted anywhere on the Internet. On your own servers, in Azure, or in any other datacenter. The only requirement is that the bot must expose a publicly-accessible HTTPS endpoint.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Benutzer haben die Möglichkeit, einen fehlerhaften Bot über die Kontaktkarte des Bots im Verzeichnis zu melden.Users have a way to report a misbehaving bot via the bot’s contact card in the directory. Entwickler müssen die Vertragsbedingungen von Microsoft einhalten, um den Dienst nutzen zu können.Developers must abide by Microsoft terms of service to participate in the service.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Can I host my bot on my own servers?"
+        "Wie sperren Sie Bots oder entfernen sie aus dem Dienst? How do you ban or remove bots from the service?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -240,16 +240,16 @@
     },
     {
       "id": 15,
-      "answer": "Users have a way to report a misbehaving bot via the bot’s contact card in the directory. Developers must abide by Microsoft terms of service to participate in the service.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Wenn Sie eine ausgehende Firewall haben, die Datenverkehr vom Bot in das Internet blockiert, müssen Sie in dieser Firewall die folgenden URLs auf die Whitelist setzen:If you have an outbound firewall blocking traffic from your bot to the Internet, you'll need to whitelist the following URLs in that firewall:\n\n * login.botframework.com (Botauthentifizierung)login.botframework.com (Bot authentication)\n * login.microsoftonline.com (Botauthentifizierung)login.microsoftonline.com (Bot authentication)\n * westus.api.cognitive.microsoft.com (NLP-Integration von Luis.ai)westus.api.cognitive.microsoft.com (for Luis.ai NLP integration)\n * state.botframework.com (Botstatusspeicher für Prototypen)state.botframework.com (Bot state storage for prototyping)\n * cortanabfchanneleastus.azurewebsites.net (Cortana-Kanal)cortanabfchanneleastus.azurewebsites.net (Cortana channel)\n * cortanabfchannelwestus.azurewebsites.net (Cortana-Kanal)cortanabfchannelwestus.azurewebsites.net (Cortana Channel)\n * *.botframework.com (Kanäle)*.botframework.com (channels)",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "How do you ban or remove bots from the service?"
+        "Welche spezifischen URLs müssen der Whitelist meiner Unternehmensfirewall hinzugefügt werden, um auf Bot Framework-Dienste Zugriff zu erhalten? Which specific URLs do I need to whitelist in my corporate firewall to access Bot Framework services?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -257,16 +257,16 @@
     },
     {
       "id": 16,
-      "answer": "If you have an outbound firewall blocking traffic from your bot to the Internet, you'll need to whitelist the following URLs in that firewall:\n\n * login.botframework.com (Bot authentication)\n * login.microsoftonline.com (Bot authentication)\n * westus.api.cognitive.microsoft.com (for Luis.ai NLP integration)\n * state.botframework.com (Bot state storage for prototyping)\n * cortanabfchanneleastus.azurewebsites.net (Cortana channel)\n * cortanabfchannelwestus.azurewebsites.net (Cortana Channel)\n * *.botframework.com (channels)",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Nein.No. Diese Art von IP-Adress- oder DNS-Whitelisting ist unpraktisch.This sort of IP Address or DNS whitelisting is impractical. Der Bot Framework Connector-Dienst wird in Azure-Datencentern auf der ganzen Welt gehostet, und die Liste der Azure-IP-Adressen ändert sich laufend.The Bot Framework Connector Service is hosted in Azure datacenters world-wide and the list of Azure IPs is constantly changing. Bestimmte IP-Adressen in die Whitelist aufzunehmen, kann an einem Tag funktionieren und schon am nächsten Tag zu Unterbrechungen führen, wenn sich die Azure-IP-Adressen ändern.Whitelisting certain IP addresses may work one day and break the next as the Azure IP Addresses change.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Which specific URLs do I need to whitelist in my corporate firewall to access Bot Framework services?"
+        "Kann ich sämtlichen Datenverkehr an meinen Bot mit Ausnahme des Datenverkehrs vom Bot Connector-Dienst blockieren? Can I block all traffic to my bot except traffic from the Bot Connector Service?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -274,16 +274,16 @@
     },
     {
       "id": 17,
-      "answer": "No. This sort of IP Address or DNS whitelisting is impractical. The Bot Framework Connector Service is hosted in Azure datacenters world-wide and the list of Azure IPs is constantly changing. Whitelisting certain IP addresses may work one day and break the next as the Azure IP Addresses change.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "1. Das Sicherheitstoken, das mit jeder Anforderung an Ihren Bot gesendet wird, enthält die codierte „ServiceUrl“. Selbst wenn ein Angreifer Zugriff auf das Token erlangt, kann er daher die Konversation nicht an eine neue „ServiceUrl“ umleiten.The security token accompanying every request to your bot has the ServiceUrl encoded within it, which means that even if an attacker gains access to the token, they cannot redirect the conversation to a new ServiceUrl. Dieses Verhalten wird von allen Implementierungen des SDK erzwungen und ist in unseren [Referenzmaterialien](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector) zur Authentifizierung dokumentiert.This is enforced by all implementations of the SDK and documented in our authentication [reference](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector) materials.\n 2. Wenn das eingehende Token fehlt oder falsch formatiert ist, generiert das Bot Framework SDK kein Token.If the incoming token is missing or malformed, the Bot Framework SDK will not generate a token in response. Auf diese Weise wird der Schaden begrenzt, der im Fall einer falschen Bot-Konfiguration entstehen kann.This limits how much damage can be done if the bot is incorrectly configured.\n 3. Innerhalb des Bots können Sie die im Token bereitgestellte „ServiceUrl“ manuell überprüfen.Inside the bot, you can manually check the ServiceUrl provided in the token. Dadurch ist der Bot anfälliger, wenn Änderungen an der Diensttopologie vorgenommen werden. Diese Vorgehensweise ist also möglich, aber nicht empfehlenswert.This makes the bot more fragile in the event of service topology changes so this is possible but not recommended.\n\nBeachten Sie, dass es sich herbei um ausgehende Verbindungen vom Bot mit dem Internet handelt.Note that these are outbound connections from the bot to the Internet. Es gibt keine Liste von IP-Adressen oder DNS-Namen, die der Bot Framework Connector-Dienst zur Kommunikation mit dem Bot verwendet.There is not a list of IP Addresses or DNS names that the Bot Framework Connector Service will use to talk to the bot. Whitelists für eingehende IP-Adressen werden nicht unterstützt.Inbound IP Address whitelisting is not supported.\n\n ## RatenbegrenzungRate limiting",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "Can I block all traffic to my bot except traffic from the Bot Connector Service?"
+        "Wie wird mein Bot vor Clients geschützt, die die Identität des Bot Framework Connector-Diensts annehmen? What keeps my bot secure from clients impersonating the Bot Framework Connector Service?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -291,16 +291,16 @@
     },
     {
       "id": 18,
-      "answer": "1. The security token accompanying every request to your bot has the ServiceUrl encoded within it, which means that even if an attacker gains access to the token, they cannot redirect the conversation to a new ServiceUrl. This is enforced by all implementations of the SDK and documented in our authentication [reference](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector) materials.\n 2. If the incoming token is missing or malformed, the Bot Framework SDK will not generate a token in response. This limits how much damage can be done if the bot is incorrectly configured.\n 3. Inside the bot, you can manually check the ServiceUrl provided in the token. This makes the bot more fragile in the event of service topology changes so this is possible but not recommended.\n\nNote that these are outbound connections from the bot to the Internet. There is not a list of IP Addresses or DNS names that the Bot Framework Connector Service will use to talk to the bot. Inbound IP Address whitelisting is not supported.\n\n ## Rate limiting",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Der Bot Framework-Dienst muss sich selbst und seine Kunden gegen verdächtige Aufrufmuster (z.B. Denial-of-Service-Angriffe) schützen, damit sich kein Bot negativ auf die Leistung anderer Bots auswirken kann.The Bot Framework service must protect itself and its customers against abusive call patterns (e.g., denial of service attack), so that no single bot can adversely affect the performance of other bots. Für diese Art des Schutzes haben wir die Ratenbegrenzungen (auch als „Drosselung“ bezeichnet) für alle Endpunkte hinzugefügt.To achieve this kind of protection, we’ve added rate limits (also known as throttling) to all endpoints. Durch das Erzwingen einer Ratenbegrenzung können wir die Häufigkeit einschränken, mit der ein Bot einen bestimmten Aufruf ausführen kann.By enforcing a rate limit, we can restrict the frequency with which a bot can make a specific call. Beispiel: Wenn bei aktivierter Ratenbegrenzung ein Bot eine große Anzahl von Aktivitäten veröffentlichen möchte, muss er diese über einen längeren Zeitraum aufteilen.For example: with rate limiting enabled, if a bot wanted to post a large number of activities, it would have to space them out over a time period. Beachten Sie, dass der Zweck der Ratenbegrenzung nicht der Beschränkung des Gesamtvolumens für einen Bot dient.Please note that the purpose of rate-limiting is not to cap the total volume for a bot. Sie dient dazu, den Missbrauch der Konversationsinfrastruktur durch nicht den Konversationsmustern menschlicher Unterhaltungen folgende Konversationen zu verhindern.It is designed to prevent abuse of the conversational infrastructure that does not follow human conversation patterns.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What keeps my bot secure from clients impersonating the Bot Framework Connector Service?"
+        "Was bedeutet Ratenbegrenzung? What is rate limiting?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -308,16 +308,16 @@
     },
     {
       "id": 19,
-      "answer": "The Bot Framework service must protect itself and its customers against abusive call patterns (e.g., denial of service attack), so that no single bot can adversely affect the performance of other bots. To achieve this kind of protection, we’ve added rate limits (also known as throttling) to all endpoints. By enforcing a rate limit, we can restrict the frequency with which a bot can make a specific call. For example: with rate limiting enabled, if a bot wanted to post a large number of activities, it would have to space them out over a time period. Please note that the purpose of rate-limiting is not to cap the total volume for a bot. It is designed to prevent abuse of the conversational infrastructure that does not follow human conversation patterns.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Es ist unwahrscheinlich, dass Sie eine Ratenbegrenzung bemerken – selbst bei hohem Volumen.It is unlikely you’ll experience rate limiting, even at high volume. Die meisten Ratenbegrenzungen treten nur aufgrund von Massensendungen von Aktivitäten (von einem Bot oder einem Client), extremen Auslastungstests oder Fehlern auf.Most rate limiting would only occur due to bulk sending of activities (from a bot or from a client), extreme load testing, or a bug. Wenn eine Anforderung gedrosselt wird, wird eine HTTP 429-Antwort (zu viele Anforderungen) zurückgegeben, zusammen mit einem Retry-After-Header, der die Zeitspanne (in Sekunden) angibt, die bis zu einem Wiederholungsversuch der Anforderung gewartet werden muss.When a request is throttled, an HTTP 429 (Too Many Requests) response is returned along with a Retry-After header indicating the amount of time (in seconds) to wait before retrying the request would succeed. Sie können diese Informationen sammeln, indem Sie mit Azure Application Insights Analysen für Ihren Bot aktivieren.You can collect this information by enabling analytics for your bot via Azure Application Insights. Sie können Ihrem Bot auch Code zum Protokollieren von Meldungen hinzufügen.Or, you can add code in your bot to log messages.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What is rate limiting?"
+        "Wie erkenne ich, ob ich betroffen bin? How will I know if I’m impacted?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -325,16 +325,16 @@
     },
     {
       "id": 20,
-      "answer": "It is unlikely you’ll experience rate limiting, even at high volume. Most rate limiting would only occur due to bulk sending of activities (from a bot or from a client), extreme load testing, or a bug. When a request is throttled, an HTTP 429 (Too Many Requests) response is returned along with a Retry-After header indicating the amount of time (in seconds) to wait before retrying the request would succeed. You can collect this information by enabling analytics for your bot via Azure Application Insights. Or, you can add code in your bot to log messages.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Sie treten in den folgenden Fällen auf:It can happen if:\n\n * Ein Bot sendet zu häufig Nachrichten.a bot sends messages too frequently\n * Ein Client eines Bots sendet zu häufig Nachrichten.a client of a bot sends messages too frequently\n * Direct Line-Clients fordern zu häufig einen neuen Websocket an.Direct Line clients request a new Web Socket too frequently",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "How will I know if I’m impacted?"
+        "Wie erfolgen Ratenbegrenzungen? How does rate limiting occur?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -342,16 +342,16 @@
     },
     {
       "id": 21,
-      "answer": "It can happen if:\n\n * a bot sends messages too frequently\n * a client of a bot sends messages too frequently\n * Direct Line clients request a new Web Socket too frequently",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Wir optimieren kontinuierlich die Ratenbegrenzungen, um sie so flexibel wie möglich zu machen und gleichzeitig unseren Dienst und unsere Benutzer zu schützen.We’re continuously tuning the rate limits to make them as lenient as possible while at the same time protecting our service and our users. Da sich die Schwellenwerte gelegentlich ändern, veröffentlichen wir die Zahlen zu diesem Zeitpunkt nicht.Because thresholds will occasionally change, we aren’t publishing the numbers at this time. Wenn Sie von einer Ratenbegrenzung betroffen sind, können Sie uns unter [bf-reports@microsoft.com](mailto://bf-reports@microsoft.com) kontaktieren.If you are impacted by rate limiting, feel free to reach out to us at [bf-reports@microsoft.com](mailto://bf-reports@microsoft.com).\n\n ## Verwandte DiensteRelated Services",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "How does rate limiting occur?"
+        "Welche Ratenbegrenzungen gelten? What are the rate limits?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -359,16 +359,16 @@
     },
     {
       "id": 22,
-      "answer": "We’re continuously tuning the rate limits to make them as lenient as possible while at the same time protecting our service and our users. Because thresholds will occasionally change, we aren’t publishing the numbers at this time. If you are impacted by rate limiting, feel free to reach out to us at [bf-reports@microsoft.com](mailto://bf-reports@microsoft.com).\n\n ## Related Services",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Sowohl für Bot Framework als auch für [Cognitive Services](http://www.microsoft.com/cognitive) wurden auf der [Microsoft Build 2016](http://build.microsoft.com) neue Funktionen eingeführt, die bei allgemeiner Verfügbarkeit auch in die Cortana Intelligence Suite einfließen.Both the Bot Framework and [Cognitive Services](http://www.microsoft.com/cognitive) are new capabilities introduced at [Microsoft Build 2016](http://build.microsoft.com) that will also be integrated into Cortana Intelligence Suite at GA. Beide Dienste basieren auf jahrelanger Forschung und dem Einsatz in beliebten Microsoft-Produkten.Both these services are built from years of research and use in popular Microsoft products. Diese Funktionen ermöglichen in Kombination mit „Cortana Intelligence“ jeder Organisation, die Leistungsfähigkeit von Daten, der Cloud und Daten zu nutzen, um eigene intelligente Systeme zu erstellen, die neue Geschäftschancen erschließen, die Geschäftsgeschwindigkeit erhöhen und eine führende Position in der Branche, in der sie ihren Kunden dienen, sichern.These capabilities combined with ‘Cortana Intelligence’ enable every organization to take advantage of the power of data, the cloud and intelligence to build their own intelligent systems that unlock new opportunities, increase their speed of business and lead the industries in which they serve their customers.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What are the rate limits?"
+        "In welcher Beziehung steht Bot Framework zu Cognitive Services? How does the Bot Framework relate to Cognitive Services?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -376,16 +376,16 @@
     },
     {
       "id": 23,
-      "answer": "Both the Bot Framework and [Cognitive Services](http://www.microsoft.com/cognitive) are new capabilities introduced at [Microsoft Build 2016](http://build.microsoft.com)that will also be integrated into Cortana Intelligence Suite at GA. Both these services are built from years of research and use in popular Microsoft products. These capabilities combined with ‘Cortana Intelligence’ enable every organization to take advantage of the power of data, the cloud and intelligence to build their own intelligent systems that unlock new opportunities, increase their speed of business and lead the industries in which they serve their customers.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Cortana Intelligence ist eine vollständig verwaltete Big Data-Suite mit erweiterten Analysen, mit der Sie Ihre Daten in intelligente Aktionen umwandeln können.Cortana Intelligence is a fully managed Big Data, Advanced Analytics and Intelligence suite that transforms your data into intelligent action.\n\nIn dieser umfassenden Suite kommen Technologien, die auf jahrelanger Forschung beruhen, und Innovationen von Microsoft (von erweiterten Analysen, Machine Learning und Big Data-Speicherung bis zur Verarbeitung in der Cloud) zusammen:It is a comprehensive suite that brings together technologies founded upon years of research and innovation throughout Microsoft (spanning advanced analytics, machine learning, big data storage and processing in the cloud) and:\n\n * Sie ermöglicht das Sammeln, Verwalten und Speichern all Ihrer Daten, die nahtlos und kosteneffizient und auf skalierbare und sichere Weise zunehmen können.Allows you to collect, manage and store all your data that can seamlessly and cost effectively grow over time in a scalable and secure way.\n * Sie ermöglicht einfache und aussagekräftige Analysen mit Cloudunterstützung, mit denen Sie Vorhersagen und Entscheidungen für die anspruchsvollsten Probleme treffen sowie entsprechende Anweisungen vornehmen können.Provides easy and actionable analytics powered by the cloud that allow you to predict, prescribe and automate decision making for the most demanding problems.\n * Sie ermöglicht intelligente Systeme mit Cognitive Services und Agents, mit denen Sie die Welt um sich herum mit noch mehr Kontext und auf nahezu natürliche Weise sehen, hören, interpretieren und verstehen können.Enables intelligent systems through cognitive services and agents that allow you to see, hear, interpret and understand the world around you in more contextual and natural ways.\n\nWir hoffen, unseren Unternehmenskunden mit Cortana Intelligence dabei zu helfen, neue Geschäftschancen zu erschließen, die Unternehmensabläufe zu beschleunigen und zu einer Spitzenposition in ihrer Branche aufzusteigen.With Cortana Intelligence, we hope to help our enterprise customers unlock new opportunities, increase their speed of business and be leaders in their industries.",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "How does the Bot Framework relate to Cognitive Services?"
+        "Was ist Cortana Intelligence? What is Cortana Intelligence?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -393,16 +393,16 @@
     },
     {
       "id": 24,
-      "answer": "Cortana Intelligence is a fully managed Big Data, Advanced Analytics and Intelligence suite that transforms your data into intelligent action.\n\nIt is a comprehensive suite that brings together technologies founded upon years of research and innovation throughout Microsoft (spanning advanced analytics, machine learning, big data storage and processing in the cloud) and:\n\n * Allows you to collect, manage and store all your data that can seamlessly and cost effectively grow over time in a scalable and secure way.\n * Provides easy and actionable analytics powered by the cloud that allow you to predict, prescribe and automate decision making for the most demanding problems.\n * Enables intelligent systems through cognitive services and agents that allow you to see, hear, interpret and understand the world around you in more contextual and natural ways.\n\nWith Cortana Intelligence, we hope to help our enterprise customers unlock new opportunities, increase their speed of business and be leaders in their industries.",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
+      "answer": "Direct Line ist eine REST-API, mit der Sie Ihren Bot Ihrem Dienst, Ihrer mobilen App oder Ihrer Webseite hinzufügen können.Direct Line is a REST API that allows you to add your bot into your service, mobile app, or webpage.\n\nSie können einen Client für die Direct Line-API in jeder beliebigen Sprache schreiben.You can write a client for the Direct Line API in any language. Erstellen Sie einfach Code für das [Direct Line-Protokoll](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts), generieren Sie auf der Direct Line-Konfigurationsseite ein Geheimnis, und sprechen Sie mit Ihrem Bot, egal wo sich Ihr Code befindet.Simply code to the [Direct Line protocol](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts), generate a secret in the Direct Line configuration page, and talk to your bot from wherever your code lives.\n\nDirect Line eignet sich für:Direct Line is suitable for:\n\n * Mobile Apps auf iOS, Android, Windows Phone und anderen PlattformenMobile apps on iOS, Android, and Windows Phone, and others\n * Desktopanwendungen unter Windows, OSX und anderenDesktop applications on Windows, OSX, and more\n * Webseiten, für die Sie zusätzliche Anpassungen benötigen, als der [integrierbare Webchatkanal](https://docs.microsoft.com/de-de/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0) bietetWebpages where you need more customization than the [embeddable Web Chat channel](https://docs.microsoft.com/de-de/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0) offers\n * Service-to-Service-AnwendungenService-to-service applications",
+      "source": "https://docs.microsoft.com/de-de/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
       "questions": [
-        "What is Cortana Intelligence?"
+        "Was ist der Direct Line-Kanal? What is the Direct Line channel?"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []
@@ -410,52 +410,18 @@
     },
     {
       "id": 25,
-      "answer": "Direct Line is a REST API that allows you to add your bot into your service, mobile app, or webpage.\n\nYou can write a client for the Direct Line API in any language. Simply code to the [Direct Line protocol](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts), generate a secret in the Direct Line configuration page, and talk to your bot from wherever your code lives.\n\nDirect Line is suitable for:\n\n * Mobile apps on iOS, Android, and Windows Phone, and others\n * Desktop applications on Windows, OSX, and more\n * Webpages where you need more customization than the [embeddable Web Chat channel](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0) offers\n * Service-to-service applications\n\n ## App Registration",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
-      "questions": [
-        "What is the Direct Line channel?"
-      ],
-      "metadata": [],
-      "alternateQuestions": "",
-      "alternateQuestionClusters": [],
-      "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
-      "context": {
-        "isContextOnly": false,
-        "prompts": []
-      }
-    },
-    {
-      "id": 26,
-      "answer": "Creating your own App Registration will be necessary for situations like the following:\n\n * You created your bot in the Bot Framework portal (such as [https://dev.botframework.com/bots/new](https://dev.botframework.com/bots/new))\n * You are unable to make app registrations in your organization and need another party to create the App ID for the bot you're building\n * You otherwise need to manually create your own App ID (and password)\n\nTo create your own App ID, follow the steps below.\n\n1.  \n\nSign into your [Azure account](https://portal.azure.com). If you don't have an Azure account, you can [sign up for a free account](https://azure.microsoft.com/en-us/free/).\n\n2.  \n\nGo to [the app registrations blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) and click New registration** in the action bar at the top.\n\n![new registration](https://docs.microsoft.com/en-us/azure/bot-service/media/app-registration/new-registration.png?view=azure-bot-service-4.0)\n\n3.  \n\nEnter a display name for the application registration in the Name* field and select the supported account types. The name does not have to match the bot ID.\n\nImportant\n\nIn the Supported account types*, select the Accounts in any organizational directory and personal Microsoft accounts (e.g. Skype, Xbox, Outlook.com)* radio button. If any of the other options are selected, bot creation will fail**.\n\n![registration details](https://docs.microsoft.com/en-us/azure/bot-service/media/app-registration/registration-details.png?view=azure-bot-service-4.0)\n\n4.  \n\nClick Register**After a few moments, the newly created app registration should open a blade. Copy the Application (client) ID* in the Overview blade and paste it in to the App ID field.![application id](https://docs.microsoft.com/en-us/azure/bot-service/media/app-registration/app-id.png?view=azure-bot-service-4.0)\n\nIf you’re creating your bot through the Bot Framework portal, then you’re done setting up your app registration; the secret will be generated automatically.\n\nIf you’re making your bot in the Azure portal, you need to generate a secret for your app registration.\n\n1.  \n\nClick on Certificates & secrets** in the left navigation column of your app registration’s blade.\n\n2.  \n\nIn that blade, click the New client secret** button. In the dialog that pops up, enter an optional description for the secret and select Never** from the Expires radio button group.\n\n![new secret](https://docs.microsoft.com/en-us/azure/bot-service/media/app-registration/new-secret.png?view=azure-bot-service-4.0)\n\n3.  \n\nCopy your secret’s value from the table under Client secrets* and paste it into the Password* field for your application, and click OK** at the bottom of that blade. Then, proceed with the bot creation.NoteThe secret will only be visible while on this blade, and you won't be able to retreive it after you leave that page. Be sure to copy it somewhere safe.![new app id](https://docs.microsoft.com/en-us/azure/bot-service/media/app-registration/create-app-id.png?view=azure-bot-service-4.0)",
-      "source": "https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0",
-      "questions": [
-        "I need to manually create my App Registration. How do I create my own App Registration?"
-      ],
-      "metadata": [],
-      "alternateQuestions": "",
-      "alternateQuestionClusters": [],
-      "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
-      "context": {
-        "isContextOnly": false,
-        "prompts": []
-      }
-    },
-    {
-      "id": 27,
-      "answer": "Hi! Ask me questions about the Azure Bot Framework.",
+      "answer": "Hallo! Du kannst mir fragen zum Azure Bot Framework stellen.",
       "source": "Editorial",
       "questions": [
         "Hi",
-        "Hello",
+        "Hallo",
         "Hey"
       ],
       "metadata": [],
       "alternateQuestions": "",
       "alternateQuestionClusters": [],
       "changeStatus": "NoChange",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
       "context": {
         "isContextOnly": false,
         "prompts": []

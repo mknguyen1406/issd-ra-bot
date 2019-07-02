@@ -1,8 +1,7 @@
 Label	Weight	Text
 l_luis	1	buy share a
-q_qnamaker	1	Should I build new a bot using V3 or V4
-q_qnamaker	1	How does rate limiting occur
-q_qnamaker	1	What is the v4 SDK
-q_qnamaker	1	Can I block all traffic to my bot except traffic from the Bot Connector Service
-q_qnamaker	1	If I want to create a bot for Skype, what tools and services should I use
-q_qnamaker	1	What is rate limiting
+q_qnamaker	1	Warum hat Microsoft Bot Framework entwickelt? Why did Microsoft develop the Bot Framework
+q_qnamaker	1	Welche Ratenbegrenzungen gelten? What are the rate limits
+q_qnamaker	1	Was ist das v4 SDK? What is the v4 SDK
+q_qnamaker	1	Warum ist V4 nicht abwärtskompatibel mit V3? Why V4 is not backwards compatible with V3
+q_qnamaker	1	Werden weitere Updates bereitgestellt, und wird das V3-SDK weiterentwickelt, oder werden lediglich Probleme behandelt? Will there be more updates, additional development for the V3 SDK or just bugfixes

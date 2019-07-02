@@ -54,77 +54,32 @@
       "entities": []
     },
     {
-      "text": "should i build new a bot using v3 or v4",
+      "text": "warum hat microsoft bot framework entwickelt? why did microsoft develop the bot framework",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "how does rate limiting occur",
+      "text": "welche ratenbegrenzungen gelten? what are the rate limits",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "what is the v4 sdk",
+      "text": "was ist das v4 sdk? what is the v4 sdk",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "can i block all traffic to my bot except traffic from the bot connector service",
+      "text": "warum ist v4 nicht abwärtskompatibel mit v3? why v4 is not backwards compatible with v3",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "if i want to create a bot for skype, what tools and services should i use",
+      "text": "werden weitere updates bereitgestellt, und wird das v3-sdk weiterentwickelt, oder werden lediglich probleme behandelt? will there be more updates, additional development for the v3 sdk or just bugfixes",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "what is rate limiting",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "hello",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "how can i migrate azure bot service from one region to another",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "what is the direct line channel",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "can i host my bot on my own servers",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "what are the rate limits",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "which specific urls do i need to whitelist in my corporate firewall to access bot framework services",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "what is the general migration strategy? i have a v3 bot, how can i migrate it to v4/ can i migrate my v3 bot to v4",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "what is cortana intelligence",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "how will i know if i’m impacted",
+      "text": "was bedeutet ratenbegrenzung? what is rate limiting",
       "intent": "q_qnamaker",
       "entities": []
     },
@@ -134,47 +89,42 @@
       "entities": []
     },
     {
-      "text": "when will you add more conversation experiences to the bot framework",
+      "text": "soll ich für die erstellung eines neuen bots v3 oder v4 verwenden? should i build new a bot using v3 or v4",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "what is microsoft plan for supporting existing v3 bots? what happens to my v3 bots? will my v3 bots stop working",
+      "text": "wie sperren sie bots oder entfernen sie aus dem dienst? how do you ban or remove bots from the service",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "will there be more updates, additional development for the v3 sdk or just bugfixes",
+      "text": "wie sieht die allgemeine migrationsstrategie aus? what is the general migration strategy? wie kann ich meinen v3-bot zu einem v4-bot migrieren?/kann ich meinen v3-bot zu einem v4-bot migrieren? i have a v3 bot, how can i migrate it to v4/ can i migrate my v3 bot to v4",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "i need to manually create my app registration. how do i create my own app registration",
+      "text": "wann werden dem bot framework weitere konversationsmöglichkeiten hinzugefügt? when will you add more conversation experiences to the bot framework",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "what keeps my bot secure from clients impersonating the bot framework connector service",
+      "text": "sammeln bots, die bei bot framework registriert sind, personenbezogene informationen? do the bots registered with the bot framework collect personal information? wenn dies der fall ist: wie kann ich sicherstellen, dass die daten sicher und geschützt sind? if yes, how can i be sure the data is safe and secure? was ist mit datenschutz? what about privacy",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "how do you ban or remove bots from the service",
+      "text": "welche spezifischen urls müssen der whitelist meiner unternehmensfirewall hinzugefügt werden, um auf bot framework-dienste zugriff zu erhalten? which specific urls do i need to whitelist in my corporate firewall to access bot framework services",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "why v4 is not backwards compatible with v3",
+      "text": "wie erfolgen ratenbegrenzungen? how does rate limiting occur",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "why did microsoft develop the bot framework",
-      "intent": "q_qnamaker",
-      "entities": []
-    },
-    {
-      "text": "how does the bot framework relate to cognitive services",
+      "text": "was ist der direct line-kanal? what is the direct line channel",
       "intent": "q_qnamaker",
       "entities": []
     },
@@ -184,17 +134,57 @@
       "entities": []
     },
     {
-      "text": "what happens to my bot written to rest & bot framework protocol 3.1",
+      "text": "ich habe einen kommunikationskanal, den ich gerne mit bot framework konfigurierbar machen möchte. i have a communication channel i’d like to be configurable with bot framework. kann ich daran mit microsoft zusammenarbeiten? can i work with microsoft to do that",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "i have a communication channel i’d like to be configurable with bot framework. can i work with microsoft to do that",
+      "text": "kann ich sämtlichen datenverkehr an meinen bot mit ausnahme des datenverkehrs vom bot connector-dienst blockieren? can i block all traffic to my bot except traffic from the bot connector service",
       "intent": "q_qnamaker",
       "entities": []
     },
     {
-      "text": "do the bots registered with the bot framework collect personal information? if yes, how can i be sure the data is safe and secure? what about privacy",
+      "text": "kann ich meinen bot auf meinen eigenen servern hosten? can i host my bot on my own servers",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "welche tools und dienste sollte ich verwenden, wenn ich einen bot für skype erstellen möchte? if i want to create a bot for skype, what tools and services should i use",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "was ist cortana intelligence? what is cortana intelligence",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "was geschieht mit meinem für rest und das bot framework-protokoll 3.1 entwickelten bot? what happens to my bot written to rest & bot framework protocol 3.1",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie erkenne ich, ob ich betroffen bin? how will i know if i’m impacted",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "hallo",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "in welcher beziehung steht bot framework zu cognitive services? how does the bot framework relate to cognitive services",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie wird mein bot vor clients geschützt, die die identität des bot framework connector-diensts annehmen? what keeps my bot secure from clients impersonating the bot framework connector service",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "welche supportpläne hat microsoft für bereits vorhandene v3-bots? what is microsoft plan for supporting existing v3 bots? was geschieht mit meinen v3-bots? what happens to my v3 bots? funktionieren meine v3-bots nicht mehr? will my v3 bots stop working",
       "intent": "q_qnamaker",
       "entities": []
     }

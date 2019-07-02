@@ -1,8 +1,7 @@
 Label	Weight	Text
 l_luis	1	please sell share d
-q_qnamaker	1	Hello
-q_qnamaker	1	How can I migrate Azure Bot Service from one region to another
-q_qnamaker	1	What is the Direct Line channel
-q_qnamaker	1	Can I host my bot on my own servers
-q_qnamaker	1	What are the rate limits
-q_qnamaker	1	Which specific URLs do I need to whitelist in my corporate firewall to access Bot Framework services
+q_qnamaker	1	Was bedeutet Ratenbegrenzung? What is rate limiting
+q_qnamaker	1	Hey
+q_qnamaker	1	Soll ich für die Erstellung eines neuen Bots V3 oder V4 verwenden? Should I build new a bot using V3 or V4
+q_qnamaker	1	Wie sperren Sie Bots oder entfernen sie aus dem Dienst? How do you ban or remove bots from the service
+q_qnamaker	1	Wie sieht die allgemeine Migrationsstrategie aus? What is the general migration strategy? Wie kann ich meinen V3-Bot zu einem V4-Bot migrieren?/Kann ich meinen V3-Bot zu einem V4-Bot migrieren? I have a V3 bot, how can I migrate it to V4/ Can I migrate my V3 bot to V4

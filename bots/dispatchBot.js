@@ -48,7 +48,7 @@ class DispatchBot extends ActivityHandler {
             // Next, we call the dispatcher with the top intent.
             await this.dispatchToTopIntentAsync(context, intent, recognizerResult);
 
-            console.log(this.nextRound(0));
+            //console.log(this.nextRound(0));
 
             await next();
         });
@@ -69,7 +69,7 @@ class DispatchBot extends ActivityHandler {
 
         // Handle button events
         this.onEvent(async (context, next) => {
-            console.log(context.activity);
+            //console.log(context.activity);
             if (context.activity.name === 'next') {
                 const res = await this.nextRound(context.activity.value);
                 await context.sendActivity({ name: 'next', type: 'event', channelData: res });
@@ -189,7 +189,12 @@ class DispatchBot extends ActivityHandler {
 
         if (luisResult.entities.length > 0) {
             await context.sendActivity(`LUIS entities were found in the message: ${ luisResult.entities.map((entityObj) => entityObj.entity).join('\n\n') }.`);
+            console.log("bla");
         }
+
+        console.log("luisResult: \n" + luisResult);
+        console.log("result: \n" + result);
+        console.log("intent: \n" + intent);
     }
 
     async processQnA(context) {
@@ -199,7 +204,7 @@ class DispatchBot extends ActivityHandler {
 
         if (results.length > 0) {
             await context.sendActivity(`${ results[0].answer }`);
-        } else {
+        } else {   
             await context.sendActivity('Sorry, could not find an answer in the Q and A system.');
         }
     }

@@ -17,10 +17,10 @@
     },
     {
       "intentName": "q_qnamaker",
-      "kbId": "40989c9b-3ba2-4a4f-94f8-c5abf9611375",
-      "subscriptionKey": "71b0e296fd3f4594909e692c234e07d8",
+      "kbId": "18d30015-52f3-494e-baba-32dfe10ae415",
+      "subscriptionKey": "dbef1e09d3e743199ebac983b8e07644",
       "type": "qna",
-      "name": "ISSD-RA-QnA-KB",
+      "name": "ISSD-RA-QNA",
       "id": "2"
     }
   ],

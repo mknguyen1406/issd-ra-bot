@@ -1,8 +1,7 @@
 Label	Weight	Text
 l_luis	1	sell share c
-q_qnamaker	1	Will there be more updates, additional development for the V3 SDK or just bugfixes
-q_qnamaker	1	I need to manually create my App Registration. How do I create my own App Registration
-q_qnamaker	1	What keeps my bot secure from clients impersonating the Bot Framework Connector Service
-q_qnamaker	1	How do you ban or remove bots from the service
-q_qnamaker	1	Why V4 is not backwards compatible with V3
-q_qnamaker	1	Why did Microsoft develop the Bot Framework
+q_qnamaker	1	Hi
+q_qnamaker	1	Ich habe einen Kommunikationskanal, den ich gerne mit Bot Framework konfigurierbar machen möchte. I have a communication channel I’d like to be configurable with Bot Framework. Kann ich daran mit Microsoft zusammenarbeiten? Can I work with Microsoft to do that
+q_qnamaker	1	Kann ich sämtlichen Datenverkehr an meinen Bot mit Ausnahme des Datenverkehrs vom Bot Connector-Dienst blockieren? Can I block all traffic to my bot except traffic from the Bot Connector Service
+q_qnamaker	1	Kann ich meinen Bot auf meinen eigenen Servern hosten? Can I host my bot on my own servers
+q_qnamaker	1	Welche Tools und Dienste sollte ich verwenden, wenn ich einen Bot für Skype erstellen möchte? If I want to create a bot for Skype, what tools and services should I use
