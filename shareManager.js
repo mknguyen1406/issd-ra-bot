@@ -156,7 +156,7 @@ class ShareManager {
             this.goodValues[i] = parseFloat(this.goodPriceHist[i][round]);
             rename.push({
                 id: 'v' + i.toString(),
-                content: this.goodValues[i] + '€'
+                content: Math.round(this.goodValues[i]) + ' GE'
             });
             this.goodHoldingsHist[i].push(this.goodHoldings[i]);
 
