@@ -6,7 +6,7 @@ function changeLanguage() {
         document.getElementById("header_transactions").innerText = "Transaktionen";
         document.getElementById("price_link_prices").innerText = "Preise";
         document.getElementById("price_link_invest").innerText = "Transaktionen";
-        document.getElementById("price_link_chart").innerText = "Diagramm";
+        // document.getElementById("price_link_chart").innerText = "Diagramm";
         document.getElementById("endowment").innerText = "Ihr Guthaben:";
         document.getElementById("share1").innerText = "Anteil A";
         document.getElementById("share2").innerText = "Anteil B";
@@ -46,7 +46,7 @@ function changeLanguage() {
         document.getElementById("header_transactions").innerText = "Transactions";
         document.getElementById("price_link_prices").innerText = "Prices";
         document.getElementById("price_link_invest").innerText = "Transactions";
-        document.getElementById("price_link_chart").innerText = "Chart";
+        // document.getElementById("price_link_chart").innerText = "Chart";
         document.getElementById("endowment").innerText = "Your endowment:";
         document.getElementById("share1").innerText = "Share A";
         document.getElementById("share2").innerText = "Share B";
