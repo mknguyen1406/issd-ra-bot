@@ -581,8 +581,8 @@
                     appendTable("invest", data.invests);
 
                     // Only for last round
-                    if (data.cashout > 0) {
-                        alertEarnings(data.cashout);
+                    if (channelData.cashout > 0) {
+                        alertEarnings(channelData.cashout);
                     }
                 } else if (channelData.reload === true) {
                     // This is round 14
