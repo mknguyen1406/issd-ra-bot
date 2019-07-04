@@ -563,14 +563,14 @@
                 if (data.name === 'buy' && correctEvent) {
                     if (channelData.open === false) {
                         alertNotOpen();
-                    } else if (channelData.open === false) {
+                    } else if (channelData.success === false) {
                         alertInsufficientEndowment();
                     }
                 }
                 if (data.name === 'sell' && correctEvent) {
                     if (channelData.open === false) {
                         alertNotOpen();
-                    } else if (channelData.open === false) {
+                    } else if (channelData.success === false) {
                         alertInsufficientHoldings();
                     }
                 }
@@ -581,8 +581,8 @@
                     appendTable("invest", data.invests);
                 } else if (channelData.reload === true) {
                     // This is round 14
-                    window.location.reload();
                     alertEarnings(channelData.cashout);
+                    window.location.reload();
                 }
                 // Rename elements only for correct events
                 if (correctEvent) {
