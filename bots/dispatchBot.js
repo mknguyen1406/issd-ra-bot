@@ -99,7 +99,8 @@ class DispatchBot extends ActivityHandler {
                     content: 'Next'
                 }
             ],
-            reload: false
+            reload: false,
+            cashout: 0
         };
         // Get data only up until round 14. In round 14 reload the page
         let data = null;
@@ -131,7 +132,7 @@ class DispatchBot extends ActivityHandler {
             };
             // round++;
             const cash = this.shareManager.cashout();
-            obj.alert = 'Congratulations!\nYour total cash out is ' + Math.round(cash) + '€!';
+            obj.alert = 'Congratulations!\nYour total cash out is ' + Math.round(parseFloat(cash)) + '€!';
             obj.rename = [
                 {
                     id: 'next',

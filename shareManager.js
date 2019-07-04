@@ -150,7 +150,6 @@ class ShareManager {
         let invests = [];
         let rename = [];
         let reload = false;
-        let cashout = 0;
 
         for (let i = 0; i < 6; i++) {
             this.goodValues[i] = parseFloat(this.goodPriceHist[i][round]);
@@ -176,11 +175,6 @@ class ShareManager {
                 this.goodInvestHist[i].push(this.goodHoldings[i] - 0);
             }
 
-            if (round === 14) {
-                reload = true;
-                cashout = this.cashout();
-            }
-
             const x = {
                 data: [this.goodValues[i]]
             };
@@ -200,8 +194,7 @@ class ShareManager {
                 prices: prices,
                 invests: invests
             },
-            reload: reload,
-            cashout: cashout
+            reload: reload
         };
     }
 
