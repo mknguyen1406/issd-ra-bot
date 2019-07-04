@@ -122,7 +122,7 @@ class DispatchBot extends ActivityHandler {
             obj.rename = [
                 {
                     id: 'next',
-                    content: 'Exit'
+                    content: 'Fertig'
                 }
             ];
         } else if (round === 13) {
@@ -131,8 +131,7 @@ class DispatchBot extends ActivityHandler {
                 invests: data.invests
             };
             // round++;
-            const cash = this.shareManager.cashout();
-            obj.alert = 'Congratulations!\nYour total cash out is ' + Math.round(parseFloat(cash)) + '€!';
+            obj.cashout = this.shareManager.cashout(); 
             obj.rename = [
                 {
                     id: 'next',
@@ -144,7 +143,7 @@ class DispatchBot extends ActivityHandler {
         } else if (round === 2) {
             obj.rename.push({
                 id: 'budget',
-                content: '2000€'
+                content: '2000 GE'
             });
             this.openForTrading = true;
             obj.appendData = {

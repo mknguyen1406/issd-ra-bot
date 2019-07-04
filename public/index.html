@@ -579,9 +579,13 @@
                     chart.appendData(data.prices);
                     appendTable("price", data.prices);
                     appendTable("invest", data.invests);
+
+                    // Only for last round
+                    if (data.cashout > 0) {
+                        alertEarnings(data.cashout);
+                    }
                 } else if (channelData.reload === true) {
                     // This is round 14
-                    alertEarnings(channelData.cashout);
                     window.location.reload();
                 }
                 // Rename elements only for correct events
