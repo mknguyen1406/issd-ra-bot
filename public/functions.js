@@ -200,7 +200,12 @@ function nextRound(round) {
         };
 
         // Create event to request summary
-        const event = new CustomEvent('summaryRequest', { detail: data });
+        const event = new CustomEvent('botEvent', {
+            detail: {
+                type: "summaryRequest",
+                data: data
+            }
+        });
         window.document.dispatchEvent(event);
     }
 
@@ -219,7 +224,12 @@ function sendFinalResult() {
     };
 
     // Create event to request summary
-    const event = new CustomEvent('result', { detail: data });
+    const event = new CustomEvent('botEvent', {
+        detail: {
+            type: "result",
+            data: data
+        }
+    });
     window.document.dispatchEvent(event);
 }
 

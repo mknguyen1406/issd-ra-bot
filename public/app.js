@@ -159,36 +159,24 @@ function startChatBot() {
         buttonActionEvent(e, "sell");
     });
 
-    // Create event listener for summary request event
-    window.document.addEventListener('summaryRequest', handleEvent, false);
+    // Create event listener for summary and result event
+    window.document.addEventListener('botEvent', handleEvent, false);
     function handleEvent(e) {
         console.log(e);
-        const summaryData = e.detail;
+        const type = e.detail.type;
+        const data = e.detail.data;
 
         store.dispatch({
             type: 'WEB_CHAT/SEND_EVENT',
             payload: {
-                name: 'summaryRequest',
-                value: summaryData
-            }
-        });
-    }
-
-    // Create event listener for result event
-    window.document.addEventListener('result', handleEvent, false);
-    function handleEvent(e) {
-        console.log(e);
-        const result = e.detail;
-
-        store.dispatch({
-            type: 'WEB_CHAT/SEND_EVENT',
-            payload: {
-                name: 'result',
-                value: result
+                name: type,
+                value: data
             }
         });
 
-        console.log("Result: " + result);
+        if (type === "result") {
+            console.log("Result: " + result);
+        }
     }
 
     // Listening for incoming response events of type buy, sell or next
