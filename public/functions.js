@@ -441,8 +441,8 @@ function renameElements(res){
 
 async function getData(callback) {
     const request_ = new XMLHttpRequest();
-    // request_.open("GET", "https://issd-ra-qna.azurewebsites.net/data", true);
-    request_.open("GET", "http://localhost:3978/data", true);
+    request_.open("GET", "https://issd-ra-qna.azurewebsites.net/data", true);
+    // request_.open("GET", "http://localhost:3978/data", true);
     // request_.setRequestHeader("Authorization", "Bearer "+ secret);
     request_.send();
     request_.onreadystatechange = await function () {
