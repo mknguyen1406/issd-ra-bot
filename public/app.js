@@ -221,12 +221,15 @@ let round = 0;
 let openForTrading = false;
 let shareManager = null;
 
-getData(function (obj) {
-    const pricesArray = obj.pricesArray;
-    const recAlgArray = obj.recAlgArray;
-    const recExpArray = obj.recExpArray;
-    const recPeerArray = obj.recPeerArray;
-    const budget = 2000;
+// getData(function (obj) {
+//     const pricesArray = obj.pricesArray;
+//     const recAlgArray = obj.recAlgArray;
+//     const recExpArray = obj.recExpArray;
+//     const recPeerArray = obj.recPeerArray;
+//     const budget = 2000;
+//
+//     shareManager = new ShareManager(budget, 0, pricesArray, recAlgArray, recExpArray, recPeerArray);
+// });
 
-    shareManager = new ShareManager(budget, 0, pricesArray, recAlgArray, recExpArray, recPeerArray);
-});
+// Create share manager
+createShareManager(pricePath, 2000);

@@ -6,7 +6,6 @@
 // Import required packages
 const path = require('path');
 const restify = require('restify');
-const fs = require('fs');
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter } = require('botbuilder');
@@ -37,24 +36,6 @@ adapter.onTurnError = async (context, error) => {
     await context.sendActivity(`\n [onTurnError]: ${ error }`);
 };
 
-function readTextFile(file) {
-    return fs.readFileSync(file)
-        .toString() // convert Buffer to string
-        .split('\n') // split string to lines
-        .map(e => e.trim()) // remove white spaces for each line
-        .map(e => e.split(',').map(e => e.trim())); // split each line to array
-}
-
-// Create share manager
-// const shareManager = new ShareManager(
-//     2000,
-//     0,
-//     pricesArray,
-//     recAlgArray,
-//     recExpArray,
-//     recPeerArray
-// ); -- shifted back to client
-
 // Pass in a logger to the bot. For this sample, the logger is the console, but alternatives such as Application Insights and Event Hub exist for storing the logs of the bot.
 const logger = console;
 
@@ -83,24 +64,3 @@ server.get('/*', restify.plugins.serveStatic({
     directory: './public',
     default: 'index.html'
 }));
-
-// Send data to client
-server.get('/data/:name', (req, res) => {
-    //TODO: send data to client 
-});
-
-function respond(req, res, next) {
-    // Read data from CSV file
-    const obj = {
-        pricesArray: readTextFile('data/input_prices.csv'),
-        recAlgArray: readTextFile('data/input_rec_alg.csv'),
-        recExpArray: readTextFile('data/input_rec_exp.csv'),
-        recPeerArray: readTextFile('data/input_rec_peer.csv')
-    }
-
-    res.send(obj);
-    next();
-}
-
-server.get('/data', respond);
-server.head('/data', respond);

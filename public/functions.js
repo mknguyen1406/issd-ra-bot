@@ -114,45 +114,6 @@ function showInvestments() {
     x.style.display = "none";
 }
 
-// function start() {
-//     document.getElementById("next").innerHTML = "Next";
-//     let data = "";
-//     if(this.round === 12) {
-//         data = shareManager.nextRound(this.round);
-//         chart.appendData(data.prices);
-//         appendTable("price", data.prices);
-//         appendTable("invest", data.invests);
-//         this.round++;
-//         document.getElementById("next").innerHTML = "Exit";
-//     } else if (this.round === 13) {
-//         data = shareManager.nextRound(this.round);
-//         chart.appendData(data.prices);
-//         appendTable("price", data.prices);
-//         appendTable("invest", data.invests);
-//         this.round++;
-//         var cash = shareManager.cashout();
-//         window.alert("Congratulations!\nYour total cash out is " + Math.round(cash) + "€!");
-//         document.getElementById("next").innerHTML = "Restart";
-//     }else if (this.round === 14) {
-//         window.location.reload();
-//     } else if (this.round === 2) {
-//         document.getElementById("budget").innerHTML = "2000 GE";
-//         openForTrading = true;
-//         data = shareManager.nextRound(this.round);
-//         chart.appendData(data.prices);
-//         appendTable("price", data.prices);
-//         appendTable("invest", data.invests);
-//         this.round++;
-//     } else {
-//         data = shareManager.nextRound(this.round);
-//         chart.appendData(data.prices);
-//         appendTable("price", data.prices);
-//         appendTable("invest", data.invests);
-//         this.round++;
-//     }
-//     console.log(this.round);
-// }
-
 function nextRound(round) {
     let obj = {
         rename: [
@@ -224,22 +185,51 @@ function nextRound(round) {
     return obj;
 }
 
-function readTextFile(file)
+async function readTextFile(file, callback)
 {
-    var rawFile = new XMLHttpRequest();
+    const rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
+    rawFile.onreadystatechange = await function ()
     {
         if(rawFile.readyState === 4)
         {
             if(rawFile.status === 200 || rawFile.status === 0)
             {
-                var allText = rawFile.responseText;
-                data = allText;
+                const allText = rawFile.responseText;
+                callback(allText);
             }
         }
-    }
+    };
     rawFile.send(null);
+}
+
+function createShareManager (pricePath, budget) {
+
+    // Call function to read csv file
+    readTextFile("./data/price_paths/path" + pricePath + ".csv", function (obj) {
+
+        // Convert csv file to array
+        let x = obj.toString() // convert Buffer to string
+            .split('\n') // split string to lines
+            .map(e => e.trim()) // remove white spaces for each line
+            .map(e => e.split(';').map(e => e.trim())); // split each line to array
+        console.log(x);
+
+        // Prices from selected price path
+        const pricesArray = {
+            0: x[2].slice(1,15),
+            1: x[3].slice(1,15),
+            2: x[4].slice(1,15),
+            3: x[5].slice(1,15),
+            4: x[6].slice(1,15),
+            5: x[7].slice(1,15)
+        };
+
+        console.log(pricesArray);
+
+        // Create share manager object
+        shareManager = new ShareManager(budget, pricesArray);
+    });
 }
 
 function appendTable(table, data) {
@@ -443,7 +433,7 @@ async function getData(callback) {
     const request_ = new XMLHttpRequest();
     request_.open("GET", "https://issd-ra-qna.azurewebsites.net/data", true);
     // request_.open("GET", "http://localhost:3978/data", true);
-    // request_.setRequestHeader("Authorization", "Bearer "+ secret);
+    request_.setRequestHeader("Authorization", "Bearer "+ secret);
     request_.send();
     request_.onreadystatechange = await function () {
         if (request_.readyState === 4 && request_.status === 200) {

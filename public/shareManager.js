@@ -1,5 +1,5 @@
 class ShareManager {
-    constructor(budget, mapSeed, prices, recAlg, recExp, recPeer) {
+    constructor(budget, prices) {
         this.budget = parseFloat(budget);
         this.goodHoldings = {
             0: 0,
@@ -33,32 +33,30 @@ class ShareManager {
             4: [],
             5: []
         };
-        if (mapSeed === 0) {
-            this.goodPriceHist = {
-                0: prices[0],
-                1: prices[1],
-                2: prices[2],
-                3: prices[3],
-                4: prices[4],
-                5: prices[5]
-            };
-            this.recommendExp = {
-                0: recExp[0],
-                1: recExp[1],
-                2: recExp[2],
-                3: recExp[3],
-                4: recExp[4],
-                5: recExp[5]
-            };
-            this.recommendPeer = {
-                0: recPeer[0],
-                1: recPeer[1],
-                2: recPeer[2],
-                3: recPeer[3],
-                4: recPeer[4],
-                5: recPeer[5]
-            };
+        this.goodPriceHist = {
+            0: prices[0],
+            1: prices[1],
+            2: prices[2],
+            3: prices[3],
+            4: prices[4],
+            5: prices[5]
         };
+        // this.recommendExp = {
+        //     0: recExp[0],
+        //     1: recExp[1],
+        //     2: recExp[2],
+        //     3: recExp[3],
+        //     4: recExp[4],
+        //     5: recExp[5]
+        // };
+        // this.recommendPeer = {
+        //     0: recPeer[0],
+        //     1: recPeer[1],
+        //     2: recPeer[2],
+        //     3: recPeer[3],
+        //     4: recPeer[4],
+        //     5: recPeer[5]
+        // };
         this.goodValues = {
             0: parseFloat(this.goodPriceHist[0][0]),
             1: parseFloat(this.goodPriceHist[1][0]),
@@ -79,10 +77,6 @@ class ShareManager {
             }
         }
         return recs;
-    }
-
-    getRecommendPeer(good, round) {
-        return this.recommendPeer[good][round];
     }
 
     buyGood(good, open) {
