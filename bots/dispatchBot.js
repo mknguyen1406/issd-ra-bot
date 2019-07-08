@@ -8,7 +8,7 @@ class DispatchBot extends ActivityHandler {
     /**
      * @param {any} logger object for logging events, defaults to console if none is provided
      */
-    constructor(logger, sm) {
+    constructor(logger) {
         super();
         if (!logger) {
             logger = console;
@@ -33,7 +33,7 @@ class DispatchBot extends ActivityHandler {
         this.logger = logger;
         this.dispatchRecognizer = dispatchRecognizer;
         this.qnaMaker = qnaMaker;
-        this.shareManager = sm;
+        // this.shareManager = sm;
         this.openForTrading = false;
 
         this.onMessage(async (context, next) => {
@@ -70,97 +70,98 @@ class DispatchBot extends ActivityHandler {
         // Handle button events
         this.onEvent(async (context, next) => {
             //console.log(context.activity);
-            if (context.activity.name === 'next') {
-                const res = await this.nextRound(context.activity.value);
-                await context.sendActivity({ name: 'next', type: 'event', channelData: res });
-            }
-            if (context.activity.name === 'buy') {
-                const id = context.activity.value;
-                const res = this.shareManager.buyGood(id, this.openForTrading);
-                await context.sendActivity({ name: 'buy', type: 'event', channelData: res });
-            }
+            // if (context.activity.name === 'next') {
+            //     const res = await this.nextRound(context.activity.value);
+            //     await context.sendActivity({ name: 'next', type: 'event', channelData: res });
+            // }
+            // if (context.activity.name === 'buy') {
+            //     const id = context.activity.value;
+            //     const res = this.shareManager.buyGood(id, this.openForTrading);
+            //     await context.sendActivity({ name: 'buy', type: 'event', channelData: res });
+            // }
 
-            if (context.activity.name === 'sell') {
-                const id = context.activity.value;
-                const res = this.shareManager.sellGood(id, this.openForTrading);
-                await context.sendActivity({ name: 'sell', type: 'event', channelData: res });
-            }
+            // if (context.activity.name === 'sell') {
+            //     const id = context.activity.value;
+            //     const res = this.shareManager.sellGood(id, this.openForTrading);
+            //     await context.sendActivity({ name: 'sell', type: 'event', channelData: res });
+            // } -- shifted back to client
+
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
 
     }
 
-    nextRound(round) {
-        let obj = {
-            rename: [
-                {
-                    id: 'next',
-                    content: 'Next'
-                }
-            ],
-            reload: false,
-            cashout: 0
-        };
-        // Get data only up until round 14. In round 14 reload the page
-        let data = null;
-        if (round !== 14) {
-            const res = this.shareManager.nextRound(round);
-            data = res.data;
-            // Includes an array with all buttons whose value is to be changed
-            const renameArray = res.rename;
-            for (let i = 0; i < renameArray.length; i++) {
-                obj.rename.push(renameArray[i]);
-            }
-        }
-        if (round === 12) {
-            obj.appendData = {
-                prices: data.prices,
-                invests: data.invests
-            };
-            // round++;
-            obj.rename = [
-                {
-                    id: 'next',
-                    content: 'Fertig'
-                }
-            ];
-        } else if (round === 13) {
-            obj.appendData = {
-                prices: data.prices,
-                invests: data.invests
-            };
-            // round++;
-            obj.cashout = this.shareManager.cashout(); 
-            obj.rename = [
-                {
-                    id: 'next',
-                    content: 'Restart'
-                }
-            ];
-        } else if (round === 14) {
-            obj.reload = true;
-        } else if (round === 2) {
-            obj.rename.push({
-                id: 'budget',
-                content: '2000 GE'
-            });
-            this.openForTrading = true;
-            obj.appendData = {
-                prices: data.prices,
-                invests: data.invests
-            };
-            // round++;
-        } else {
-            obj.appendData = {
-                prices: data.prices,
-                invests: data.invests
-            };
-            // round++;
-        }
-        console.log(round);
-        return obj;
-    }
+    // nextRound(round) {
+    //     let obj = {
+    //         rename: [
+    //             {
+    //                 id: 'next',
+    //                 content: 'Next'
+    //             }
+    //         ],
+    //         reload: false,
+    //         cashout: 0
+    //     };
+    //     // Get data only up until round 14. In round 14 reload the page
+    //     let data = null;
+    //     if (round !== 14) {
+    //         const res = this.shareManager.nextRound(round);
+    //         data = res.data;
+    //         // Includes an array with all buttons whose value is to be changed
+    //         const renameArray = res.rename;
+    //         for (let i = 0; i < renameArray.length; i++) {
+    //             obj.rename.push(renameArray[i]);
+    //         }
+    //     }
+    //     if (round === 12) {
+    //         obj.appendData = {
+    //             prices: data.prices,
+    //             invests: data.invests
+    //         };
+    //         // round++;
+    //         obj.rename = [
+    //             {
+    //                 id: 'next',
+    //                 content: 'Fertig'
+    //             }
+    //         ];
+    //     } else if (round === 13) {
+    //         obj.appendData = {
+    //             prices: data.prices,
+    //             invests: data.invests
+    //         };
+    //         // round++;
+    //         obj.cashout = this.shareManager.cashout(); 
+    //         obj.rename = [
+    //             {
+    //                 id: 'next',
+    //                 content: 'Restart'
+    //             }
+    //         ];
+    //     } else if (round === 14) {
+    //         obj.reload = true;
+    //     } else if (round === 2) {
+    //         obj.rename.push({
+    //             id: 'budget',
+    //             content: '2000 GE'
+    //         });
+    //         this.openForTrading = true;
+    //         obj.appendData = {
+    //             prices: data.prices,
+    //             invests: data.invests
+    //         };
+    //         // round++;
+    //     } else {
+    //         obj.appendData = {
+    //             prices: data.prices,
+    //             invests: data.invests
+    //         };
+    //         // round++;
+    //     }
+    //     console.log(round);
+    //     return obj;
+    // } -- shifted back to client
 
     async dispatchToTopIntentAsync(context, intent, recognizerResult) {
         switch (intent) {

@@ -13,7 +13,7 @@ const { BotFrameworkAdapter } = require('botbuilder');
 const { DispatchBot } = require('./bots/dispatchBot');
 
 // This is the share manager class.
-const { ShareManager } = require('./shareManager');
+//const { ShareManager } = require('./shareManager'); -- shifted back to client
 
 // Note: Ensure you have a .env file and include all necessary credentials to access services like LUIS and QnAMaker.
 const ENV_FILE = path.join(__dirname, '.env');
@@ -45,26 +45,22 @@ function readTextFile(file) {
         .map(e => e.split(',').map(e => e.trim())); // split each line to array
 }
 
-const pricesArray = readTextFile('data/input_prices.csv');
-const recAlgArray = readTextFile('data/input_rec_alg.csv');
-const recExpArray = readTextFile('data/input_rec_exp.csv');
-const recPeerArray = readTextFile('data/input_rec_peer.csv');
-
 // Create share manager
-const shareManager = new ShareManager(
-    2000,
-    0,
-    pricesArray,
-    recAlgArray,
-    recExpArray,
-    recPeerArray
-);
+// const shareManager = new ShareManager(
+//     2000,
+//     0,
+//     pricesArray,
+//     recAlgArray,
+//     recExpArray,
+//     recPeerArray
+// ); -- shifted back to client
 
 // Pass in a logger to the bot. For this sample, the logger is the console, but alternatives such as Application Insights and Event Hub exist for storing the logs of the bot.
 const logger = console;
 
 // Create the main dialog.
-let bot = new DispatchBot(logger, shareManager);
+// let bot = new DispatchBot(logger, shareManager); -- shifted back to client
+let bot = new DispatchBot(logger);
 
 // Create HTTP server
 let server = restify.createServer();
@@ -87,3 +83,24 @@ server.get('/*', restify.plugins.serveStatic({
     directory: './public',
     default: 'index.html'
 }));
+
+// Send data to client
+server.get('/data/:name', (req, res) => {
+    //TODO: send data to client 
+});
+
+function respond(req, res, next) {
+    // Read data from CSV file
+    const obj = {
+        pricesArray: readTextFile('data/input_prices.csv'),
+        recAlgArray: readTextFile('data/input_rec_alg.csv'),
+        recExpArray: readTextFile('data/input_rec_exp.csv'),
+        recPeerArray: readTextFile('data/input_rec_peer.csv')
+    }
+
+    res.send(obj);
+    next();
+}
+
+server.get('/data', respond);
+server.head('/data', respond);

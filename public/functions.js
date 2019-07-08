@@ -96,10 +96,10 @@ function showChart() {
     var x = document.getElementById("prices");
     x.style.display = "none";
 
-    var x = document.getElementById("investments");
+    x = document.getElementById("investments");
     x.style.display = "none";
 
-    var x = document.getElementById("chart");
+    x = document.getElementById("chart");
     x.style.display = "block";
 }
 
@@ -107,49 +107,121 @@ function showInvestments() {
     var x = document.getElementById("prices");
     x.style.display = "none";
 
-    var x = document.getElementById("investments");
+    x = document.getElementById("investments");
     x.style.display = "block";
 
-    var x = document.getElementById("chart");
+    x = document.getElementById("chart");
     x.style.display = "none";
 }
 
-function start() {
-    document.getElementById("next").innerHTML = "Next";
-    if(this.round === 12) {
-        var data = sm.nextRound(this.round);
-        chart.appendData(data.prices);
-        appendTable("price", data.prices);
-        appendTable("invest", data.invests);
-        this.round++;
-        document.getElementById("next").innerHTML = "Exit";
-    } else if (this.round === 13) {
-        var data = sm.nextRound(this.round);
-        chart.appendData(data.prices);
-        appendTable("price", data.prices);
-        appendTable("invest", data.invests);
-        this.round++;
-        var cash = sm.cashout();
-        window.alert("Congratulations!\nYour total cash out is " + Math.round(cash) + "€!");
-        document.getElementById("next").innerHTML = "Restart";
-    }else if (this.round === 14) {
-        window.location.reload();
-    } else if (this.round === 2) {
-        document.getElementById("budget").innerHTML = "2000 GE";
-        this.openForTrading = true;
-        var data = sm.nextRound(this.round);
-        chart.appendData(data.prices);
-        appendTable("price", data.prices);
-        appendTable("invest", data.invests);
-        this.round++;
-    } else {
-        var data = sm.nextRound(this.round);
-        chart.appendData(data.prices);
-        appendTable("price", data.prices);
-        appendTable("invest", data.invests);
-        this.round++;
+// function start() {
+//     document.getElementById("next").innerHTML = "Next";
+//     let data = "";
+//     if(this.round === 12) {
+//         data = shareManager.nextRound(this.round);
+//         chart.appendData(data.prices);
+//         appendTable("price", data.prices);
+//         appendTable("invest", data.invests);
+//         this.round++;
+//         document.getElementById("next").innerHTML = "Exit";
+//     } else if (this.round === 13) {
+//         data = shareManager.nextRound(this.round);
+//         chart.appendData(data.prices);
+//         appendTable("price", data.prices);
+//         appendTable("invest", data.invests);
+//         this.round++;
+//         var cash = shareManager.cashout();
+//         window.alert("Congratulations!\nYour total cash out is " + Math.round(cash) + "€!");
+//         document.getElementById("next").innerHTML = "Restart";
+//     }else if (this.round === 14) {
+//         window.location.reload();
+//     } else if (this.round === 2) {
+//         document.getElementById("budget").innerHTML = "2000 GE";
+//         openForTrading = true;
+//         data = shareManager.nextRound(this.round);
+//         chart.appendData(data.prices);
+//         appendTable("price", data.prices);
+//         appendTable("invest", data.invests);
+//         this.round++;
+//     } else {
+//         data = shareManager.nextRound(this.round);
+//         chart.appendData(data.prices);
+//         appendTable("price", data.prices);
+//         appendTable("invest", data.invests);
+//         this.round++;
+//     }
+//     console.log(this.round);
+// }
+
+function nextRound(round) {
+    let obj = {
+        rename: [
+            {
+                id: 'next',
+                content: 'Next'
+            }
+        ],
+        reload: false,
+        cashout: 0
+    };
+    // Get data only up until round 14. In round 14 reload the page
+    let data = null;
+    if (round !== 14) {
+        const res = shareManager.nextRound(round);
+        data = res.data;
+        // Includes an array with all buttons whose value is to be changed
+        const renameArray = res.rename;
+        for (let i = 0; i < renameArray.length; i++) {
+            obj.rename.push(renameArray[i]);
+        }
     }
-    console.log(this.round);
+    if (round === 12) {
+        obj.appendData = {
+            prices: data.prices,
+            invests: data.invests
+        };
+        // round++;
+        obj.rename = [
+            {
+                id: 'next',
+                content: 'Fertig'
+            }
+        ];
+    } else if (round === 13) {
+        obj.appendData = {
+            prices: data.prices,
+            invests: data.invests
+        };
+        // round++;
+        obj.cashout = shareManager.cashout();
+        obj.rename = [
+            {
+                id: 'next',
+                content: 'Restart'
+            }
+        ];
+    } else if (round === 14) {
+        obj.reload = true;
+    } else if (round === 2) {
+        obj.rename.push({
+            id: 'budget',
+            content: '2000 GE'
+        });
+        openForTrading = true;
+        obj.appendData = {
+            prices: data.prices,
+            invests: data.invests
+        };
+        // round++;
+    } else {
+        obj.appendData = {
+            prices: data.prices,
+            invests: data.invests
+        };
+        // round++;
+    }
+    console.log(round);
+    return obj;
 }
 
 function readTextFile(file)
@@ -201,7 +273,7 @@ function getToken(callback) {
     request_.setRequestHeader("Authorization", "Bearer "+ secret);
     request_.send();
     request_.onreadystatechange = function () {
-        if (request_.readyState == 4 && request_.status == 200) {
+        if (request_.readyState === 4 && request_.status === 200) {
             var response = request_.responseText;
             var obj = JSON.parse(response);
             console.log(obj);
@@ -213,16 +285,16 @@ function getToken(callback) {
 }
 
 function refreshToken() {
-    var request_ = new XMLHttpRequest();
-    var secret = token_;
+    const request_ = new XMLHttpRequest();
+    const secret = token_;
     // var encodedParams = encodeURIComponent(params);
     request_.open("POST", "https://directline.botframework.com/v3/directline/tokens/refresh", true);
     request_.setRequestHeader("Authorization", "Bearer "+ secret);
     request_.send();
     request_.onreadystatechange = function () {
-        if (request_.readyState == 4 && request_.status == 200) {
-            var response = request_.responseText;
-            var obj = JSON.parse(response);
+        if (request_.readyState === 4 && request_.status === 200) {
+            const response = request_.responseText;
+            const obj = JSON.parse(response);
             console.log(obj);
             token_ = obj.token;
             conversationId_ = obj.conversationId;
@@ -231,15 +303,15 @@ function refreshToken() {
 }
 
 function startConversation(token) {
-    var request_ = new XMLHttpRequest();
-    var secret = token_; //'hMRtBPdEIFY.FO6l6oVwHmqgPr8R9BiRIkKpEWvTJw7ytHRs1YUN7vo'
+    const request_ = new XMLHttpRequest();
+    const secret = token_; //'hMRtBPdEIFY.FO6l6oVwHmqgPr8R9BiRIkKpEWvTJw7ytHRs1YUN7vo'
     // var encodedParams = encodeURIComponent(params);
     request_.open("POST", "https://directline.botframework.com/v3/directline/conversations", true);
     request_.setRequestHeader("Authorization", "Bearer "+ token);
     request_.setRequestHeader("Content-Type", "application/json");
     request_.send();
     request_.onreadystatechange = function () {
-        if (request_.readyState == 4 && request_.status == 200) {
+        if (request_.readyState === 4 && request_.status === 200) {
             var response = request_.responseText;
             var obj = JSON.parse(response);
             //callback(obj);
@@ -293,4 +365,92 @@ function alertEarnings(cash) {
     } else {
         window.alert("Congratulations!\nYour total cash out is " + Math.round(cash) + " MU!");
     }
+}
+
+function buttonSendEvent(e, store, action) {
+    const buttonId = e.target.id;
+    const lastChar = buttonId.substr(buttonId.length-1);
+    console.log(lastChar);
+    store.dispatch({
+        type: 'WEB_CHAT/SEND_EVENT',
+        payload: {
+            name: action,
+            value: lastChar - 1
+        }
+    });
+}
+
+function buttonActionEvent(e, action) {
+    if (action === "buy") {
+        // Get ID of button
+        const buttonId = e.target.id;
+        console.log("Pressed button: " + buttonId);
+        // Get number of button, e.g. 1-6
+        const lastChar = parseFloat(buttonId.substr(buttonId.length-1)) - 1;
+
+        const res = shareManager.buyGood(lastChar, openForTrading);
+        if (res.open === false) {
+            alertNotOpen();
+        } else if (res.success === false) {
+            alertInsufficientEndowment();
+        }
+        renameElements(res.rename);
+    } else if (action === "sell") {
+        // Get ID of button
+        const buttonId = e.target.id;
+        console.log("Pressed button: " + buttonId);
+        // Get number of button, e.g. 1-6
+        const lastChar = parseFloat(buttonId.substr(buttonId.length-1)) - 1;
+
+        const res = shareManager.sellGood(lastChar, openForTrading);
+        if (res.open === false) {
+            alertNotOpen();
+        } else if (res.success === false) {
+            alertInsufficientHoldings();
+        }
+        renameElements(res.rename);
+    } else {
+        // Next event
+        const res = nextRound(round);
+        if (res.reload === false) {
+            const data = res.appendData;
+            chart.appendData(data.prices);
+            appendTable("price", data.prices);
+            appendTable("invest", data.invests);
+
+            // Only for last round
+            if (res.cashout > 0) {
+                alertEarnings(res.cashout);
+            }
+        } else if (res.reload === true) {
+            // This is round 14
+            window.location.reload();
+        }
+        renameElements(res.rename);
+        round ++;
+    }
+}
+
+function renameElements(res){
+    const renameArray = res;
+    for (let i = 0; i < renameArray.length; i++) {
+        const obj = renameArray[i];
+        document.getElementById(obj.id).innerHTML = obj.content;
+    }
+}
+
+async function getData(callback) {
+    const request_ = new XMLHttpRequest();
+    // request_.open("GET", "https://issd-ra-qna.azurewebsites.net/data", true);
+    request_.open("GET", "http://localhost:3978/data", true);
+    // request_.setRequestHeader("Authorization", "Bearer "+ secret);
+    request_.send();
+    request_.onreadystatechange = await function () {
+        if (request_.readyState === 4 && request_.status === 200) {
+            const response = request_.responseText;
+            const obj = JSON.parse(response);
+            console.log(obj);
+            callback(obj);
+        }
+    };
 }

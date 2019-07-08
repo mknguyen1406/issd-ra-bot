@@ -209,4 +209,4 @@ class ShareManager {
     }
 }
 
-module.exports.ShareManager = ShareManager;
+// module.exports.ShareManager = ShareManager;
