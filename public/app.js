@@ -175,7 +175,7 @@ function startChatBot() {
     }
 
     // Create event listener for result event
-    window.document.addEventListener('summaryRequest', handleEvent, false);
+    window.document.addEventListener('result', handleEvent, false);
     function handleEvent(e) {
         console.log(e);
         const result = e.detail;
