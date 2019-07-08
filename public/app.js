@@ -187,6 +187,8 @@ function startChatBot() {
                 value: result
             }
         });
+
+        console.log("Result: " + result);
     }
 
     // Listening for incoming response events of type buy, sell or next
