@@ -103,6 +103,11 @@ function showPrices() {
 //     x.style.display = "block";
 // }
 
+function hideChatBot() {
+    let x = document.getElementById("webchat-card");
+    x.style.display = "none";
+}
+
 function showInvestments() {
     let x = document.getElementById("prices");
     x.style.display = "none";
@@ -163,6 +168,9 @@ function nextRound(round) {
         ];
     } else if (round === 14) {
         obj.reload = true;
+
+        // Send final result to bot
+        sendFinalResult();
     } else if (round === 2) {
         obj.rename.push({
             id: 'budget',
@@ -197,6 +205,22 @@ function nextRound(round) {
     }
 
     return obj;
+}
+
+function sendFinalResult() {
+    // Gather data for summary
+    const data = {
+        holdings: shareManager.goodHoldingsHist,
+        invests: shareManager.goodInvestHist,
+        prices: shareManager.goodPriceHist,
+        userId: userId,
+        cashout: shareManager.cashout(),
+        time: new Date()
+    };
+
+    // Create event to request summary
+    const event = new CustomEvent('result', { detail: data });
+    window.document.dispatchEvent(event);
 }
 
 async function readTextFile(file, callback)

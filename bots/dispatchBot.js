@@ -3,6 +3,7 @@
 
 const { ActivityHandler } = require('botbuilder');
 const { LuisRecognizer, QnAMaker } = require('botbuilder-ai');
+const fs = require('fs');
 
 class DispatchBot extends ActivityHandler {
     /**
@@ -93,6 +94,20 @@ class DispatchBot extends ActivityHandler {
 
                 // Send summary to client
                 await context.sendActivity(`Your holdings are \n - Share A: ${holdings[0]} \n - Share B: ${holdings[1]}\n - Share C: ${holdings[2]}\n - Share D: ${holdings[3]}\n - Share E: ${holdings[4]}\n - Share F: ${holdings[5]}`);
+            }
+
+            if (context.activity.name === "result") {
+
+                // Get data
+                const result = context.activity.value.result;
+
+                // Save result to file
+                fs.writeFile(toString(result.userId) + ".txt", result, function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+                
             }
 
             // By calling next() you ensure that the next BotHandler is run.

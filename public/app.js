@@ -1,13 +1,37 @@
+// Get URL parameters
+const url_string = window.location.href;
+const url = new URL(url_string);
+const surveyId = url.searchParams.get("surveyId");
+const pricePath = url.searchParams.get("pricePath");
+const experimentRound = url.searchParams.get("experimentRound");
+const cabinNo = url.searchParams.get("cabinNo");
+const experimentGroup = url.searchParams.get("experimentGroup");
+
+console.log("Survey ID: " + surveyId + "\n",
+    "Price path: " + pricePath + "\n",
+    "Experiment round: " + experimentRound + "\n",
+    "Experiment group: " + experimentGroup+ "\n",
+    "Cabin no: " + cabinNo
+);
+
+// Create unique user ID
+const userId = surveyId + "_" + pricePath + "_" + experimentRound + "_" + experimentGroup + "_" + cabinNo;
+
+// Hide or show chat bot based on experiment , e.g. 1 for hide, 2 for show
+if (parseFloat(experimentGroup ) === 1) {
+    hideChatBot();
+}
+
 // Set language
 let language = "German"
 changeLanguage();
 
-// Create chart
-const chart = new ApexCharts(
-    document.querySelector("#chart"),
-    options
-);
-chart.render();
+// // Create chart
+// const chart = new ApexCharts(
+//     document.querySelector("#chart"),
+//     options
+// );
+// chart.render();
 
 // Show price table and hide chart and investment table
 let x = document.getElementById("chart");
@@ -54,7 +78,7 @@ function startChatBot() {
         {
             directLine: window.WebChat.createDirectLine({token: token_}),
             store
-            // ,userID: 'YOUR_USER_ID'
+            ,userID: userId
             // ,username: 'Web Chat User'
             , locale: 'de-de'
             // ,botAvatarInitials: 'WC'
@@ -150,6 +174,21 @@ function startChatBot() {
         });
     }
 
+    // Create event listener for result event
+    window.document.addEventListener('summaryRequest', handleEvent, false);
+    function handleEvent(e) {
+        console.log(e);
+        const result = e.detail;
+
+        store.dispatch({
+            type: 'WEB_CHAT/SEND_EVENT',
+            payload: {
+                name: 'result',
+                value: result
+            }
+        });
+    }
+
     // Listening for incoming response events of type buy, sell or next
     window.addEventListener('webchatincomingactivity', ({data}) => {
         console.log(`Received an activity of type "${ data.type }":`);
@@ -197,20 +236,6 @@ function startChatBot() {
         }
     });
 }
-
-// Get URL parameters
-const url_string = window.location.href;
-const url = new URL(url_string);
-const surveyId = url.searchParams.get("surveyId");
-const pricePath = url.searchParams.get("pricePath");
-const experimentRound = url.searchParams.get("experimentRound");
-const cabinNo = url.searchParams.get("cabinNo");
-
-console.log("Survey ID: " + surveyId + "\n",
-    "Price path: " + pricePath + "\n",
-    "Experiment round: " + experimentRound + "\n",
-    "Cabin no: " + cabinNo
-    );
 
 // This round number controls the requested price paths
 let round = 0;
