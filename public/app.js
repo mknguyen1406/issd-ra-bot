@@ -27,11 +27,11 @@ let language = "German"
 changeLanguage();
 
 // // Create chart
-// const chart = new ApexCharts(
-//     document.querySelector("#chart"),
-//     options
-// );
-// chart.render();
+const chart = new ApexCharts(
+    document.querySelector("#chart"),
+    options
+);
+chart.render();
 
 // Show price table and hide chart and investment table
 let x = document.getElementById("chart");
