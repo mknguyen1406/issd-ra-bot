@@ -86,6 +86,15 @@ class DispatchBot extends ActivityHandler {
             //     await context.sendActivity({ name: 'sell', type: 'event', channelData: res });
             // } -- shifted back to client
 
+            if (context.activity.name === "summaryRequest") {
+
+                // Get data
+                const holdings = context.activity.value.holdings;
+
+                // Send summary to client
+                await context.sendActivity(`Your holdings are \n - Share A: ${holdings[0]} \n - Share B: ${holdings[1]}\n - Share C: ${holdings[2]}\n - Share D: ${holdings[3]}\n - Share E: ${holdings[4]}\n - Share F: ${holdings[5]}`);
+            }
+
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });

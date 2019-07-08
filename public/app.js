@@ -135,6 +135,21 @@ function startChatBot() {
         buttonActionEvent(e, "sell");
     });
 
+    // Create event listener for summary request event
+    window.document.addEventListener('summaryRequest', handleEvent, false);
+    function handleEvent(e) {
+        console.log(e);
+        const summaryData = e.detail;
+
+        store.dispatch({
+            type: 'WEB_CHAT/SEND_EVENT',
+            payload: {
+                name: 'summaryRequest',
+                value: summaryData
+            }
+        });
+    }
+
     // Listening for incoming response events of type buy, sell or next
     window.addEventListener('webchatincomingactivity', ({data}) => {
         console.log(`Received an activity of type "${ data.type }":`);
@@ -183,24 +198,6 @@ function startChatBot() {
     });
 }
 
-// Get URL from parent
-// window.document.addEventListener('myParentEvent', handleEvent, false);
-// function handleEvent(e) {
-//     //console.log(e.detail.url)
-//     const url_string = e.detail.url;
-//     // const url = new URL(url_string);
-//     // const param = url.searchParams.get("_ijt");
-//     // console.log(url_string);
-//
-//     // Get survey ID replace this with url_string
-//     surveyId = getSurveyId("https://issd-ra.limequery.com/322313?lang=en");
-//     console.log(surveyId);
-// }
-
-// const data = {foo: 'bar'};
-// const event = new CustomEvent('myChildEvent', {detail: data});
-// window.parent.document.dispatchEvent(event);
-
 // Get URL parameters
 const url_string = window.location.href;
 const url = new URL(url_string);
@@ -233,3 +230,6 @@ let shareManager = null;
 
 // Create share manager
 createShareManager(pricePath, 2000);
+
+// Set rounds where summary from bot is requested
+const summaryRound = [3,6,11];

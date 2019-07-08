@@ -82,29 +82,29 @@ function changeLanguage() {
 }
 
 function showPrices() {
-    var x = document.getElementById("chart");
-    x.style.display = "none";
-
-    var x = document.getElementById("investments");
-    x.style.display = "none";
-
-    var x = document.getElementById("prices");
-    x.style.display = "block";
-}
-
-function showChart() {
-    var x = document.getElementById("prices");
+    let x = document.getElementById("chart");
     x.style.display = "none";
 
     x = document.getElementById("investments");
     x.style.display = "none";
 
-    x = document.getElementById("chart");
+    x = document.getElementById("prices");
     x.style.display = "block";
 }
 
+// function showChart() {
+//     let x = document.getElementById("prices");
+//     x.style.display = "none";
+//
+//     x = document.getElementById("investments");
+//     x.style.display = "none";
+//
+//     x = document.getElementById("chart");
+//     x.style.display = "block";
+// }
+
 function showInvestments() {
-    var x = document.getElementById("prices");
+    let x = document.getElementById("prices");
     x.style.display = "none";
 
     x = document.getElementById("investments");
@@ -182,6 +182,20 @@ function nextRound(round) {
         // round++;
     }
     console.log(round);
+
+    // Request summary from bot
+    if (summaryRound.includes(round)) {
+
+        // Gather data for summary
+        const data = {
+            holdings: shareManager.goodHoldings
+        };
+
+        // Create event to request summary
+        const event = new CustomEvent('summaryRequest', { detail: data });
+        window.document.dispatchEvent(event);
+    }
+
     return obj;
 }
 
@@ -311,16 +325,6 @@ function startConversation(token) {
     }
 }
 
-function printStream() {
-    console.log(streamUrl_);
-}
-
-function getSurveyId(url) {
-    const endPart = url.substring(30); // number is dependent on length of survey name
-    const partArray = endPart.split("?");
-    return partArray[0];
-}
-
 function alertInsufficientEndowment() {
     // var language = document.getElementById("nav_lan").innerText;
     if (language === "German") {
@@ -357,18 +361,17 @@ function alertEarnings(cash) {
     }
 }
 
-function buttonSendEvent(e, store, action) {
-    const buttonId = e.target.id;
-    const lastChar = buttonId.substr(buttonId.length-1);
-    console.log(lastChar);
-    store.dispatch({
-        type: 'WEB_CHAT/SEND_EVENT',
-        payload: {
-            name: action,
-            value: lastChar - 1
-        }
-    });
-}
+// function requestSummary(e, store, action, data) {
+//     const buttonId = e.target.id;
+//     console.log("Pressed button: " + buttonId);
+//     store.dispatch({
+//         type: 'WEB_CHAT/SEND_EVENT',
+//         payload: {
+//             name: action,
+//             value: data
+//         }
+//     });
+// }
 
 function buttonActionEvent(e, action) {
     if (action === "buy") {
