@@ -1,95 +1,91 @@
-function changeLanguage() {
-    if(language === "German"){
+// function changeLanguage() {
+//     if(language === "German"){
         // document.getElementById("nav_lan").innerText = "Englisch";
-        document.getElementById("nav_help").innerText = "Hilfe";
-        document.getElementById("header_share_prices").innerText = "Preisübersicht";
-        document.getElementById("header_transactions").innerText = "Transaktionen";
-        document.getElementById("price_link_prices").innerText = "Preise";
-        document.getElementById("price_link_invest").innerText = "Transaktionen";
+        // document.getElementById("nav_help").innerText = "Hilfe";
+        // document.getElementById("header_share_prices").innerText = "Preisübersicht";
+        // document.getElementById("header_transactions").innerText = "Transaktionen";
+        // document.getElementById("price_link_prices").innerText = "Preise";
+        // document.getElementById("price_link_invest").innerText = "Transaktionen";
         // document.getElementById("price_link_chart").innerText = "Diagramm";
-        document.getElementById("endowment").innerText = "Ihr Guthaben:";
-        document.getElementById("share1").innerText = "Anteil A";
-        document.getElementById("share2").innerText = "Anteil B";
-        document.getElementById("share3").innerText = "Anteil C";
-        document.getElementById("share4").innerText = "Anteil D";
-        document.getElementById("share5").innerText = "Anteil E";
-        document.getElementById("share6").innerText = "Anteil F";
-        document.getElementById("price1").innerText = "Wert:";
-        document.getElementById("price2").innerText = "Wert:";
-        document.getElementById("price3").innerText = "Wert:";
-        document.getElementById("price4").innerText = "Wert:";
-        document.getElementById("price5").innerText = "Wert:";
-        document.getElementById("price6").innerText = "Wert:";
-        document.getElementById("owned1").innerText = "Besitz:";
-        document.getElementById("owned2").innerText = "Besitz:";
-        document.getElementById("owned3").innerText = "Besitz:";
-        document.getElementById("owned4").innerText = "Besitz:";
-        document.getElementById("owned5").innerText = "Besitz:";
-        document.getElementById("owned6").innerText = "Besitz:";
-        document.getElementById("button_buy1").innerText = "Kaufen";
-        document.getElementById("button_buy2").innerText = "Kaufen";
-        document.getElementById("button_buy3").innerText = "Kaufen";
-        document.getElementById("button_buy4").innerText = "Kaufen";
-        document.getElementById("button_buy5").innerText = "Kaufen";
-        document.getElementById("button_buy6").innerText = "Kaufen";
-        document.getElementById("button_sell1").innerText = "Verkaufen";
-        document.getElementById("button_sell2").innerText = "Verkaufen";
-        document.getElementById("button_sell3").innerText = "Verkaufen";
-        document.getElementById("button_sell4").innerText = "Verkaufen";
-        document.getElementById("button_sell5").innerText = "Verkaufen";
-        document.getElementById("button_sell6").innerText = "Verkaufen";
+        // document.getElementById("endowment").innerText = "Ihr Guthaben:";
+        // document.getElementById("share1").innerText = "Anteil A";
+        // document.getElementById("share2").innerText = "Anteil B";
+        // document.getElementById("share3").innerText = "Anteil C";
+        // document.getElementById("share4").innerText = "Anteil D";
+        // document.getElementById("share5").innerText = "Anteil E";
+        // document.getElementById("share6").innerText = "Anteil F";
+        // document.getElementById("price1").innerText = "Wert:";
+        // document.getElementById("price2").innerText = "Wert:";
+        // document.getElementById("price3").innerText = "Wert:";
+        // document.getElementById("price4").innerText = "Wert:";
+        // document.getElementById("price5").innerText = "Wert:";
+        // document.getElementById("price6").innerText = "Wert:";
+        // document.getElementById("owned1").innerText = "Besitz:";
+        // document.getElementById("owned2").innerText = "Besitz:";
+        // document.getElementById("owned3").innerText = "Besitz:";
+        // document.getElementById("owned4").innerText = "Besitz:";
+        // document.getElementById("owned5").innerText = "Besitz:";
+        // document.getElementById("owned6").innerText = "Besitz:";
+        // document.getElementById("button_buy1").innerText = "Kaufen";
+        // document.getElementById("button_buy2").innerText = "Kaufen";
+        // document.getElementById("button_buy3").innerText = "Kaufen";
+        // document.getElementById("button_buy4").innerText = "Kaufen";
+        // document.getElementById("button_buy5").innerText = "Kaufen";
+        // document.getElementById("button_buy6").innerText = "Kaufen";
+        // document.getElementById("button_sell1").innerText = "Verkaufen";
+        // document.getElementById("button_sell2").innerText = "Verkaufen";
+        // document.getElementById("button_sell3").innerText = "Verkaufen";
+        // document.getElementById("button_sell4").innerText = "Verkaufen";
+        // document.getElementById("button_sell5").innerText = "Verkaufen";
+        // document.getElementById("button_sell6").innerText = "Verkaufen";
 
-    } else {
-        // document.getElementById("nav_lan").innerText = "German";
-        document.getElementById("nav_help").innerText = "Help";
-        document.getElementById("header_share_prices").innerText = "Share Prices";
-        document.getElementById("header_transactions").innerText = "Transactions";
-        document.getElementById("price_link_prices").innerText = "Prices";
-        document.getElementById("price_link_invest").innerText = "Transactions";
-        // document.getElementById("price_link_chart").innerText = "Chart";
-        document.getElementById("endowment").innerText = "Your endowment:";
-        document.getElementById("share1").innerText = "Share A";
-        document.getElementById("share2").innerText = "Share B";
-        document.getElementById("share3").innerText = "Share C";
-        document.getElementById("share4").innerText = "Share D";
-        document.getElementById("share5").innerText = "Share E";
-        document.getElementById("share6").innerText = "Share F";
-        document.getElementById("price1").innerText = "Price:";
-        document.getElementById("price2").innerText = "Price:";
-        document.getElementById("price3").innerText = "Price:";
-        document.getElementById("price4").innerText = "Price:";
-        document.getElementById("price5").innerText = "Price:";
-        document.getElementById("price6").innerText = "Price:";
-        document.getElementById("owned1").innerText = "Owned:";
-        document.getElementById("owned2").innerText = "Owned:";
-        document.getElementById("owned3").innerText = "Owned:";
-        document.getElementById("owned4").innerText = "Owned:";
-        document.getElementById("owned5").innerText = "Owned:";
-        document.getElementById("owned6").innerText = "Owned:";
-        document.getElementById("button_buy1").innerText = "Buy";
-        document.getElementById("button_buy2").innerText = "Buy";
-        document.getElementById("button_buy3").innerText = "Buy";
-        document.getElementById("button_buy4").innerText = "Buy";
-        document.getElementById("button_buy5").innerText = "Buy";
-        document.getElementById("button_buy6").innerText = "Buy";
-        document.getElementById("button_sell1").innerText = "Sell";
-        document.getElementById("button_sell2").innerText = "Sell";
-        document.getElementById("button_sell3").innerText = "Sell";
-        document.getElementById("button_sell4").innerText = "Sell";
-        document.getElementById("button_sell5").innerText = "Sell";
-        document.getElementById("button_sell6").innerText = "Sell";
-    }
-}
+//     } else {
+//         // document.getElementById("nav_lan").innerText = "German";
+//         document.getElementById("nav_help").innerText = "Help";
+//         document.getElementById("header_share_prices").innerText = "Share Prices";
+//         document.getElementById("header_transactions").innerText = "Transactions";
+//         document.getElementById("price_link_prices").innerText = "Prices";
+//         document.getElementById("price_link_invest").innerText = "Transactions";
+//         // document.getElementById("price_link_chart").innerText = "Chart";
+//         document.getElementById("endowment").innerText = "Your endowment:";
+//         document.getElementById("share1").innerText = "Share A";
+//         document.getElementById("share2").innerText = "Share B";
+//         document.getElementById("share3").innerText = "Share C";
+//         document.getElementById("share4").innerText = "Share D";
+//         document.getElementById("share5").innerText = "Share E";
+//         document.getElementById("share6").innerText = "Share F";
+//         document.getElementById("price1").innerText = "Price:";
+//         document.getElementById("price2").innerText = "Price:";
+//         document.getElementById("price3").innerText = "Price:";
+//         document.getElementById("price4").innerText = "Price:";
+//         document.getElementById("price5").innerText = "Price:";
+//         document.getElementById("price6").innerText = "Price:";
+//         document.getElementById("owned1").innerText = "Owned:";
+//         document.getElementById("owned2").innerText = "Owned:";
+//         document.getElementById("owned3").innerText = "Owned:";
+//         document.getElementById("owned4").innerText = "Owned:";
+//         document.getElementById("owned5").innerText = "Owned:";
+//         document.getElementById("owned6").innerText = "Owned:";
+//         document.getElementById("button_buy1").innerText = "Buy";
+//         document.getElementById("button_buy2").innerText = "Buy";
+//         document.getElementById("button_buy3").innerText = "Buy";
+//         document.getElementById("button_buy4").innerText = "Buy";
+//         document.getElementById("button_buy5").innerText = "Buy";
+//         document.getElementById("button_buy6").innerText = "Buy";
+//         document.getElementById("button_sell1").innerText = "Sell";
+//         document.getElementById("button_sell2").innerText = "Sell";
+//         document.getElementById("button_sell3").innerText = "Sell";
+//         document.getElementById("button_sell4").innerText = "Sell";
+//         document.getElementById("button_sell5").innerText = "Sell";
+//         document.getElementById("button_sell6").innerText = "Sell";
+//     }
+// }
 
 function showPrices() {
-    let x = document.getElementById("chart");
-    x.style.display = "none";
-
-    x = document.getElementById("investments");
-    x.style.display = "none";
-
-    x = document.getElementById("prices");
-    x.style.display = "block";
+    document.getElementById("chart").style.display = "none";
+    document.getElementById("investments").style.display = "none";
+    document.getElementById("prices").style.display = "block";
+    document.getElementById("header_share_prices").innerHTML = "Preisübersicht";
 }
 
 // function showChart() {
@@ -109,14 +105,10 @@ function hideChatBot() {
 }
 
 function showInvestments() {
-    let x = document.getElementById("prices");
-    x.style.display = "none";
-
-    x = document.getElementById("investments");
-    x.style.display = "block";
-
-    x = document.getElementById("chart");
-    x.style.display = "none";
+    document.getElementById("prices").style.display = "none";
+    document.getElementById("investments").style.display = "block";
+    document.getElementById("chart").style.display = "none";
+    document.getElementById("header_share_prices").innerHTML = "Transaktionsübersicht";
 }
 
 function nextRound(round) {
@@ -124,11 +116,11 @@ function nextRound(round) {
         rename: [
             {
                 id: 'next',
-                content: 'Next'
+                content: 'Nächste Runde'
             }
         ],
         reload: false,
-        cashout: 0
+        cashout: null
     };
     // Get data only up until round 14. In round 14 reload the page
     let data = null;
@@ -146,7 +138,6 @@ function nextRound(round) {
             prices: data.prices,
             invests: data.invests
         };
-        // round++;
         obj.rename = [
             {
                 id: 'next',
@@ -158,7 +149,6 @@ function nextRound(round) {
             prices: data.prices,
             invests: data.invests
         };
-        // round++;
         obj.cashout = shareManager.cashout();
         obj.rename = [
             {
@@ -174,28 +164,25 @@ function nextRound(round) {
     } else if (round === 2) {
         obj.rename.push({
             id: 'budget',
-            content: '2000 GE'
+            content: '2000'
         });
         openForTrading = true;
         obj.appendData = {
             prices: data.prices,
             invests: data.invests
         };
-        // round++;
     } else {
         obj.appendData = {
             prices: data.prices,
             invests: data.invests
         };
-        // round++;
     }
     console.log(round);
 
-    // Request summary from bot
-    if (summaryRound.includes(round)) {
-
+    // Request summary only from round 3
+    if (round > 2) {
         // Gather data for summary
-        const data = {
+        const holdings = {
             holdings: shareManager.goodHoldings
         };
 
@@ -203,7 +190,7 @@ function nextRound(round) {
         const event = new CustomEvent('botEvent', {
             detail: {
                 type: "summaryRequest",
-                data: data
+                data: holdings
             }
         });
         window.document.dispatchEvent(event);
@@ -223,7 +210,7 @@ function sendFinalResult() {
         time: new Date()
     };
 
-    // Create event to request summary
+    // Send result to chat bot
     const event = new CustomEvent('botEvent', {
         detail: {
             type: "result",
@@ -359,39 +346,32 @@ function startConversation(token) {
     }
 }
 
-function alertInsufficientEndowment() {
-    // var language = document.getElementById("nav_lan").innerText;
-    if (language === "German") {
-        window.alert("Nicht genug Budget.");
-    } else {
-        window.alert("Insufficient endowment.");
-    }
+function alertInsufficientEndowment(id) {
+    window.alert("Ihr aktuelles Guthaben reicht nicht aus, um einen Anteil " + id + " zu kaufen.");
 }
 
-function alertInsufficientHoldings() {
-    // var language = document.getElementById('nav_lan').innerText;
-    if (language === "German") {
-        window.alert('Nicht genug Anteile.');
-    } else {
-        window.alert('Insufficient holdings.');
-    }
+function alertInsufficientHoldings(id) {
+    window.alert("Sie besitzen keinen Anteil " + id + ", den Sie verkaufen können.");
 }
 
-function alertNotOpen() {
-    // var language = document.getElementById("nav_lan").innerText;
-    if (language === "German") {
-        window.alert("Handel ist erst ab der dritten Periode möglich.");
-    } else {
-        window.alert("Trading is not possible before 3rd period.");
-    }
-}
+// Nicht mehr benötigt weil Start ab Runde 3
+// function alertNotOpen() {
+//     window.alert("Handel ist erst ab der dritten Periode möglich.");
+// }
 
 function alertEarnings(cash) {
     // var language = document.getElementById("nav_lan").innerText;
+    const portfolio = Math.round(cash.portfolio);
+    const budget = Math.round(cash.budget);
+    const total = Math.round(portfolio + budget);
+    const euro = Math.round(total/400);
+
     if (language === "German") {
-        window.alert("Glückwunsch!\nDeine Auszahlung beträgt " + Math.round(cash) + " GE!");
+        window.alert("Glückwunsch! \nDeine Auszahlung beträgt " + total + " (entspricht " + euro + "€)." + "\n\n" +
+            "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " und einem Portfoliowert in Höhe von " +
+            portfolio + ".");
     } else {
-        window.alert("Congratulations!\nYour total cash out is " + Math.round(cash) + " MU!");
+        window.alert("Congratulations!\nYour total cash out is " + total + " MU!");
     }
 }
 
@@ -419,7 +399,7 @@ function buttonActionEvent(e, action) {
         if (res.open === false) {
             alertNotOpen();
         } else if (res.success === false) {
-            alertInsufficientEndowment();
+            alertInsufficientEndowment(lastChar);
         }
         renameElements(res.rename);
     } else if (action === "sell") {
@@ -433,29 +413,41 @@ function buttonActionEvent(e, action) {
         if (res.open === false) {
             alertNotOpen();
         } else if (res.success === false) {
-            alertInsufficientHoldings();
+            alertInsufficientHoldings(lastChar);
         }
         renameElements(res.rename);
     } else {
-        // Next event
-        const res = nextRound(round);
-        if (res.reload === false) {
-            const data = res.appendData;
-            chart.appendData(data.prices);
-            appendTable("price", data.prices);
-            appendTable("invest", data.invests);
-
-            // Only for last round
-            if (res.cashout > 0) {
-                alertEarnings(res.cashout);
+        // Repeat three times when first clicked on next button
+        if (round === 0) {
+            for (let i = 0; i < 3; i++) {
+                triggerNextRound();
             }
-        } else if (res.reload === true) {
-            // This is round 14
-            window.location.reload();
+        } else {
+            triggerNextRound()
         }
-        renameElements(res.rename);
-        round ++;
     }
+}
+
+function triggerNextRound() {
+    // Next event
+    const res = nextRound(round);
+    if (res.reload === false) {
+        const data = res.appendData;
+        chart.appendData(data.prices);
+        appendTable("price", data.prices);
+        appendTable("invest", data.invests);
+
+        // Only for last round
+        if (res.cashout !== null) {
+            alertEarnings(res.cashout);
+        }
+    } else if (res.reload === true) {
+        // This is round 14
+        window.location.reload();
+    }
+    renameElements(res.rename);
+    // Increase round number
+    round ++;
 }
 
 function renameElements(res){

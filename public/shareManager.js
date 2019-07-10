@@ -97,7 +97,7 @@ class ShareManager {
                     },
                     {
                         id: 'budget',
-                        content: Math.round(this.budget) + ' GE'
+                        content: Math.round(this.budget)
                     }
                 ];
             } else {
@@ -127,7 +127,7 @@ class ShareManager {
                     },
                     {
                         id: 'budget',
-                        content: Math.round(this.budget) + ' GE'
+                        content: Math.round(this.budget)
                     }
                 ];
             } else {
@@ -147,9 +147,17 @@ class ShareManager {
 
         for (let i = 0; i < 6; i++) {
             this.goodValues[i] = parseFloat(this.goodPriceHist[i][round]);
+
+            // Rename value buttons
             rename.push({
                 id: 'v' + i.toString(),
-                content: Math.round(this.goodValues[i]) + ' GE'
+                content: Math.round(this.goodValues[i])
+            });
+
+            // Rename holding buttons
+            rename.push({
+                id: 's' + i.toString(),
+                content: Math.round(this.goodHoldings[i])
             });
             this.goodHoldingsHist[i].push(this.goodHoldings[i]);
 
@@ -193,13 +201,15 @@ class ShareManager {
     }
 
     cashout() {
-        return this.goodHoldings[0] * this.goodValues[0] +
-            this.goodHoldings[1] * this.goodValues[1] +
-            this.goodHoldings[2] * this.goodValues[2] +
-            this.goodHoldings[3] * this.goodValues[3] +
-            this.goodHoldings[4] * this.goodValues[4] +
-            this.goodHoldings[5] * this.goodValues[5] +
-            this.budget;
+        return {
+            portfolio:  this.goodHoldings[0] * this.goodValues[0] +
+                        this.goodHoldings[1] * this.goodValues[1] +
+                        this.goodHoldings[2] * this.goodValues[2] +
+                        this.goodHoldings[3] * this.goodValues[3] +
+                        this.goodHoldings[4] * this.goodValues[4] +
+                        this.goodHoldings[5] * this.goodValues[5],
+            budget: this.budget
+        }
     }
 }
 

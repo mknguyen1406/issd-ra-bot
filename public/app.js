@@ -22,10 +22,6 @@ if (parseFloat(experimentGroup ) === 1) {
     hideChatBot();
 }
 
-// Set language
-let language = "German"
-changeLanguage();
-
 // // Create chart
 const chart = new ApexCharts(
     document.querySelector("#chart"),
@@ -74,15 +70,23 @@ function startChatBot() {
         }
     );
 
+    // Style bot
+    const styleOptions = {
+        botAvatarImage: 'https://image.flaticon.com/icons/svg/1156/1156419.svg',
+        botAvatarInitials: 'BF',
+        userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
+        userAvatarInitials: 'WC',
+        hideUploadButton: true
+    };
+
     window.WebChat.renderWebChat(
         {
-            directLine: window.WebChat.createDirectLine({token: token_}),
-            store
+            directLine: window.WebChat.createDirectLine({token: token_})
+            ,store
             ,userID: userId
             // ,username: 'Web Chat User'
             , locale: 'de-de'
-            // ,botAvatarInitials: 'WC'
-            // ,userAvatarInitials: 'WW'
+            ,styleOptions: styleOptions
         },
         document.getElementById('webchat')
     );
@@ -245,6 +249,3 @@ let shareManager = null;
 
 // Create share manager
 createShareManager(pricePath, 2000);
-
-// Set rounds where summary from bot is requested
-const summaryRound = [3,6,11];
