@@ -4,6 +4,10 @@
 const { ActivityHandler } = require('botbuilder');
 const { LuisRecognizer, QnAMaker } = require('botbuilder-ai');
 const fs = require('fs');
+const CosmosClient = require('@azure/cosmos').CosmosClient;
+
+const config = require('./config');
+const url = require('url');
 
 class DispatchBot extends ActivityHandler {
     /**
@@ -102,90 +106,73 @@ class DispatchBot extends ActivityHandler {
                 const result = context.activity.value.result;
 
                 // Save result to file
-                fs.writeFile(toString(result.userId) + ".txt", result, function(err) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-                
+                // fs.writeFile(toString(result.userId) + ".txt", result, function(err) {
+                //     if (err) {
+                //         console.log(err);
+                //     }
+                // });
+
+                await context.sendActivity(`Result received`);
+
+                createFamilyItem(result)
+                    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
+            
             }
 
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
 
-    }
 
-    // nextRound(round) {
-    //     let obj = {
-    //         rename: [
-    //             {
-    //                 id: 'next',
-    //                 content: 'Next'
-    //             }
-    //         ],
-    //         reload: false,
-    //         cashout: 0
-    //     };
-    //     // Get data only up until round 14. In round 14 reload the page
-    //     let data = null;
-    //     if (round !== 14) {
-    //         const res = this.shareManager.nextRound(round);
-    //         data = res.data;
-    //         // Includes an array with all buttons whose value is to be changed
-    //         const renameArray = res.rename;
-    //         for (let i = 0; i < renameArray.length; i++) {
-    //             obj.rename.push(renameArray[i]);
-    //         }
-    //     }
-    //     if (round === 12) {
-    //         obj.appendData = {
-    //             prices: data.prices,
-    //             invests: data.invests
-    //         };
-    //         // round++;
-    //         obj.rename = [
-    //             {
-    //                 id: 'next',
-    //                 content: 'Fertig'
-    //             }
-    //         ];
-    //     } else if (round === 13) {
-    //         obj.appendData = {
-    //             prices: data.prices,
-    //             invests: data.invests
-    //         };
-    //         // round++;
-    //         obj.cashout = this.shareManager.cashout(); 
-    //         obj.rename = [
-    //             {
-    //                 id: 'next',
-    //                 content: 'Restart'
-    //             }
-    //         ];
-    //     } else if (round === 14) {
-    //         obj.reload = true;
-    //     } else if (round === 2) {
-    //         obj.rename.push({
-    //             id: 'budget',
-    //             content: '2000 GE'
-    //         });
-    //         this.openForTrading = true;
-    //         obj.appendData = {
-    //             prices: data.prices,
-    //             invests: data.invests
-    //         };
-    //         // round++;
-    //     } else {
-    //         obj.appendData = {
-    //             prices: data.prices,
-    //             invests: data.invests
-    //         };
-    //         // round++;
-    //     }
-    //     console.log(round);
-    //     return obj;
-    // } -- shifted back to client
+         //------------------------------------------------------------DATABASE------------------------------------
+
+// Set up database connection
+const endpoint = config.endpoint;
+const masterKey = config.primaryKey;
+
+const HttpStatusCodes = { NOTFOUND: 404 };
+
+const databaseId = "ISSD-TRADING-RESULTS";
+const containerId = "results"
+const partitionKey = { kind: "Hash", paths: ["/userId"] };
+
+const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+
+/**
+ * Create family item if it does not exist
+ */
+async function createFamilyItem(itemBody) {
+    const { item } = await client.database(databaseId).container(containerId).items.upsert(itemBody);
+    console.log(`Created family item with id:\n${itemBody.id}\n`);
+};
+
+/**
+ * Query the container using SQL
+ */
+async function queryContainer() {
+    console.log(`Querying container:\n${config.container.id}`);
+
+    // query to return all children in a family
+    const querySpec = {
+        query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
+        parameters: [
+            {
+                name: "@lastName",
+                value: "Andersen"
+            }
+        ]
+    };
+
+    const { result: results } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).toArray();
+    for (var queryResult of results) {
+        let resultString = JSON.stringify(queryResult);
+        console.log(`\tQuery returned ${resultString}\n`);
+    }
+};
+
+//--------------------------------------------------------------------------------------------------------------
+
+    }
 
     async dispatchToTopIntentAsync(context, intent, recognizerResult) {
         switch (intent) {

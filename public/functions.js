@@ -156,15 +156,14 @@ function nextRound(round) {
                 id: 'next',
                 content: 'Restart'
             }
-        )
+        );
 
         // Stop trading in round 13
         openForTrading = false;
     } else if (round === 14) {
-        obj.reload = true;
-
         // Send final result to bot
         sendFinalResult();
+        //obj.reload = true;
     } else if (round === 2) {
         obj.rename.push({
             id: 'budget',

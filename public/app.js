@@ -179,7 +179,8 @@ function startChatBot() {
         });
 
         if (type === "result") {
-            console.log("Result: " + result);
+            console.log("Result:");
+            console.log(data);
         }
     }
 
