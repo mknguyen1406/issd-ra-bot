@@ -113,6 +113,7 @@ class DispatchBot extends ActivityHandler {
                 // });
 
                 await context.sendActivity(`Result received`);
+                window.alert(result);
 
                 createFamilyItem(result)
                     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
