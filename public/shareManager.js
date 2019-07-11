@@ -124,7 +124,13 @@ class ShareManager {
                 if (this.goodHoldings[good] > 0) {
                     obj.success = true;
                     this.goodHoldings[good]--;
+
+                    // Only to display consistent values in the dashboard
+                    const budgetShow = Math.round(this.budget) + Math.round(this.goodValues[good]);
+
                     this.budget = this.budget + this.goodValues[good];
+
+                    // Collect all elements to be renamed
                     obj.rename = [
                         {
                             id: 's' + good.toString(),
@@ -132,7 +138,7 @@ class ShareManager {
                         },
                         {
                             id: 'budget',
-                            content: Math.round(this.budget)
+                            content: Math.round(budgetShow)
                         }
                     ];
                 } else {
