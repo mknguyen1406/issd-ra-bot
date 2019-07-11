@@ -58,8 +58,8 @@
       <file leaf-file-name="shareManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shareManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1025">
-              <caret line="195" column="31" lean-forward="true" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
+            <state relative-caret-position="440">
+              <caret line="141" column="24" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -76,8 +76,8 @@
       <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+            <state relative-caret-position="141">
+              <caret line="178" column="10" lean-forward="true" selection-start-line="178" selection-start-column="10" selection-end-line="178" selection-end-column="10" />
               <folding>
                 <element signature="e#2804#2819#0" />
                 <element signature="e#5816#5841#0" />
@@ -89,8 +89,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+            <state relative-caret-position="287">
+              <caret line="236" column="18" selection-start-line="236" selection-start-column="4" selection-end-line="236" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -117,9 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>endowment</find>
-      <find>Share</find>
-      <find>Price:</find>
       <find>Owned:</find>
       <find>Sell</find>
       <find>lang</find>
@@ -138,7 +135,6 @@
       <find>.table</find>
       <find>th</find>
       <find>222</find>
-      <find>openForTrading</find>
       <find>styleO</find>
       <find>alertNotOpen</find>
       <find>summar</find>
@@ -147,6 +143,10 @@
       <find>Handel</find>
       <find>alert</find>
       <find>console</find>
+      <find>Fert</find>
+      <find>openF</find>
+      <find>openFo</find>
+      <find>openForTrading</find>
     </findStrings>
     <replaceStrings>
       <replace>Value</replace>
@@ -190,8 +190,8 @@
         <option value="$PROJECT_DIR$/../my-chat-bot/bot.js" />
         <option value="$PROJECT_DIR$/iframe.html" />
         <option value="$PROJECT_DIR$/styles.css" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/shareManager.js" />
         <option value="$PROJECT_DIR$/functions.js" />
       </list>
@@ -308,12 +308,12 @@
       <workItem from="1562068027473" duration="5611000" />
       <workItem from="1562243796811" duration="33010000" />
       <workItem from="1562766784304" duration="6186000" />
-      <workItem from="1562833709963" duration="6511000" />
+      <workItem from="1562833709963" duration="7596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228599000" />
+    <option name="totallyTimeSpent" value="229684000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -636,13 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -689,10 +682,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="236" column="18" selection-start-line="236" selection-start-column="4" selection-end-line="236" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/shareManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="195" column="31" lean-forward="true" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
+        <state relative-caret-position="440">
+          <caret line="141" column="24" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -705,8 +705,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+        <state relative-caret-position="141">
+          <caret line="178" column="10" lean-forward="true" selection-start-line="178" selection-start-column="10" selection-end-line="178" selection-end-column="10" />
           <folding>
             <element signature="e#2804#2819#0" />
             <element signature="e#5816#5841#0" />

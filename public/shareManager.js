@@ -85,26 +85,30 @@ class ShareManager {
             success: false,
             rename: []
         };
-        if (open) {
-            if (this.budget - this.goodValues[good] >= 0) {
-                obj.success = true;
-                this.goodHoldings[good]++;
-                this.budget = this.budget - this.goodValues[good];
-                obj.rename = [
-                    {
-                        id: 's' + good.toString(),
-                        content: this.goodHoldings[good]
-                    },
-                    {
-                        id: 'budget',
-                        content: Math.round(this.budget)
-                    }
-                ];
+        if (open !== null) {
+            if (open) {
+                if (this.budget - this.goodValues[good] >= 0) {
+                    obj.success = true;
+                    this.goodHoldings[good]++;
+                    this.budget = this.budget - this.goodValues[good];
+                    obj.rename = [
+                        {
+                            id: 's' + good.toString(),
+                            content: this.goodHoldings[good]
+                        },
+                        {
+                            id: 'budget',
+                            content: Math.round(this.budget)
+                        }
+                    ];
+                } else {
+                    obj.success = false;
+                }
             } else {
-                obj.success = false;
+                obj.open = false;
             }
         } else {
-            obj.open = false;
+            obj.open = null;
         }
         return obj;
     }
@@ -115,27 +119,32 @@ class ShareManager {
             success: false,
             rename: []
         };
-        if (open) {
-            if (this.goodHoldings[good] > 0) {
-                obj.success = true;
-                this.goodHoldings[good]--;
-                this.budget = this.budget + this.goodValues[good];
-                obj.rename = [
-                    {
-                        id: 's' + good.toString(),
-                        content: this.goodHoldings[good]
-                    },
-                    {
-                        id: 'budget',
-                        content: Math.round(this.budget)
-                    }
-                ];
+        if (open !== null) {
+            if (open) {
+                if (this.goodHoldings[good] > 0) {
+                    obj.success = true;
+                    this.goodHoldings[good]--;
+                    this.budget = this.budget + this.goodValues[good];
+                    obj.rename = [
+                        {
+                            id: 's' + good.toString(),
+                            content: this.goodHoldings[good]
+                        },
+                        {
+                            id: 'budget',
+                            content: Math.round(this.budget)
+                        }
+                    ];
+                } else {
+                    obj.success = false;
+                }
             } else {
-                obj.success = false;
+                obj.open = false;
             }
         } else {
-            obj.open = false;
+            obj.open = null;
         }
+
         return obj;
     }
 

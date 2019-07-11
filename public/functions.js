@@ -133,6 +133,7 @@ function nextRound(round) {
             obj.rename.push(renameArray[i]);
         }
     }
+
     if (round === 12) {
         obj.appendData = {
             prices: data.prices,
@@ -172,6 +173,14 @@ function nextRound(round) {
 
         // Open trading from round 3
         openForTrading = true;
+        obj.appendData = {
+            prices: data.prices,
+            invests: data.invests
+        };
+    } else if (round === 0) {
+        // Change from null to false so that the 'game not started' alert doesn't show up anymore
+        openForTrading = false;
+
         obj.appendData = {
             prices: data.prices,
             invests: data.invests
@@ -360,7 +369,7 @@ function alertInsufficientEndowment(id) {
         4: "E",
         5: "F"
     };
-    window.alert("Ihr aktuelles Guthaben reicht nicht aus, um einen Anteil " + mapping[id] + " zu kaufen.");
+    swal("Achtung!", "Ihr aktuelles Guthaben reicht nicht aus, um einen Anteil " + mapping[id] + " zu kaufen.", "error");
 }
 
 function alertInsufficientHoldings(id) {
@@ -380,13 +389,18 @@ function alertNotOpen() {
     swal("Achtung!", "Sie können Anteile nur in den Perioden 3 bis 12 handeln.", "error");
 }
 
+// When game not started
+function alertNotStarted() {
+    swal("Info", "Sie müssen das Experiment erst starten, bevor Sie Anteile handeln können.", "info");
+}
+
 function alertEarnings(cash) {
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
     const euro = Math.round(total/300);
 
-    swal("Achtung!", "Glückwunsch! \nDeine Auszahlung beträgt " + total + " Währungseinheiten." + "\n\n" +
+    swal("Glückwunsch!", "Ihre Auszahlung beträgt " + total + " Währungseinheiten." + "\n\n" +
         "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
         portfolio + " Währungseinheiten.", "success");
 }
@@ -412,10 +426,16 @@ function buttonActionEvent(e, action) {
         const lastChar = parseFloat(buttonId.substr(buttonId.length-1)) - 1;
 
         const res = shareManager.buyGood(lastChar, openForTrading);
-        if (res.open === false) {
-            alertNotOpen();
-        } else if (res.success === false) {
-            alertInsufficientEndowment(lastChar);
+
+        // Check if game started
+        if (res.open !== null) {
+            if (res.open === false) {
+                alertNotOpen();
+            } else if (res.success === false) {
+                alertInsufficientEndowment(lastChar);
+            }
+        } else {
+            alertNotStarted();
         }
         renameElements(res.rename);
     } else if (action === "sell") {
@@ -426,10 +446,16 @@ function buttonActionEvent(e, action) {
         const lastChar = parseFloat(buttonId.substr(buttonId.length-1)) - 1;
 
         const res = shareManager.sellGood(lastChar, openForTrading);
-        if (res.open === false) {
-            alertNotOpen();
-        } else if (res.success === false) {
-            alertInsufficientHoldings(lastChar);
+
+        // Check if game started
+        if (res.open !== null) {
+            if (res.open === false) {
+                alertNotOpen();
+            } else if (res.success === false) {
+                alertInsufficientHoldings(lastChar);
+            }
+        } else {
+            alertNotStarted();
         }
         renameElements(res.rename);
     } else {

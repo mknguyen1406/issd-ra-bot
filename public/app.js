@@ -234,7 +234,7 @@ function startChatBot() {
 // This round number controls the requested price paths
 let round = 0;
 
-let openForTrading = false;
+let openForTrading = null;
 let shareManager = null;
 
 // getData(function (obj) {
