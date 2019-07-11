@@ -105,72 +105,12 @@ class DispatchBot extends ActivityHandler {
                 // Get data
                 const result = context.activity.value.result;
 
-                // Save result to file
-                // fs.writeFile(toString(result.userId) + ".txt", result, function(err) {
-                //     if (err) {
-                //         console.log(err);
-                //     }
-                // });
-
-                await context.sendActivity(`Result received`);
-                await context.sendActivity(result.userId);
-                createFamilyItem(result)
-                    .catch((error) => { await context.sendActivity("Error sending the result to the data base."); });
-            
+                await context.sendActivity(`Result received`);            
             }
 
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
-
-
-         //------------------------------------------------------------DATABASE------------------------------------
-
-// Set up database connection
-const endpoint = config.endpoint;
-const masterKey = config.primaryKey;
-
-const HttpStatusCodes = { NOTFOUND: 404 };
-
-const databaseId = "ISSD-TRADING-RESULTS";
-const containerId = "results"
-const partitionKey = { kind: "Hash", paths: ["/userId"] };
-
-const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
-
-/**
- * Create family item if it does not exist
- */
-async function createFamilyItem(itemBody) {
-    const { item } = await client.database(databaseId).container(containerId).items.upsert(itemBody);
-    console.log(`Created family item with id:\n${itemBody.id}\n`);
-};
-
-/**
- * Query the container using SQL
- */
-async function queryContainer() {
-    console.log(`Querying container:\n${config.container.id}`);
-
-    // query to return all children in a family
-    const querySpec = {
-        query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
-        parameters: [
-            {
-                name: "@lastName",
-                value: "Andersen"
-            }
-        ]
-    };
-
-    const { result: results } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).toArray();
-    for (var queryResult of results) {
-        let resultString = JSON.stringify(queryResult);
-        console.log(`\tQuery returned ${resultString}\n`);
-    }
-};
-
-//--------------------------------------------------------------------------------------------------------------
 
     }
 
