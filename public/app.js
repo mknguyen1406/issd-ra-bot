@@ -72,10 +72,10 @@ function startChatBot() {
 
     // Style bot
     const styleOptions = {
-        botAvatarImage: 'https://image.flaticon.com/icons/svg/1156/1156419.svg',
-        botAvatarInitials: 'BF',
-        userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
-        userAvatarInitials: 'WC',
+        // botAvatarImage: 'https://image.flaticon.com/icons/svg/1156/1156419.svg',
+        // botAvatarInitials: 'BF',
+        // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
+        // userAvatarInitials: 'WC',
         hideUploadButton: true
     };
 

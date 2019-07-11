@@ -1,5 +1,5 @@
 #webchat {
-    height: 565px;
+    height: 540px;
     width: 100%;
 }
 
@@ -117,7 +117,7 @@
     background-color: #f8f9fa;
     border-color: #f8f9fa;
     margin: 0px 5px 0px 5px;
-    width: 40px;
+    width: 45px;
 }
 
 .btn-light-value {
@@ -125,7 +125,7 @@
     background-color: #f8f9fa;
     border-color: #f8f9fa;
     margin: 0px 5px 0px 5px;
-    width: 70px;
+    width: 45px;
 }
 
 .list-text {
@@ -154,7 +154,7 @@
 .btn-outline-primary {
     color: #007bff;
     border-color: #007bff;
-    width: 140px;
+    width: 160px;
 }
 
 .vis-links {

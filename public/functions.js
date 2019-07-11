@@ -156,6 +156,9 @@ function nextRound(round) {
                 content: 'Restart'
             }
         ];
+
+        // Stop trading in round 13
+        openForTrading = false;
     } else if (round === 14) {
         obj.reload = true;
 
@@ -166,6 +169,8 @@ function nextRound(round) {
             id: 'budget',
             content: '2000'
         });
+
+        // Open trading from round 3
         openForTrading = true;
         obj.appendData = {
             prices: data.prices,
@@ -180,7 +185,7 @@ function nextRound(round) {
     console.log(round);
 
     // Request summary only from round 3
-    if (round > 2) {
+    if (round > 3) {
         // Gather data for summary
         const holdings = {
             holdings: shareManager.goodHoldings
@@ -248,7 +253,7 @@ function createShareManager (pricePath, budget) {
             .split('\n') // split string to lines
             .map(e => e.trim()) // remove white spaces for each line
             .map(e => e.split(';').map(e => e.trim())); // split each line to array
-        console.log(x);
+        // console.log(x);
 
         // Prices from selected price path
         const pricesArray = {
@@ -260,7 +265,7 @@ function createShareManager (pricePath, budget) {
             5: x[7].slice(1,15)
         };
 
-        console.log(pricesArray);
+        // console.log(pricesArray);
 
         // Create share manager object
         shareManager = new ShareManager(budget, pricesArray);
@@ -347,17 +352,33 @@ function startConversation(token) {
 }
 
 function alertInsufficientEndowment(id) {
-    window.alert("Ihr aktuelles Guthaben reicht nicht aus, um einen Anteil " + id + " zu kaufen.");
+    const mapping = {
+        0: "A",
+        1: "B",
+        2: "C",
+        3: "D",
+        4: "E",
+        5: "F"
+    };
+    window.alert("Ihr aktuelles Guthaben reicht nicht aus, um einen Anteil " + mapping[id] + " zu kaufen.");
 }
 
 function alertInsufficientHoldings(id) {
-    window.alert("Sie besitzen keinen Anteil " + id + ", den Sie verkaufen können.");
+    const mapping = {
+        0: "A",
+        1: "B",
+        2: "C",
+        3: "D",
+        4: "E",
+        5: "F"
+    };
+    window.alert("Sie besitzen keinen Anteil " + mapping[id] + ", den Sie verkaufen können.");
 }
 
 // Nicht mehr benötigt weil Start ab Runde 3
-// function alertNotOpen() {
-//     window.alert("Handel ist erst ab der dritten Periode möglich.");
-// }
+function alertNotOpen() {
+    window.alert("Sie können Anteile nur in den Perioden 3 bis 12 handeln.");
+}
 
 function alertEarnings(cash) {
     // var language = document.getElementById("nav_lan").innerText;
@@ -366,13 +387,9 @@ function alertEarnings(cash) {
     const total = Math.round(portfolio + budget);
     const euro = Math.round(total/400);
 
-    if (language === "German") {
-        window.alert("Glückwunsch! \nDeine Auszahlung beträgt " + total + " (entspricht " + euro + "€)." + "\n\n" +
-            "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " und einem Portfoliowert in Höhe von " +
-            portfolio + ".");
-    } else {
-        window.alert("Congratulations!\nYour total cash out is " + total + " MU!");
-    }
+    window.alert("Glückwunsch! \nDeine Auszahlung beträgt " + total + " (entspricht " + euro + "€)." + "\n\n" +
+        "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " und einem Portfoliowert in Höhe von " +
+        portfolio + ".");
 }
 
 // function requestSummary(e, store, action, data) {
@@ -419,7 +436,7 @@ function buttonActionEvent(e, action) {
     } else {
         // Repeat three times when first clicked on next button
         if (round === 0) {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 4; i++) {
                 triggerNextRound();
             }
         } else {
@@ -435,7 +452,9 @@ function triggerNextRound() {
         const data = res.appendData;
         chart.appendData(data.prices);
         appendTable("price", data.prices);
-        appendTable("invest", data.invests);
+        if (round !== 0) {
+            appendTable("invest", data.invests);
+        }
 
         // Only for last round
         if (res.cashout !== null) {
