@@ -138,24 +138,24 @@ function nextRound(round) {
             prices: data.prices,
             invests: data.invests
         };
-        obj.rename = [
+        obj.rename.push(
             {
                 id: 'next',
                 content: 'Fertig'
             }
-        ];
+        );
     } else if (round === 13) {
         obj.appendData = {
             prices: data.prices,
             invests: data.invests
         };
         obj.cashout = shareManager.cashout();
-        obj.rename = [
+        obj.rename.push(
             {
                 id: 'next',
                 content: 'Restart'
             }
-        ];
+        )
 
         // Stop trading in round 13
         openForTrading = false;
@@ -372,24 +372,23 @@ function alertInsufficientHoldings(id) {
         4: "E",
         5: "F"
     };
-    window.alert("Sie besitzen keinen Anteil " + mapping[id] + ", den Sie verkaufen können.");
+    swal("Achtung!", "Sie besitzen keinen Anteil " + mapping[id] + ", den Sie verkaufen können.", "error");
 }
 
 // Nicht mehr benötigt weil Start ab Runde 3
 function alertNotOpen() {
-    window.alert("Sie können Anteile nur in den Perioden 3 bis 12 handeln.");
+    swal("Achtung!", "Sie können Anteile nur in den Perioden 3 bis 12 handeln.", "error");
 }
 
 function alertEarnings(cash) {
-    // var language = document.getElementById("nav_lan").innerText;
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
-    const euro = Math.round(total/400);
+    const euro = Math.round(total/300);
 
-    window.alert("Glückwunsch! \nDeine Auszahlung beträgt " + total + " (entspricht " + euro + "€)." + "\n\n" +
-        "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " und einem Portfoliowert in Höhe von " +
-        portfolio + ".");
+    swal("Achtung!", "Glückwunsch! \nDeine Auszahlung beträgt " + total + " Währungseinheiten." + "\n\n" +
+        "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
+        portfolio + " Währungseinheiten.", "success");
 }
 
 // function requestSummary(e, store, action, data) {
@@ -471,6 +470,8 @@ function triggerNextRound() {
 
 function renameElements(res){
     const renameArray = res;
+    console.log("To rename:");
+    console.log(renameArray);
     for (let i = 0; i < renameArray.length; i++) {
         const obj = renameArray[i];
         document.getElementById(obj.id).innerHTML = obj.content;

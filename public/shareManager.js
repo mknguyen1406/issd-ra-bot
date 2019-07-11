@@ -187,8 +187,8 @@ class ShareManager {
             invests.push(y);
         }
 
-        console.log(this.goodUpsHist);
-        console.log(this.getRecommendAlg(round));
+        // console.log(this.goodUpsHist);
+        // console.log(this.getRecommendAlg(round));
 
         return {
             rename: rename,
