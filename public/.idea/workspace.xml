@@ -73,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="974">
-              <caret line="232" column="41" lean-forward="true" selection-start-line="232" selection-start-column="41" selection-end-line="232" selection-end-column="41" />
+            <state relative-caret-position="489">
+              <caret line="496" column="28" selection-start-line="496" selection-start-column="28" selection-end-line="496" selection-end-column="28" />
               <folding>
                 <element signature="e#2804#2819#0" />
                 <element signature="e#5816#5841#0" />
@@ -95,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../bots/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="72" column="13" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="13" />
+            <state relative-caret-position="110">
+              <caret line="73" column="27" lean-forward="true" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -201,9 +201,9 @@
         <option value="$PROJECT_DIR$/styles.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/shareManager.js" />
-        <option value="$PROJECT_DIR$/functions.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/../bots/config.js" />
+        <option value="$PROJECT_DIR$/functions.js" />
       </list>
     </option>
   </component>
@@ -318,12 +318,12 @@
       <workItem from="1562243796811" duration="33010000" />
       <workItem from="1562766784304" duration="6186000" />
       <workItem from="1562833709963" duration="11234000" />
-      <workItem from="1562859482120" duration="1787000" />
+      <workItem from="1562859482120" duration="2398000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235109000" />
+    <option name="totallyTimeSpent" value="235720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -699,17 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="974">
-          <caret line="232" column="41" lean-forward="true" selection-start-line="232" selection-start-column="41" selection-end-line="232" selection-end-column="41" />
-          <folding>
-            <element signature="e#2804#2819#0" />
-            <element signature="e#5816#5841#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
@@ -719,8 +708,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../bots/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="72" column="13" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="13" />
+        <state relative-caret-position="110">
+          <caret line="73" column="27" lean-forward="true" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="496" column="28" selection-start-line="496" selection-start-column="28" selection-end-line="496" selection-end-column="28" />
+          <folding>
+            <element signature="e#2804#2819#0" />
+            <element signature="e#5816#5841#0" />
+          </folding>
         </state>
       </provider>
     </entry>

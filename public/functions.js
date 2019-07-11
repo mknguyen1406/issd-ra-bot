@@ -495,8 +495,6 @@ function triggerNextRound() {
 
 function renameElements(res){
     const renameArray = res;
-    console.log("To rename:");
-    console.log(renameArray);
     for (let i = 0; i < renameArray.length; i++) {
         const obj = renameArray[i];
         document.getElementById(obj.id).innerHTML = obj.content;
