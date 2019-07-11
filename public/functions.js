@@ -163,7 +163,7 @@ function nextRound(round) {
     } else if (round === 14) {
         // Send final result to bot
         sendFinalResult();
-        //obj.reload = true;
+        obj.reload = true;
     } else if (round === 2) {
         obj.rename.push({
             id: 'budget',
