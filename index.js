@@ -72,9 +72,23 @@ server.post('/api/messages', (req, res) => {
 });
 
 // Public Directory files
-server.get('/*', restify.plugins.serveStatic({
-    directory: './public',
-    default: 'index.html'
+server.get('/scripts/*', restify.plugins.serveStatic({
+    directory: './public'
+}));
+
+// Public Directory files
+server.get('/index.html', restify.plugins.serveStatic({
+    directory: './public'
+}));
+
+// Public Directory files
+server.get('/iframe.html', restify.plugins.serveStatic({
+    directory: './public'
+}));
+
+// Public Directory files
+server.get('/data/*', restify.plugins.serveStatic({
+    directory: './public'
 }));
 
 const db = mongoose.connection;

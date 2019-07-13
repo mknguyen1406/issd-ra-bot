@@ -254,7 +254,7 @@ async function readTextFile(file, callback)
 function createShareManager (pricePath, budget) {
 
     // Call function to read csv file
-    readTextFile("./data/price_paths/path" + pricePath + ".csv", function (obj) {
+    readTextFile("./data/path" + pricePath + ".csv", function (obj) {
 
         // Convert csv file to array
         let x = obj.toString() // convert Buffer to string
@@ -264,7 +264,7 @@ function createShareManager (pricePath, budget) {
         // console.log(x);
 
         // Prices from selected price path
-        const pricesArray = {
+        const pricesArray = { 
             0: x[2].slice(1,15),
             1: x[3].slice(1,15),
             2: x[4].slice(1,15),
