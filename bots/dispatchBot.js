@@ -9,6 +9,15 @@ const CosmosClient = require('@azure/cosmos').CosmosClient;
 const config = require('./config');
 const url = require('url');
 
+const endpoint = config.endpoint;
+const masterKey = config.primaryKey;
+
+const databaseId = config.database.id;
+const containerId = config.container.id;
+const partitionKey = { kind: "Hash", paths: ["/Country"] };
+
+const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+
 class DispatchBot extends ActivityHandler {
     /**
      * @param {any} logger object for logging events, defaults to console if none is provided
@@ -41,6 +50,11 @@ class DispatchBot extends ActivityHandler {
         // this.shareManager = sm;
         this.openForTrading = false;
 
+        async function createFamilyItem(itemBody) {
+            const { item } = await client.database(databaseId).container(containerId).items.upsert(itemBody);
+            console.log(`Created family item with id:\n${itemBody.id}\n`);
+        };
+
         this.onMessage(async (context, next) => {
             this.logger.log('Processing Message Activity.');
 
@@ -54,6 +68,8 @@ class DispatchBot extends ActivityHandler {
             await this.dispatchToTopIntentAsync(context, intent, recognizerResult);
 
             //console.log(this.nextRound(0));
+
+            createFamilyItem(config.items.Andersen);
 
             await next();
         });

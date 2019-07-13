@@ -72,4 +72,9 @@ config.items = {
     }
 };
 
+config.ENV = process.env.NODE_ENV || "development";
+config.PORT = process.env.PORT || 3000;
+config.URL = process.env.BASE_URL || "http://localhost:3000";
+config.MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://mknguyen:1loveChatbots@issd-ra-cluster-rjcdq.azure.mongodb.net/test?retryWrites=true&w=majority";
+
 module.exports = config;

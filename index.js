@@ -6,7 +6,10 @@
 // Import required packages
 const path = require('path');
 const restify = require('restify');
-const CosmosClient = require('@azure/cosmos').CosmosClient;
+
+// Datebase
+const mongoose = require('mongoose');
+const config = require('./config.js');
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter } = require('botbuilder');
@@ -45,9 +48,18 @@ let bot = new DispatchBot(logger);
 
 // Create HTTP server
 let server = restify.createServer();
+
+// Middlerware for database
+server.use(restify.plugins.bodyParser());
+
+// Start server
 server.listen(process.env.port || process.env.PORT || 3978, function() {
     console.log(`\n${ server.name } listening to ${ server.url }`);
     console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
+
+    mongoose.connect(config.MONGODB_URI, 
+        {useNewUrlParser: true}
+    );
 });
 
 // Listen for incoming activities and route them to your bot main dialog.
@@ -64,3 +76,14 @@ server.get('/*', restify.plugins.serveStatic({
     directory: './public',
     default: 'index.html'
 }));
+
+const db = mongoose.connection;
+
+// Every time an error occurs
+db.on("error", (err) => console.log(err));
+
+// This only happens once
+db.once("open", () => {
+    require("./routes/users")(server);
+    console.log(`Server started on port ${process.env.port || process.env.PORT || 3978}`);
+});
