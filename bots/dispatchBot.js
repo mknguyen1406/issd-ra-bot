@@ -51,11 +51,17 @@ class DispatchBot extends ActivityHandler {
         async function createUser(result) {
             const newResult = {
                 "userId": result.userId,
+                "surveyId": result.surveyId,
+                "pricePath": result.pricePath,
+                "cabinNo": result.cabinNo,
+                "experimentRound": result.experimentRound,
+                "experimentGroup": result.experimentGroup,
                 "cashout": result.cashout,
                 "holdings": result.holdings,
                 "invests": result.invests,
                 "prices": result.prices,
-                "prod": false // change when moving to production
+                "time": result.time,
+                "prod": false // change to true when moving to production
             };
             const { item } = await client.database(databaseId).container(containerId).items.upsert(newResult);
             console.log(`Created family item with id:\n${newResult.id}\n`);
