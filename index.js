@@ -20,7 +20,7 @@ const HttpStatusCodes = { NOTFOUND: 404 };
 
 const databaseId = config.database.id;
 const containerId = config.container.id;
-const partitionKey = { kind: "Hash", paths: ["/Country"] };
+const partitionKey = { kind: "Hash", paths: ["/userId"] };
 
 const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
@@ -129,12 +129,12 @@ createDatabase()
     .then(() => readDatabase())
     .then(() => createContainer())
     .then(() => readContainer())
-    .then(() => createFamilyItem(config.items.Andersen))
-    .then(() => createFamilyItem(config.items.Wakefield))
-    .then(() => queryContainer())
-    .then(() => replaceFamilyItem(config.items.Andersen))
-    .then(() => queryContainer())
-    .then(() => deleteFamilyItem(config.items.Andersen))
+    .then(() => createFamilyItem(config.items.user1))
+    // .then(() => createFamilyItem(config.items.Wakefield))
+    // .then(() => queryContainer())
+    // .then(() => replaceFamilyItem(config.items.Andersen))
+    // .then(() => queryContainer())
+    // .then(() => deleteFamilyItem(config.items.Andersen))
     //.then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 

@@ -7,71 +7,44 @@ config.primaryKey = "t2P55k4cMfPcxZhE5DKcXzlq5kFxMIIRijnhJZqk2bamsYtVP6w6Yc5IoFe
 // config.authKey = process.env.AUTH_KEY || "Yrlt6bqa438bWaA7qbCRjcF7HzR1COv35D7SujL3LbbSEYDyhDswOh5txEO2EuaaOKrTrYhj0VsgGyFWI8igcQ==";
 
 config.database = {
-    "id": "FamilyDatabase"
+    "id": "ISSD-RA-DB"
 };
 
 config.container = {
-    "id": "FamilyContainer"
+    "id": "ISSD-RA-Container"
 };
 
 config.items = {
-    "Andersen": {
-        "id": "Anderson.1",
-        "Country": "USA",
-        "userId": "123",
-        "lastName": "Andersen",
-        "parents": [{
-            "firstName": "Thomas"
-        }, {
-                "firstName": "Mary Kay"
-            }],
-        "children": [{
-            "firstName": "Henriette Thaulow",
-            "gender": "female",
-            "grade": 5,
-            "pets": [{
-                "givenName": "Fluffy"
-            }]
-        }],
-        "address": {
-            "state": "WA",
-            "county": "King",
-            "city": "Seattle"
-        }
-    },
-    "Wakefield": {
-        "id": "Wakefield.7",
-        "Country": "Italy",
-        "userId": "456",
-        "parents": [{
-            "familyName": "Wakefield",
-            "firstName": "Robin"
-        }, {
-                "familyName": "Miller",
-                "firstName": "Ben"
-            }],
-        "children": [{
-            "familyName": "Merriam",
-            "firstName": "Jesse",
-            "gender": "female",
-            "grade": 8,
-            "pets": [{
-                "givenName": "Goofy"
-            }, {
-                    "givenName": "Shadow"
-                }]
-        }, {
-                "familyName": "Miller",
-                "firstName": "Lisa",
-                "gender": "female",
-                "grade": 1
-            }],
-        "address": {
-            "state": "NY",
-            "county": "Manhattan",
-            "city": "NY"
+    "user1": {
+        "userId": "Anderson.1",
+        "cashout": {
+            "portfolio": 50,
+            "budget": 1950
         },
-        "isRegistered": false
+        "holdings": {
+            "0": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "1": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "2": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "3": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "4": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "5": [0,0,0,0,0,0,0,0,0,0,0,0,0]
+        },
+        "invests": {
+            "0": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "1": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "2": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "3": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "4": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "5": [0,0,0,0,0,0,0,0,0,0,0,0,0]
+        },
+        "prices": {
+            "0": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "1": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "2": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "3": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "4": [0,0,0,0,0,0,0,0,0,0,0,0,0],
+            "5": [0,0,0,0,0,0,0,0,0,0,0,0,0]
+        }
     }
 };
 module.exports = config;

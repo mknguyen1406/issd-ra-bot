@@ -48,15 +48,17 @@ class DispatchBot extends ActivityHandler {
         // this.shareManager = sm;
         this.openForTrading = false;
 
-        async function createFamilyItem(result) {
-            const familyMember = {
-                "id": "newMember" + Math.round(Math.random()*10) + Math.round(Math.random()*10) + Math.round(Math.random()*10),
-                "Country": "USA",
-                "userId": "123",
-                "result": result,
+        async function createUser(result) {
+            const newResult = {
+                "userId": result.userId,
+                "cashout": result.cashout,
+                "holdings": result.holdings,
+                "invests": result.invests,
+                "prices": result.prices,
+                "prod": false // change when moving to production
             };
-            const { item } = await client.database(databaseId).container(containerId).items.upsert(familyMember);
-            console.log(`Created family item with id:\n${familyMember.id}\n`);
+            const { item } = await client.database(databaseId).container(containerId).items.upsert(newResult);
+            console.log(`Created family item with id:\n${newResult.id}\n`);
         };
 
         this.onMessage(async (context, next) => {
@@ -121,11 +123,12 @@ class DispatchBot extends ActivityHandler {
             if (context.activity.name === "result") {
 
                 // Get data
-                const result = context.activity.value.result;
+                const result = context.activity.value;
 
-                createFamilyItem(context.activity.value);
+                // Save result to database
+                createUser(result);
 
-                await context.sendActivity(`Result received`);            
+                // await context.sendActivity(`Result received`);            
             }
 
             // By calling next() you ensure that the next BotHandler is run.
