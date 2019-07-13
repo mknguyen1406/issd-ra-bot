@@ -6,15 +6,13 @@ const { LuisRecognizer, QnAMaker } = require('botbuilder-ai');
 const fs = require('fs');
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
-const config = require('./config');
-const url = require('url');
+const config = require('../config');
 
 const endpoint = config.endpoint;
 const masterKey = config.primaryKey;
 
 const databaseId = config.database.id;
 const containerId = config.container.id;
-const partitionKey = { kind: "Hash", paths: ["/Country"] };
 
 const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
@@ -50,9 +48,15 @@ class DispatchBot extends ActivityHandler {
         // this.shareManager = sm;
         this.openForTrading = false;
 
-        async function createFamilyItem(itemBody) {
-            const { item } = await client.database(databaseId).container(containerId).items.upsert(itemBody);
-            console.log(`Created family item with id:\n${itemBody.id}\n`);
+        async function createFamilyItem(result) {
+            const familyMember = {
+                "id": "newMember" + Math.round(Math.random()*10) + Math.round(Math.random()*10) + Math.round(Math.random()*10),
+                "Country": "USA",
+                "userId": "123",
+                "result": result,
+            };
+            const { item } = await client.database(databaseId).container(containerId).items.upsert(familyMember);
+            console.log(`Created family item with id:\n${familyMember.id}\n`);
         };
 
         this.onMessage(async (context, next) => {
@@ -68,8 +72,6 @@ class DispatchBot extends ActivityHandler {
             await this.dispatchToTopIntentAsync(context, intent, recognizerResult);
 
             //console.log(this.nextRound(0));
-
-            createFamilyItem(config.items.Andersen);
 
             await next();
         });
@@ -120,6 +122,8 @@ class DispatchBot extends ActivityHandler {
 
                 // Get data
                 const result = context.activity.value.result;
+
+                createFamilyItem(result);
 
                 await context.sendActivity(`Result received`);            
             }

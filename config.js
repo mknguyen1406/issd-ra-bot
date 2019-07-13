@@ -1,7 +1,10 @@
 var config = {}
 
-config.endpoint = "https://issd-ra-test.documents.azure.com:443/";
-config.primaryKey = "QfCo53p4cHrmX12WYPsUMtQJRkR8jWuHU7Fl5XogVc7ZS8j8T62EfuqvsCbiHQFIMvNEYKUvfCwHQjiUTZHUPg==";
+config.endpoint = "https://mknguyen.documents.azure.com:443/";
+config.primaryKey = "t2P55k4cMfPcxZhE5DKcXzlq5kFxMIIRijnhJZqk2bamsYtVP6w6Yc5IoFe94dw8HSKhEH89gyGNyHVYXz2KMA==";
+
+// config.host = process.env.HOST || "https://issd-ra-db.documents.azure.com:443/";
+// config.authKey = process.env.AUTH_KEY || "Yrlt6bqa438bWaA7qbCRjcF7HzR1COv35D7SujL3LbbSEYDyhDswOh5txEO2EuaaOKrTrYhj0VsgGyFWI8igcQ==";
 
 config.database = {
     "id": "FamilyDatabase"
@@ -71,10 +74,4 @@ config.items = {
         "isRegistered": false
     }
 };
-
-config.ENV = process.env.NODE_ENV || "development";
-config.PORT = process.env.PORT || 3000;
-config.URL = process.env.BASE_URL || "http://localhost:3000";
-config.MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://mknguyen:1loveChatbots@issd-ra-cluster-rjcdq.azure.mongodb.net/test?retryWrites=true&w=majority";
-
 module.exports = config;
