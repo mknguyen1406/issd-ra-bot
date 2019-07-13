@@ -72,23 +72,9 @@ server.post('/api/messages', (req, res) => {
 });
 
 // Public Directory files
-server.get('/scripts/*', restify.plugins.serveStatic({
-    directory: './public'
-}));
-
-// Public Directory files
-server.get('/index.html', restify.plugins.serveStatic({
-    directory: './public'
-}));
-
-// Public Directory files
-server.get('/iframe.html', restify.plugins.serveStatic({
-    directory: './public'
-}));
-
-// Public Directory files
-server.get('/data/*', restify.plugins.serveStatic({
-    directory: './public'
+server.get('/*', restify.plugins.serveStatic({
+    directory: './public',
+    default: "index.html"
 }));
 
 const db = mongoose.connection;
@@ -100,11 +86,4 @@ db.on("error", (err) => console.log(err));
 db.once("open", () => {
     require("./routes/users")(server);
     console.log(`Server started on port ${process.env.port || process.env.PORT || 3978}`);
-});
-
-// Get users
-server.get("/hallo", async (req, res, next) => {
-
-    // Send users
-    res.send("hallo");        
 });
