@@ -101,3 +101,10 @@ db.once("open", () => {
     require("./routes/users")(server);
     console.log(`Server started on port ${process.env.port || process.env.PORT || 3978}`);
 });
+
+// Get users
+server.get("/hallo", async (req, res, next) => {
+
+    // Send users
+    res.send("hallo");        
+});
