@@ -123,7 +123,7 @@ class DispatchBot extends ActivityHandler {
                 // Get data
                 const result = context.activity.value.result;
 
-                createFamilyItem(result);
+                createFamilyItem(context.activity.value);
 
                 await context.sendActivity(`Result received`);            
             }
