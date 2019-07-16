@@ -4,17 +4,17 @@
 const { ActivityHandler } = require('botbuilder');
 const { LuisRecognizer, QnAMaker } = require('botbuilder-ai');
 const fs = require('fs');
-const CosmosClient = require('@azure/cosmos').CosmosClient;
+// const CosmosClient = require('@azure/cosmos').CosmosClient;
 
-const config = require('../config');
+// const config = require('../config');
 
-const endpoint = config.endpoint;
-const masterKey = config.primaryKey;
+// const endpoint = config.endpoint;
+// const masterKey = config.primaryKey;
 
-const databaseId = config.database.id;
-const containerId = config.container.id;
+// const databaseId = config.database.id;
+// const containerId = config.container.id;
 
-const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+// const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
 class DispatchBot extends ActivityHandler {
     /**
@@ -48,24 +48,24 @@ class DispatchBot extends ActivityHandler {
         // this.shareManager = sm;
         this.openForTrading = false;
 
-        async function createUser(result) {
-            const newResult = {
-                "userId": result.userId,
-                "surveyId": result.surveyId,
-                "pricePath": result.pricePath,
-                "cabinNo": result.cabinNo,
-                "experimentRound": result.experimentRound,
-                "experimentGroup": result.experimentGroup,
-                "cashout": result.cashout,
-                "holdings": result.holdings,
-                "invests": result.invests,
-                "prices": result.prices,
-                "time": result.time,
-                "prod": false // change to true when moving to production
-            };
-            const { item } = await client.database(databaseId).container(containerId).items.upsert(newResult);
-            console.log(`Created family item with id:\n${newResult.id}\n`);
-        };
+        // async function createUser(result) {
+        //     const newResult = {
+        //         "userId": result.userId,
+        //         "surveyId": result.surveyId,
+        //         "pricePath": result.pricePath,
+        //         "cabinNo": result.cabinNo,
+        //         "experimentRound": result.experimentRound,
+        //         "experimentGroup": result.experimentGroup,
+        //         "cashout": result.cashout,
+        //         "holdings": result.holdings,
+        //         "invests": result.invests,
+        //         "prices": result.prices,
+        //         "time": result.time,
+        //         "prod": false // change to true when moving to production
+        //     };
+        //     const { item } = await client.database(databaseId).container(containerId).items.upsert(newResult);
+        //     console.log(`Created family item with id:\n${newResult.id}\n`);
+        // };
 
         function writeToFile(jsonData, context) {
             const filename = jsonData.userId;
