@@ -69,7 +69,8 @@ class DispatchBot extends ActivityHandler {
 
         async function writeToFile(jsonData, context) {
             const filename = jsonData.userId;
-            await context.sendActivity(`Result received`); 
+            await context.sendActivity("Result received\n Filename is: " + filename); 
+            await context.sendActivity("Name of directory is: " + __dirname); 
             fs.writeFile(filename + ".txt", jsonData, async function(err) {
                 if (err) {
                     await context.sendActivity("Error ocurred while saving the result. \n" + filename);
