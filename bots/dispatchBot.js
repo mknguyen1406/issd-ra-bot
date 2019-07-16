@@ -72,6 +72,7 @@ class DispatchBot extends ActivityHandler {
             await context.sendActivity(`Result received`); 
             fs.writeFile(filename + ".txt", jsonData, async function(err) {
                 if (err) {
+                    await context.sendActivity("Error ocurred while saving the result. \n" + filename);
                     console.log(err);
                 } else {
                     await context.sendActivity(`Saved result to http://issd-ra-web-app.azurewebsites.net/results/${filename}.txt`);
