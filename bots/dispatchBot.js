@@ -67,6 +67,17 @@ class DispatchBot extends ActivityHandler {
             console.log(`Created family item with id:\n${newResult.id}\n`);
         };
 
+        function writeToFile(jsonData, context) {
+            const filename = jsonData.userId;
+            fs.writeFile("../results/" + filename + ".txt", jsonData, function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    await context.sendActivity(`Saved result to http://issd-ra-web-app.azurewebsites.net/results/${filename}.txt`);
+                }
+            });
+        }
+
         this.onMessage(async (context, next) => {
             this.logger.log('Processing Message Activity.');
 
@@ -132,7 +143,8 @@ class DispatchBot extends ActivityHandler {
                 const result = context.activity.value;
 
                 // Save result to database
-                createUser(result);
+                //createUser(result);
+                writeToFile(result, context);
 
                 // await context.sendActivity(`Result received`);            
             }

@@ -202,3 +202,10 @@ server.get('/*', restify.plugins.serveStatic({
     directory: './public',
     default: "index.html"
 }));
+
+// Public Directory files
+server.get('/results/*', restify.plugins.serveStatic({
+    directory: './results',
+    default: "index.html",
+    appendRequestPath: false
+}));
