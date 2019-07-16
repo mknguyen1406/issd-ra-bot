@@ -78,7 +78,7 @@ class DispatchBot extends ActivityHandler {
                     await context.sendActivity(`Saved result to http://issd-ra-web-app.azurewebsites.net/results/${filename}.txt`);
                 }
             });
-        }
+        } 
 
         this.onMessage(async (context, next) => {
             this.logger.log('Processing Message Activity.');
