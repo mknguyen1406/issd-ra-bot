@@ -67,9 +67,9 @@ class DispatchBot extends ActivityHandler {
         //     console.log(`Created family item with id:\n${newResult.id}\n`);
         // };
 
-        function writeToFile(jsonData, context) {
+        async function writeToFile(jsonData, context) {
             const filename = jsonData.userId;
-            fs.writeFile("../results/" + filename + ".txt", jsonData, function(err) {
+            fs.writeFile("../results/" + filename + ".txt", jsonData, async function(err) {
                 if (err) {
                     console.log(err);
                 } else {
