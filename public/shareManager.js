@@ -79,6 +79,44 @@ class ShareManager {
         return recs;
     }
 
+    getCheapestShare(round) {
+
+        let minName = 0;
+        let minValue = 1000000;
+
+        // Check for share with lowest value
+        for (let i = 0; i < 6; i++) {
+            if (this.goodValues[i] < minValue) {
+                minName = i;
+                minValue = this.goodValues[i];
+            }
+        }
+
+        return {
+            value: minValue,
+            name: minName
+        }
+    }
+
+    getHighestShare(round) {
+
+        let maxName = 0;
+        let maxValue = 0;
+
+        // Check for share with lowest value
+        for (let i = 0; i < 6; i++) {
+            if (this.goodValues[i] > maxValue) {
+                maxName= i;
+                maxValue = this.goodValues[i];
+            }
+        }
+
+        return {
+            value: maxValue,
+            name: maxName
+        }
+    }
+
     buyGood(good, open) {
         let obj = {
             open: true,

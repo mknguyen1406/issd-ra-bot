@@ -69,8 +69,7 @@ class DispatchBot extends ActivityHandler {
 
         async function writeToFile(jsonData, context) {
             const filename = jsonData.userId;
-            await context.sendActivity("Result received\n Filename is: " + filename); 
-            await context.sendActivity("Name of directory is: " + require.main.filename); 
+            // await context.sendActivity("Result received\n Filename is: " + filename); 
             fs.writeFile(filename + ".txt", jsonData, async function(err) {
                 if (err) {
                     await context.sendActivity("Error ocurred while saving the result. \n" + filename);
@@ -134,10 +133,10 @@ class DispatchBot extends ActivityHandler {
             if (context.activity.name === "summaryRequest") {
 
                 // Get data
-                const holdings = context.activity.value.holdings;
+                const message = context.activity.value;
 
                 // Send summary to client
-                await context.sendActivity(`Your holdings are \n - Share A: ${holdings[0]} \n - Share B: ${holdings[1]}\n - Share C: ${holdings[2]}\n - Share D: ${holdings[3]}\n - Share E: ${holdings[4]}\n - Share F: ${holdings[5]}`);
+                await context.sendActivity(message);
             }
 
             if (context.activity.name === "result") {
@@ -147,7 +146,8 @@ class DispatchBot extends ActivityHandler {
 
                 // Save result to database
                 //createUser(result);
-                writeToFile(result, context);           
+                // writeToFile(result, context);   
+                await context.sendActivity("Result received.");        
             }
 
             // By calling next() you ensure that the next BotHandler is run.

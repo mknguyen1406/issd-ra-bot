@@ -192,7 +192,31 @@ function nextRound(round) {
         }
     }
 
-    if (round === 12) {
+
+    console.log(round);
+    if (round === 0) {
+        // Initiate game
+        // Change from null to false so that the 'game not started' alert doesn't show up anymore
+        openForTrading = false;
+
+        obj.appendData = {
+            prices: data.prices,
+            invests: data.invests
+        };
+    } else if (round === 2) {
+        // Allow user to trade and show budget
+        obj.rename.push({
+            id: 'budget',
+            content: '2000'
+        });
+
+        // Open trading from round 3
+        openForTrading = true;
+        obj.appendData = {
+            prices: data.prices,
+            invests: data.invests
+        };
+    } else if (round === 12) {
         // Last round where user is able to trade
         obj.appendData = {
             prices: data.prices,
@@ -204,7 +228,6 @@ function nextRound(round) {
                 content: 'Fertig'
             }
         );
-
     } else if (round === 13) {
         // Prevent user from trading and send results to bot
         obj.appendData = {
@@ -224,62 +247,197 @@ function nextRound(round) {
 
         // Send final result to bot
         sendFinalResult();
-
     } else if (round === 14) {
         // Refresh page
         obj.reload = true;
-
-    } else if (round === 2) {
-        // Allow user to trade and show budget
-        obj.rename.push({
-            id: 'budget',
-            content: '2000'
-        });
-
-        // Open trading from round 3
-        openForTrading = true;
-        obj.appendData = {
-            prices: data.prices,
-            invests: data.invests
-        };
-
-    } else if (round === 0) {
-        // Initiate game
-        // Change from null to false so that the 'game not started' alert doesn't show up anymore
-        openForTrading = false;
-
-        obj.appendData = {
-            prices: data.prices,
-            invests: data.invests
-        };
-
-    } else {
-        // Normal round
+    } else {// Normal round
         obj.appendData = {
             prices: data.prices,
             invests: data.invests
         };
     }
-    console.log(round);
 
-    // Request summary only from round 3
-    if (round > 3) {
-        // Gather data for summary
-        const holdings = {
-            holdings: shareManager.goodHoldings
-        };
-
-        // Create event to request summary
-        const event = new CustomEvent('botEvent', {
-            detail: {
-                type: "summaryRequest",
-                data: holdings
-            }
-        });
-        window.document.dispatchEvent(event);
-    }
+    // Generate round summaries
+    sendRoundSummary(round);
 
     return obj;
+}
+
+function sendRoundSummary(round) {
+
+    let summary = null;
+
+    // Check for round
+    if (round === 3) {
+        // Send fixed summary that has number 0
+        summary = getRoundSummary(0);
+    } else if ((round > 3) && (round < 12)) {
+        // Send randomized summary
+        const randNo = generateRandomNo(0,10);
+        console.log("random number: " + randNo);
+        summary = getRoundSummary(randNo);
+
+        // // Gather data for summary
+        // const holdings = {
+        //     holdings: shareManager.goodHoldings
+        // };
+    } else if (round === 12) {
+        // Send fixed summary that has number 11
+        summary = getRoundSummary(11);
+    }
+
+    console.log(summary);
+
+    // Create event to request summary
+    const event = new CustomEvent('botEvent', {
+        detail: {
+            type: "summaryRequest",
+            data: summary
+        }
+    });
+    window.document.dispatchEvent(event);
+}
+
+function getRoundSummary(no) {
+
+    let res = null;
+
+    // Check for requested summary
+    switch (no) {
+        case 0:
+            res = "Es geht los! Mit deinem Guthaben kannst du ab jetzt Anteile handeln.";
+            break;
+        case 1:
+            res = getRoundSummaryForShare("A");
+            break;
+        case 2:
+            res = getRoundSummaryForShare("B");
+            break;
+        case 3:
+            res = getRoundSummaryForShare("C");
+            break;
+        case 4:
+            res = getRoundSummaryForShare("D");
+            break;
+        case 5:
+            res = getRoundSummaryForShare("E");
+            break;
+        case 6:
+            res = getRoundSummaryForShare("F");
+            break;
+        case 7:
+            res = getRoundSummaryForTrades();
+            break;
+        case 8:
+            res = "'Das Wichtigste für einen Investor ist nicht der Intellekt sondern das Temperament. " +
+                "Dein Temperament sollte so sein, dass Du weder große Freude empfindest, wenn Du mit der " +
+                "Masse läufst, und ebenso wenig, wenn Du gegen den Strom schwimmst.' – Warren Buffett";
+            break;
+        case 9:
+            res = "'Regel Nr. 1: Verliere niemals Geld. Regel Nr.2: Vergiss niemals Regel Nr. 1.' – Warren Buffett";
+            break;
+        case 10:
+            res = getRoundSummaryForPossibleTrade();
+            break;
+        case 11:
+            res = "Das ist deine letzte Chance Gewinn zu machen! Bald hast du es geschafft."
+            break;
+    }
+
+    return res;
+}
+
+function getRoundSummaryForShare(shareType) {
+
+    // Create mapping table
+    const mapping = {
+        A: 0,
+        B: 1,
+        C: 2,
+        D: 3,
+        E: 4,
+        F: 5
+    };
+
+    // Set share and share no
+    const share = shareType;
+    const shareNo = mapping[share];
+
+    // Get current value of share
+    const currentValue = Math.round(shareManager.goodPriceHist[shareNo][round]);
+
+    // Create first part of the response
+    let res = "Der Preis von Anteil " + share + " ist jetzt " + currentValue + ".\n";
+
+    // Get last value of share A
+    const lastValue = Math.round(shareManager.goodPriceHist[shareNo][round - 1]);
+
+    // Create second part of the respone depending on value development
+    if (currentValue > lastValue) {
+        res = res + "In der letzten Periode war Anteil " + share + " günstiger."
+    } else {
+        res = res + "In der letzten Periode war Anteil " + share + " teurer."
+    }
+
+    return res;
+}
+
+function getRoundSummaryForTrades() {
+
+    let res = null;
+
+    const tradesLastPeriod = shareManager.goodInvestHist[0][round - 1] +
+        shareManager.goodInvestHist[1][round - 1] +
+        shareManager.goodInvestHist[2][round - 1] +
+        shareManager.goodInvestHist[3][round - 1] +
+        shareManager.goodInvestHist[4][round - 1] +
+        shareManager.goodInvestHist[5][round - 1];
+
+    if (tradesLastPeriod === 0) {
+        res = "Jetzt kannst du mal wieder Anteile handeln, nachdem du dich in der letzten Periode für nichts tun entschieden hast."
+    } else {
+        res = "Super, dass du dich was getraut hast! Mut steht am Anfang des Handelns. Glück am Ende."
+    }
+
+    return res;
+}
+
+function getRoundSummaryForPossibleTrade() {
+
+    // Create mapping table
+    const mapping = {
+        0: "A",
+        1: "B",
+        2: "C",
+        3: "D",
+        4: "E",
+        5: "F"
+    };
+
+    let res = null;
+
+    const budget = Math.round(shareManager.budget);
+
+    const cheapestShareName = mapping[shareManager.getCheapestShare(round).name];
+    const highestShareName = mapping[shareManager.getHighestShare(round).name];
+
+    const cheapestShare = Math.round(shareManager.getCheapestShare(round).value);
+    const highestShare = Math.round(shareManager.getHighestShare(round).value);
+
+    const possibleCheapest = Math.floor(budget / cheapestShare);
+    const possibleHighest = Math.floor(budget / highestShare);
+
+    if (budget >= highestShare) {
+        res = "Du hast noch " + budget + " an Gutehaben. Das reicht dir locker für " + possibleHighest + " Einheiten von Anteil " + highestShareName +
+            " oder für " + possibleCheapest + " Einheiten von Anteil " + cheapestShareName + ".";
+    } else if (budget < cheapestShare) {
+        res = "Du hast noch " + budget + " an Guthaben. Das reicht dir leider nicht mal für einen Anteil " + cheapestShareName +
+            ". Dafür müsstest du etwas verkaufen.";
+    } else {
+        res = "Du hast noch " + budget + " an Guthaben. Das reicht dir für " + possibleCheapest + " Einheiten von Anteil " + cheapestShareName + ".";
+    }
+
+    return res;
 }
 
 function sendFinalResult() {
@@ -381,7 +539,7 @@ function appendTableValue(parent, value, good) {
 }
 
 function generateRandomNo (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min + 1
+    return Math.floor(Math.random() * (max - min)) + min + 1
 }
 
 /*
