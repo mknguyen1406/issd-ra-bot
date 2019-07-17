@@ -226,7 +226,7 @@ class ShareManager {
 
             if (round > 2) {
                 this.goodInvestHist[i].push(this.goodHoldings[i] - this.goodHoldingsHist[i][round - 1]);
-            } else {
+            } else if (round > 0){
                 this.goodInvestHist[i].push(this.goodHoldings[i] - 0);
             }
 
@@ -235,7 +235,7 @@ class ShareManager {
             };
             prices.push(x);
             const y = {
-                data: [this.goodInvestHist[i][round]]
+                data: [this.goodInvestHist[i][round-1]]
             };
             invests.push(y);
         }

@@ -275,7 +275,7 @@ function sendRoundSummary(round) {
         // Send randomized summary
         const randNo = generateRandomNo(0,10);
         console.log("random number: " + randNo);
-        summary = getRoundSummary(randNo);
+        summary = getRoundSummary(round-1); // TODO: Set this to randNo instead of round-1
 
         // // Gather data for summary
         // const holdings = {
@@ -386,12 +386,14 @@ function getRoundSummaryForTrades() {
 
     let res = null;
 
-    const tradesLastPeriod = shareManager.goodInvestHist[0][round - 1] +
-        shareManager.goodInvestHist[1][round - 1] +
-        shareManager.goodInvestHist[2][round - 1] +
-        shareManager.goodInvestHist[3][round - 1] +
-        shareManager.goodInvestHist[4][round - 1] +
-        shareManager.goodInvestHist[5][round - 1];
+    const tradesLastPeriod = shareManager.goodInvestHist[0][round-1] +
+        shareManager.goodInvestHist[1][round-1] +
+        shareManager.goodInvestHist[2][round-1] +
+        shareManager.goodInvestHist[3][round-1] +
+        shareManager.goodInvestHist[4][round-1] +
+        shareManager.goodInvestHist[5][round-1];
+
+    console.log(shareManager.goodInvestHist);
 
     if (tradesLastPeriod === 0) {
         res = "Jetzt kannst du mal wieder Anteile handeln, nachdem du dich in der letzten Periode für nichts tun entschieden hast."
