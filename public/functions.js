@@ -430,7 +430,7 @@ function getRoundSummaryForPossibleTrade() {
     const possibleHighest = Math.floor(budget / highestShare);
 
     if (budget >= highestShare) {
-        res = "Du hast noch " + budget + " an Gutehaben. Das reicht dir locker für " + possibleHighest + " Einheiten von Anteil " + highestShareName +
+        res = "Du hast noch " + budget + " an Guthaben. Das reicht dir locker für " + possibleHighest + " Einheiten von Anteil " + highestShareName +
             " oder für " + possibleCheapest + " Einheiten von Anteil " + cheapestShareName + ".";
     } else if (budget < cheapestShare) {
         res = "Du hast noch " + budget + " an Guthaben. Das reicht dir leider nicht mal für einen Anteil " + cheapestShareName +

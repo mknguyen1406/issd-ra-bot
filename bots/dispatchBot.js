@@ -102,7 +102,14 @@ class DispatchBot extends ActivityHandler {
 
             for (let member of membersAdded) {
                 if (member.id !== context.activity.recipient.id) {
-                    await context.sendActivity("Hallo ich bin dein Robo Assitant. Darf ich dich nach deinem Namen fragen?");
+                    await context.sendActivity("Hallo, ich bin dein Robo Assistant.\n" + 
+                        "Du kannst mich Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen. Beispielfragen, die du stellen kannst sind:\n" +
+                        "- Welcher Anteil hat am meisten an Wert gewonnen?\n" +
+                        "- Wenn Anteil C an Wert gewinnt, wie viel wird er in der folgenden Periode wert sein?\n" +
+                        "- Wie oft hat Anteil F an Wert gewonnen?\n" +
+                        "- Wenn ich Anteil C verkaufe und Anteil D zum aktuellen Preis kaufe, wie viel Guthaben habe ich dann übrig?\n" +
+                        "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                        "- Kannst du mir einen Witz erzählen?");
                 }
             }
 
