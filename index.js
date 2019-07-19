@@ -6,10 +6,10 @@
 // Import required packages
 const path = require('path');
 const restify = require('restify');
-const CosmosClient = require('@azure/cosmos').CosmosClient;
+// const CosmosClient = require('@azure/cosmos').CosmosClient;
 
 // Datebase config
-const config = require('./config.js');
+// const config = require('./config.js');
 
 //=============================================DATABASE=======================================================================
 
@@ -142,7 +142,7 @@ const config = require('./config.js');
 //=========================================================================================================================
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter } = require('botbuilder');
+const { BotFrameworkAdapter, MemoryStorage, ConversationState, UserState } = require('botbuilder');
 const { DispatchBot } = require('./bots/dispatchBot');
 
 //--------------------------------------------------------------------------------------------------------------
@@ -169,12 +169,20 @@ adapter.onTurnError = async (context, error) => {
     await context.sendActivity(`\n [onTurnError]: ${ error }`);
 };
 
+// Define state store for your bot.
+// See https://aka.ms/about-bot-state to learn more about bot state.
+const memoryStorage = new MemoryStorage();
+
+// Create conversation and user state with in-memory storage provider.
+const conversationState = new ConversationState(memoryStorage);
+const userState = new UserState(memoryStorage);
+
 // Pass in a logger to the bot. For this sample, the logger is the console, but alternatives such as Application Insights and Event Hub exist for storing the logs of the bot.
 const logger = console;
 
 // Create the main dialog.
 // let bot = new DispatchBot(logger, shareManager); -- shifted back to client
-let bot = new DispatchBot(logger);
+let bot = new DispatchBot(logger, conversationState, userState);
 
 // Create HTTP server
 let server = restify.createServer();
