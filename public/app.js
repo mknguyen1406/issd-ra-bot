@@ -40,6 +40,7 @@ let token_ = "";
 // let conversationId_ = "";
 getToken(startChatBot);
 function startChatBot() {
+
     // We are adding a new middleware to customize the behavior of DIRECT_LINE/INCOMING_ACTIVITY.
     const store = window.WebChat.createStore(
         {},
@@ -76,7 +77,12 @@ function startChatBot() {
         // botAvatarInitials: 'BF',
         // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
         // userAvatarInitials: 'WC',
-        hideUploadButton: true
+        hideUploadButton: true,
+        backgroundColor: '#f8f9fa',
+        bubbleFromUserBackground: '#DCF8C6',
+        bubbleFromUserBorderRadius: 10,
+        bubbleBorderRadius: 10,
+
     };
 
     window.WebChat.renderWebChat(

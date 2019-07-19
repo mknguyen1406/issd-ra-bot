@@ -295,7 +295,12 @@ function sendRoundSummary(round) {
             data: summary
         }
     });
+
+    // Send event to own event handler
     window.document.dispatchEvent(event);
+
+    // Send event to event handler of parent
+    // window.parent.document.dispatchEvent(event);
 }
 
 function getRoundSummary(no) {
@@ -329,18 +334,18 @@ function getRoundSummary(no) {
             res = getRoundSummaryForTrades();
             break;
         case 8:
-            res = "'Das Wichtigste für einen Investor ist nicht der Intellekt sondern das Temperament. " +
-                "Dein Temperament sollte so sein, dass Du weder große Freude empfindest, wenn Du mit der " +
-                "Masse läufst, und ebenso wenig, wenn Du gegen den Strom schwimmst.' – Warren Buffett";
+            res = '"Das Wichtigste für einen Investor ist nicht der Intellekt sondern das Temperament. ' +
+                "Du solltest weder große Freude empfinden, wenn Du mit der " +
+                'Masse läufst und ebenso wenig, wenn Du gegen den Strom schwimmst." – Warren Buffett';
             break;
         case 9:
-            res = "'Regel Nr. 1: Verliere niemals Geld. Regel Nr.2: Vergiss niemals Regel Nr. 1.' – Warren Buffett";
+            res = '"Der Ziellose erleidet sein Schicksal – der Zielbewusste gestaltet es!" – Immanuel Kant';
             break;
         case 10:
             res = getRoundSummaryForPossibleTrade();
             break;
         case 11:
-            res = "Das ist deine letzte Chance Gewinn zu machen! Bald hast du es geschafft."
+            res = "Das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft."
             break;
     }
 
@@ -396,9 +401,9 @@ function getRoundSummaryForTrades() {
     console.log(shareManager.goodInvestHist);
 
     if (tradesLastPeriod === 0) {
-        res = "Jetzt kannst du mal wieder Anteile handeln, nachdem du dich in der letzten Periode für nichts tun entschieden hast."
+        res = "In der letzten Periode war wohl nichts für dich dabei. Vielleicht willst du jetzt wieder Anteile handeln."
     } else {
-        res = "Super, dass du dich was getraut hast! Mut steht am Anfang des Handelns. Glück am Ende."
+        res = "Mut steht am Anfang des Handelns. Glück am Ende."
     }
 
     return res;
@@ -465,7 +470,12 @@ function sendFinalResult() {
             data: data
         }
     });
+
+    // Send event to own event handler
     window.document.dispatchEvent(event);
+
+    // Send event to event handler of parent
+    // window.parent.document.dispatchEvent(event);
 }
 
 function renameElements(res){
