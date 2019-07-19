@@ -108,7 +108,7 @@ class DispatchBot extends ActivityHandler {
                 await turnContext.sendActivity(`Danke ${ userProfile.name }.`);
 
                 // Show example questions
-                await turnContext.sendActivity("**Beispielfragen, die du stellen kannst sind:**\n" +
+                await turnContext.sendActivity("**Einige Fragen, die du stellen kannst, sind:**\n" +
                     "- Welcher Anteil hat am meisten an Wert gewonnen?\n" +
                     "- Wenn Anteil C an Wert gewinnt, wie viel wird er in der folgenden Periode wert sein?\n" +
                     "- Wie oft hat Anteil F an Wert gewonnen?"

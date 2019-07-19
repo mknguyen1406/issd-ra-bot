@@ -20,6 +20,14 @@ function hideChatBot() {
     x.style.display = "none";
 }
 
+// Hide all
+function hideAll() {
+    document.getElementById("webchat-card").style.display = "none";
+    document.getElementById("buy-sell-card").style.display = "none";
+    document.getElementById("table-card").style.display = "none";
+    document.getElementById("navigation-bar").style.display = "none";
+}
+
 // Create share manager object for a certain price path
 function createShareManager (pricePath, budget) {
 
@@ -160,7 +168,10 @@ function triggerNextRound() {
         }
     } else if (res.reload === true) {
         // This is round 14
-        window.location.reload();
+        // window.location.reload();
+
+        // Hide all elements
+        hideAll();
     }
     renameElements(res.rename);
     // Increase round number
@@ -238,7 +249,7 @@ function nextRound(round) {
         obj.rename.push(
             {
                 id: 'next',
-                content: 'Restart'
+                content: 'Beenden'
             }
         );
 
