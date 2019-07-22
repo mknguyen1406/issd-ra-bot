@@ -483,10 +483,10 @@ function sendFinalResult() {
     });
 
     // Send event to own event handler
-    window.document.dispatchEvent(event);
+    // window.document.dispatchEvent(event);
 
     // Send event to event handler of parent
-    // window.parent.document.dispatchEvent(event);
+    window.parent.document.dispatchEvent(event);
 }
 
 function renameElements(res){

@@ -17,14 +17,15 @@
     // }
 
     // Create event listener for summary and result event
-    // window.document.addEventListener('botEvent', handleEvent, false);
-    // function handleEvent(e) {
-    //     console.log(e);
-    //     const type = e.detail.type;
-    //     const data = e.detail.data;
-    //
-    //     window.alert("Type: " + type + "\nData: " + data);
-    // }
+    window.document.addEventListener('botEvent', handleEvent, false);
+    function handleEvent(e) {
+        console.log(e);
+        const type = e.detail.type;
+        const data = e.detail.data;
+
+        window.alert("Type: " + type + "\nData: " + data);
+        console.log("Type: " + type + "\nData: " + data);
+    }
 </script>
 </body>
 </html>
