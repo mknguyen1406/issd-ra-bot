@@ -26,6 +26,27 @@
         window.alert("Type: " + type + "\nData: " + data);
         console.log("Type: " + type + "\nData: " + data);
     }
+
+    // Event listener for messages
+    window.addEventListener('message', function(event) {
+
+        // IMPORTANT: Check the origin of the data!
+        // if (~event.origin.indexOf('http://yoursite.com')) {
+        //     // The data has been sent from your site
+        //
+        //     // The data sent with postMessage is stored in event.data
+        //     console.log(event.data);
+        // } else {
+        //     // The data hasn't been sent from your site!
+        //     // Be careful! Do not use it.
+        //     return;
+        // }
+
+        if (event.data.type === "result") {
+            console.log(event.data);
+        }
+        // window.alert(event.data);
+    });
 </script>
 </body>
 </html>

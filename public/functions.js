@@ -486,7 +486,11 @@ function sendFinalResult() {
     // window.document.dispatchEvent(event);
 
     // Send event to event handler of parent
-    window.parent.document.dispatchEvent(event);
+    // window.parent.document.dispatchEvent(event);
+
+    // Send event to event handler of parent
+    const jsonObj = JSON.parse(JSON.stringify(event.detail));
+    window.parent.postMessage(jsonObj, '*');
 }
 
 function renameElements(res){
