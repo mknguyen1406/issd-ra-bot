@@ -246,19 +246,25 @@ function startChatBot() {
 
                 switch (intent) {
                     case "anteil_gewonnen_max":
-                        
+                        luisResponse = shareManager.mostUps();
                         break;
                     case "anteil_verloren_max":
+                        luisResponse = shareManager.mostDowns();
                         break;
                     case "anteil_potentieller_zuwachs":
+                        luisResponse = shareManager.potentialUp(entity);
                         break;
                     case "anteil_potentieller_verlust":
+                        luisResponse = shareManager.potentialDown(entity);
                         break;
                     case "anteil_spezifisch_gewonnen":
+                        luisResponse = shareManager.shareUps(entity);
                         break;
                     case "anteil_spezifisch_verloren":
+                        luisResponse = shareManager.shareDowns(entity);
                         break;
                     case "rat_geben":
+                        luisResponse = shareManager.getRecommendAlg(round);
                         break;
                     case "wert_portfolio":
                         break;
@@ -270,8 +276,8 @@ function startChatBot() {
                 // Create event to request summary
                 const event = new CustomEvent('botEvent', {
                     detail: {
-                        type: "summaryRequest",
-                        data: luisResponse
+                        type: "luisEvent",
+                        data: "LUIS response"
                     }
                 });
 

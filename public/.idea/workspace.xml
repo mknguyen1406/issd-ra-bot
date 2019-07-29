@@ -35,8 +35,8 @@
       <file leaf-file-name="shareManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shareManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3298">
-              <caret line="194" column="4" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="4" />
+            <state relative-caret-position="1010">
+              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -63,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="248" column="24" selection-start-line="248" selection-start-column="24" selection-end-line="248" selection-end-column="24" />
+              <caret line="275" column="50" lean-forward="true" selection-start-line="275" selection-start-column="50" selection-end-line="275" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -90,8 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>alertNotOpen</find>
-      <find>summar</find>
       <find>openFor</find>
       <find>web</find>
       <find>Handel</find>
@@ -120,6 +118,8 @@
       <find>button</find>
       <find>botEve</find>
       <find>botEvent</find>
+      <find>getHighestShare</find>
+      <find>round</find>
     </findStrings>
     <replaceStrings>
       <replace>Value</replace>
@@ -298,12 +298,12 @@
       <workItem from="1563544157497" duration="6321000" />
       <workItem from="1563567413450" duration="962000" />
       <workItem from="1563825359328" duration="2223000" />
-      <workItem from="1564430419030" duration="3506000" />
+      <workItem from="1564430419030" duration="4661000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269057000" />
+    <option name="totallyTimeSpent" value="270212000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -602,13 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shareManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3298">
-          <caret line="194" column="4" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -639,10 +632,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/shareManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1010">
+          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="248" column="24" selection-start-line="248" selection-start-column="24" selection-end-line="248" selection-end-column="24" />
+          <caret line="275" column="50" lean-forward="true" selection-start-line="275" selection-start-column="50" selection-end-line="275" selection-end-column="50" />
         </state>
       </provider>
     </entry>

@@ -174,6 +174,15 @@ class DispatchBot extends ActivityHandler {
                 await context.sendActivity(message);
             }
 
+            if (context.activity.name === "luisEvent") {
+
+                // Get data
+                const message = context.activity.value;
+
+                // Send summary to client
+                await context.sendActivity(message);
+            }
+
             if (context.activity.name === "result") {
 
                 // Get data
