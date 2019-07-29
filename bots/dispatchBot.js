@@ -131,12 +131,16 @@ class DispatchBot extends ActivityHandler {
 
                 // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
                 const recognizerResult = await dispatchRecognizer.recognize(turnContext);
+                console.log(recognizerResult);
 
                 // Top intent tell us which cognitive service to use.
                 const intent = LuisRecognizer.topIntent(recognizerResult);
 
+                // Get entity
+                const entity = this.parseCompositeEntity(recognizerResult, 'Anteil', 'Anteil_Typ');
+
                 // Next, we call the dispatcher with the top intent.
-                await this.dispatchToTopIntentAsync(turnContext, intent, recognizerResult);
+                await this.dispatchToTopIntentAsync(turnContext, intent, entity, recognizerResult);
             }          
 
             await next();
@@ -201,7 +205,13 @@ class DispatchBot extends ActivityHandler {
         await turnContext.sendActivity(reply);
     }
 
-    async dispatchToTopIntentAsync(context, intent, recognizerResult) {
+    async dispatchToTopIntentAsync(context, intent, entity, recognizerResult) {
+
+        console.log("Intent: " + intent);
+
+        // TODO: Use dispatch model
+        await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
+
         switch (intent) {
         case 'l_luis':
             await this.processLUIS(context, recognizerResult.luisResult);
@@ -216,13 +226,22 @@ class DispatchBot extends ActivityHandler {
                 "- Kannst du mir einen Witz erzählen?"
             );
             break;
-        case 'l_noMoreAnswers':
-            break;
         default:
             this.logger.log(`Dispatch unrecognized intent: ${ intent }.`);
             await context.sendActivity(`Dispatch unrecognized intent: ${ intent }.`);
             break;
         }
+    }
+
+    parseCompositeEntity(result, compositeName, entityName) {
+        const compositeEntity = result.entities[compositeName];
+        if (!compositeEntity || !compositeEntity[0]) return undefined;
+
+        const entity = compositeEntity[0][entityName];
+        if (!entity || !entity[0]) return undefined;
+
+        const entityValue = entity[0][0];
+        return entityValue;
     }
 
     async processLUIS(context, luisResult) {

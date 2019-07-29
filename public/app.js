@@ -234,6 +234,50 @@ function startChatBot() {
                 //     document.getElementById(obj.id).innerHTML = obj.content;
                 // }
             }
+
+            if (data.name === 'luisEvent' && correctEvent) {
+
+                const luisResponse = "";
+                const intent = channelData.intent;
+                const entity = channelData.entity;
+
+                console.log("Intent: " + intent);
+                console.log("Entity: " + entity);
+
+                switch (intent) {
+                    case "anteil_gewonnen_max":
+                        
+                        break;
+                    case "anteil_verloren_max":
+                        break;
+                    case "anteil_potentieller_zuwachs":
+                        break;
+                    case "anteil_potentieller_verlust":
+                        break;
+                    case "anteil_spezifisch_gewonnen":
+                        break;
+                    case "anteil_spezifisch_verloren":
+                        break;
+                    case "rat_geben":
+                        break;
+                    case "wert_portfolio":
+                        break;
+                    default:
+                       console.log(`Dispatch unrecognized intent: ${ intent }.`);
+                        break;
+                }
+
+                // Create event to request summary
+                const event = new CustomEvent('botEvent', {
+                    detail: {
+                        type: "summaryRequest",
+                        data: luisResponse
+                    }
+                });
+
+                // Send event to own event handler
+                window.document.dispatchEvent(event);
+            }
         }
     });
 }
