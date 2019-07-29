@@ -212,25 +212,25 @@ class DispatchBot extends ActivityHandler {
         // TODO: Use dispatch model
         await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
 
-        switch (intent) {
-        case 'l_luis':
-            await this.processLUIS(context, recognizerResult.luisResult);
-            break;
-        case 'q_qnamaker':
-            await this.processQnA(context);
-            break;
-        case 'l_moreAnswers':
-            await context.sendActivity("**Hier sind weitere Fragen:**\n" + 
-                "- Wenn ich Anteil C verkaufe und Anteil D zum aktuellen Preis kaufe, wie viel Guthaben habe ich dann übrig?\n" +
-                "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                "- Kannst du mir einen Witz erzählen?"
-            );
-            break;
-        default:
-            this.logger.log(`Dispatch unrecognized intent: ${ intent }.`);
-            await context.sendActivity(`Dispatch unrecognized intent: ${ intent }.`);
-            break;
-        }
+        // switch (intent) {
+        // case 'l_luis':
+        //     await this.processLUIS(context, recognizerResult.luisResult);
+        //     break;
+        // case 'q_qnamaker':
+        //     await this.processQnA(context);
+        //     break;
+        // case 'l_moreAnswers':
+        //     await context.sendActivity("**Hier sind weitere Fragen:**\n" + 
+        //         "- Wenn ich Anteil C verkaufe und Anteil D zum aktuellen Preis kaufe, wie viel Guthaben habe ich dann übrig?\n" +
+        //         "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+        //         "- Kannst du mir einen Witz erzählen?"
+        //     );
+        //     break;
+        // default:
+        //     this.logger.log(`Dispatch unrecognized intent: ${ intent }.`);
+        //     await context.sendActivity(`Dispatch unrecognized intent: ${ intent }.`);
+        //     break;
+        // }
     }
 
     parseCompositeEntity(result, compositeName, entityName) {

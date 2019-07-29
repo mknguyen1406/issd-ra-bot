@@ -237,7 +237,7 @@ function startChatBot() {
 
             if (data.name === 'luisEvent' && correctEvent) {
 
-                const luisResponse = "";
+                let luisResponse = "LUIS response";
                 const intent = channelData.intent;
                 const entity = channelData.entity;
 
