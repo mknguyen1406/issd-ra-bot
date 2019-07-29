@@ -264,7 +264,7 @@ function startChatBot() {
                         luisResponse = shareManager.shareDowns(entity);
                         break;
                     case "rat_geben":
-                        luisResponse = shareManager.getRecommendAlg(round);
+                        luisResponse = shareManager.getRecommendAlg(round-1);
                         break;
                     case "wert_portfolio":
                         break;
@@ -277,7 +277,7 @@ function startChatBot() {
                 const event = new CustomEvent('botEvent', {
                     detail: {
                         type: "luisEvent",
-                        data: "LUIS response"
+                        data: luisResponse
                     }
                 });
 

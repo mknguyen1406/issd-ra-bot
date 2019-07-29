@@ -76,7 +76,50 @@ class ShareManager {
                 recs.push(i);
             }
         }
-        return recs;
+        return this.parseRecommendAlg(recs);
+    }
+    
+    parseRecommendAlg(recs) {
+
+        // Create mapping table
+        const mapping = {
+            0: "A",
+            1: "B",
+            2: "C",
+            3: "D",
+            4: "E",
+            5: "F"
+        };
+
+        let placeholder = "";
+
+        // Fill placeholder for recommended shares semantically correct
+        if (recs.length === 1) {
+            placeholder = "Anteil " + mapping[recs[0]];
+        } else if (recs.length === 2) {
+            placeholder = "Anteil " + mapping[recs[0]] + " und Anteil " + mapping[recs[1]];
+        } else {
+
+            // Loop through all shares
+            for (let i = 0; i < recs.length; i++) {
+                if (i === recs.length - 1) {
+                    // Last part separated with "oder"
+                    placeholder = placeholder + " oder " + "Anteil " + mapping[recs[i]];
+                } else {
+                    // Other parts separated with comma
+
+                    if (i === 0) {
+                        // First one without leading comma
+                        placeholder = placeholder + "Anteil " + mapping[recs[i]];
+                    } else {
+                        // Succeeding ones with leading comma
+                        placeholder = placeholder + ", " + "Anteil " + mapping[recs[i]];
+                    }
+                }
+            }
+        }
+
+        return "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, " + placeholder + " zu kaufen."
     }
 
     getCheapestShare(round) {
