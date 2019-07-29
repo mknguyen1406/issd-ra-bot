@@ -237,40 +237,46 @@ function startChatBot() {
 
             if (data.name === 'luisEvent' && correctEvent) {
 
-                let luisResponse = "LUIS response";
-                const intent = channelData.intent;
-                const entity = channelData.entity;
+                let luisResponse = "";
 
-                console.log("Intent: " + intent);
-                console.log("Entity: " + entity);
+                // Only available when experiment started
+                if (openForTrading === true) {
+                    const intent = channelData.intent;
+                    const entity = channelData.entity;
 
-                switch (intent) {
-                    case "anteil_gewonnen_max":
-                        luisResponse = shareManager.mostUps();
-                        break;
-                    case "anteil_verloren_max":
-                        luisResponse = shareManager.mostDowns();
-                        break;
-                    case "anteil_potentieller_zuwachs":
-                        luisResponse = shareManager.potentialUp(entity);
-                        break;
-                    case "anteil_potentieller_verlust":
-                        luisResponse = shareManager.potentialDown(entity);
-                        break;
-                    case "anteil_spezifisch_gewonnen":
-                        luisResponse = shareManager.shareUps(entity);
-                        break;
-                    case "anteil_spezifisch_verloren":
-                        luisResponse = shareManager.shareDowns(entity);
-                        break;
-                    case "rat_geben":
-                        luisResponse = shareManager.getRecommendAlg(round-1);
-                        break;
-                    case "wert_portfolio":
-                        break;
-                    default:
-                       console.log(`Dispatch unrecognized intent: ${ intent }.`);
-                        break;
+                    console.log("Intent: " + intent);
+                    console.log("Entity: " + entity);
+
+                    switch (intent) {
+                        case "anteil_gewonnen_max":
+                            luisResponse = shareManager.mostUps();
+                            break;
+                        case "anteil_verloren_max":
+                            luisResponse = shareManager.mostDowns();
+                            break;
+                        case "anteil_potentieller_zuwachs":
+                            luisResponse = shareManager.potentialUp(entity);
+                            break;
+                        case "anteil_potentieller_verlust":
+                            luisResponse = shareManager.potentialDown(entity);
+                            break;
+                        case "anteil_spezifisch_gewonnen":
+                            luisResponse = shareManager.shareUps(entity);
+                            break;
+                        case "anteil_spezifisch_verloren":
+                            luisResponse = shareManager.shareDowns(entity);
+                            break;
+                        case "rat_geben":
+                            luisResponse = shareManager.getRecommendAlg(round-1);
+                            break;
+                        case "wert_portfolio":
+                            break;
+                        default:
+                            console.log(`Dispatch unrecognized intent: ${ intent }.`);
+                            break;
+                    }
+                } else {
+                    luisResponse = "Bitte starte erst das Experiment.";
                 }
 
                 // Create event to request summary
