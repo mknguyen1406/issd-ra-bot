@@ -67,6 +67,7 @@ class ShareManager {
         };
     }
 
+    //=================================== Bot questions =========================================
     getRecommendAlg(round) {
         let recs = [0];
         for (let i = 1; i < 6; i++) {
@@ -76,10 +77,139 @@ class ShareManager {
                 recs.push(i);
             }
         }
-        return this.parseRecommendAlg(recs);
+
+        const placeholder = this.parseShareResults(recs, "oder");
+        return "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, " + placeholder + " zu kaufen.";
     }
-    
-    parseRecommendAlg(recs) {
+
+    mostUps(round) {
+        let recs = [0];
+        for (let i = 1; i < 6; i++) {
+            if (this.goodUpsHist[i][round] > this.goodUpsHist[recs[0]][round]) {
+                recs = [i];
+            } else if (this.goodUpsHist[i][round] === this.goodUpsHist[recs[0]][round]) {
+                recs.push(i);
+            }
+        }
+
+        const placeholder = this.parseShareResults(recs, "und");
+
+        let result = "";
+
+        // Plural or singular
+        if (recs.length === 1) {
+            result = placeholder + " hat bisher am meisten an Wert gewonnen.";
+        } else if (recs.length > 1) {
+            result = placeholder + " haben bisher am meisten an Wert gewonnen.";
+        }
+        return result
+    }
+
+    mostDowns(round) {
+        let recs = [0];
+        for (let i = 1; i < 6; i++) {
+            if (this.goodUpsHist[i][round] < this.goodUpsHist[recs[0]][round]) {
+                recs = [i];
+            } else if (this.goodUpsHist[i][round] === this.goodUpsHist[recs[0]][round]) {
+                recs.push(i);
+            }
+        }
+
+        const placeholder = this.parseShareResults(recs, "und");
+
+        let result = "";
+
+        // Plural or singular
+        if (recs.length === 1) {
+            result = placeholder + " hat bisher am meisten an Wert verloren.";
+        } else if (recs.length > 1) {
+            result = placeholder + " haben bisher am meisten an Wert verloren.";
+        }
+        return result
+    }
+
+    potentialUp(shareChar) {
+        // Create mapping table
+        const mapping = {
+            A: 0,
+            B: 1,
+            C: 2,
+            D: 3,
+            E: 4,
+            F: 5
+        };
+
+        const shareNo = mapping[shareChar];
+        const nextValue = Math.round(this.goodValues[shareNo] * 1.06);
+
+        return "Wenn Anteil " + shareChar + " an Wert gewinnt, wird er in der folgenden Periode " + nextValue + " Währungseinheiten wert sein."
+    }
+
+    potentialDown(shareChar) {
+        // Create mapping table
+        const mapping = {
+            A: 0,
+            B: 1,
+            C: 2,
+            D: 3,
+            E: 4,
+            F: 5
+        };
+
+        const shareNo = mapping[shareChar];
+        const nextValue = Math.round(this.goodValues[shareNo] * 0.95);
+
+        return "Wenn Anteil " + shareChar + " an Wert verliert, wird er in der folgenden Periode " + nextValue + " Währungseinheiten wert sein."
+    }
+
+    shareUps(shareChar, round) {
+
+        // Create mapping table
+        const mapping = {
+            A: 0,
+            B: 1,
+            C: 2,
+            D: 3,
+            E: 4,
+            F: 5
+        };
+
+        const shareNo = mapping[shareChar];
+        const ups = this.goodUpsHist[shareNo][round];
+
+        return "Anteil " + shareChar + " hat bisher " + ups + "-mal an Wert gewonnen."
+    }
+
+    shareDowns(shareChar, round) {
+
+        // Create mapping table
+        const mapping = {
+            A: 0,
+            B: 1,
+            C: 2,
+            D: 3,
+            E: 4,
+            F: 5
+        };
+
+        const shareNo = mapping[shareChar];
+        const downs = round - this.goodUpsHist[shareNo][round];
+
+        return "Anteil " + shareChar + " hat bisher " + downs + "-mal an Wert verloren."
+    }
+
+    portfolioValue() {
+        const cashTotal = this.cashout();
+        const portfolio = Math.round(cashTotal.portfolio);
+        const budget = Math.round(cashTotal.budget);
+        const total = portfolio + budget;
+
+        return "Dein gesamtes Portfolio ist derzeit " + total + " Währungseinheiten wert. Davon fallen " +
+            portfolio + " auf deine Anteile im Besitz und " + budget + " auf dein Restguthaben."
+    }
+    //===========================================================================================
+
+    parseShareResults(recs, conjunction) {
 
         // Create mapping table
         const mapping = {
@@ -97,14 +227,14 @@ class ShareManager {
         if (recs.length === 1) {
             placeholder = "Anteil " + mapping[recs[0]];
         } else if (recs.length === 2) {
-            placeholder = "Anteil " + mapping[recs[0]] + " und Anteil " + mapping[recs[1]];
+            placeholder = "Anteil " + mapping[recs[0]] + " " + conjunction + " Anteil " + mapping[recs[1]];
         } else {
 
             // Loop through all shares
             for (let i = 0; i < recs.length; i++) {
                 if (i === recs.length - 1) {
                     // Last part separated with "oder"
-                    placeholder = placeholder + " oder " + "Anteil " + mapping[recs[i]];
+                    placeholder = placeholder + " " + conjunction + " " + "Anteil " + mapping[recs[i]];
                 } else {
                     // Other parts separated with comma
 
@@ -119,7 +249,7 @@ class ShareManager {
             }
         }
 
-        return "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, " + placeholder + " zu kaufen."
+        return placeholder
     }
 
     getCheapestShare(round) {
@@ -257,6 +387,7 @@ class ShareManager {
             });
             this.goodHoldingsHist[i].push(this.goodHoldings[i]);
 
+            // Report if shares of increased or decreased on value
             if (round === 0) {
                 this.goodUpsHist[i].push(0);
             } else {

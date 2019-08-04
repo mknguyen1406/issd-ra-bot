@@ -249,10 +249,10 @@ function startChatBot() {
 
                     switch (intent) {
                         case "anteil_gewonnen_max":
-                            luisResponse = shareManager.mostUps();
+                            luisResponse = shareManager.mostUps(round-1);
                             break;
                         case "anteil_verloren_max":
-                            luisResponse = shareManager.mostDowns();
+                            luisResponse = shareManager.mostDowns(round-1);
                             break;
                         case "anteil_potentieller_zuwachs":
                             luisResponse = shareManager.potentialUp(entity);
@@ -261,15 +261,16 @@ function startChatBot() {
                             luisResponse = shareManager.potentialDown(entity);
                             break;
                         case "anteil_spezifisch_gewonnen":
-                            luisResponse = shareManager.shareUps(entity);
+                            luisResponse = shareManager.shareUps(entity, round-1);
                             break;
                         case "anteil_spezifisch_verloren":
-                            luisResponse = shareManager.shareDowns(entity);
+                            luisResponse = shareManager.shareDowns(entity, round-1);
                             break;
                         case "rat_geben":
                             luisResponse = shareManager.getRecommendAlg(round-1);
                             break;
                         case "wert_portfolio":
+                            luisResponse = shareManager.portfolioValue();
                             break;
                         default:
                             console.log(`Dispatch unrecognized intent: ${ intent }.`);
@@ -294,11 +295,16 @@ function startChatBot() {
     });
 }
 
+// =================================== Global variables =======================================
 // This round number controls the requested price paths
 let round = 0;
 
 let openForTrading = null;
 let shareManager = null;
+
+// List that ensures that certain summaries cannot be outputted twice
+let forbiddenSummaries = [];
+// ============================================================================================
 
 // getData(function (obj) {
 //     const pricesArray = obj.pricesArray;

@@ -35,8 +35,8 @@
       <file leaf-file-name="shareManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shareManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1564">
-              <caret line="104" column="44" lean-forward="true" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
+            <state relative-caret-position="765">
+              <caret line="200" column="22" lean-forward="true" selection-start-line="200" selection-start-column="22" selection-end-line="200" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -50,20 +50,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="283" column="22" selection-start-line="283" selection-start-column="18" selection-end-line="283" selection-end-column="22" />
+            <state relative-caret-position="255">
+              <caret line="329" column="17" lean-forward="true" selection-start-line="329" selection-start-column="17" selection-end-line="329" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
+            <state relative-caret-position="229">
+              <caret line="305" column="27" selection-start-line="305" selection-start-column="27" selection-end-line="305" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -71,8 +71,8 @@
       <file leaf-file-name="iframe.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iframe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="33" column="62" lean-forward="true" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+            <state relative-caret-position="248">
+              <caret line="45" column="36" lean-forward="true" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -90,15 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console</find>
-      <find>Fert</find>
-      <find>openF</find>
-      <find>openFo</find>
-      <find>openForTrading</find>
-      <find>Math.</find>
-      <find>buttonAct</find>
-      <find>trigger</find>
-      <find>buttonA</find>
       <find>readTextFile</find>
       <find>%</find>
       <find>goodInvestHist</find>
@@ -115,11 +106,20 @@
       <find>botEve</find>
       <find>getHighestShare</find>
       <find>mapping</find>
-      <find>for</find>
       <find>getRec</find>
       <find>botEvent</find>
       <find>placehold</find>
       <find>open</find>
+      <find>goodDow</find>
+      <find>goodUpsHist</find>
+      <find>getCheapestShare</find>
+      <find>mappin</find>
+      <find>und</find>
+      <find>parse</find>
+      <find>const mapping</find>
+      <find>getRoundSummary</find>
+      <find>parseShareResults</find>
+      <find>for</find>
     </findStrings>
     <replaceStrings>
       <replace>Value</replace>
@@ -164,10 +164,10 @@
         <option value="$PROJECT_DIR$/styles.css" />
         <option value="$PROJECT_DIR$/../bots/config.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/functions.js" />
         <option value="$PROJECT_DIR$/iframe.html" />
         <option value="$PROJECT_DIR$/shareManager.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/functions.js" />
       </list>
     </option>
   </component>
@@ -208,6 +208,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -224,7 +225,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,12 +298,13 @@
       <workItem from="1563544157497" duration="6321000" />
       <workItem from="1563567413450" duration="962000" />
       <workItem from="1563825359328" duration="2223000" />
-      <workItem from="1564430419030" duration="7262000" />
+      <workItem from="1564430419030" duration="7929000" />
+      <workItem from="1564952099834" duration="4835000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="272813000" />
+    <option name="totallyTimeSpent" value="278315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -331,19 +332,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28091398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -610,39 +611,33 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/bots/dialogBot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shareManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="104" column="44" lean-forward="true" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/iframe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="33" column="62" lean-forward="true" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="283" column="22" selection-start-line="283" selection-start-column="18" selection-end-line="283" selection-end-column="22" />
+        <state relative-caret-position="248">
+          <caret line="45" column="36" lean-forward="true" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
+        <state relative-caret-position="229">
+          <caret line="305" column="27" selection-start-line="305" selection-start-column="27" selection-end-line="305" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shareManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="200" column="22" lean-forward="true" selection-start-line="200" selection-start-column="22" selection-end-line="200" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="329" column="17" lean-forward="true" selection-start-line="329" selection-start-column="17" selection-end-line="329" selection-end-column="17" />
         </state>
       </provider>
     </entry>

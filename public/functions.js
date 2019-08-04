@@ -283,8 +283,10 @@ function sendRoundSummary(round) {
         // Send fixed summary that has number 0
         summary = getRoundSummary(0);
     } else if ((round > 3) && (round < 12)) {
+        
         // Send randomized summary
-        const randNo = generateRandomNo(0,10);
+        const randNo = getRandomNo();
+        
         console.log("random number: " + randNo);
         summary = getRoundSummary(round-1); // TODO: Set this to randNo instead of round-1
 
@@ -312,6 +314,18 @@ function sendRoundSummary(round) {
 
     // Send event to event handler of parent
     // window.parent.document.dispatchEvent(event);
+}
+
+function getRandomNo() {
+    
+    let randNo = generateRandomNo(0,10);
+
+    // Check if summary has been dropped already
+    while (forbiddenSummaries.includes(randNo) > 0) {
+        randNo = generateRandomNo(0,10);
+    }
+
+    return randNo
 }
 
 function getRoundSummary(no) {
@@ -343,14 +357,23 @@ function getRoundSummary(no) {
             break;
         case 7:
             res = getRoundSummaryForTrades();
+            
+            // Ensure that this summary cannot occure twice
+            forbiddenSummaries.push(7);
             break;
         case 8:
             res = '"Das Wichtigste für einen Investor ist nicht der Intellekt sondern das Temperament. ' +
                 "Du solltest weder große Freude empfinden, wenn Du mit der " +
                 'Masse läufst und ebenso wenig, wenn Du gegen den Strom schwimmst." – Warren Buffett';
+
+            // Ensure that this summary cannot occure twice
+            forbiddenSummaries.push(8);
             break;
         case 9:
             res = '"Der Ziellose erleidet sein Schicksal – der Zielbewusste gestaltet es!" – Immanuel Kant';
+
+            // Ensure that this summary cannot occure twice
+            forbiddenSummaries.push(9);
             break;
         case 10:
             res = getRoundSummaryForPossibleTrade();
