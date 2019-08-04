@@ -81,7 +81,7 @@ class DispatchBot extends ActivityHandler {
                     await context.sendActivity("Hallo, ich bin dein Robo Assistant.\n" + 
                         "Du kannst mich Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen." );
 
-                    await context.sendActivity("Mein Name ist Robobert. Wie lautet deiner?");
+                    await context.sendActivity("Mein Name ist Charles. Wie lautet deiner?");
 
                     // Set the flag to true, so we don't prompt in the next turn.
                     conversationData.promptedForUserName = true;
