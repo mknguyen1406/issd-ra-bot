@@ -70,7 +70,7 @@ class ShareManager {
     //=================================== Bot questions =========================================
     getRecommendAlg(round) {
         let recs = [0];
-        for (let i = 1; i < 6; i++) {
+    for (let i = 1; i < 6; i++) {
             if (this.goodUpsHist[i][round] > this.goodUpsHist[recs[0]][round]) {
                 recs = [i];
             } else if (this.goodUpsHist[i][round] === this.goodUpsHist[recs[0]][round]) {
