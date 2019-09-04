@@ -79,7 +79,7 @@ class DispatchBot extends ActivityHandler {
             for (let member of membersAdded) {
                 if (member.id !== context.activity.recipient.id) {
                     await context.sendActivity("Hallo, ich bin dein Robo Assistant.\n" + 
-                        "Du kannst mich Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen." );
+                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen." );
 
                     await context.sendActivity("Mein Name ist Charles. Wie lautet deiner?");
 
@@ -109,9 +109,9 @@ class DispatchBot extends ActivityHandler {
 
                 // Show example questions
                 await turnContext.sendActivity("**Folgende Fragen kannst du mir stellen:**\n" + //Einige Fragen, die du stellen kannst, sind
-                    "- Welcher Anteil hat am meisten an Wert gewonnen/verloren?\n" +
-                    "- Wenn Anteil C an Wert gewinnt/verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                    "- Wie oft hat Anteil F an Wert gewonnen/verloren?\n" +
+                    "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                    "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                    "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                     "- Wie hoch ist die Gesamtrendite meines Portfolios?"
                    );
                     // await this.sendSuggestedActions(turnContext, userProfile.name);

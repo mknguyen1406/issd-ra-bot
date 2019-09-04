@@ -322,4 +322,6 @@ let forbiddenSummaries = [];
 // });
 
 // Create share manager
-createShareManager(pricePath, 2000);
+const pricesArray = createShareManager(pricePath, 2000, function (budget, prices) {
+    shareManager = new ShareManager(budget, prices);
+});

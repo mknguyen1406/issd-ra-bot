@@ -47,7 +47,7 @@ function hideAll() {
 }
 
 // Create share manager object for a certain price path
-function createShareManager (pricePath, budget) {
+function createShareManager (pricePath, budget, callback) {
 
     // Call function to read csv file
     readTextFile("./data/path" + pricePath + ".csv", function (obj) {
@@ -68,8 +68,10 @@ function createShareManager (pricePath, budget) {
             5: x[7].slice(1,15)
         };
 
+        callback(budget, pricesArray);
+
         // Create share manager object
-        shareManager = new ShareManager(budget, pricesArray);
+        // shareManager = new ShareManager(budget, pricesArray);
     });
 }
 
