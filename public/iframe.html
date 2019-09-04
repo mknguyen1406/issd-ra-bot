@@ -17,7 +17,7 @@
     // }
 
     // Create event listener for summary and result event
-    window.document.addEventListener('botEvent', handleEvent, false);
+/*    window.document.addEventListener('botEvent', handleEvent, false);
     function handleEvent(e) {
         console.log(e);
         const type = e.detail.type;
@@ -25,22 +25,35 @@
 
         window.alert("Type: " + type + "\nData: " + data);
         console.log("Type: " + type + "\nData: " + data);
-    }
+    }*/
 
     // Event listener for messages
     window.addEventListener('message', function(event) {
+        console.log(event);
 
-        // IMPORTANT: Check the origin of the data!
-        // if (~event.origin.indexOf('http://yoursite.com')) {
-        //     // The data has been sent from your site
-        //
-        //     // The data sent with postMessage is stored in event.data
-        //     console.log(event.data);
-        // } else {
-        //     // The data hasn't been sent from your site!
-        //     // Be careful! Do not use it.
-        //     return;
-        // }
+        if (event.origin === "http://localhost:63342") {
+            if (typeof(event.data.detail) !== 'undefined') {
+                window.alert("Message received from origin: " + event.origin);
+
+                // The data sent with postMessage is stored in event.data
+                console.log(event.data);
+            }
+        }
+
+        /*// IMPORTANT: Check the origin of the data!
+        if (event.origin.indexOf('http://localhost:63342')) {
+            // The data has been sent from your site
+
+            window.alert("Message received");
+            window.alert(event.origin);
+
+            // The data sent with postMessage is stored in event.data
+            console.log(event.data);
+        } else {
+            // The data hasn't been sent from your site!
+            // Be careful! Do not use it.
+            return;
+        }*/
 
         if (event.data.type === "result") {
             console.log(event.data);

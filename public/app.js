@@ -7,6 +7,8 @@ const experimentRound = url.searchParams.get("experimentRound");
 const cabinNo = url.searchParams.get("cabinNo");
 const experimentGroup = url.searchParams.get("experimentGroup");
 
+console.log("Price path: " + pricePath);
+
 console.log("Survey ID: " + surveyId + "\n",
     "Price path: " + pricePath + "\n",
     "Experiment round: " + experimentRound + "\n",
@@ -192,7 +194,7 @@ function startChatBot() {
 
     // Listening for incoming response events of type buy, sell or next
     window.addEventListener('webchatincomingactivity', ({data}) => {
-        console.log(`Received an activity of type "${ data.type }":`);
+        console.log(`Received a bot activity of type "${ data.type }":`);
         console.log(data);
         // Don't jump into if clause at messages and webchat/join event
         if (data.type === "event" && data.name !== "webchat/join") {

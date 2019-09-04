@@ -312,8 +312,23 @@ function sendRoundSummary(round) {
     // Send event to own event handler
     window.document.dispatchEvent(event);
 
+    // Send event to own event handler
+    // window.document.dispatchEvent(event);
+
     // Send event to event handler of parent
     // window.parent.document.dispatchEvent(event);
+
+    const test = {
+        detail: {
+            test1: "jiha",
+            test2: "wuhu"
+        }
+    };
+
+    // Send event to event handler of parent
+    const jsonObj = JSON.parse(JSON.stringify(event.detail));
+    // window.parent.postMessage(jsonObj, '*');
+    window.parent.postMessage(test, '*');
 }
 
 function getRandomNo() {
