@@ -5,7 +5,7 @@ const surveyId = (url.searchParams.get("surveyId") === null || url.searchParams.
 const pricePath = (url.searchParams.get("pricePath") === null || url.searchParams.get("pricePath") === "") ? 1 : url.searchParams.get("pricePath"); // 1 as default
 const experimentRound = (url.searchParams.get("experimentRound") === null || url.searchParams.get("experimentRound") === "") ? 0 : url.searchParams.get("experimentRound"); // 0 as default
 const cabinNo = (url.searchParams.get("cabinNo") === null || url.searchParams.get("cabinNo") === "") ? 0 : url.searchParams.get("cabinNo"); // 0 as default
-const experimentGroup = (url.searchParams.get("experimentGroup" === null || url.searchParams.get("experimentGroup") === "") === null) ? 2 : url.searchParams.get("experimentGroup"); // 2 as default
+const experimentGroup = (url.searchParams.get("experimentGroup") === null || url.searchParams.get("experimentGroup") === "") ? 2 : url.searchParams.get("experimentGroup"); // 2 as default
 
 console.log("Survey ID: " + surveyId + "\n",
     "Price path: " + pricePath + "\n",
@@ -21,6 +21,11 @@ const userId = surveyId + "_" + pricePath + "_" + experimentRound + "_" + experi
 if (parseFloat(experimentGroup ) === 1) {
     hideChatBot();
 }
+
+// Hide or show chat bot based on experiment , e.g. 1 for hide, 2 for show
+// if (parseFloat(experimentGroup ) === 2 || parseFloat(experimentGroup ) === 3) {
+//     showBlankChatBot();
+// }
 
 // // Create chart
 const chart = new ApexCharts(
@@ -73,7 +78,7 @@ function startChatBot() {
 
     // Style bot
     const styleOptions = {
-        // botAvatarImage: 'https://image.flaticon.com/icons/svg/1156/1156419.svg',
+        botAvatarImage: './images/type_2a.png',
         // botAvatarInitials: 'BF',
         // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
         // userAvatarInitials: 'WC',
@@ -81,7 +86,7 @@ function startChatBot() {
         backgroundColor: '#f8f9fa',
         bubbleFromUserBackground: '#DCF8C6',
         bubbleFromUserBorderRadius: 10,
-        bubbleBorderRadius: 10,
+        bubbleBorderRadius: 10
 
     };
 

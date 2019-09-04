@@ -105,16 +105,19 @@ class DispatchBot extends ActivityHandler {
                 userProfile.name = turnContext.activity.text;
 
                 // Acknowledge that we got their name.
-                await turnContext.sendActivity(`Danke ${ userProfile.name }.`);
+                await turnContext.sendActivity(`Danke, ${ userProfile.name }.`);
 
                 // Show example questions
-                await turnContext.sendActivity("**Einige Fragen, die du stellen kannst, sind:**\n" +
-                    "- Welcher Anteil hat am meisten an Wert gewonnen?\n" +
-                    "- Wenn Anteil C an Wert gewinnt, wie viel wird er in der folgenden Periode wert sein?\n" +
-                    "- Wie oft hat Anteil F an Wert gewonnen?"
+                await turnContext.sendActivity("**Folgende Fragen kannst du mir stellen:**\n" + //Einige Fragen, die du stellen kannst, sind
+                    "- Welcher Anteil hat am meisten an Wert gewonnen/verloren?\n" +
+                    "- Wenn Anteil C an Wert gewinnt/verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                    "- Wie oft hat Anteil F an Wert gewonnen/verloren?\n" +
+                    "- Wie hoch ist die Gesamtrendite meines Portfolios?"
                    );
-                    await this.sendSuggestedActions(turnContext, userProfile.name);
+                    // await this.sendSuggestedActions(turnContext, userProfile.name);
 
+                // Acknowledge that we got their name.
+                await turnContext.sendActivity("Bitte klicke jetzt auf 'Starte Experiment', um zu beginnen.");
 
                 // Reset the flag to allow the bot to go though the cycle again.
                 conversationData.promptedForUserName = false;

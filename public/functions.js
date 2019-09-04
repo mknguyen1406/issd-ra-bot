@@ -20,6 +20,24 @@ function hideChatBot() {
     x.style.display = "none";
 }
 
+// Show chat bot for certain experiment groups
+function showBlankChatBot() {
+    let x = document.getElementById("webchat");
+    x.style.display = "none";
+
+    x = document.getElementById("webchat_blank");
+    x.style.display = "block";
+}
+
+// Show chat bot for certain experiment groups
+function showChatBot() {
+    let x = document.getElementById("webchat");
+    x.style.display = "block";
+
+    x = document.getElementById("webchat_blank");
+    x.style.display = "none";
+}
+
 // Hide all
 function hideAll() {
     document.getElementById("webchat-card").style.display = "none";
@@ -141,6 +159,10 @@ function buttonActionEvent(e, action) {
     } else {
         // 'Next' event
         if (round === 0) {
+            // if (parseFloat(experimentGroup ) === 2 || parseFloat(experimentGroup ) === 3) {
+            //     showChatBot();
+            // }
+
             // Repeat three times when first clicked on next button
             for (let i = 0; i < 4; i++) {
                 triggerNextRound();

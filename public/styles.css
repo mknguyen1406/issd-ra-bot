@@ -3,6 +3,12 @@
     width: 100%;
 }
 
+#webchat_blank {
+    height: 540px;
+    width: 100%;
+    background-color: #f8f9fa;
+}
+
 .box {
     position: relative;
     margin-left: auto;
