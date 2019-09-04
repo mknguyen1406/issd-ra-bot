@@ -117,7 +117,7 @@ class DispatchBot extends ActivityHandler {
                     // await this.sendSuggestedActions(turnContext, userProfile.name);
 
                 // Acknowledge that we got their name.
-                await turnContext.sendActivity("Bitte klicke jetzt auf 'Starte Experiment', um zu beginnen.");
+                await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
 
                 // Reset the flag to allow the bot to go though the cycle again.
                 conversationData.promptedForUserName = false;

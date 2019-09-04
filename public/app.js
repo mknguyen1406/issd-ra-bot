@@ -78,7 +78,7 @@ function startChatBot() {
 
     // Style bot
     const styleOptions = {
-        botAvatarImage: './images/type_2a.png',
+        botAvatarImage: 'https://issd-ra-web-app.azurewebsites.net/images/type_2a.png',
         // botAvatarInitials: 'BF',
         // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
         // userAvatarInitials: 'WC',
