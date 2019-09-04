@@ -31,7 +31,7 @@
     window.addEventListener('message', function(event) {
         console.log(event);
 
-        if (event.origin === "http://localhost:63342") {
+        if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net") {
             if (typeof(event.data.detail) !== 'undefined') {
                 window.alert("Message received from origin: " + event.origin);
 
