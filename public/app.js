@@ -1,13 +1,11 @@
 // Get URL parameters
 const url_string = window.location.href;
 const url = new URL(url_string);
-const surveyId = url.searchParams.get("surveyId");
-const pricePath = url.searchParams.get("pricePath");
-const experimentRound = url.searchParams.get("experimentRound");
-const cabinNo = url.searchParams.get("cabinNo");
-const experimentGroup = url.searchParams.get("experimentGroup");
-
-console.log("Price path: " + pricePath);
+const surveyId = (url.searchParams.get("surveyId") === null) ? 0 : url.searchParams.get("surveyId"); // 0 as default
+const pricePath = (url.searchParams.get("pricePath") === null) ? 1 : url.searchParams.get("pricePath"); // 1 as default
+const experimentRound = (url.searchParams.get("experimentRound") === null) ? 0 : url.searchParams.get("experimentRound"); // 0 as default
+const cabinNo = (url.searchParams.get("cabinNo") === null) ? 0 : url.searchParams.get("cabinNo"); // 0 as default
+const experimentGroup = (url.searchParams.get("experimentGroup") === null) ? 2 : url.searchParams.get("experimentGroup"); // 2 as default
 
 console.log("Survey ID: " + surveyId + "\n",
     "Price path: " + pricePath + "\n",
