@@ -117,16 +117,18 @@ class DispatchBot extends ActivityHandler {
                 await turnContext.sendActivity(`Danke, ${ userProfile.name }.`);
 
                 // Show example questions
-                await turnContext.sendActivity("**Folgende Fragen kannst du mir stellen:**\n" + //Einige Fragen, die du stellen kannst, sind
-                    "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                    "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                    "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                    "- Wie hoch ist die Gesamtrendite meines Portfolios?"
-                   );
-                    // await this.sendSuggestedActions(turnContext, userProfile.name);
+                // await turnContext.sendActivity("**Folgende Fragen kannst du mir stellen:**\n" + //Einige Fragen, die du stellen kannst, sind
+                //     "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                //     "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                //     "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                //     "- Wie hoch ist die Gesamtrendite meines Portfolios?"
+                //    );
+                //     // await this.sendSuggestedActions(turnContext, userProfile.name);
+                //
+                // // Acknowledge that we got their name.
+                // await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
 
-                // Acknowledge that we got their name.
-                await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
+                await context.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {} });
 
                 // Reset the flag to allow the bot to go though the cycle again.
                 conversationData.promptedForUserName = false;
@@ -162,24 +164,8 @@ class DispatchBot extends ActivityHandler {
             await next();
         });
 
-        // Handle button events
-        this.onEvent(async (context, next) => {
-            //console.log(context.activity);
-            // if (context.activity.name === 'next') {
-            //     const res = await this.nextRound(context.activity.value);
-            //     await context.sendActivity({ name: 'next', type: 'event', channelData: res });
-            // }
-            // if (context.activity.name === 'buy') {
-            //     const id = context.activity.value;
-            //     const res = this.shareManager.buyGood(id, this.openForTrading);
-            //     await context.sendActivity({ name: 'buy', type: 'event', channelData: res });
-            // }
 
-            // if (context.activity.name === 'sell') {
-            //     const id = context.activity.value;
-            //     const res = this.shareManager.sellGood(id, this.openForTrading);
-            //     await context.sendActivity({ name: 'sell', type: 'event', channelData: res });
-            // } -- shifted back to client
+        this.onEvent(async (context, next) => {
 
             if (context.activity.name === "summaryRequest") {
 
@@ -225,10 +211,10 @@ class DispatchBot extends ActivityHandler {
 
     }
 
-    async sendSuggestedActions(turnContext, name) {
-        var reply = MessageFactory.suggestedActions(['Ja, sehr gerne.', 'Nein, danke.'], name + ', willst du wissen, welche Fragen du mir noch stellen kannst?');
-        await turnContext.sendActivity(reply);
-    }
+    // async sendSuggestedActions(turnContext, name) {
+    //     var reply = MessageFactory.suggestedActions(['Ja, sehr gerne.', 'Nein, danke.'], name + ', willst du wissen, welche Fragen du mir noch stellen kannst?');
+    //     await turnContext.sendActivity(reply);
+    // }
 
     async dispatchToTopIntentAsync(context, intent, intentSub, entity, recognizerResult) {
 
@@ -253,7 +239,7 @@ class DispatchBot extends ActivityHandler {
         //     break;
         default:
             this.logger.log(`Dispatch unrecognized intent: ${ intent }.`);
-            await context.sendActivity(`Dispatch unrecognized intent: ${ intent }.`);
+            await context.sendActivity("Entschuldigung, ich habe die Nachricht nicht verstanden.");
             break;
         }
     }
