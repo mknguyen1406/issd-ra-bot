@@ -87,10 +87,12 @@ class DispatchBot extends ActivityHandler {
 
             for (let member of membersAdded) {
                 if (member.id !== context.activity.recipient.id) {
-                    await context.sendActivity("Hallo, ich bin dein Robo Assistant.\n" + 
-                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen." );
+                    // await context.sendActivity("Hallo, ich bin dein Robo Assistant.\n" +
+                    //     "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen." );
+                    //
+                    // await context.sendActivity("Mein Name ist Charles. Wie lautet deiner?");
 
-                    await context.sendActivity("Mein Name ist Charles. Wie lautet deiner?");
+                    await context.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {} });
 
                     // Set the flag to true, so we don't prompt in the next turn.
                     conversationData.promptedForUserName = true;
@@ -128,8 +130,8 @@ class DispatchBot extends ActivityHandler {
                 // // Acknowledge that we got their name.
                 // await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
 
-                // await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
-                //await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "followup"} });
+                // await turnContext.sendActivity({ name: 'exampleQuestionEvent', type: 'event', channelData: {} });
+                //await turnContext.sendActivity({ name: 'exampleQuestionEvent', type: 'event', channelData: {} });
 
                 // Reset the flag to allow the bot to go though the cycle again.
                 conversationData.promptedForUserName = false;
@@ -142,7 +144,7 @@ class DispatchBot extends ActivityHandler {
 
                 // Welcome messages
                 if (questions.includes(text)) {
-                    await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
+                    await turnContext.sendActivity({ name: 'exampleQuestionEvent', type: 'event', channelData: {} });
                 } else if (noQuestions.includes(text)) {
                     await turnContext.sendActivity("Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Hilfe' schreibst.");
                 } else {
@@ -224,7 +226,7 @@ class DispatchBot extends ActivityHandler {
     }
 
     async sendSuggestedActions(turnContext, name) {
-        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein.'], 'Möchtest du wissen, welche Fragen du mir stellen kannst?');
+        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein.'], 'Möchtest du beispielhafte Fragen sehen, die du mir stellen kannst??');
         await turnContext.sendActivity(reply);
     }
 

@@ -237,56 +237,70 @@ function startChatBot() {
                 // }
             }
 
-            // Incoming welcome message
+            // Incoming welcome message event
             if (data.name === 'welcomeEvent') {
 
                 let chatbotResponse = "";
                 const group = parseFloat(experimentGroup);
 
-                // if (channelData.task === "main") {
+                // Only available when experiment started
+                if (group === 2) {
+                    chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
+                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen.";
+
+                } else if (group === 3) {
+                    chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
+                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen. " +
+                        "Außerdem kannst du mich nach einer Investitionsempfehlung fragen.";
+                }
+
+                // Dispatch example questions
+                dispatchBotEvent(chatbotResponse);
+
+                // Dispatch click on 'Starte Experiment' message
+                dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?");
+            }
+
+            // Incoming example question event
+            if (data.name === 'exampleQuestionEvent') {
+
+                let chatbotResponse = "";
+                const group = parseFloat(experimentGroup);
+
                     // Only available when experiment started
                     if (group === 2) {
 
-                        chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
-                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                            "- Wie hoch ist die Gesamtrendite meines Portfolios?";
-                    } else if (group === 3) {
-                        chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
+                        chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
                             "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                             "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                            "- Kannst du mir einen Rat geben?";
+                            "- Wer bist du?\n" +
+                            "- Was kannst du?\n" +
+                            "- Wie heißt du?\n" +
+                            "- Wie alt bist du?\n" +
+                            "- Wer hat dich programmiert?\n" +
+                            "- Welcher Anteil ist vom Typ ++?";
+                    } else if (group === 3) {
+                        chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                            "- Kannst du mir einen Rat geben?\n" +
+                            "- Wer bist du?\n" +
+                            "- Was kannst du?\n" +
+                            "- Wie heißt du?\n" +
+                            "- Wie alt bist du?\n" +
+                            "- Wer hat dich programmiert?\n" +
+                            "- Welcher Anteil ist vom Typ ++?";
                     }
-                // } else {
-                //     // Follow up
-                //     chatbotResponse = "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
-                // }
 
-                // Create event to send group specific welcome message
-                let event = new CustomEvent('botEvent', {
-                    detail: {
-                        type: "chatEvent",
-                        data: chatbotResponse
-                    }
-                });
+                // Dispatch example questions
+                dispatchBotEvent(chatbotResponse);
 
-                // Send event to own event handler
-                window.document.dispatchEvent(event);
-
-                // Follow up
-                chatbotResponse = "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
-                event = new CustomEvent('botEvent', {
-                    detail: {
-                        type: "chatEvent",
-                        data: chatbotResponse
-                    }
-                });
-
-                // Send event to own event handler after small delay
-                setTimeout(function() { window.document.dispatchEvent(event); }, 500);
+                // Dispatch click on 'Starte Experiment' message
+                dispatchBotEvent("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
             }
 
             // Incoming luis und qna events
@@ -344,16 +358,8 @@ function startChatBot() {
                     chatbotResponse = "Bitte starte erst das Experiment.";
                 }
 
-                // Create event to request summary
-                const event = new CustomEvent('botEvent', {
-                    detail: {
-                        type: "chatEvent",
-                        data: chatbotResponse
-                    }
-                });
-
-                // Send event to own event handler
-                window.document.dispatchEvent(event);
+                // Dispatch message
+                dispatchBotEvent(chatbotResponse);
             }
         }
     });

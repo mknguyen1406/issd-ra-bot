@@ -312,7 +312,7 @@ function sendRoundSummary(round) {
         const randNo = getRandomNo();
         
         console.log("random number: " + randNo);
-        summary = getRoundSummary(round-1); // TODO: Set this to randNo instead of round-1
+        summary = getRoundSummary(randNo);
 
         // // Gather data for summary
         // const holdings = {
@@ -321,6 +321,9 @@ function sendRoundSummary(round) {
     } else if (round === 12) {
         // Send fixed summary that has number 11
         summary = getRoundSummary(11);
+    } else if (round === 13) {
+        // Send fixed summary that has number 11
+        summary = getRoundSummary(12);
     }
 
     console.log(summary);
@@ -421,6 +424,9 @@ function getRoundSummary(no) {
             break;
         case 11:
             res = "Das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft."
+            break;
+        case 12:
+            res = "Das Experiment ist jetzt zu Ende. Bitte klicke jetzt unten auf 'Weiter'."
             break;
     }
 
@@ -640,6 +646,19 @@ function appendTableValue(parent, value, good) {
 
 function generateRandomNo (min, max) {
     return Math.floor(Math.random() * (max - min)) + min + 1
+}
+
+function dispatchBotEvent(chatbotResponse) {
+    // Create event to send group specific welcome message
+    let event = new CustomEvent('botEvent', {
+        detail: {
+            type: "chatEvent",
+            data: chatbotResponse
+        }
+    });
+
+    // Send event to own event handler
+    setTimeout(function() { window.document.dispatchEvent(event); }, 500);
 }
 
 /*
