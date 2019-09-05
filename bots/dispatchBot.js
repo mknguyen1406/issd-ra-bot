@@ -129,10 +129,11 @@ class DispatchBot extends ActivityHandler {
                 // await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
 
                 await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
+                // await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "followup"} });
 
                 // After short delay
                 setTimeout(async function() {
-                    await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "followup"} });
+                    await context.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
                     }, 1000);
 
                 // Reset the flag to allow the bot to go though the cycle again.
