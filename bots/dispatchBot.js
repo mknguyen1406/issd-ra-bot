@@ -177,7 +177,7 @@ class DispatchBot extends ActivityHandler {
                 await context.sendActivity(message);
             }
 
-            if (context.activity.name === "luisEvent") {
+            if (context.activity.name === "chatEvent") {
 
                 // Get data
                 const message = context.activity.value;
@@ -226,8 +226,7 @@ class DispatchBot extends ActivityHandler {
 
         switch (intent) {
         case 'l_luis':
-            // await this.processLUIS(context, recognizerResult.luisResult, entity);
-            await context.sendActivity("LUIS event recognized");
+            await this.processLUIS(context, recognizerResult.luisResult, entity);
             break;
         case 'q_qnamaker':
             await this.processQnA(context);
@@ -264,14 +263,14 @@ class DispatchBot extends ActivityHandler {
         const result = luisResult.connectedServiceResult;
         const intent = result.topScoringIntent.intent;
 
-        await context.sendActivity(`LUIS top intent ${ intent }.`);
-        await context.sendActivity(`LUIS intents detected:  ${ luisResult.intents.map((intentObj) => intentObj.intent).join('\n\n') }.`);
+        // await context.sendActivity(`LUIS top intent ${ intent }.`);
+        // await context.sendActivity(`LUIS intents detected:  ${ luisResult.intents.map((intentObj) => intentObj.intent).join('\n\n') }.`);
+        //
+        // if (luisResult.entities.length > 0) {
+        //     await context.sendActivity(`LUIS entities were found in the message: ${ luisResult.entities.map((entityObj) => entityObj.entity).join('\n\n') }.`);
+        // }
 
-        if (luisResult.entities.length > 0) {
-            await context.sendActivity(`LUIS entities were found in the message: ${ luisResult.entities.map((entityObj) => entityObj.entity).join('\n\n') }.`);
-        }
-
-        // await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
+        await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
 
         console.log("luisResult: \n" + luisResult);
         console.log("result: \n" + result);
@@ -282,12 +281,17 @@ class DispatchBot extends ActivityHandler {
         this.logger.log('processQnA');
 
         const results = await this.qnaMaker.getAnswers(context);
+        let answer = "";
 
         if (results.length > 0) {
-            await context.sendActivity(`${ results[0].answer }`);
+            // await context.sendActivity(`${ results[0].answer }`);
+            answer = results[0].answer;
         } else {   
-            await context.sendActivity('Sorry, could not find an answer in the Q and A system.');
+            // await context.sendActivity('Sorry, could not find an answer in the Q and A system.');
+            answer = 'Entschuldigung, ich habe deine Frage leider nicht verstanden.'
         }
+
+        await context.sendActivity({ name: 'qnaEvent', type: 'event', channelData: {answer: answer} });
     }
 }
 

@@ -240,59 +240,65 @@ function startChatBot() {
                 // }
             }
 
-            if (data.name === 'luisEvent' && correctEvent) {
+            if (((data.name === 'luisEvent') || (data.name === 'qnaEvent')) && correctEvent) {
 
-                let luisResponse = "";
+                let chatbotResponse = "";
 
                 // Only available when experiment started
                 if (openForTrading === true) {
-                    const intent = channelData.intent;
-                    const entity = channelData.entity;
 
-                    console.log("Intent: " + intent);
-                    console.log("Entity: " + entity);
+                    if (data.name === 'luisEvent') {
+                        const intent = channelData.intent;
+                        const entity = channelData.entity;
 
-                    switch (intent) {
-                        case "anteil_gewonnen_max":
-                            luisResponse = shareManager.mostUps(round-1);
-                            break;
-                        case "anteil_verloren_max":
-                            luisResponse = shareManager.mostDowns(round-1);
-                            break;
-                        case "anteil_potentieller_zuwachs":
-                            luisResponse = shareManager.potentialUp(entity);
-                            break;
-                        case "anteil_potentieller_verlust":
-                            luisResponse = shareManager.potentialDown(entity);
-                            break;
-                        case "anteil_spezifisch_gewonnen":
-                            luisResponse = shareManager.shareUps(entity, round-1);
-                            break;
-                        case "anteil_spezifisch_verloren":
-                            luisResponse = shareManager.shareDowns(entity, round-1);
-                            break;
-                        case "rat_geben":
-                            // Only for 3rd experiment group
-                            if (parseFloat(experimentGroup) === 3) {
-                                luisResponse = shareManager.getRecommendAlg(round-1);
-                            }
-                            break;
-                        case "wert_portfolio":
-                            luisResponse = shareManager.portfolioValue();
-                            break;
-                        default:
-                            console.log(`Dispatch unrecognized intent: ${ intent }.`);
-                            break;
+                        console.log("Intent: " + intent);
+                        console.log("Entity: " + entity);
+
+                        switch (intent) {
+                            case "anteil_gewonnen_max":
+                                chatbotResponse = shareManager.mostUps(round - 1);
+                                break;
+                            case "anteil_verloren_max":
+                                chatbotResponse = shareManager.mostDowns(round - 1);
+                                break;
+                            case "anteil_potentieller_zuwachs":
+                                chatbotResponse = shareManager.potentialUp(entity);
+                                break;
+                            case "anteil_potentieller_verlust":
+                                chatbotResponse = shareManager.potentialDown(entity);
+                                break;
+                            case "anteil_spezifisch_gewonnen":
+                                chatbotResponse = shareManager.shareUps(entity, round - 1);
+                                break;
+                            case "anteil_spezifisch_verloren":
+                                chatbotResponse = shareManager.shareDowns(entity, round - 1);
+                                break;
+                            case "rat_geben":
+                                // Only for 3rd experiment group
+                                if (parseFloat(experimentGroup) === 3) {
+                                    chatbotResponse = shareManager.getRecommendAlg(round - 1);
+                                }
+                                break;
+                            case "wert_portfolio":
+                                chatbotResponse = shareManager.portfolioValue();
+                                break;
+                            default:
+                                console.log(`Dispatch unrecognized intent: ${intent}.`);
+                                break;
+                        }
+                    } else {
+                        // QnA Maker response
+                        chatbotResponse = channelData.answer;
                     }
                 } else {
-                    luisResponse = "Bitte starte erst das Experiment.";
+                    chatbotResponse = "Bitte starte erst das Experiment.";
                 }
 
                 // Create event to request summary
                 const event = new CustomEvent('botEvent', {
                     detail: {
-                        type: "luisEvent",
-                        data: luisResponse
+                        type: "chatEvent",
+                        data: chatbotResponse
                     }
                 });
 
