@@ -40,6 +40,15 @@ class DispatchBot extends ActivityHandler {
             includeInstanceData: true
         }, true);
 
+        const subLuisRecognizer = new LuisRecognizer({
+            applicationId: process.env.LuisSubAppId,
+            endpointKey: process.env.LuisAPIKey,
+            endpoint: `https://${ process.env.LuisAPIHostName }.api.cognitive.microsoft.com`
+        }, {
+            includeAllIntents: true,
+            includeInstanceData: true
+        }, true);
+
         const qnaMaker = new QnAMaker({
             knowledgeBaseId: process.env.QnAKnowledgebaseId,
             endpointKey: process.env.QnAAuthKey,
@@ -134,13 +143,16 @@ class DispatchBot extends ActivityHandler {
 
                 // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
                 const recognizerResult = await dispatchRecognizer.recognize(turnContext);
+
                 console.log(recognizerResult);
 
                 // Top intent tell us which cognitive service to use.
                 const intent = LuisRecognizer.topIntent(recognizerResult);
 
-                // Get entity
-                const entity = this.parseCompositeEntity(recognizerResult, 'Anteil', 'Anteil_Typ');
+                // Get result intent and entity from sub LUIS model
+                const recognizerSubResult = await subLuisRecognizer.recognize(turnContext);
+                const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
+                const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
 
                 // Next, we call the dispatcher with the top intent.
                 await this.dispatchToTopIntentAsync(turnContext, intent, entity, recognizerResult);
@@ -217,7 +229,7 @@ class DispatchBot extends ActivityHandler {
         await turnContext.sendActivity(reply);
     }
 
-    async dispatchToTopIntentAsync(context, intent, entity, recognizerResult) {
+    async dispatchToTopIntentAsync(context, intent, intentSub, entity, recognizerResult) {
 
         console.log("Intent: " + intent);
 
@@ -226,7 +238,7 @@ class DispatchBot extends ActivityHandler {
 
         switch (intent) {
         case 'l_luis':
-            await this.processLUIS(context, recognizerResult.luisResult, entity);
+            await this.processLUIS(context, intentSub, entity); //recognizerResult.luisResult
             break;
         case 'q_qnamaker':
             await this.processQnA(context);
@@ -256,12 +268,12 @@ class DispatchBot extends ActivityHandler {
         return entityValue;
     }
 
-    async processLUIS(context, luisResult, entity) {
+    async processLUIS(context, intent, entity) { // luisResult
         this.logger.log('processLUIS');
 
         // Retrieve LUIS result for Process Automation.
-        const result = luisResult.connectedServiceResult;
-        const intent = result.topScoringIntent.intent;
+        // const result = luisResult.connectedServiceResult;
+        // const intent = result.topScoringIntent.intent;
 
         // await context.sendActivity(`LUIS top intent ${ intent }.`);
         // await context.sendActivity(`LUIS intents detected:  ${ luisResult.intents.map((intentObj) => intentObj.intent).join('\n\n') }.`);
@@ -272,9 +284,9 @@ class DispatchBot extends ActivityHandler {
 
         await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
 
-        console.log("luisResult: \n" + luisResult);
-        console.log("result: \n" + result);
-        console.log("intent: \n" + intent);
+        // console.log("luisResult: \n" + luisResult);
+        // console.log("result: \n" + result);
+        // console.log("intent: \n" + intent);
     }
 
     async processQnA(context) {
