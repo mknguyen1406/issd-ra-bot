@@ -136,10 +136,14 @@ class DispatchBot extends ActivityHandler {
 
             } else {
 
+                const text = turnContext.activity.text;
+                const questions = ['Ja, sehr gerne!', 'Hilfe'];
+                const noQuestions = ['Nein.'];
+
                 // Welcome messages
-                if ((turnContext.activity.text === "Ja, sehr gerne!") || turnContext.activity.text === "Hilfe") {
+                if (questions.includes(text)) {
                     await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
-                } else if ("Nein.") {
+                } else if (noQuestions.includes(text)) {
                     await turnContext.sendActivity("Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Hilfe' schreibst.");
                 } else {
                     // Add message details to the conversation data.
