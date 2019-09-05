@@ -272,7 +272,10 @@ function startChatBot() {
                             luisResponse = shareManager.shareDowns(entity, round-1);
                             break;
                         case "rat_geben":
-                            luisResponse = shareManager.getRecommendAlg(round-1);
+                            // Only for 3rd experiment group
+                            if (parseFloat(experimentGroup) === 3) {
+                                luisResponse = shareManager.getRecommendAlg(round-1);
+                            }
                             break;
                         case "wert_portfolio":
                             luisResponse = shareManager.portfolioValue();

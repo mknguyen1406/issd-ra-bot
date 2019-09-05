@@ -222,27 +222,28 @@ class DispatchBot extends ActivityHandler {
         console.log("Intent: " + intent);
 
         // TODO: Use dispatch model
-        await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
+        // await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
 
-        // switch (intent) {
-        // case 'l_luis':
-        //     await this.processLUIS(context, recognizerResult.luisResult);
-        //     break;
-        // case 'q_qnamaker':
-        //     await this.processQnA(context);
-        //     break;
+        switch (intent) {
+        case 'l_luis':
+            // await this.processLUIS(context, recognizerResult.luisResult, entity);
+            await context.sendActivity("LUIS event recognized");
+            break;
+        case 'q_qnamaker':
+            await this.processQnA(context);
+            break;
         // case 'l_moreAnswers':
-        //     await context.sendActivity("**Hier sind weitere Fragen:**\n" + 
+        //     await context.sendActivity("**Hier sind weitere Fragen:**\n" +
         //         "- Wenn ich Anteil C verkaufe und Anteil D zum aktuellen Preis kaufe, wie viel Guthaben habe ich dann übrig?\n" +
         //         "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
         //         "- Kannst du mir einen Witz erzählen?"
         //     );
         //     break;
-        // default:
-        //     this.logger.log(`Dispatch unrecognized intent: ${ intent }.`);
-        //     await context.sendActivity(`Dispatch unrecognized intent: ${ intent }.`);
-        //     break;
-        // }
+        default:
+            this.logger.log(`Dispatch unrecognized intent: ${ intent }.`);
+            await context.sendActivity(`Dispatch unrecognized intent: ${ intent }.`);
+            break;
+        }
     }
 
     parseCompositeEntity(result, compositeName, entityName) {
@@ -256,7 +257,7 @@ class DispatchBot extends ActivityHandler {
         return entityValue;
     }
 
-    async processLUIS(context, luisResult) {
+    async processLUIS(context, luisResult, entity) {
         this.logger.log('processLUIS');
 
         // Retrieve LUIS result for Process Automation.
@@ -268,8 +269,9 @@ class DispatchBot extends ActivityHandler {
 
         if (luisResult.entities.length > 0) {
             await context.sendActivity(`LUIS entities were found in the message: ${ luisResult.entities.map((entityObj) => entityObj.entity).join('\n\n') }.`);
-            console.log("bla");
         }
+
+        // await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
 
         console.log("luisResult: \n" + luisResult);
         console.log("result: \n" + result);
