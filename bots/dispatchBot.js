@@ -123,18 +123,24 @@ class DispatchBot extends ActivityHandler {
                 //     "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                 //     "- Wie hoch ist die Gesamtrendite meines Portfolios?"
                 //    );
-                //     // await this.sendSuggestedActions(turnContext, userProfile.name);
+                await this.sendSuggestedActions(turnContext, userProfile.name);
                 //
                 // // Acknowledge that we got their name.
                 // await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
 
-                await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
+                // await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
                 //await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "followup"} });
 
                 // Reset the flag to allow the bot to go though the cycle again.
                 conversationData.promptedForUserName = false;
 
             } else {
+
+                // Welcome messages
+                if (turnContext.activity.text === "Ja, sehr gerne. ") {
+                    await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
+                }
+
                 // Add message details to the conversation data.
                 conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
                 conversationData.channelId = turnContext.activity.channelId;
@@ -212,10 +218,10 @@ class DispatchBot extends ActivityHandler {
 
     }
 
-    // async sendSuggestedActions(turnContext, name) {
-    //     var reply = MessageFactory.suggestedActions(['Ja, sehr gerne.', 'Nein, danke.'], name + ', willst du wissen, welche Fragen du mir noch stellen kannst?');
-    //     await turnContext.sendActivity(reply);
-    // }
+    async sendSuggestedActions(turnContext, name) {
+        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne. ', 'Nein, danke.'], name + 'Möchtest du wissen, welche Fragen du mir stellen kannst?');
+        await turnContext.sendActivity(reply);
+    }
 
     async dispatchToTopIntentAsync(context, intent, intentSub, entity, recognizerResult) {
 

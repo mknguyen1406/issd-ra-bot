@@ -22,10 +22,6 @@ if (parseFloat(experimentGroup ) === 1) {
     hideChatBot();
 }
 
-// Hide or show chat bot based on experiment , e.g. 1 for hide, 2 for show
-// if (parseFloat(experimentGroup ) === 2 || parseFloat(experimentGroup ) === 3) {
-//     showBlankChatBot();
-// }
 
 // // Create chart
 const chart = new ApexCharts(
