@@ -149,13 +149,14 @@ class DispatchBot extends ActivityHandler {
                 // Top intent tell us which cognitive service to use.
                 const intent = LuisRecognizer.topIntent(recognizerResult);
 
-                // Get result intent and entity from sub LUIS model
+                // Get result, sub intent and entity from sub LUIS model
                 const recognizerSubResult = await subLuisRecognizer.recognize(turnContext);
                 const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
                 const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
 
                 // Next, we call the dispatcher with the top intent.
-                await this.dispatchToTopIntentAsync(turnContext, intent, entity, recognizerResult);
+                await this.dispatchToTopIntentAsync(turnContext, intent, intentSub, entity, recognizerResult);
+
             }          
 
             await next();
