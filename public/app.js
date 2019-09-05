@@ -241,25 +241,24 @@ function startChatBot() {
             if (data.name === 'welcomeEvent') {
 
                 let chatbotResponse = "";
+                const group = parseFloat(experimentGroup);
 
                 // if (channelData.task === "main") {
                     // Only available when experiment started
-                    if (experimentGroup === 2) {
+                    if (group === 2) {
 
                         chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
                             "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                            "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
-                    } else if (experimentGroup === 3) {
+                            "- Wie hoch ist die Gesamtrendite meines Portfolios?";
+                    } else if (group === 3) {
                         chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
                             "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                             "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                            "- Kannst du mir einen Rat geben?\n" +
-                            "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
+                            "- Kannst du mir einen Rat geben?";
                     }
                 // } else {
                 //     // Follow up
@@ -276,6 +275,18 @@ function startChatBot() {
 
                 // Send event to own event handler
                 window.document.dispatchEvent(event);
+
+                // Follow up
+                chatbotResponse = "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
+                event = new CustomEvent('botEvent', {
+                    detail: {
+                        type: "chatEvent",
+                        data: chatbotResponse
+                    }
+                });
+
+                // Send event to own event handler after small delay
+                setTimeout(function() { window.document.dispatchEvent(event); }, 500);
             }
 
             // Incoming luis und qna events
