@@ -535,7 +535,8 @@ function sendResult() {
         holdings: shareManager.goodHoldingsHist,
         invests: shareManager.goodInvestHist,
         prices: shareManager.goodPriceHist,
-        time: new Date()
+        time: new Date(),
+        round: round
     };
 
     // Create a result event

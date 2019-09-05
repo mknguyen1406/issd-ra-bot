@@ -33,7 +33,7 @@
 
         if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net") {
             if (typeof(event.data.detail) !== 'undefined') {
-                window.alert("Message received from origin: " + event.origin);
+                //window.alert("Message received from origin: " + event.origin);
 
                 // The data sent with postMessage is stored in event.data
                 console.log(event.data);
