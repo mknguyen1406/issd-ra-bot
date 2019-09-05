@@ -250,7 +250,7 @@ function startChatBot() {
                             "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" + "\n" +
+                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
                             "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
                     } else if (experimentGroup === 3) {
                         chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
@@ -258,7 +258,7 @@ function startChatBot() {
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                             "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                            "- Kannst du mir einen Rat geben?\n" + "\n" +
+                            "- Kannst du mir einen Rat geben?\n" +
                             "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
                     }
                 // } else {
