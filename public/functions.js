@@ -658,7 +658,7 @@ function dispatchBotEvent(chatbotResponse) {
     });
 
     // Send event to own event handler
-    setTimeout(function() { window.document.dispatchEvent(event); }, 500);
+    setTimeout(function() { window.document.dispatchEvent(event); }, 1000);
 }
 
 /*

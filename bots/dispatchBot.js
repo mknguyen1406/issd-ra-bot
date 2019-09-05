@@ -95,7 +95,7 @@ class DispatchBot extends ActivityHandler {
                     await context.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {} });
 
                     // Set the flag to true, so we don't prompt in the next turn.
-                    conversationData.promptedForUserName = true;
+                    // conversationData.promptedForUserName = true;
                 }
             }
 
@@ -226,7 +226,7 @@ class DispatchBot extends ActivityHandler {
     }
 
     async sendSuggestedActions(turnContext, name) {
-        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein.'], 'Möchtest du beispielhafte Fragen sehen, die du mir stellen kannst??');
+        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein.'], 'Möchtest du beispielhafte Fragen sehen, die du mir stellen kannst?');
         await turnContext.sendActivity(reply);
     }
 

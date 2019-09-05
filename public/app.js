@@ -300,7 +300,7 @@ function startChatBot() {
                 dispatchBotEvent(chatbotResponse);
 
                 // Dispatch click on 'Starte Experiment' message
-                dispatchBotEvent("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
+                dispatchBotEvent("Bitte klicke nun auf 'Starte Experiment', um zu beginnen.");
             }
 
             // Incoming luis und qna events
