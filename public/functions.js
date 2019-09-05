@@ -281,7 +281,7 @@ function nextRound(round) {
         openForTrading = false;
 
         // Send final result to bot
-        sendFinalResult();
+        sendResult();
     } else if (round === 14) {
         // Refresh page
         obj.reload = true;
@@ -342,17 +342,19 @@ function sendRoundSummary(round) {
     // Send event to event handler of parent
     // window.parent.document.dispatchEvent(event);
 
-    const test = {
-        detail: {
-            test1: "jiha",
-            test2: "wuhu"
-        }
-    };
+    // const test = {
+    //     detail: {
+    //         test1: "jiha",
+    //         test2: "wuhu"
+    //     }
+    // };
+    //
+    // // Send round results to event handler of parent
+    // const jsonObj = JSON.parse(JSON.stringify(event.detail));
+    // // window.parent.postMessage(jsonObj, '*');
+    // window.parent.postMessage(test, '*');
 
-    // Send event to event handler of parent
-    const jsonObj = JSON.parse(JSON.stringify(event.detail));
-    // window.parent.postMessage(jsonObj, '*');
-    window.parent.postMessage(test, '*');
+    sendResult();
 }
 
 function getRandomNo() {
@@ -520,7 +522,7 @@ function getRoundSummaryForPossibleTrade() {
     return res;
 }
 
-function sendFinalResult() {
+function sendResult() {
     // Gather data for summary
     const data = {
         userId: userId,
@@ -544,6 +546,14 @@ function sendFinalResult() {
         }
     });
 
+    // Create a result object
+    const result = {
+        detail: {
+            type: "result",
+            data: data
+        }
+    };
+
     // Send event to own event handler
     // window.document.dispatchEvent(event);
 
@@ -552,7 +562,7 @@ function sendFinalResult() {
 
     // Send event to event handler of parent
     const jsonObj = JSON.parse(JSON.stringify(event.detail));
-    window.parent.postMessage(jsonObj, '*');
+    window.parent.postMessage(result, '*');
 }
 
 function renameElements(res){
