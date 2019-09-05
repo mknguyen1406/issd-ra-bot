@@ -98,6 +98,7 @@ function startChatBot() {
             // ,username: 'Web Chat User'
             , locale: 'de-de'
             ,styleOptions: styleOptions
+            ,sendTypingIndicator: true
         },
         document.getElementById('webchat')
     );
