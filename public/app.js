@@ -245,37 +245,30 @@ function startChatBot() {
 
                 let chatbotResponse = "";
 
-                // Only available when experiment started
-                if (experimentGroup === 2) {
+                if (channelData.task === "main") {
+                    // Only available when experiment started
+                    if (experimentGroup === 2) {
 
-                    chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
-                        "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                        "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                        "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                        "- Wie hoch ist die Gesamtrendite meines Portfolios?";
-                } else if (experimentGroup === 3) {
-                    chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
-                        "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                        "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                        "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                        "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                        "- Kannst du mir einen Rat geben?";
+                        chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
+                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                            "- Wie hoch ist die Gesamtrendite meines Portfolios?";
+                    } else if (experimentGroup === 3) {
+                        chatbotResponse = "**Folgende Fragen kannst du mir stellen:**\n" +
+                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                            "- Kannst du mir einen Rat geben?";
+                    }
+                } else {
+                    // Follow up
+                    chatbotResponse = "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
                 }
 
                 // Create event to send group specific welcome message
                 let event = new CustomEvent('botEvent', {
-                    detail: {
-                        type: "chatEvent",
-                        data: chatbotResponse
-                    }
-                });
-
-                // Send event to own event handler
-                window.document.dispatchEvent(event);
-
-                // Create event to send 'Starte Experiment' message
-                chatbotResponse = "Bitte klicke auf 'Starte Experiment', um zu beginnen.";
-                event = new CustomEvent('botEvent', {
                     detail: {
                         type: "chatEvent",
                         data: chatbotResponse
