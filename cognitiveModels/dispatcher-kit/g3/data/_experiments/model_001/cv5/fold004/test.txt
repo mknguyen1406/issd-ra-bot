@@ -1,0 +1,17 @@
+Label	Weight	Text
+l_luis	1	wieviel mehr wäre b wert wenn es steigt in der nächsten runde
+l_luis	1	welcher anteil ist am häufigsten gesunken
+l_luis	1	um wieviel würde anteil f sinken, wenn es nächste runde verliert
+l_luis	1	wieviel weniger wäre f wert wenn es im wert sinkt
+l_luis	1	welcher anteil hat am meisten wert verloren
+l_luis	1	welcher anteil ist am häufigsten gestiegen
+l_luis	1	welche anteile soll ich verkaufen
+l_luis	1	was soll ich kaufen / verkaufen
+l_luis	1	wieviel mehr wäre anteil b wert wenn es gewinnt
+l_luis	1	welcher anteil hat am häufigsten verloren
+l_luis	1	wieviel weniger wäre anteil a wert wenn es verliert
+l_luis	1	wenn nächste runde anteil d steigt, wieviel wir es dann wert sein
+l_luis	1	wieviel mehr wäre a wert wenn es gewinnt
+q_qnamaker	1	Was bis du
+q_qnamaker	1	Welcher Anteil ist vom Typ ++
+q_qnamaker	1	Hola

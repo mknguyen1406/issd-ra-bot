@@ -1,0 +1,83 @@
+Label	Weight	Text
+l_luis	1	wie oft hat b an wert gewonnen
+l_luis	1	was soll ich als nächstes kaufen
+l_luis	1	wie oft hat anteil f an wert gewonnen
+l_luis	1	wenn in der nächsten periode a steigt, wieviel ist es dann wert
+l_luis	1	wieviele währungseinheiten sind alle meine anteile wert
+l_luis	1	wie oft hat anteil f an wert verloren
+l_luis	1	wieviel weniger wäre anteil b wert wenn es im wert sinkt
+l_luis	1	wie oft hat anteil a bisher verloren
+l_luis	1	welcher anteil hat bisher am meisten an wert gewonnen
+l_luis	1	kannst du mir eine empfehlung geben
+l_luis	1	ich brauche einen ratschlag
+l_luis	1	wieviel wäre anteil d wert wenn es sinkt
+l_luis	1	wie oft ist f gesunken
+l_luis	1	was soll ich machen
+l_luis	1	wieviel sind meine anteile wert
+l_luis	1	wenn anteil a gewinnt, wieviel wird er dann wert sein
+l_luis	1	kannst du mir einen rat geben
+l_luis	1	wieviel ist c bisher gesunken
+l_luis	1	wenn a an wert verliert, wieviel wird er dann wert sein
+l_luis	1	welcher anteil ist am meisten gestiegen
+l_luis	1	wenn anteil c an wert gewinnt, wie viel wird er in der folgenden periode wert sein
+l_luis	1	wie oft ist anteil c gesunken
+l_luis	1	wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein
+l_luis	1	wenn in der nächsten runde f gewinnt, wieviel ist es dann wert
+l_luis	1	wie häufig hat e an wert verloren
+l_luis	1	kannst du mir einen tipp geben
+l_luis	1	wie hoch ist meine gesamtrendite
+l_luis	1	wieviel ist mein portfolio gerade wert
+l_luis	1	wenn anteil a verliert, wieviel wird es dann wert sein
+l_luis	1	welcher anteil ist am meisten gesunken
+l_luis	1	wie häufig ist anteil c gestiegen
+l_luis	1	wieviel mehr wäre anteil a wert wenn es im wert steigt
+l_luis	1	wie häufig ist c gestiegen
+l_luis	1	welche anteile soll ich kaufen
+l_luis	1	wie ist meine rendite
+l_luis	1	was soll ich als nächstes verkaufen
+l_luis	1	um wieviel würde c sinken, wenn es in der nächsten periode verliert
+l_luis	1	wieviel wäre e wert wenn es verliert
+l_luis	1	wie oft hat e an wert verloren
+l_luis	1	wenn nächste runde anteil e steigt, wieviel wird es dann wert sein
+l_luis	1	wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe
+l_luis	1	wieviel geld würde ich erhalten wenn ich alles verkaufe
+l_luis	1	welcher anteil hat bisher am meisten an wert verloren
+l_luis	1	welcher anteil hat am häufigsten gewonnen
+l_luis	1	wie oft ist a gestiegen bisher
+l_luis	1	wie häufig hat anteil e an wert gewonnen
+l_luis	1	welcher anteil hat am meisten wert gewonnen
+l_luis	1	wie viel sind alle meine anteile wert
+l_luis	1	wie oft ist anteil a gestiegen bisher
+l_luis	1	wie häufig hat e verloren
+l_luis	1	um wieviel würde anteil e steigen, wenn es nächste runde gewinnt
+l_luis	1	wieviel wäre anteil c wert wenn es steigt
+l_luis	1	wieviel mehr wäre b wert wenn es steigt in der nächsten runde
+l_luis	1	welcher anteil ist am häufigsten gesunken
+l_luis	1	um wieviel würde anteil f sinken, wenn es nächste runde verliert
+l_luis	1	wieviel weniger wäre f wert wenn es im wert sinkt
+l_luis	1	welcher anteil hat am meisten wert verloren
+l_luis	1	welcher anteil ist am häufigsten gestiegen
+l_luis	1	welche anteile soll ich verkaufen
+l_luis	1	was soll ich kaufen / verkaufen
+l_luis	1	wieviel mehr wäre anteil b wert wenn es gewinnt
+l_luis	1	welcher anteil hat am häufigsten verloren
+l_luis	1	wieviel weniger wäre anteil a wert wenn es verliert
+l_luis	1	wenn nächste runde anteil d steigt, wieviel wir es dann wert sein
+l_luis	1	wieviel mehr wäre a wert wenn es gewinnt
+q_qnamaker	1	Wie gehts
+q_qnamaker	1	Welcher Anteil ist vom Typ --
+q_qnamaker	1	Was kannst du
+q_qnamaker	1	Wie geht's
+q_qnamaker	1	Wie alt bist du
+q_qnamaker	1	Wie geht's dir
+q_qnamaker	1	Wer hat dich programmiert
+q_qnamaker	1	Wer bist du
+q_qnamaker	1	Hey
+q_qnamaker	1	Wie heißt du
+q_qnamaker	1	Hallo
+q_qnamaker	1	Wie geht es dir
+q_qnamaker	1	Was bis du
+q_qnamaker	1	Welcher Anteil ist vom Typ ++
+q_qnamaker	1	Hola
+q_qnamaker	1	Hi
+q_qnamaker	1	Moin

@@ -1,0 +1,17 @@
+Label	Weight	Text
+l_luis	1	wie hoch ist meine gesamtrendite
+l_luis	1	wieviel ist mein portfolio gerade wert
+l_luis	1	wenn anteil a verliert, wieviel wird es dann wert sein
+l_luis	1	welcher anteil ist am meisten gesunken
+l_luis	1	wie häufig ist anteil c gestiegen
+l_luis	1	wieviel mehr wäre anteil a wert wenn es im wert steigt
+l_luis	1	wie häufig ist c gestiegen
+l_luis	1	welche anteile soll ich kaufen
+l_luis	1	wie ist meine rendite
+l_luis	1	was soll ich als nächstes verkaufen
+l_luis	1	um wieviel würde c sinken, wenn es in der nächsten periode verliert
+l_luis	1	wieviel wäre e wert wenn es verliert
+l_luis	1	wie oft hat e an wert verloren
+q_qnamaker	1	Wer hat dich programmiert
+q_qnamaker	1	Wer bist du
+q_qnamaker	1	Hey

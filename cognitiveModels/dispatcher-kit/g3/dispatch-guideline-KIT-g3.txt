@@ -1,0 +1,51 @@
+Dispatching:
+https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch/readme.md
+
+Create .dispatch file:
+dispatch init -n issd-ra-dispatcher-kit-g3 --luisAuthoringKey "db39f3fc41884d849a7c4a7994d7b049" --luisAuthoringRegion westus
+
+Add LUIS and QnA Models to dispatch file:
+dispatch add -t luis -i "34df4333-7401-45ed-830a-5ef94bf5a6db" -n "ISSD-RA-LUIS" -v 0.1 -k "db39f3fc41884d849a7c4a7994d7b049" --intentName l_luis
+
+dispatch add -t qna -i "3d46c199-6c21-42c9-b933-e347e5e58938" -n "ISSD-Trading-QnA-G3" -k "3595d6e00f66405fac343d26dac18cea" --intentName q_qnamaker
+
+dispatch create
+Result:
+{
+  "authoringRegion": "westus",
+  "hierarchical": true,
+  "useAllTrainingData": false,
+  "dontReviseUtterance": false,
+  "copyLuisData": true,
+  "normalizeDiacritics": true,
+  "services": [
+    {
+      "intentName": "l_luis",
+      "appId": "34df4333-7401-45ed-830a-5ef94bf5a6db",
+      "authoringKey": "db39f3fc41884d849a7c4a7994d7b049",
+      "version": "0.1",
+      "region": "westus",
+      "type": "luis",
+      "name": "ISSD-RA-LUIS",
+      "id": "1"
+    },
+    {
+      "intentName": "q_qnamaker",
+      "kbId": "3d46c199-6c21-42c9-b933-e347e5e58938",
+      "subscriptionKey": "3595d6e00f66405fac343d26dac18cea",
+      "type": "qna",
+      "name": "ISSD-Trading-QnA-G3",
+      "id": "2"
+    }
+  ],
+  "serviceIds": [
+    "1",
+    "2"
+  ],
+  "appId": "4df70e47-40ba-42b9-b047-69ee19880e0a",
+  "authoringKey": "db39f3fc41884d849a7c4a7994d7b049",
+  "version": "Dispatch",
+  "region": "westus",
+  "type": "dispatch",
+  "name": "issd-ra-dispatcher-kit-g3"
+}

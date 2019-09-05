@@ -1,0 +1,17 @@
+Label	Weight	Text
+l_luis	1	wenn nächste runde anteil e steigt, wieviel wird es dann wert sein
+l_luis	1	wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe
+l_luis	1	wieviel geld würde ich erhalten wenn ich alles verkaufe
+l_luis	1	welcher anteil hat bisher am meisten an wert verloren
+l_luis	1	welcher anteil hat am häufigsten gewonnen
+l_luis	1	wie oft ist a gestiegen bisher
+l_luis	1	wie häufig hat anteil e an wert gewonnen
+l_luis	1	welcher anteil hat am meisten wert gewonnen
+l_luis	1	wie viel sind alle meine anteile wert
+l_luis	1	wie oft ist anteil a gestiegen bisher
+l_luis	1	wie häufig hat e verloren
+l_luis	1	um wieviel würde anteil e steigen, wenn es nächste runde gewinnt
+l_luis	1	wieviel wäre anteil c wert wenn es steigt
+q_qnamaker	1	Wie heißt du
+q_qnamaker	1	Hallo
+q_qnamaker	1	Wie geht es dir

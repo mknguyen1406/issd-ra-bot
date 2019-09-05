@@ -1,0 +1,17 @@
+Label	Weight	Text
+l_luis	1	was soll ich machen
+l_luis	1	wieviel sind meine anteile wert
+l_luis	1	wenn anteil a gewinnt, wieviel wird er dann wert sein
+l_luis	1	kannst du mir einen rat geben
+l_luis	1	wieviel ist c bisher gesunken
+l_luis	1	wenn a an wert verliert, wieviel wird er dann wert sein
+l_luis	1	welcher anteil ist am meisten gestiegen
+l_luis	1	wenn anteil c an wert gewinnt, wie viel wird er in der folgenden periode wert sein
+l_luis	1	wie oft ist anteil c gesunken
+l_luis	1	wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein
+l_luis	1	wenn in der nächsten runde f gewinnt, wieviel ist es dann wert
+l_luis	1	wie häufig hat e an wert verloren
+l_luis	1	kannst du mir einen tipp geben
+q_qnamaker	1	Wie geht's
+q_qnamaker	1	Wie alt bist du
+q_qnamaker	1	Wie geht's dir

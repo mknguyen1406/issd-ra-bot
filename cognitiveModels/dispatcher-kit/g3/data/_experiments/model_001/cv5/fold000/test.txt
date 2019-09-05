@@ -1,0 +1,17 @@
+Label	Weight	Text
+l_luis	1	wie oft hat b an wert gewonnen
+l_luis	1	was soll ich als nächstes kaufen
+l_luis	1	wie oft hat anteil f an wert gewonnen
+l_luis	1	wenn in der nächsten periode a steigt, wieviel ist es dann wert
+l_luis	1	wieviele währungseinheiten sind alle meine anteile wert
+l_luis	1	wie oft hat anteil f an wert verloren
+l_luis	1	wieviel weniger wäre anteil b wert wenn es im wert sinkt
+l_luis	1	wie oft hat anteil a bisher verloren
+l_luis	1	welcher anteil hat bisher am meisten an wert gewonnen
+l_luis	1	kannst du mir eine empfehlung geben
+l_luis	1	ich brauche einen ratschlag
+l_luis	1	wieviel wäre anteil d wert wenn es sinkt
+l_luis	1	wie oft ist f gesunken
+q_qnamaker	1	Wie gehts
+q_qnamaker	1	Welcher Anteil ist vom Typ --
+q_qnamaker	1	Was kannst du

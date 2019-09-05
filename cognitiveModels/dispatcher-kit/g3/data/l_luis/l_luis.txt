@@ -1,0 +1,65 @@
+ich brauche einen ratschlag
+kannst du mir eine empfehlung geben
+kannst du mir einen rat geben
+kannst du mir einen tipp geben
+um wieviel würde anteil e steigen, wenn es nächste runde gewinnt
+um wieviel würde anteil f sinken, wenn es nächste runde verliert
+um wieviel würde c sinken, wenn es in der nächsten periode verliert
+was soll ich als nächstes kaufen
+was soll ich als nächstes verkaufen
+was soll ich kaufen / verkaufen
+was soll ich machen
+welche anteile soll ich kaufen
+welche anteile soll ich verkaufen
+welcher anteil hat am häufigsten gewonnen
+welcher anteil hat am häufigsten verloren
+welcher anteil hat am meisten wert gewonnen
+welcher anteil hat am meisten wert verloren
+welcher anteil hat bisher am meisten an wert gewonnen
+welcher anteil hat bisher am meisten an wert verloren
+welcher anteil ist am häufigsten gestiegen
+welcher anteil ist am häufigsten gesunken
+welcher anteil ist am meisten gestiegen
+welcher anteil ist am meisten gesunken
+wenn a an wert verliert, wieviel wird er dann wert sein
+wenn anteil a gewinnt, wieviel wird er dann wert sein
+wenn anteil a verliert, wieviel wird es dann wert sein
+wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein
+wenn anteil c an wert gewinnt, wie viel wird er in der folgenden periode wert sein
+wenn in der nächsten periode a steigt, wieviel ist es dann wert
+wenn in der nächsten runde f gewinnt, wieviel ist es dann wert
+wenn nächste runde anteil d steigt, wieviel wir es dann wert sein
+wenn nächste runde anteil e steigt, wieviel wird es dann wert sein
+wie häufig hat anteil e an wert gewonnen
+wie häufig hat e an wert verloren
+wie häufig hat e verloren
+wie häufig ist anteil c gestiegen
+wie häufig ist c gestiegen
+wie hoch ist meine gesamtrendite
+wie ist meine rendite
+wie oft hat anteil a bisher verloren
+wie oft hat anteil f an wert gewonnen
+wie oft hat anteil f an wert verloren
+wie oft hat b an wert gewonnen
+wie oft hat e an wert verloren
+wie oft ist a gestiegen bisher
+wie oft ist anteil a gestiegen bisher
+wie oft ist anteil c gesunken
+wie oft ist f gesunken
+wie viel sind alle meine anteile wert
+wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe
+wieviel geld würde ich erhalten wenn ich alles verkaufe
+wieviel ist c bisher gesunken
+wieviel ist mein portfolio gerade wert
+wieviel mehr wäre a wert wenn es gewinnt
+wieviel mehr wäre anteil a wert wenn es im wert steigt
+wieviel mehr wäre anteil b wert wenn es gewinnt
+wieviel mehr wäre b wert wenn es steigt in der nächsten runde
+wieviel sind meine anteile wert
+wieviel wäre anteil c wert wenn es steigt
+wieviel wäre anteil d wert wenn es sinkt
+wieviel wäre e wert wenn es verliert
+wieviel weniger wäre anteil a wert wenn es verliert
+wieviel weniger wäre anteil b wert wenn es im wert sinkt
+wieviel weniger wäre f wert wenn es im wert sinkt
+wieviele währungseinheiten sind alle meine anteile wert
