@@ -232,9 +232,6 @@ class DispatchBot extends ActivityHandler {
 
         console.log("Intent: " + intent);
 
-        // TODO: Use dispatch model
-        // await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
-
         switch (intent) {
         case 'l_luis':
             await this.processLUIS(context, intentSub, entity); //recognizerResult.luisResult
