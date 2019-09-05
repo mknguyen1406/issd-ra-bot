@@ -128,7 +128,7 @@ class DispatchBot extends ActivityHandler {
                 // // Acknowledge that we got their name.
                 // await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
 
-                await context.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {} });
+                await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {data: "bla"} });
 
                 // Reset the flag to allow the bot to go though the cycle again.
                 conversationData.promptedForUserName = false;
