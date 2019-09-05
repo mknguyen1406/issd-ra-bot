@@ -137,8 +137,10 @@ class DispatchBot extends ActivityHandler {
             } else {
 
                 // Welcome messages
-                if (turnContext.activity.text === "Ja, sehr gerne. ") {
+                if ((turnContext.activity.text === "Ja, sehr gerne!") || turnContext.activity.text === "Hilfe") {
                     await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
+                } else if ("Nein, danke.") {
+                    await turnContext.sendActivity("Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Hilfe' schreibst.");
                 }
 
                 // Add message details to the conversation data.
@@ -219,7 +221,7 @@ class DispatchBot extends ActivityHandler {
     }
 
     async sendSuggestedActions(turnContext, name) {
-        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne. ', 'Nein, danke.'], name + 'Möchtest du wissen, welche Fragen du mir stellen kannst?');
+        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein, danke.'], 'Möchtest du wissen, welche Fragen du mir stellen kannst?');
         await turnContext.sendActivity(reply);
     }
 
