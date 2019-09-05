@@ -139,35 +139,34 @@ class DispatchBot extends ActivityHandler {
                 // Welcome messages
                 if ((turnContext.activity.text === "Ja, sehr gerne!") || turnContext.activity.text === "Hilfe") {
                     await turnContext.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {task: "main"} });
-                } else if ("Nein, danke.") {
+                } else if ("Nein.") {
                     await turnContext.sendActivity("Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Hilfe' schreibst.");
+                } else {
+                    // Add message details to the conversation data.
+                    conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
+                    conversationData.channelId = turnContext.activity.channelId;
+
+                    // Display state data.
+                    // await turnContext.sendActivity(`${ userProfile.name } sent: ${ turnContext.activity.text }`);
+                    // await turnContext.sendActivity(`Message received at: ${ conversationData.timestamp }`);
+                    // await turnContext.sendActivity(`Message received from: ${ conversationData.channelId }`);
+
+                    // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
+                    const recognizerResult = await dispatchRecognizer.recognize(turnContext);
+
+                    console.log(recognizerResult);
+
+                    // Top intent tell us which cognitive service to use.
+                    const intent = LuisRecognizer.topIntent(recognizerResult);
+
+                    // Get result, sub intent and entity from sub LUIS model
+                    const recognizerSubResult = await subLuisRecognizer.recognize(turnContext);
+                    const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
+                    const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
+
+                    // Next, we call the dispatcher with the top intent.
+                    await this.dispatchToTopIntentAsync(turnContext, intent, intentSub, entity, recognizerResult);
                 }
-
-                // Add message details to the conversation data.
-                conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
-                conversationData.channelId = turnContext.activity.channelId;
-
-                // Display state data.
-                // await turnContext.sendActivity(`${ userProfile.name } sent: ${ turnContext.activity.text }`);
-                // await turnContext.sendActivity(`Message received at: ${ conversationData.timestamp }`);
-                // await turnContext.sendActivity(`Message received from: ${ conversationData.channelId }`);
-
-                // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
-                const recognizerResult = await dispatchRecognizer.recognize(turnContext);
-
-                console.log(recognizerResult);
-
-                // Top intent tell us which cognitive service to use.
-                const intent = LuisRecognizer.topIntent(recognizerResult);
-
-                // Get result, sub intent and entity from sub LUIS model
-                const recognizerSubResult = await subLuisRecognizer.recognize(turnContext);
-                const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
-                const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
-
-                // Next, we call the dispatcher with the top intent.
-                await this.dispatchToTopIntentAsync(turnContext, intent, intentSub, entity, recognizerResult);
-
             }          
 
             await next();
@@ -221,7 +220,7 @@ class DispatchBot extends ActivityHandler {
     }
 
     async sendSuggestedActions(turnContext, name) {
-        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein, danke.'], 'Möchtest du wissen, welche Fragen du mir stellen kannst?');
+        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein.'], 'Möchtest du wissen, welche Fragen du mir stellen kannst?');
         await turnContext.sendActivity(reply);
     }
 
