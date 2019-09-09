@@ -291,8 +291,8 @@ function startChatBot() {
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                             "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                            "- Kannst du mir einen Rat geben?";/*
                             "- Kannst du mir einen Rat geben?\n" +
+                            "- Wer bist du?";/*
                             "- Wer bist du?\n" +
                             "- Was kannst du?\n" +
                             "- Wie heißt du?\n" +

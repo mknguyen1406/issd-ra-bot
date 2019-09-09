@@ -378,8 +378,10 @@ function getRandomNo() {
 }
 
 function getRoundSummary(no) {
-
     let res = null;
+
+    // Ensure that this summary cannot occure twice
+    forbiddenSummaries.push(no);
 
     // Check for requested summary
     switch (no) {
@@ -406,23 +408,20 @@ function getRoundSummary(no) {
             break;
         case 7:
             res = getRoundSummaryForTrades();
-            
-            // Ensure that this summary cannot occure twice
-            forbiddenSummaries.push(7);
             break;
         case 8:
             res = '"Das Wichtigste für einen Investor ist nicht der Intellekt sondern das Temperament. ' +
                 "Du solltest weder große Freude empfinden, wenn Du mit der " +
                 'Masse läufst und ebenso wenig, wenn Du gegen den Strom schwimmst." – Warren Buffett';
-
-            // Ensure that this summary cannot occure twice
-            forbiddenSummaries.push(8);
+            //
+            // // Ensure that this summary cannot occure twice
+            // forbiddenSummaries.push(8);
             break;
         case 9:
             res = '"Der Ziellose erleidet sein Schicksal – der Zielbewusste gestaltet es!" – Immanuel Kant';
 
             // Ensure that this summary cannot occure twice
-            forbiddenSummaries.push(9);
+            // forbiddenSummaries.push(9);
             break;
         case 10:
             res = getRoundSummaryForPossibleTrade();

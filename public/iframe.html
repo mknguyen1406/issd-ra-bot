@@ -47,6 +47,8 @@
         if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net") {
             if (typeof(event.data) !== 'undefined') {
 
+                console.log(event.data);
+
                 var result = event.data.detail.data;
                 var result_all = "\{" +
                     "userId: " + result.userId + ", " +
@@ -80,7 +82,7 @@
 
             // Show 'Weiter' button after last question
             if (Math.round(parseFloat(result.round) === 13)) {
-                hideShowDom(document.getElementById('movenextbtn'), false);
+                // hideShowDom(document.getElementById('movenextbtn'), false);
             }
         }
 
