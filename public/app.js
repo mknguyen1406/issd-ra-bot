@@ -7,6 +7,9 @@ const experimentRound = (url.searchParams.get("experimentRound") === null || url
 const cabinNo = (url.searchParams.get("cabinNo") === null || url.searchParams.get("cabinNo") === "") ? 0 : url.searchParams.get("cabinNo"); // 0 as default
 const experimentGroup = (url.searchParams.get("experimentGroup") === null || url.searchParams.get("experimentGroup") === "") ? 2 : url.searchParams.get("experimentGroup"); // 2 as default
 
+// Create variable for start time
+let startTime = null;
+
 console.log("Survey ID: " + surveyId + "\n",
     "Price path: " + pricePath + "\n",
     "Experiment round: " + experimentRound + "\n",
@@ -15,7 +18,7 @@ console.log("Survey ID: " + surveyId + "\n",
 );
 
 // Create unique user ID
-const userId = surveyId + "_" + pricePath + "_" + experimentRound + "_" + experimentGroup + "_" + cabinNo;
+const userId = surveyId + "-" + pricePath + "-" + experimentRound + "-" + experimentGroup + "-" + cabinNo;
 
 // Hide or show chat bot based on experiment , e.g. 1 for hide, 2 for show
 if (parseFloat(experimentGroup ) === 1) {
@@ -74,7 +77,7 @@ function startChatBot() {
 
     // Style bot
     const styleOptions = {
-        botAvatarImage: 'https://issd-ra-web-app.azurewebsites.net/images/type_2a.png',
+        botAvatarImage: 'https://issd-ra-web-app.azurewebsites.net/images/type_3a.png',
         // botAvatarInitials: 'BF',
         // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
         // userAvatarInitials: 'WC',
@@ -275,25 +278,27 @@ function startChatBot() {
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                             "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                            "- Wer bist du?";/*
                             "- Wer bist du?\n" +
                             "- Was kannst du?\n" +
                             "- Wie heißt du?\n" +
                             "- Wie alt bist du?\n" +
                             "- Wer hat dich programmiert?\n" +
-                            "- Welcher Anteil ist vom Typ ++?";
+                            "- Welcher Anteil ist vom Typ ++?";*/
                     } else if (group === 3) {
                         chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
                             "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                             "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                            "- Kannst du mir einen Rat geben?";/*
                             "- Kannst du mir einen Rat geben?\n" +
                             "- Wer bist du?\n" +
                             "- Was kannst du?\n" +
                             "- Wie heißt du?\n" +
                             "- Wie alt bist du?\n" +
                             "- Wer hat dich programmiert?\n" +
-                            "- Welcher Anteil ist vom Typ ++?";
+                            "- Welcher Anteil ist vom Typ ++?";*/
                     }
 
                 // Dispatch example questions

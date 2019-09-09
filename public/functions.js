@@ -238,6 +238,11 @@ function nextRound(round) {
             prices: data.prices,
             invests: data.invests
         };
+
+        // Set start time
+        if (startTime === null) {
+            startTime = new Date();
+        }
     } else if (round === 2) {
         // Allow user to trade and show budget
         obj.rename.push({
@@ -539,8 +544,9 @@ function sendResult() {
         experimentGroup: experimentGroup,
         cashout: shareManager.cashout(),
         holdings: shareManager.goodHoldingsHist,
-        invests: shareManager.goodInvestHist,
+        invests: shareManager.getInvests(), // for same length as other arrays
         prices: shareManager.goodPriceHist,
+        startTime: startTime,
         time: new Date(),
         round: round
     };

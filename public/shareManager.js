@@ -427,15 +427,34 @@ class ShareManager {
         };
     }
 
+    getInvests() {
+        let inv = JSON.parse(JSON.stringify(this.goodInvestHist));
+
+        for (let i = 0; i < 6; i++) {
+            inv[i].push(0);
+        }
+
+        return inv;
+    }
+
     cashout() {
+        const portfolio_value = this.goodHoldings[0] * this.goodValues[0] +
+            this.goodHoldings[1] * this.goodValues[1] +
+            this.goodHoldings[2] * this.goodValues[2] +
+            this.goodHoldings[3] * this.goodValues[3] +
+            this.goodHoldings[4] * this.goodValues[4] +
+            this.goodHoldings[5] * this.goodValues[5];
+        const total_value = portfolio_value + this.budget;
+        const euro_value = total_value/300 + 3;
+        const euro_value_rounded = Math.round(2 * (total_value/300))/2 + 3;
+
         return {
-            portfolio:  this.goodHoldings[0] * this.goodValues[0] +
-                        this.goodHoldings[1] * this.goodValues[1] +
-                        this.goodHoldings[2] * this.goodValues[2] +
-                        this.goodHoldings[3] * this.goodValues[3] +
-                        this.goodHoldings[4] * this.goodValues[4] +
-                        this.goodHoldings[5] * this.goodValues[5],
-            budget: this.budget
+            portfolio: portfolio_value,
+            budget: this.budget,
+            total: total_value,
+            total_rounded: Math.round(total_value),
+            euro: euro_value,
+            euro_rounded: euro_value_rounded
         }
     }
 }
