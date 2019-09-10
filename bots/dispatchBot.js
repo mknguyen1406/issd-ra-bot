@@ -139,14 +139,14 @@ class DispatchBot extends ActivityHandler {
             } else {
 
                 const text = turnContext.activity.text;
-                const questions = ['Ja, sehr gerne!', 'Hilfe'];
+                const questions = ['Ja, sehr gerne!', 'Fragen', 'fragen'];
                 const noQuestions = ['Nein.'];
 
                 // Welcome messages
                 if (questions.includes(text)) {
                     await turnContext.sendActivity({ name: 'exampleQuestionEvent', type: 'event', channelData: {} });
                 } else if (noQuestions.includes(text)) {
-                    await turnContext.sendActivity("Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Hilfe' schreibst.");
+                    await turnContext.sendActivity("Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Fragen' schreibst.");
                 } else {
                     // Add message details to the conversation data.
                     conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
