@@ -1,3 +1,24 @@
+// =================================== Global variables =======================================
+
+// This round number controls the requested price paths
+let round = 0;
+
+let openForTrading = null;
+let shareManager = null;
+
+// List that ensures that certain summaries cannot be outputted twice
+let forbiddenSummaries = [];
+
+// Mapping table for randomization
+let mapping = getRandomMapping();
+
+// Array for timestamps
+let times = [];
+
+// Get token from secret and start chat bot
+let token_ = "";
+let conversationId_ = "";
+
 // Get URL parameters
 const url_string = window.location.href;
 const url = new URL(url_string);
@@ -7,8 +28,8 @@ const experimentRound = (url.searchParams.get("experimentRound") === null || url
 const cabinNo = (url.searchParams.get("cabinNo") === null || url.searchParams.get("cabinNo") === "") ? 0 : url.searchParams.get("cabinNo"); // 0 as default
 const experimentGroup = (url.searchParams.get("experimentGroup") === null || url.searchParams.get("experimentGroup") === "") ? 2 : url.searchParams.get("experimentGroup"); // 2 as default
 
-// Create variable for start time
-let startTime = null;
+// Create unique user ID
+const userId = surveyId + "-" + pricePath + "-" + experimentRound + "-" + experimentGroup + "-" + cabinNo;
 
 console.log("Survey ID: " + surveyId + "\n",
     "Price path: " + pricePath + "\n",
@@ -17,16 +38,21 @@ console.log("Survey ID: " + surveyId + "\n",
     "Cabin no: " + cabinNo
 );
 
-// Create unique user ID
-const userId = surveyId + "-" + pricePath + "-" + experimentRound + "-" + experimentGroup + "-" + cabinNo;
+let conversationHistory = null;
+
+// =================================== Create Share Manager =======================================
+const pricesArray = createShareManager(pricePath, 2000, function (budget, prices) {
+    shareManager = new ShareManager(budget, prices);
+});
+
+// =================================== User Interface =======================================
 
 // Hide or show chat bot based on experiment , e.g. 1 for hide, 2 for show
 if (parseFloat(experimentGroup ) === 1) {
     hideChatBot();
 }
 
-
-// // Create chart
+// Create chart
 const chart = new ApexCharts(
     document.querySelector("#chart"),
     options
@@ -39,10 +65,10 @@ x.style.display = "none";
 x = document.getElementById("investments");
 x.style.display = "none";
 
-// Get token from secret and start chat bot
-let token_ = "";
-// let conversationId_ = "";
+// =================================== Create Chat Bot =======================================
+
 getToken(startChatBot);
+
 function startChatBot() {
 
     // We are adding a new middleware to customize the behavior of DIRECT_LINE/INCOMING_ACTIVITY.
@@ -369,29 +395,3 @@ function startChatBot() {
         }
     });
 }
-
-// =================================== Global variables =======================================
-// This round number controls the requested price paths
-let round = 0;
-
-let openForTrading = null;
-let shareManager = null;
-
-// List that ensures that certain summaries cannot be outputted twice
-let forbiddenSummaries = [];
-// ============================================================================================
-
-// getData(function (obj) {
-//     const pricesArray = obj.pricesArray;
-//     const recAlgArray = obj.recAlgArray;
-//     const recExpArray = obj.recExpArray;
-//     const recPeerArray = obj.recPeerArray;
-//     const budget = 2000;
-//
-//     shareManager = new ShareManager(budget, 0, pricesArray, recAlgArray, recExpArray, recPeerArray);
-// });
-
-// Create share manager
-const pricesArray = createShareManager(pricePath, 2000, function (budget, prices) {
-    shareManager = new ShareManager(budget, prices);
-});

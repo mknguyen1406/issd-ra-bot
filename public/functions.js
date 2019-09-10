@@ -47,7 +47,7 @@ function hideAll() {
 }
 
 // Create share manager object for a certain price path
-function createShareManager (pricePath, budget, callback) {
+function createShareManager(pricePath, budget, callback) {
 
     // Call function to read csv file
     readTextFile("./data/path" + pricePath + ".csv", function (obj) {
@@ -60,32 +60,161 @@ function createShareManager (pricePath, budget, callback) {
 
         // Prices from selected price path
         const pricesArray = {
-            0: x[2].slice(1,15),
-            1: x[3].slice(1,15),
-            2: x[4].slice(1,15),
-            3: x[5].slice(1,15),
-            4: x[6].slice(1,15),
-            5: x[7].slice(1,15)
+            0: x[2].slice(1, 15),
+            1: x[3].slice(1, 15),
+            2: x[4].slice(1, 15),
+            3: x[5].slice(1, 15),
+            4: x[6].slice(1, 15),
+            5: x[7].slice(1, 15)
         };
 
-        callback(budget, pricesArray);
+        const pricesArrayMap = {
+            0: pricesArray[mapping.no[0]],
+            1: pricesArray[mapping.no[1]],
+            2: pricesArray[mapping.no[2]],
+            3: pricesArray[mapping.no[3]],
+            4: pricesArray[mapping.no[4]],
+            5: pricesArray[mapping.no[5]]
+        };
+
+
+        callback(budget, pricesArrayMap);
 
         // Create share manager object
         // shareManager = new ShareManager(budget, pricesArray);
     });
 }
 
+function getRandomMapping() {
+    let randNo = generateRandomNo(0, 6);
+    randNo = 2;
+    let map_no = null;
+    let map_char = null;
+
+    switch (randNo) {
+        case 1:
+            map_no = {
+                0: 0,
+                1: 1,
+                2: 2,
+                3: 3,
+                4: 4,
+                5: 5
+            };
+            map_char = {
+                "A": 0,
+                "B": 1,
+                "C": 2,
+                "D": 3,
+                "E": 4,
+                "F": 5
+            };
+            break;
+        case 2:
+            map_no = {
+                0: 1,
+                1: 2,
+                2: 3,
+                3: 4,
+                4: 5,
+                5: 0
+            };
+            map_char = {
+                "A": 1,
+                "B": 2,
+                "C": 3,
+                "D": 4,
+                "E": 5,
+                "F": 0
+            };
+            break;
+        case 3:
+            map_no = {
+                0: 2,
+                1: 3,
+                2: 4,
+                3: 5,
+                4: 0,
+                5: 1
+            };
+            map_char = {
+                "A": 2,
+                "B": 3,
+                "C": 4,
+                "D": 5,
+                "E": 0,
+                "F": 1
+            };
+            break;
+        case 4:
+            map_no = {
+                0: 3,
+                1: 4,
+                2: 5,
+                3: 0,
+                4: 1,
+                5: 2
+            };
+            map_char = {
+                "A": 3,
+                "B": 4,
+                "C": 5,
+                "D": 0,
+                "E": 1,
+                "F": 2
+            };
+            break;
+        case 5:
+            map_no = {
+                0: 4,
+                1: 5,
+                2: 0,
+                3: 1,
+                4: 2,
+                5: 3
+            };
+            map_char = {
+                "A": 4,
+                "B": 5,
+                "C": 0,
+                "D": 1,
+                "E": 2,
+                "F": 3
+            };
+            break;
+        case 6:
+            map_no = {
+                0: 5,
+                1: 0,
+                2: 1,
+                3: 2,
+                4: 3,
+                5: 4
+            };
+            map_char = {
+                "A": 5,
+                "B": 0,
+                "C": 1,
+                "D": 2,
+                "E": 3,
+                "F": 4
+            };
+            break;
+    }
+
+    return {
+        no: map_no,
+        char: map_char
+    }
+}
+
 // Reade price path csv file
-async function readTextFile(file, callback)
-{
+async function readTextFile(file, callback) {
     const rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = await function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status === 0)
-            {
+    rawFile.onreadystatechange = await function () {
+        if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status === 0) {
                 const allText = rawFile.responseText;
                 callback(allText);
             }
@@ -103,7 +232,7 @@ function getToken(callback) {
     let secret = 'hMRtBPdEIFY.Mak8ZsZLeFesVFma1ShIQlXkmWQaaxBO2usSPyoUrDc';
     // var encodedParams = encodeURIComponent(params);
     request_.open("POST", "https://directline.botframework.com/v3/directline/tokens/generate", true);
-    request_.setRequestHeader("Authorization", "Bearer "+ secret);
+    request_.setRequestHeader("Authorization", "Bearer " + secret);
     request_.send();
     request_.onreadystatechange = function () {
         if (request_.readyState === 4 && request_.status === 200) {
@@ -117,13 +246,59 @@ function getToken(callback) {
     };
 }
 
+function getConversationHistory(filterCallback, resultCallback) {
+    let request_ = new XMLHttpRequest();
+    const url = "https://directline.botframework.com/v3/directline/conversations/" + conversationId_ + "/activities";
+
+    request_.open("GET", url, true);
+    request_.setRequestHeader("Authorization", "Bearer " + token_);
+    request_.send();
+    request_.onreadystatechange = function () {
+        if (request_.readyState === 4 && request_.status === 200) {
+            const response = request_.responseText;
+            const obj = JSON.parse(response);
+            console.log(obj);
+            // conversationHistory = obj;
+
+            // Filter for messages only
+            filterCallback(obj, resultCallback);
+        }
+    };
+}
+
+function filterMessages(conversationRaw, resultCallback) {
+    let conv = conversationRaw.activities;
+    let conv_clean = [];
+
+    // Filter only for messages
+    for (let i = 0; i < conv.length; i++) {
+        const activity = conv[i];
+
+        // Only if not an event and if text property is available
+        if ((typeof(activity.type) !== 'undefined') && (typeof(activity.text) !== 'undefined') && (typeof(activity.from) !== 'undefined')  && (typeof(activity.timestamp) !== 'undefined')) {
+            if (activity.type === "message") {
+                conv_clean.push({
+                    timestamp: activity.timestamp,
+                    from: activity.from.id,
+                    text: activity.text
+                });
+            }
+        }
+    }
+
+    conversationHistory = conv_clean;
+
+    // Call send result function
+    resultCallback();
+}
+
 function buttonActionEvent(e, action) {
     if (action === "buy") {
         // Get ID of button
         const buttonId = e.target.id;
         console.log("Pressed button: " + buttonId);
         // Get number of button, e.g. 1-6
-        const lastChar = parseFloat(buttonId.substr(buttonId.length-1)) - 1;
+        const lastChar = parseFloat(buttonId.substr(buttonId.length - 1)) - 1;
 
         const res = shareManager.buyGood(lastChar, openForTrading);
 
@@ -143,7 +318,7 @@ function buttonActionEvent(e, action) {
         const buttonId = e.target.id;
         console.log("Pressed button: " + buttonId);
         // Get number of button, e.g. 1-6
-        const lastChar = parseFloat(buttonId.substr(buttonId.length-1)) - 1;
+        const lastChar = parseFloat(buttonId.substr(buttonId.length - 1)) - 1;
 
         const res = shareManager.sellGood(lastChar, openForTrading);
 
@@ -199,11 +374,14 @@ function triggerNextRound() {
     }
     renameElements(res.rename);
     // Increase round number
-    round ++;
+    round++;
 }
 
 // Get data for a certain round
 function nextRound(round) {
+    // Add timestamp
+    times.push(getDate());
+
     let obj = {
         rename: [
             {
@@ -238,11 +416,6 @@ function nextRound(round) {
             prices: data.prices,
             invests: data.invests
         };
-
-        // Set start time
-        if (startTime === null) {
-            startTime = new Date();
-        }
     } else if (round === 2) {
         // Allow user to trade and show budget
         obj.rename.push({
@@ -285,8 +458,9 @@ function nextRound(round) {
         // Stop trading in round 13
         openForTrading = false;
 
-        // Send final result to bot
-        sendResult();
+        // Get conversation history and send results to chat bot afterwards
+        // getConversationHistory(sendResult);
+
     } else if (round === 14) {
         // Refresh page
         obj.reload = true;
@@ -312,10 +486,10 @@ function sendRoundSummary(round) {
         // Send fixed summary that has number 0
         summary = getRoundSummary(0);
     } else if ((round > 3) && (round < 12)) {
-        
+
         // Send randomized summary
         const randNo = getRandomNo();
-        
+
         console.log("random number: " + randNo);
         summary = getRoundSummary(randNo);
 
@@ -362,16 +536,17 @@ function sendRoundSummary(round) {
     // // window.parent.postMessage(jsonObj, '*');
     // window.parent.postMessage(test, '*');
 
-    sendResult();
+    // Get conversation history and send result
+    getConversationHistory(filterMessages, sendResult);
 }
 
 function getRandomNo() {
-    
-    let randNo = generateRandomNo(0,10);
+
+    let randNo = generateRandomNo(0, 10);
 
     // Check if summary has been dropped already
     while (forbiddenSummaries.includes(randNo) > 0) {
-        randNo = generateRandomNo(0,10);
+        randNo = generateRandomNo(0, 10);
     }
 
     return randNo
@@ -476,12 +651,12 @@ function getRoundSummaryForTrades() {
 
     let res = null;
 
-    const tradesLastPeriod = shareManager.goodInvestHist[0][round-1] +
-        shareManager.goodInvestHist[1][round-1] +
-        shareManager.goodInvestHist[2][round-1] +
-        shareManager.goodInvestHist[3][round-1] +
-        shareManager.goodInvestHist[4][round-1] +
-        shareManager.goodInvestHist[5][round-1];
+    const tradesLastPeriod = shareManager.goodInvestHist[0][round - 1] +
+        shareManager.goodInvestHist[1][round - 1] +
+        shareManager.goodInvestHist[2][round - 1] +
+        shareManager.goodInvestHist[3][round - 1] +
+        shareManager.goodInvestHist[4][round - 1] +
+        shareManager.goodInvestHist[5][round - 1];
 
     console.log(shareManager.goodInvestHist);
 
@@ -545,9 +720,11 @@ function sendResult() {
         holdings: shareManager.goodHoldingsHist,
         invests: shareManager.getInvests(), // for same length as other arrays
         prices: shareManager.goodPriceHist,
-        startTime: startTime,
-        time: new Date(),
-        round: round
+        times: times,
+        round: round,
+        map_no: mapping.no,
+        map_char: mapping.char,
+        conversationHistory: conversationHistory
     };
 
     // Create a result event
@@ -577,7 +754,7 @@ function sendResult() {
     window.parent.postMessage(result, '*');
 }
 
-function renameElements(res){
+function renameElements(res) {
     const renameArray = res;
     for (let i = 0; i < renameArray.length; i++) {
         const obj = renameArray[i];
@@ -623,7 +800,7 @@ function alertEarnings(cash) {
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
-    const euro = Math.round(total/300);
+    const euro = Math.round(total / 300);
 
     swal("Glückwunsch!", "Ihre Auszahlung beträgt " + total + " Währungseinheiten." + "\n\n" +
         "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
@@ -649,7 +826,7 @@ function appendTableValue(parent, value, good) {
     document.getElementById(pref + good).appendChild(childNode);
 }
 
-function generateRandomNo (min, max) {
+function generateRandomNo(min, max) {
     return Math.floor(Math.random() * (max - min)) + min + 1
 }
 
@@ -663,7 +840,21 @@ function dispatchBotEvent(chatbotResponse) {
     });
 
     // Send event to own event handler
-    setTimeout(function() { window.document.dispatchEvent(event); }, 1000);
+    setTimeout(function () {
+        window.document.dispatchEvent(event);
+    }, 1000);
+}
+
+function getDate() {
+    const date = new Date();
+    const day = date.getDay() < 10 ? "0" + date.getDay() : date.getDay();
+    const month = date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth();
+    const year = date.getFullYear();
+    const hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+    const min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+    const sec = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+    return day + "." + month + "." + year + " " + hour + ":" + min + ":" + sec;
 }
 
 /*

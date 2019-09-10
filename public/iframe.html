@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>ISSD Robo Advisor</title>
 <body>
-<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=22&experimentGroup=3" height="700px" width="900px"></iframe>
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=1&experimentGroup=3" height="700px" width="900px"></iframe>
 <script>
     // window.document.addEventListener('myChildEvent', handleEvent, false);
     // function handleEvent(e) {
@@ -45,7 +45,7 @@
     // Event listener for messages
     window.addEventListener('message', function(event) {
         if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net") {
-            if (typeof(event.data) !== 'undefined') {
+            if (typeof(event.data.detail) !== 'undefined') {
 
                 console.log(event.data);
 
@@ -61,7 +61,7 @@
                     "holdings: " + JSON.stringify(result.holdings) + ", " +
                     "invests: " + JSON.stringify(result.invests) + ", " +
                     "prices: " + JSON.stringify(result.prices) + ", " +
-                    "time: " + result.time + ", " +
+                    "times: " + result.times + ", " +
                     "round: " + result.round +  "\}";
 
                 var result_cabinNo = result.cabinNo;
@@ -78,11 +78,6 @@
                 console.log(result_all);
                 console.log(result_conc);
 
-            }
-
-            // Show 'Weiter' button after last question
-            if (Math.round(parseFloat(result.round) === 13)) {
-                // hideShowDom(document.getElementById('movenextbtn'), false);
             }
         }
 
