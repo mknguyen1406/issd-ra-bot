@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>ISSD Robo Advisor</title>
 <body>
-<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=1&experimentGroup=3" height="700px" width="900px"></iframe>
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=2&experimentGroup=3" height="700px" width="900px"></iframe>
 <script>
     // window.document.addEventListener('myChildEvent', handleEvent, false);
     // function handleEvent(e) {
@@ -62,6 +62,10 @@
                     "invests: " + JSON.stringify(result.invests) + ", " +
                     "prices: " + JSON.stringify(result.prices) + ", " +
                     "times: " + result.times + ", " +
+                    "advice: " + JSON.stringify(result.advice) + ", " +
+                    "conversation: " + result.conversationHistory + ", " +
+                    "mapping_character: " + JSON.stringify(result.map_char) + ", " +
+                    "mapping_number: " + JSON.stringify(result.map_no) + ", " +
                     "round: " + result.round +  "\}";
 
                 var result_cabinNo = result.cabinNo;

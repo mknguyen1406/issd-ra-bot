@@ -15,6 +15,24 @@ let mapping = getRandomMapping();
 // Array for timestamps
 let times = [];
 
+// Container for advices
+let advice = {
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
+    10: 0,
+    11: 0,
+    12: 0,
+    13: 0,
+};
+
 // Get token from secret and start chat bot
 let token_ = "";
 let conversationId_ = "";
@@ -34,7 +52,7 @@ const userId = surveyId + "-" + pricePath + "-" + experimentRound + "-" + experi
 console.log("Survey ID: " + surveyId + "\n",
     "Price path: " + pricePath + "\n",
     "Experiment round: " + experimentRound + "\n",
-    "Experiment group: " + experimentGroup+ "\n",
+    "Experiment group: " + experimentGroup + "\n",
     "Cabin no: " + cabinNo
 );
 
@@ -48,7 +66,7 @@ const pricesArray = createShareManager(pricePath, 2000, function (budget, prices
 // =================================== User Interface =======================================
 
 // Hide or show chat bot based on experiment , e.g. 1 for hide, 2 for show
-if (parseFloat(experimentGroup ) === 1) {
+if (parseFloat(experimentGroup) === 1) {
     hideChatBot();
 }
 
@@ -118,12 +136,12 @@ function startChatBot() {
     window.WebChat.renderWebChat(
         {
             directLine: window.WebChat.createDirectLine({token: token_})
-            ,store
-            ,userID: userId
+            , store
+            , userID: userId
             // ,username: 'Web Chat User'
             , locale: 'de-de'
-            ,styleOptions: styleOptions
-            ,sendTypingIndicator: true
+            , styleOptions: styleOptions
+            , sendTypingIndicator: true
         },
         document.getElementById('webchat')
     );
@@ -202,6 +220,7 @@ function startChatBot() {
 
     // Create event listener for summary and result event
     window.document.addEventListener('botEvent', handleEvent, false);
+
     function handleEvent(e) {
         console.log(e);
         const type = e.detail.type;
@@ -223,7 +242,7 @@ function startChatBot() {
 
     // Listening for incoming response events of type buy, sell or next
     window.addEventListener('webchatincomingactivity', ({data}) => {
-        console.log(`Received a bot activity of type "${ data.type }":`);
+        console.log(`Received a bot activity of type "${data.type}":`);
         console.log(data);
         // Don't jump into if clause at messages and webchat/join event
         if (data.type === "event" && data.name !== "webchat/join") {
@@ -296,42 +315,44 @@ function startChatBot() {
                 let chatbotResponse = "";
                 const group = parseFloat(experimentGroup);
 
-                    // Only available when experiment started
-                    if (group === 2) {
+                // Only available when experiment started
+                if (group === 2) {
 
-                        chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                            "- Wer bist du?";/*
+                    chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                        "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                        "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                        "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                        "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                        "- Wer bist du?";/*
                             "- Wer bist du?\n" +
                             "- Was kannst du?\n" +
                             "- Wie heißt du?\n" +
                             "- Wie alt bist du?\n" +
                             "- Wer hat dich programmiert?\n" +
                             "- Welcher Anteil ist vom Typ ++?";*/
-                    } else if (group === 3) {
-                        chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                            "- Kannst du mir einen Rat geben?\n" +
-                            "- Wer bist du?";/*
+                } else if (group === 3) {
+                    chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                        "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                        "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                        "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                        "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                        "- Kannst du mir einen Rat geben?\n" +
+                        "- Wer bist du?";/*
                             "- Wer bist du?\n" +
                             "- Was kannst du?\n" +
                             "- Wie heißt du?\n" +
                             "- Wie alt bist du?\n" +
                             "- Wer hat dich programmiert?\n" +
                             "- Welcher Anteil ist vom Typ ++?";*/
-                    }
+                }
 
                 // Dispatch example questions
                 dispatchBotEvent(chatbotResponse);
 
                 // Dispatch click on 'Starte Experiment' message
-                dispatchBotEvent("Bitte klicke nun auf 'Starte Experiment', um zu beginnen.");
+                if (!openForTrading) {
+                    dispatchBotEvent("Bitte klicke nun auf 'Starte Experiment', um zu beginnen.");
+                }
             }
 
             // Incoming luis und qna events
@@ -372,6 +393,9 @@ function startChatBot() {
                                 // Only for 3rd experiment group
                                 if (parseFloat(experimentGroup) === 3) {
                                     chatbotResponse = shareManager.getRecommendAlg(round - 1);
+
+                                    // Track advice
+                                    advice[round - 1] ++;
                                 }
                                 break;
                             case "wert_portfolio":

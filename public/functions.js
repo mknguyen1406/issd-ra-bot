@@ -724,6 +724,7 @@ function sendResult() {
         round: round,
         map_no: mapping.no,
         map_char: mapping.char,
+        advice: advice,
         conversationHistory: conversationHistory
     };
 
