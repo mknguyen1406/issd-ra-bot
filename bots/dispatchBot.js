@@ -124,9 +124,23 @@ class DispatchBot extends ActivityHandler {
                 const turnContextOriginal = context.activity.value.turnContext;
 
                 // Process message with LUIS and QnA Maker
-                // await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer)
-                await context.sendActivity("turnContext" + JSON.stringify(context));
-                await context.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
+                // await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer);
+                // await context.sendActivity("turnContext" + JSON.stringify(context));
+                // await context.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
+
+                // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
+                const recognizerResult = await dispatchRecognizer.recognize(turnContextOriginal);
+                const intent = LuisRecognizer.topIntent(recognizerResult);
+                // Get result, sub intent and entity from sub LUIS model
+                const recognizerSubResult = await subLuisRecognizer.recognize(turnContextOriginal);
+                const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
+
+                await context.sendActivity("recognizerResult: " + JSON.stringify(recognizerResult));
+                await context.sendActivity("intent: " + JSON.stringify(intent));
+                await context.sendActivity("recognizerSubResult: " + JSON.stringify(recognizerSubResult));
+                await context.sendActivity("intentSub: " + JSON.stringify(intentSub));
+
+
             }
 
             if (context.activity.name === "suggestedActionEvent") {
@@ -157,9 +171,9 @@ class DispatchBot extends ActivityHandler {
             const recognizerResult = await dispatchRecognizer.recognize(turnContextOriginal);
 
             console.log(recognizerResult);
-            await turnContext.sendActivity("turnContext" + JSON.stringify(turnContext));
-            await turnContext.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
-            await turnContext.sendActivity("recognizerResult" + JSON.stringify(recognizerResult));
+            // await turnContext.sendActivity("turnContext" + JSON.stringify(turnContext));
+            // await turnContext.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
+            // await turnContext.sendActivity("recognizerResult" + JSON.stringify(recognizerResult));
 
             // Top intent tell us which cognitive service to use.
             const intent = LuisRecognizer.topIntent(recognizerResult);
