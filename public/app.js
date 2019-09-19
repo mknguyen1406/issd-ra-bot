@@ -6,6 +6,8 @@ let round = 0;
 let openForTrading = null;
 let shareManager = null;
 
+let userName = null;
+
 // List that ensures that certain summaries cannot be outputted twice
 let forbiddenSummaries = [];
 
@@ -225,12 +227,14 @@ function startChatBot() {
         console.log(e);
         const type = e.detail.type;
         const data = e.detail.data;
+        const turnContext = e.detail.turnContext;
 
         store.dispatch({
             type: 'WEB_CHAT/SEND_EVENT',
             payload: {
                 name: type,
-                value: data
+                value: data,
+                turnContext: turnContext
             }
         });
 
@@ -248,42 +252,7 @@ function startChatBot() {
         if (data.type === "event" && data.name !== "webchat/join") {
             const channelData = data.channelData;
             const correctEvent = !channelData.hasOwnProperty("clientActivityID"); // because bot sends two events
-            if (data.name === 'buy' && correctEvent) {
-                // if (channelData.open === false) {
-                //     alertNotOpen();
-                // } else if (channelData.success === false) {
-                //     alertInsufficientEndowment();
-                // }
-            }
-            if (data.name === 'sell' && correctEvent) {
-                // if (channelData.open === false) {
-                //     alertNotOpen();
-                // } else if (channelData.success === false) {
-                //     alertInsufficientHoldings();
-                // }
-            }
-            if (data.name === 'next' && correctEvent && channelData.reload === false) {
-                // const data = channelData.appendData;
-                // chart.appendData(data.prices);
-                // appendTable("price", data.prices);
-                // appendTable("invest", data.invests);
-                //
-                // // Only for last round
-                // if (channelData.cashout > 0) {
-                //     alertEarnings(channelData.cashout);
-                // }
-            } else if (channelData.reload === true) {
-                // This is round 14
-                // window.location.reload();
-            }
-            // Rename elements only for correct events
-            if (correctEvent) {
-                // const renameArray = channelData.rename;
-                // for (let i = 0; i < renameArray.length; i++) {
-                //     const obj = renameArray[i];
-                //     document.getElementById(obj.id).innerHTML = obj.content;
-                // }
-            }
+            const turnContext = channelData.turnContext; //original turnContext
 
             // Incoming welcome message event
             if (data.name === 'welcomeEvent') {
@@ -303,10 +272,118 @@ function startChatBot() {
                 }
 
                 // Dispatch example questions
-                dispatchBotEvent(chatbotResponse);
+                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
 
                 // Dispatch click on 'Starte Experiment' message
-                dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?");
+                dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
+            }
+
+            // Incoming message event, e.g. user just sent a message to bot and bot sent this message event in turn
+            if (data.name === 'messageEvent') {
+
+                let chatbotResponse = "";
+                const group = parseFloat(experimentGroup);
+
+                // Message sent to chat bot
+                const message = data.channelData.message;
+
+                // If name is null then set name and send acknowledge message from bot to user
+                if (userName == null) {
+                    userName = message;
+
+                    // Acknowledge name
+                    chatbotResponse = `Danke, ${ userName }.`;
+
+                    // Ask user for example questions with suggested answers
+                    dispatchBotEvent("", "suggestedActionEvent", turnContext);
+
+                } else {
+
+                    // Check if user asked for example questions
+                    const questions = ['Ja, sehr gerne!', 'Fragen', 'fragen'];
+
+                    // Send example questions to user
+                    if (questions.includes(message)) {
+                        // Only available when experiment started
+                        if (group === 2) {
+
+                            chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                                "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                                "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                                "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                                "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                                "- Wer bist du?";
+                        } else if (group === 3) {
+                            chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                                "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                                "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                                "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                                "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                                "- Kannst du mir einen Rat geben?\n" +
+                                "- Wer bist du?";
+                        }
+
+                        // Dispatch example questions
+                        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+
+                        // Dispatch click on 'Starte Experiment' message
+                        if (!openForTrading) {
+                            chatbotResponse = "Bitte klicke nun auf 'Starte Experiment', um zu beginnen.";
+                            dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                        }
+                    } else {
+
+                        // Check if user said 'No' to example questions
+                        const noQuestions = ['Nein.'];
+                        if (noQuestions.includes(message)) {
+
+                            // Tell user that he can ask for example questions again
+                            chatbotResponse = "Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Fragen' schreibst.";
+                            dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                        } else {
+
+                            // Check if experiment started
+                            if (!openForTrading) {
+                                // Experiment did not start yet
+
+                                // Check if experiment did not started yet or is over
+                                if (round === 0) {
+
+                                    // Experiment did not started yet
+                                    chatbotResponse = "Bitte starte erst das Experiment.";
+                                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                                } else {
+
+                                    // Experiment is over
+                                    chatbotResponse = "Das Experiment ist vorbei. Bitte klicke unten auf 'Weiter'.";
+                                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                                }
+                            } else {
+                                // Experiment started
+
+                                // Process message with LUIS and QnA Maker
+                                dispatchBotEvent(message, "processMessageEvent", turnContext);
+                            }
+                        }
+                    }
+                }
+
+                // Only available when experiment started
+                if (group === 2) {
+                    chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
+                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen.";
+
+                } else if (group === 3) {
+                    chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
+                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen. " +
+                        "Außerdem kannst du mich nach einer Investitionsempfehlung fragen.";
+                }
+
+                // Dispatch example questions
+                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+
+                // Dispatch click on 'Starte Experiment' message
+                dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
             }
 
             // Incoming example question event
@@ -315,44 +392,32 @@ function startChatBot() {
                 let chatbotResponse = "";
                 const group = parseFloat(experimentGroup);
 
-                // Only available when experiment started
-                if (group === 2) {
-
-                    chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                        "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                        "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                        "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                        "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                        "- Wer bist du?";/*
-                            "- Wer bist du?\n" +
-                            "- Was kannst du?\n" +
-                            "- Wie heißt du?\n" +
-                            "- Wie alt bist du?\n" +
-                            "- Wer hat dich programmiert?\n" +
-                            "- Welcher Anteil ist vom Typ ++?";*/
-                } else if (group === 3) {
-                    chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                        "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                        "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                        "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                        "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                        "- Kannst du mir einen Rat geben?\n" +
-                        "- Wer bist du?";/*
-                            "- Wer bist du?\n" +
-                            "- Was kannst du?\n" +
-                            "- Wie heißt du?\n" +
-                            "- Wie alt bist du?\n" +
-                            "- Wer hat dich programmiert?\n" +
-                            "- Welcher Anteil ist vom Typ ++?";*/
-                }
-
-                // Dispatch example questions
-                dispatchBotEvent(chatbotResponse);
-
-                // Dispatch click on 'Starte Experiment' message
-                if (!openForTrading) {
-                    dispatchBotEvent("Bitte klicke nun auf 'Starte Experiment', um zu beginnen.");
-                }
+                // // Only available when experiment started
+                // if (group === 2) {
+                //
+                //     chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                //         "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                //         "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                //         "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                //         "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                //         "- Wer bist du?";
+                // } else if (group === 3) {
+                //     chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                //         "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                //         "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                //         "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                //         "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                //         "- Kannst du mir einen Rat geben?\n" +
+                //         "- Wer bist du?";
+                // }
+                //
+                // // Dispatch example questions
+                // dispatchBotEvent(chatbotResponse, "chatEvent");
+                //
+                // // Dispatch click on 'Starte Experiment' message
+                // if (!openForTrading) {
+                //     dispatchBotEvent("Bitte klicke nun auf 'Starte Experiment', um zu beginnen.", "chatEvent");
+                // }
             }
 
             // Incoming luis und qna events
@@ -414,7 +479,7 @@ function startChatBot() {
                 }
 
                 // Dispatch message
-                dispatchBotEvent(chatbotResponse);
+                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
             }
         }
     });

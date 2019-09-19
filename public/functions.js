@@ -831,12 +831,13 @@ function generateRandomNo(min, max) {
     return Math.floor(Math.random() * (max - min)) + min + 1
 }
 
-function dispatchBotEvent(chatbotResponse) {
+function dispatchBotEvent(chatbotResponse, type, turnContext) {
     // Create event to send group specific welcome message
     let event = new CustomEvent('botEvent', {
         detail: {
-            type: "chatEvent",
-            data: chatbotResponse
+            type: type,
+            data: chatbotResponse,
+            turnContext: turnContext
         }
     });
 

@@ -5,46 +5,11 @@
     <title>ISSD Robo Advisor</title>
 <body>
 <iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=2&experimentGroup=3" height="700px" width="900px"></iframe>
+<!--<script src="./limesurvey.js"></script>-->
 <script>
-    // window.document.addEventListener('myChildEvent', handleEvent, false);
-    // function handleEvent(e) {
-    //     //console.log(e.detail);
-    //
-    //     // Get the URL and send it back to the child
-    //     const data = { url: window.location.href };
-    //     const event = new CustomEvent('myParentEvent', { detail: data });
-    //     document.querySelector('#child').contentDocument.dispatchEvent(event);
-    // }
-
-    // Create event listener for summary and result event
-/*    window.document.addEventListener('botEvent', handleEvent, false);
-    function handleEvent(e) {
-        console.log(e);
-        const type = e.detail.type;
-        const data = e.detail.data;
-
-        window.alert("Type: " + type + "\nData: " + data);
-        console.log("Type: " + type + "\nData: " + data);
-    }*/
-
-    // Event listener for messages
-    // window.addEventListener('message', function(event) {
-    //     console.log(event);
-    //
-    //     if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net") {
-    //         if (typeof(event.data.detail) !== 'undefined') {
-    //             //window.alert("Message received from origin: " + event.origin);
-    //
-    //             // The data sent with postMessage is stored in event.data
-    //             console.log(event.data);
-    //         }
-    //     }
-    //
-    // });
-
     // Event listener for messages
     window.addEventListener('message', function(event) {
-        if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net") {
+        if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net" || event.origin === "https://issd-trading.azurewebsites.net") {
             if (typeof(event.data.detail) !== 'undefined') {
 
                 console.log(event.data);
@@ -63,7 +28,7 @@
                     "prices: " + JSON.stringify(result.prices) + ", " +
                     "times: " + result.times + ", " +
                     "advice: " + JSON.stringify(result.advice) + ", " +
-                    "conversation: " + result.conversationHistory + ", " +
+                    "conversation: " + JSON.stringify(result.conversationHistory) + ", " +
                     "mapping_character: " + JSON.stringify(result.map_char) + ", " +
                     "mapping_number: " + JSON.stringify(result.map_no) + ", " +
                     "round: " + result.round +  "\}";

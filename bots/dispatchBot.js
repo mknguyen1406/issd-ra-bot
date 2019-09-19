@@ -16,15 +16,11 @@ const fs = require('fs');
 
 // const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
-// The accessor names for the conversation data and user profile state property accessors.
-const CONVERSATION_DATA_PROPERTY = 'conversationData';
-const USER_PROFILE_PROPERTY = 'userProfile';
-
 class DispatchBot extends ActivityHandler {
     /**
      * @param {any} logger object for logging events, defaults to console if none is provided
      */
-    constructor(logger, conversationState, userState) {
+    constructor(logger) {
         super();
         if (!logger) {
             logger = console;
@@ -34,7 +30,7 @@ class DispatchBot extends ActivityHandler {
         const dispatchRecognizer = new LuisRecognizer({
             applicationId: process.env.LuisAppId,
             endpointKey: process.env.LuisAPIKey,
-            endpoint: `https://${ process.env.LuisAPIHostName }.api.cognitive.microsoft.com`
+            endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         }, {
             includeAllIntents: true,
             includeInstanceData: true
@@ -43,7 +39,7 @@ class DispatchBot extends ActivityHandler {
         const subLuisRecognizer = new LuisRecognizer({
             applicationId: process.env.LuisSubAppId,
             endpointKey: process.env.LuisAPIKey,
-            endpoint: `https://${ process.env.LuisAPIHostName }.api.cognitive.microsoft.com`
+            endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         }, {
             includeAllIntents: true,
             includeInstanceData: true
@@ -57,20 +53,13 @@ class DispatchBot extends ActivityHandler {
 
         this.logger = logger;
         this.dispatchRecognizer = dispatchRecognizer;
+        this.subLuisRecognizer = subLuisRecognizer;
         this.qnaMaker = qnaMaker;
-
-        // Create the state property accessors for the conversation data and user profile.
-        this.conversationData = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
-        this.userProfile = userState.createProperty(USER_PROFILE_PROPERTY);
-
-        // The state management objects for the conversation and user state.
-        this.conversationState = conversationState;
-        this.userState = userState;
 
         async function writeToFile(jsonData, context) {
             const filename = jsonData.userId;
-            // await context.sendActivity("Result received\n Filename is: " + filename); 
-            fs.writeFile(filename + ".txt", jsonData, async function(err) {
+            // await context.sendActivity("Result received\n Filename is: " + filename);
+            fs.writeFile(filename + ".txt", jsonData, async function (err) {
                 if (err) {
                     await context.sendActivity("Error ocurred while saving the result. \n" + filename);
                     console.log(err);
@@ -78,24 +67,16 @@ class DispatchBot extends ActivityHandler {
                     await context.sendActivity(`Saved result to http://issd-ra-web-app.azurewebsites.net/results/${filename}.txt`);
                 }
             });
-        } 
+        }
 
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
-            const conversationData = await this.conversationData.get(
-                context, { promptedForUserName: false });
 
             for (let member of membersAdded) {
                 if (member.id !== context.activity.recipient.id) {
-                    // await context.sendActivity("Hallo, ich bin dein Robo Assistant.\n" +
-                    //     "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen." );
-                    //
-                    // await context.sendActivity("Mein Name ist Charles. Wie lautet deiner?");
 
-                    await context.sendActivity({ name: 'welcomeEvent', type: 'event', channelData: {} });
-
-                    // Set the flag to true, so we don't prompt in the next turn.
-                    // conversationData.promptedForUserName = true;
+                    // Request welcome message
+                    await context.sendActivity({name: 'welcomeEvent', type: 'event', channelData: {}});
                 }
             }
 
@@ -105,75 +86,12 @@ class DispatchBot extends ActivityHandler {
 
         this.onMessage(async (turnContext, next) => {
 
-            // Get the state properties from the turn context.
-            const userProfile = await this.userProfile.get(turnContext, {});
-            const conversationData = await this.conversationData.get(
-                turnContext, { promptedForUserName: false });
-
-            if (!userProfile.name) {
-
-                // Set the name to what the user provided.
-                userProfile.name = turnContext.activity.text;
-
-                // Acknowledge that we got their name.
-                await turnContext.sendActivity(`Danke, ${ userProfile.name }.`);
-
-                // Show example questions
-                // await turnContext.sendActivity("**Folgende Fragen kannst du mir stellen:**\n" + //Einige Fragen, die du stellen kannst, sind
-                //     "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                //     "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                //     "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                //     "- Wie hoch ist die Gesamtrendite meines Portfolios?"
-                //    );
-                await this.sendSuggestedActions(turnContext, userProfile.name);
-                //
-                // // Acknowledge that we got their name.
-                // await turnContext.sendActivity("Bitte klicke auf 'Starte Experiment', um zu beginnen.");
-
-                // await turnContext.sendActivity({ name: 'exampleQuestionEvent', type: 'event', channelData: {} });
-                //await turnContext.sendActivity({ name: 'exampleQuestionEvent', type: 'event', channelData: {} });
-
-                // Reset the flag to allow the bot to go though the cycle again.
-                conversationData.promptedForUserName = false;
-
-            } else {
-
-                const text = turnContext.activity.text;
-                const questions = ['Ja, sehr gerne!', 'Fragen', 'fragen'];
-                const noQuestions = ['Nein.'];
-
-                // Welcome messages
-                if (questions.includes(text)) {
-                    await turnContext.sendActivity({ name: 'exampleQuestionEvent', type: 'event', channelData: {} });
-                } else if (noQuestions.includes(text)) {
-                    await turnContext.sendActivity("Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Fragen' schreibst.");
-                } else {
-                    // Add message details to the conversation data.
-                    conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
-                    conversationData.channelId = turnContext.activity.channelId;
-
-                    // Display state data.
-                    // await turnContext.sendActivity(`${ userProfile.name } sent: ${ turnContext.activity.text }`);
-                    // await turnContext.sendActivity(`Message received at: ${ conversationData.timestamp }`);
-                    // await turnContext.sendActivity(`Message received from: ${ conversationData.channelId }`);
-
-                    // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
-                    const recognizerResult = await dispatchRecognizer.recognize(turnContext);
-
-                    console.log(recognizerResult);
-
-                    // Top intent tell us which cognitive service to use.
-                    const intent = LuisRecognizer.topIntent(recognizerResult);
-
-                    // Get result, sub intent and entity from sub LUIS model
-                    const recognizerSubResult = await subLuisRecognizer.recognize(turnContext);
-                    const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
-                    const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
-
-                    // Next, we call the dispatcher with the top intent.
-                    await this.dispatchToTopIntentAsync(turnContext, intent, intentSub, entity, recognizerResult);
-                }
-            }          
+            // Request welcome message
+            await turnContext.sendActivity({
+                name: 'messageEvent',
+                type: 'event',
+                channelData: {message: turnContext.activity.text, turnContext: turnContext}
+            });
 
             await next();
         });
@@ -199,6 +117,22 @@ class DispatchBot extends ActivityHandler {
                 await context.sendActivity(message);
             }
 
+            if (context.activity.name === "processMessageEvent") {
+
+                // Get data
+                const message = context.activity.value;
+                const turnContextOriginal = context.activity.turnContext;
+
+                // Process message with LUIS and QnA Maker
+                await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer)
+            }
+
+            if (context.activity.name === "suggestedActionEvent") {
+
+                // Send user suggested actions
+                await this.sendSuggestedActions(context);
+            }
+
             if (context.activity.name === "result") {
 
                 // Get data
@@ -207,25 +141,34 @@ class DispatchBot extends ActivityHandler {
                 // Save result to database
                 //createUser(result);
                 // writeToFile(result, context);   
-                await context.sendActivity("Result received.");        
+                await context.sendActivity("Result received.");
             }
 
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
-
-        // Save any state changes. The load happened during the execution of the Dialog.
-        this.onDialog(async (turnContext, next) => {
-            await this.conversationState.saveChanges(turnContext, false);
-            await this.userState.saveChanges(turnContext, false);
-
-            // By calling next() you ensure that the next BotHandler is run.
-            await next();
-        });
-
     }
 
-    async sendSuggestedActions(turnContext, name) {
+    async processMessage(turnContext, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer) {
+
+            // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
+            const recognizerResult = await dispatchRecognizer.recognize(turnContextOriginal);
+
+            console.log(recognizerResult);
+
+            // Top intent tell us which cognitive service to use.
+            const intent = LuisRecognizer.topIntent(recognizerResult);
+
+            // Get result, sub intent and entity from sub LUIS model
+            const recognizerSubResult = await subLuisRecognizer.recognize(turnContextOriginal);
+            const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
+            const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
+
+            // Next, we call the dispatcher with the top intent.
+            await this.dispatchToTopIntentAsync(turnContextOriginal, intent, intentSub, entity, recognizerResult);
+    }
+
+    async sendSuggestedActions(turnContext) {
         const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein.'], 'Möchtest du beispielhafte Fragen sehen, die du mir stellen kannst?');
         await turnContext.sendActivity(reply);
     }
