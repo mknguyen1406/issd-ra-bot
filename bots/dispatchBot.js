@@ -102,7 +102,7 @@ class DispatchBot extends ActivityHandler {
             if (context.activity.name === "summaryRequest") {
 
                 // Get data
-                const message = context.activity.value;
+                const message = context.activity.value.data;
 
                 // Send summary to client
                 await context.sendActivity(message);
@@ -111,7 +111,7 @@ class DispatchBot extends ActivityHandler {
             if (context.activity.name === "chatEvent") {
 
                 // Get data
-                const message = context.activity.value;
+                const message = context.activity.value.data;
 
                 // Send summary to client
                 await context.sendActivity(message);
@@ -120,8 +120,8 @@ class DispatchBot extends ActivityHandler {
             if (context.activity.name === "processMessageEvent") {
 
                 // Get data
-                const message = context.activity.value;
-                const turnContextOriginal = context.activity.turnContext;
+                const message = context.activity.value.data;
+                const turnContextOriginal = context.activity.value.turnContext;
 
                 // Process message with LUIS and QnA Maker
                 await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer)
@@ -136,7 +136,7 @@ class DispatchBot extends ActivityHandler {
             if (context.activity.name === "result") {
 
                 // Get data
-                const result = context.activity.value;
+                const result = context.activity.value.data;
 
                 // Save result to database
                 //createUser(result);

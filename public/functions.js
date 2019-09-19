@@ -336,13 +336,16 @@ function buttonActionEvent(e, action) {
     } else {
         // 'Next' event
         if (round === 0) {
-            // if (parseFloat(experimentGroup ) === 2 || parseFloat(experimentGroup ) === 3) {
-            //     showChatBot();
-            // }
 
             // Repeat three times when first clicked on next button
             for (let i = 0; i < 4; i++) {
                 triggerNextRound();
+            }
+
+            // Ask user for name again
+            if (userName === null) {
+                let chatbotResponse = "Bitte nenne mir deinen Namen.";
+                dispatchBotEvent(chatbotResponse, "chatEvent", null);
             }
         } else {
             triggerNextRound()
@@ -517,24 +520,6 @@ function sendRoundSummary(round) {
 
     // Send event to own event handler
     window.document.dispatchEvent(event);
-
-    // Send event to own event handler
-    // window.document.dispatchEvent(event);
-
-    // Send event to event handler of parent
-    // window.parent.document.dispatchEvent(event);
-
-    // const test = {
-    //     detail: {
-    //         test1: "jiha",
-    //         test2: "wuhu"
-    //     }
-    // };
-    //
-    // // Send round results to event handler of parent
-    // const jsonObj = JSON.parse(JSON.stringify(event.detail));
-    // // window.parent.postMessage(jsonObj, '*');
-    // window.parent.postMessage(test, '*');
 
     // Get conversation history and send result
     getConversationHistory(filterMessages, sendResult);
@@ -831,7 +816,7 @@ function generateRandomNo(min, max) {
     return Math.floor(Math.random() * (max - min)) + min + 1
 }
 
-function dispatchBotEvent(chatbotResponse, type, turnContext) {
+function dispatchBotEvent(chatbotResponse, type, turnContext, callback) {
     // Create event to send group specific welcome message
     let event = new CustomEvent('botEvent', {
         detail: {
@@ -844,7 +829,12 @@ function dispatchBotEvent(chatbotResponse, type, turnContext) {
     // Send event to own event handler
     setTimeout(function () {
         window.document.dispatchEvent(event);
-    }, 2000);
+    }, 500);
+
+    // Call callback function with delay
+    if (callback !== undefined) {
+        setTimeout(function() { callback(); }, 1000);
+    }
 }
 
 function getDate() {

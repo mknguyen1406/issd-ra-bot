@@ -7,6 +7,7 @@ let openForTrading = null;
 let shareManager = null;
 
 let userName = null;
+let answeredSuggestedActions = false;
 
 // List that ensures that certain summaries cannot be outputted twice
 let forbiddenSummaries = [];
@@ -233,8 +234,10 @@ function startChatBot() {
             type: 'WEB_CHAT/SEND_EVENT',
             payload: {
                 name: type,
-                value: data,
-                turnContext: turnContext
+                value: {
+                    data: data,
+                    turnContext: turnContext
+                }
             }
         });
 
@@ -271,11 +274,11 @@ function startChatBot() {
                         "Außerdem kannst du mich nach einer Investitionsempfehlung fragen.";
                 }
 
-                // Dispatch example questions
-                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-
-                // Dispatch click on 'Starte Experiment' message
-                dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
+                // Dispatch welcome message and ask for user name
+                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
+                    // Dispatch click on 'Starte Experiment' message
+                    dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
+                });
             }
 
             // Incoming message event, e.g. user just sent a message to bot and bot sent this message event in turn
@@ -293,10 +296,10 @@ function startChatBot() {
 
                     // Acknowledge name
                     chatbotResponse = `Danke, ${ userName }.`;
-                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-
-                    // Ask user for example questions with suggested answers
-                    dispatchBotEvent("", "suggestedActionEvent", turnContext);
+                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
+                        // Ask user for example questions with suggested answers
+                        dispatchBotEvent("", "suggestedActionEvent", turnContext);
+                    });
 
                 } else {
 
@@ -305,6 +308,7 @@ function startChatBot() {
 
                     // Send example questions to user
                     if (questions.includes(message)) {
+
                         // Only available when experiment started
                         if (group === 2) {
 
@@ -325,13 +329,15 @@ function startChatBot() {
                         }
 
                         // Dispatch example questions
-                        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                        // Dispatch welcome message and ask for user name
+                        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
+                            // Dispatch click on 'Starte Experiment' message
+                            if (openForTrading == null) {
+                                chatbotResponse = "Bitte klicke nun auf 'Starte Experiment', um zu beginnen.";
+                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                            }
+                        });
 
-                        // Dispatch click on 'Starte Experiment' message
-                        if (openForTrading == null) {
-                            chatbotResponse = "Bitte klicke nun auf 'Starte Experiment', um zu beginnen.";
-                            dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                        }
                     } else {
 
                         // Check if user said 'No' to example questions
