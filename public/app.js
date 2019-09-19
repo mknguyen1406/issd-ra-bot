@@ -132,7 +132,8 @@ function startChatBot() {
         backgroundColor: '#f8f9fa',
         bubbleFromUserBackground: '#DCF8C6',
         bubbleFromUserBorderRadius: 10,
-        bubbleBorderRadius: 10
+        bubbleBorderRadius: 10,
+        fontSizeSmall: '60%'
 
     };
 

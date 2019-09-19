@@ -155,6 +155,9 @@ class DispatchBot extends ActivityHandler {
             const recognizerResult = await dispatchRecognizer.recognize(turnContextOriginal);
 
             console.log(recognizerResult);
+            await turnContext.sendActivity("turnContext" + JSON.stringify(turnContext));
+            await turnContext.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
+            await turnContext.sendActivity("recognizerResult" + JSON.stringify(recognizerResult));
 
             // Top intent tell us which cognitive service to use.
             const intent = LuisRecognizer.topIntent(recognizerResult);
