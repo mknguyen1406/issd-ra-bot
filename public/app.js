@@ -293,6 +293,7 @@ function startChatBot() {
 
                     // Acknowledge name
                     chatbotResponse = `Danke, ${ userName }.`;
+                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
 
                     // Ask user for example questions with suggested answers
                     dispatchBotEvent("", "suggestedActionEvent", turnContext);
@@ -327,7 +328,7 @@ function startChatBot() {
                         dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
 
                         // Dispatch click on 'Starte Experiment' message
-                        if (!openForTrading) {
+                        if (openForTrading == null) {
                             chatbotResponse = "Bitte klicke nun auf 'Starte Experiment', um zu beginnen.";
                             dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
                         }
@@ -342,48 +343,24 @@ function startChatBot() {
                             dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
                         } else {
 
-                            // Check if experiment started
-                            if (!openForTrading) {
-                                // Experiment did not start yet
+                            // Check if experiment started. If not, openForTrading is null
+                            if (openForTrading == null) {
+                                // Experiment did not started yet
+                                chatbotResponse = "Bitte starte erst das Experiment.";
+                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                            } else if (openForTrading === false) {
 
-                                // Check if experiment did not started yet or is over
-                                if (round === 0) {
+                                // Experiment is over
+                                chatbotResponse = "Das Experiment ist vorbei. Bitte klicke unten auf 'Weiter'.";
+                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                            } else if (openForTrading === true){
 
-                                    // Experiment did not started yet
-                                    chatbotResponse = "Bitte starte erst das Experiment.";
-                                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                                } else {
-
-                                    // Experiment is over
-                                    chatbotResponse = "Das Experiment ist vorbei. Bitte klicke unten auf 'Weiter'.";
-                                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                                }
-                            } else {
-                                // Experiment started
-
-                                // Process message with LUIS and QnA Maker
+                                // Experiment started. Process message with LUIS and QnA Maker
                                 dispatchBotEvent(message, "processMessageEvent", turnContext);
                             }
                         }
                     }
                 }
-
-                // Only available when experiment started
-                if (group === 2) {
-                    chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
-                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen.";
-
-                } else if (group === 3) {
-                    chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
-                        "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen. " +
-                        "Außerdem kannst du mich nach einer Investitionsempfehlung fragen.";
-                }
-
-                // Dispatch example questions
-                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-
-                // Dispatch click on 'Starte Experiment' message
-                dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
             }
 
             // Incoming example question event
