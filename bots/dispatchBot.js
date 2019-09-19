@@ -124,7 +124,9 @@ class DispatchBot extends ActivityHandler {
                 const turnContextOriginal = context.activity.value.turnContext;
 
                 // Process message with LUIS and QnA Maker
-                await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer)
+                // await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer)
+                await context.sendActivity("turnContext" + JSON.stringify(context));
+                await context.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
             }
 
             if (context.activity.name === "suggestedActionEvent") {
