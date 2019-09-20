@@ -451,12 +451,15 @@ function nextRound(round) {
             invests: data.invests
         };
         obj.cashout = shareManager.cashout();
-        obj.rename.push(
-            {
-                id: 'next',
-                content: 'Beenden'
-            }
-        );
+        // obj.rename.push(
+        //     {
+        //         id: 'next',
+        //         content: 'Beenden'
+        //     }
+        // );
+
+        // Hide next button
+        document.getElementById("next").style.display = "none";
 
         // Stop trading in round 13
         openForTrading = false;
@@ -587,7 +590,11 @@ function getRoundSummary(no) {
             res = getRoundSummaryForPossibleTrade();
             break;
         case 11:
-            res = "Das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft."
+            if (userName !== null) {
+                res = userName +  ", das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft.";
+            } else {
+                res = "Das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft."
+            }
             break;
         case 12:
             res = "Das Experiment ist jetzt zu Ende. Bitte klicke jetzt unten auf 'Weiter'."

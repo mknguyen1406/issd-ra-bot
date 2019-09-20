@@ -363,8 +363,58 @@ function startChatBot() {
                             } else if (openForTrading === true){
 
                                 // Experiment started. Process message with LUIS and QnA Maker
-                                // dispatchBotEvent(message, "processMessageEvent", turnContext);
-                                console.log("Process message event: " + JSON.stringify(data.channelData))
+
+                                // Trigger Qna or LUIS processes
+                                if (typeof(data.channelData.answer) !== 'undefined') {
+
+                                    // Send QnA Maker response
+                                    chatbotResponse = data.channelData.answer;
+
+                                } else if (typeof(data.channelData.intent) !== 'undefined') {
+
+                                    // Trigger LUIS
+                                    const intent = data.channelData.intent;
+                                    const entity = data.channelData.entity;
+
+                                    switch (intent) {
+                                        case "anteil_gewonnen_max":
+                                            chatbotResponse = shareManager.mostUps(round - 1);
+                                            break;
+                                        case "anteil_verloren_max":
+                                            chatbotResponse = shareManager.mostDowns(round - 1);
+                                            break;
+                                        case "anteil_potentieller_zuwachs":
+                                            chatbotResponse = shareManager.potentialUp(entity);
+                                            break;
+                                        case "anteil_potentieller_verlust":
+                                            chatbotResponse = shareManager.potentialDown(entity);
+                                            break;
+                                        case "anteil_spezifisch_gewonnen":
+                                            chatbotResponse = shareManager.shareUps(entity, round - 1);
+                                            break;
+                                        case "anteil_spezifisch_verloren":
+                                            chatbotResponse = shareManager.shareDowns(entity, round - 1);
+                                            break;
+                                        case "rat_geben":
+                                            // Only for 3rd experiment group
+                                            if (parseFloat(experimentGroup) === 3) {
+                                                chatbotResponse = shareManager.getRecommendAlg(round - 1);
+
+                                                // Track advice
+                                                advice[round - 1] ++;
+                                            }
+                                            break;
+                                        case "wert_portfolio":
+                                            chatbotResponse = shareManager.portfolioValue();
+                                            break;
+                                        default:
+                                            console.log(`Dispatch unrecognized intent: ${intent}.`);
+                                            break;
+                                    }
+                                }
+
+                                // Send respond
+                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
                             }
                         }
                     }
@@ -420,44 +470,44 @@ function startChatBot() {
                         console.log("Intent: " + intent);
                         console.log("Entity: " + entity);
 
-                        switch (intent) {
-                            case "anteil_gewonnen_max":
-                                chatbotResponse = shareManager.mostUps(round - 1);
-                                break;
-                            case "anteil_verloren_max":
-                                chatbotResponse = shareManager.mostDowns(round - 1);
-                                break;
-                            case "anteil_potentieller_zuwachs":
-                                chatbotResponse = shareManager.potentialUp(entity);
-                                break;
-                            case "anteil_potentieller_verlust":
-                                chatbotResponse = shareManager.potentialDown(entity);
-                                break;
-                            case "anteil_spezifisch_gewonnen":
-                                chatbotResponse = shareManager.shareUps(entity, round - 1);
-                                break;
-                            case "anteil_spezifisch_verloren":
-                                chatbotResponse = shareManager.shareDowns(entity, round - 1);
-                                break;
-                            case "rat_geben":
-                                // Only for 3rd experiment group
-                                if (parseFloat(experimentGroup) === 3) {
-                                    chatbotResponse = shareManager.getRecommendAlg(round - 1);
-
-                                    // Track advice
-                                    advice[round - 1] ++;
-                                }
-                                break;
-                            case "wert_portfolio":
-                                chatbotResponse = shareManager.portfolioValue();
-                                break;
-                            default:
-                                console.log(`Dispatch unrecognized intent: ${intent}.`);
-                                break;
-                        }
+                        // switch (intent) {
+                        //     case "anteil_gewonnen_max":
+                        //         chatbotResponse = shareManager.mostUps(round - 1);
+                        //         break;
+                        //     case "anteil_verloren_max":
+                        //         chatbotResponse = shareManager.mostDowns(round - 1);
+                        //         break;
+                        //     case "anteil_potentieller_zuwachs":
+                        //         chatbotResponse = shareManager.potentialUp(entity);
+                        //         break;
+                        //     case "anteil_potentieller_verlust":
+                        //         chatbotResponse = shareManager.potentialDown(entity);
+                        //         break;
+                        //     case "anteil_spezifisch_gewonnen":
+                        //         chatbotResponse = shareManager.shareUps(entity, round - 1);
+                        //         break;
+                        //     case "anteil_spezifisch_verloren":
+                        //         chatbotResponse = shareManager.shareDowns(entity, round - 1);
+                        //         break;
+                        //     case "rat_geben":
+                        //         // Only for 3rd experiment group
+                        //         if (parseFloat(experimentGroup) === 3) {
+                        //             chatbotResponse = shareManager.getRecommendAlg(round - 1);
+                        //
+                        //             // Track advice
+                        //             advice[round - 1] ++;
+                        //         }
+                        //         break;
+                        //     case "wert_portfolio":
+                        //         chatbotResponse = shareManager.portfolioValue();
+                        //         break;
+                        //     default:
+                        //         console.log(`Dispatch unrecognized intent: ${intent}.`);
+                        //         break;
+                        // }
                     } else {
                         // QnA Maker response
-                        chatbotResponse = channelData.answer;
+                        // chatbotResponse = channelData.answer;
                     }
                 } else {
                     chatbotResponse = "Bitte starte erst das Experiment.";
