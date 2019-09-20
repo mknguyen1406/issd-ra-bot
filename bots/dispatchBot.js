@@ -125,8 +125,8 @@ class DispatchBot extends ActivityHandler {
 
                 // Process message with LUIS and QnA Maker
                 // await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer);
-                // await context.sendActivity("turnContext" + JSON.stringify(context));
-                // await context.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
+                await context.sendActivity("turnContext: " + JSON.stringify(context));
+                await context.sendActivity("turnContextOriginal: " + JSON.stringify(turnContextOriginal));
 
                 // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
                 const recognizerResult = await dispatchRecognizer.recognize(turnContextOriginal);
@@ -140,7 +140,10 @@ class DispatchBot extends ActivityHandler {
                 await context.sendActivity("recognizerSubResult: " + JSON.stringify(recognizerSubResult));
                 await context.sendActivity("intentSub: " + JSON.stringify(intentSub));
 
-
+                let cont = context;
+                cont.activity.text = turnContextOriginal.activity.text;
+                cont.activity.inputHint = turnContextOriginal.activity.inputHint;
+                cont.activity.replyToId = turnContextOriginal.activity.replyToId;
             }
 
             if (context.activity.name === "suggestedActionEvent") {
