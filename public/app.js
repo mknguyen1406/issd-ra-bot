@@ -363,7 +363,8 @@ function startChatBot() {
                             } else if (openForTrading === true){
 
                                 // Experiment started. Process message with LUIS and QnA Maker
-                                dispatchBotEvent(message, "processMessageEvent", turnContext);
+                                // dispatchBotEvent(message, "processMessageEvent", turnContext);
+                                console.log("Process message event: " + JSON.stringify(data.channelData))
                             }
                         }
                     }

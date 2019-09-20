@@ -86,12 +86,15 @@ class DispatchBot extends ActivityHandler {
 
         this.onMessage(async (turnContext, next) => {
 
-            // Request welcome message
-            await turnContext.sendActivity({
-                name: 'messageEvent',
-                type: 'event',
-                channelData: {message: turnContext.activity.text, turnContext: turnContext}
-            });
+            // Process message with LUIS and QnA Maker
+            await this.processMessage(turnContext, dispatchRecognizer, subLuisRecognizer);
+
+            // // Request welcome message
+            // await turnContext.sendActivity({
+            //     name: 'messageEvent',
+            //     type: 'event',
+            //     channelData: {message: turnContext.activity.text, turnContext: turnContext}
+            // });
 
             await next();
         });
@@ -125,25 +128,6 @@ class DispatchBot extends ActivityHandler {
 
                 // Process message with LUIS and QnA Maker
                 // await this.processMessage(context, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer);
-                await context.sendActivity("turnContext: " + JSON.stringify(context));
-                await context.sendActivity("turnContextOriginal: " + JSON.stringify(turnContextOriginal));
-
-                // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
-                const recognizerResult = await dispatchRecognizer.recognize(turnContextOriginal);
-                const intent = LuisRecognizer.topIntent(recognizerResult);
-                // Get result, sub intent and entity from sub LUIS model
-                const recognizerSubResult = await subLuisRecognizer.recognize(turnContextOriginal);
-                const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
-
-                await context.sendActivity("recognizerResult: " + JSON.stringify(recognizerResult));
-                await context.sendActivity("intent: " + JSON.stringify(intent));
-                await context.sendActivity("recognizerSubResult: " + JSON.stringify(recognizerSubResult));
-                await context.sendActivity("intentSub: " + JSON.stringify(intentSub));
-
-                let cont = context;
-                cont.activity.text = turnContextOriginal.activity.text;
-                cont.activity.inputHint = turnContextOriginal.activity.inputHint;
-                cont.activity.replyToId = turnContextOriginal.activity.replyToId;
             }
 
             if (context.activity.name === "suggestedActionEvent") {
@@ -168,26 +152,23 @@ class DispatchBot extends ActivityHandler {
         });
     }
 
-    async processMessage(turnContext, message, turnContextOriginal, dispatchRecognizer, subLuisRecognizer) {
+    async processMessage(turnContext, dispatchRecognizer, subLuisRecognizer) {
 
-            // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
-            const recognizerResult = await dispatchRecognizer.recognize(turnContextOriginal);
+        // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
+        const recognizerResult = await dispatchRecognizer.recognize(turnContext);
 
-            console.log(recognizerResult);
-            // await turnContext.sendActivity("turnContext" + JSON.stringify(turnContext));
-            // await turnContext.sendActivity("turnContextOriginal" + JSON.stringify(turnContextOriginal));
-            // await turnContext.sendActivity("recognizerResult" + JSON.stringify(recognizerResult));
+        console.log(recognizerResult);
 
-            // Top intent tell us which cognitive service to use.
-            const intent = LuisRecognizer.topIntent(recognizerResult);
+        // Top intent tell us which cognitive service to use.
+        const intent = LuisRecognizer.topIntent(recognizerResult);
 
-            // Get result, sub intent and entity from sub LUIS model
-            const recognizerSubResult = await subLuisRecognizer.recognize(turnContextOriginal);
-            const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
-            const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
+        // Get result, sub intent and entity from sub LUIS model
+        const recognizerSubResult = await subLuisRecognizer.recognize(turnContext);
+        const intentSub = LuisRecognizer.topIntent(recognizerSubResult);
+        const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
 
-            // Next, we call the dispatcher with the top intent.
-            await this.dispatchToTopIntentAsync(turnContextOriginal, intent, intentSub, entity, recognizerResult);
+        // Next, we call the dispatcher with the top intent.
+        await this.dispatchToTopIntentAsync(turnContext, intent, intentSub, entity, recognizerResult);
     }
 
     async sendSuggestedActions(turnContext) {
@@ -245,7 +226,14 @@ class DispatchBot extends ActivityHandler {
         //     await context.sendActivity(`LUIS entities were found in the message: ${ luisResult.entities.map((entityObj) => entityObj.entity).join('\n\n') }.`);
         // }
 
-        await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
+        // await context.sendActivity({ name: 'luisEvent', type: 'event', channelData: {intent: intent, entity: entity} });
+
+        // Request welcome message
+        await context.sendActivity({
+            name: 'messageEvent',
+            type: 'event',
+            channelData: {message: context.activity.text, turnContext: context, intent: intent, entity: entity}
+        });
 
         // console.log("luisResult: \n" + luisResult);
         // console.log("result: \n" + result);
@@ -266,7 +254,13 @@ class DispatchBot extends ActivityHandler {
             answer = 'Entschuldigung, ich habe deine Frage leider nicht verstanden.'
         }
 
-        await context.sendActivity({ name: 'qnaEvent', type: 'event', channelData: {answer: answer} });
+        // await context.sendActivity({ name: 'qnaEvent', type: 'event', channelData: {answer: answer} });
+
+        await context.sendActivity({
+            name: 'messageEvent',
+            type: 'event',
+            channelData: {message: context.activity.text, turnContext: context, answer: answer}
+        });
     }
 }
 
