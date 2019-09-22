@@ -2,7 +2,7 @@
   "qnaDocuments": [
     {
       "id": 1,
-      "answer": "Mir geht es sehr gut. Danke der Nachfrage!\\n",
+      "answer": "Mir geht es sehr gut. Danke der Nachfrage!",
       "source": "G3.tsv",
       "questions": [
         "Wie gehts?",
@@ -74,24 +74,6 @@
       }
     },
     {
-      "id": 5,
-      "answer": "Die Antwort darauf kenne ich leider auch nicht.",
-      "source": "G3.tsv",
-      "questions": [
-        "Welcher Anteil ist vom Typ ++?",
-        "Welcher Anteil ist vom Typ --?"
-      ],
-      "metadata": [],
-      "alternateQuestions": "",
-      "alternateQuestionClusters": [],
-      "changeStatus": "NoChange",
-      "kbId": "3d46c199-6c21-42c9-b933-e347e5e58938",
-      "context": {
-        "isContextOnly": false,
-        "prompts": []
-      }
-    },
-    {
       "id": 6,
       "answer": "Ich kann grundlegende Fragen zu deinem Portfolio und der Preisentwicklung der Anteile beantworten. Zudem kann ich dir, basierend auf den Preisentwicklungen, Kaufempfehlungen machen.",
       "source": "G3.tsv",
@@ -118,6 +100,27 @@
         "Hola",
         "Moin",
         "Hi"
+      ],
+      "metadata": [],
+      "alternateQuestions": "",
+      "alternateQuestionClusters": [],
+      "changeStatus": "NoChange",
+      "kbId": "3d46c199-6c21-42c9-b933-e347e5e58938",
+      "context": {
+        "isContextOnly": false,
+        "prompts": []
+      }
+    },
+    {
+      "id": 8,
+      "answer": "Gerngeschehen.",
+      "source": "Editorial",
+      "questions": [
+        "Danke",
+        "Thanks",
+        "Vielen Dank",
+        "Danke vielmals",
+        "Thx"
       ],
       "metadata": [],
       "alternateQuestions": "",

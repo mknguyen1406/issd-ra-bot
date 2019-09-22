@@ -275,7 +275,7 @@ function filterMessages(conversationRaw, resultCallback) {
         const activity = conv[i];
 
         // Only if not an event and if text property is available
-        if ((typeof(activity.type) !== 'undefined') && (typeof(activity.text) !== 'undefined') && (typeof(activity.from) !== 'undefined')  && (typeof(activity.timestamp) !== 'undefined')) {
+        if ((typeof (activity.type) !== 'undefined') && (typeof (activity.text) !== 'undefined') && (typeof (activity.from) !== 'undefined') && (typeof (activity.timestamp) !== 'undefined')) {
             if (activity.type === "message") {
                 conv_clean.push({
                     timestamp: activity.timestamp,
@@ -460,6 +460,7 @@ function nextRound(round) {
 
         // Hide next button
         document.getElementById("next").style.display = "none";
+        document.getElementById("end").style.display = "block";
 
         // Stop trading in round 13
         openForTrading = false;
@@ -591,7 +592,7 @@ function getRoundSummary(no) {
             break;
         case 11:
             if (userName !== null) {
-                res = userName +  ", das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft.";
+                res = userName + ", das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft.";
             } else {
                 res = "Das ist deine letzte Chance, Gewinn zu machen! Bald hast du es geschafft."
             }
@@ -747,6 +748,135 @@ function sendResult() {
     window.parent.postMessage(result, '*');
 }
 
+// Track advice
+function trackConversation(round, type) {
+
+    switch (type) {
+        case "qna":
+            advice[round][0]++;
+            break;
+        case "luis_allgemein":
+            advice[round][1]++;
+            break;
+        case "luis_rat":
+            advice[round][2]++;
+            break;
+    }
+}
+
+// Process message with LUIS or QnA
+function processMessage(chatbotResponse, data, turnContext) {
+
+    // Check if experiment started. If not, openForTrading is null
+    if (openForTrading == null) {
+        // Experiment did not started yet
+        chatbotResponse = "Bitte starte erst das Experiment.";
+        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+    } else if (openForTrading === false) {
+
+        // Experiment is over
+        chatbotResponse = "Das Experiment ist vorbei. Bitte klicke unten auf 'Weiter'.";
+        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+    } else if (openForTrading === true) {
+
+        // Experiment started. Process message with LUIS and QnA Maker
+
+        // Trigger Qna or LUIS processes
+        if (typeof (data.channelData.answer) !== 'undefined') {
+
+            // Send QnA Maker response
+            chatbotResponse = data.channelData.answer;
+
+            // Track advice
+            trackConversation(round - 1, "qna");
+
+        } else if (typeof (data.channelData.intent) !== 'undefined') {
+
+            // Trigger LUIS
+            const intent = data.channelData.intent;
+            const entity = data.channelData.entity;
+
+            switch (intent) {
+                case "anteil_gewonnen_max":
+                    chatbotResponse = shareManager.mostUps(round - 1);
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_verloren_max":
+                    chatbotResponse = shareManager.mostDowns(round - 1);
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_potentieller_zuwachs":
+                    chatbotResponse = shareManager.potentialUp(entity);
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_potentieller_verlust":
+                    chatbotResponse = shareManager.potentialDown(entity);
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_spezifisch_gewonnen":
+                    chatbotResponse = shareManager.shareUps(entity, round - 1);
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_spezifisch_verloren":
+                    chatbotResponse = shareManager.shareDowns(entity, round - 1);
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "rat_geben":
+                    // Only for 3rd experiment group
+                    if (parseFloat(experimentGroup) === 3) {
+                        chatbotResponse = shareManager.getRecommendAlg(round - 1);
+
+                        // Track advice
+                        trackConversation(round - 1, "luis_rat");
+                    }
+                    break;
+                case "wert_portfolio":
+                    chatbotResponse = shareManager.portfolioValue();
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_typ":
+                    chatbotResponse = "Das weiß ich leider nicht.";
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_typ_spezifisch":
+                    chatbotResponse = "Das weiß ich leider nicht.";
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                case "anteil_wahrscheinlichkeit_spezifisch":
+                    chatbotResponse = "Das weiß ich leider nicht.";
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_allgemein");
+                    break;
+                default:
+                    console.log(`Dispatch unrecognized intent: ${intent}.`);
+                    break;
+            }
+        }
+
+        // Send respond
+        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+    }
+}
+
 function renameElements(res) {
     const renameArray = res;
     for (let i = 0; i < renameArray.length; i++) {
@@ -840,7 +970,9 @@ function dispatchBotEvent(chatbotResponse, type, turnContext, callback) {
 
     // Call callback function with delay
     if (callback !== undefined) {
-        setTimeout(function() { callback(); }, 1000);
+        setTimeout(function () {
+            callback();
+        }, 1000);
     }
 }
 

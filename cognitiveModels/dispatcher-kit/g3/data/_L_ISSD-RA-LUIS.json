@@ -1,5 +1,5 @@
 {
-  "luis_schema_version": "3.2.0",
+  "luis_schema_version": "4.0.0",
   "versionId": "0.1",
   "name": "ISSD-RA-LUIS",
   "desc": "LUIS for Trading Game",
@@ -22,7 +22,16 @@
       "name": "anteil_spezifisch_verloren"
     },
     {
+      "name": "anteil_typ"
+    },
+    {
+      "name": "anteil_typ_spezifisch"
+    },
+    {
       "name": "anteil_verloren_max"
+    },
+    {
+      "name": "anteil_wahrscheinlichkeit_spezifisch"
     },
     {
       "name": "None"
@@ -42,6 +51,13 @@
         "Anteil_Typ"
       ],
       "roles": []
+    },
+    {
+      "name": "Kategorie",
+      "children": [
+        "Kategorie_Typ"
+      ],
+      "roles": []
     }
   ],
   "closedLists": [
@@ -49,27 +65,9 @@
       "name": "Anteil_Typ",
       "subLists": [
         {
-          "canonicalForm": "F",
+          "canonicalForm": "A",
           "list": [
-            "f"
-          ]
-        },
-        {
-          "canonicalForm": "E",
-          "list": [
-            "e"
-          ]
-        },
-        {
-          "canonicalForm": "D",
-          "list": [
-            "d"
-          ]
-        },
-        {
-          "canonicalForm": "C",
-          "list": [
-            "c"
+            "a"
           ]
         },
         {
@@ -79,9 +77,60 @@
           ]
         },
         {
-          "canonicalForm": "A",
+          "canonicalForm": "C",
           "list": [
-            "a"
+            "c"
+          ]
+        },
+        {
+          "canonicalForm": "D",
+          "list": [
+            "d"
+          ]
+        },
+        {
+          "canonicalForm": "E",
+          "list": [
+            "e"
+          ]
+        },
+        {
+          "canonicalForm": "F",
+          "list": [
+            "f"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "Kategorie_Typ",
+      "subLists": [
+        {
+          "canonicalForm": "++",
+          "list": [
+            "+ +"
+          ]
+        },
+        {
+          "canonicalForm": "+",
+          "list": []
+        },
+        {
+          "canonicalForm": "O",
+          "list": [
+            "o",
+            "0"
+          ]
+        },
+        {
+          "canonicalForm": "-",
+          "list": []
+        },
+        {
+          "canonicalForm": "--",
+          "list": [
+            "- -"
           ]
         }
       ],
@@ -96,9 +145,276 @@
   "patterns": [],
   "utterances": [
     {
+      "text": "am häufigsten preissenkungen?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "am häufigsten preissteigerungen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "am meisten preissteigerungen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "am mesiten preissenkungen?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "anteil a hoch?",
+      "intent": "anteil_spezifisch_gewonnen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil a wert, wenn sinkt",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil a wert, wenn steigt",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil am häufigste gewonnen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "anteil am häufigsten gestiegen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "anteil am häufigsten gesunken?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "anteil am häufigsten verloren?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten an wert gewonnen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten an wert verloren?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten gestiegen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "anteil am mesiten gesunken?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "anteil c gewonnen?",
+      "intent": "anteil_spezifisch_gewonnen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil c verloren?",
+      "intent": "anteil_spezifisch_verloren",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil d gestiegen?",
+      "intent": "anteil_spezifisch_gewonnen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil d gesunken?",
+      "intent": "anteil_spezifisch_verloren",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil d vom typ -",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil e gewinn gemacht?",
+      "intent": "anteil_spezifisch_gewonnen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "anteil e verlust gemacht?",
+      "intent": "anteil_spezifisch_verloren",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "empfehlung",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "hat anteil a gewonnen?",
+      "intent": "anteil_spezifisch_gewonnen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "hat anteil a verloren?",
+      "intent": "anteil_spezifisch_verloren",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "hilfe",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "ich brauche eine empfehlung",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
       "text": "ich brauche einen ratschlag",
       "intent": "rat_geben",
       "entities": []
+    },
+    {
+      "text": "ich brauche hilfe",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "ist anteil a vom typ ++?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "ist anteil b vom typ -?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "ist anteil c typ o?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "ist anteil f gestiegen?",
+      "intent": "anteil_spezifisch_gewonnen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "ist anteil f gesunken?",
+      "intent": "anteil_spezifisch_verloren",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
     },
     {
       "text": "kannst du mir eine empfehlung geben?",
@@ -112,6 +428,125 @@
     },
     {
       "text": "kannst du mir einen tipp geben?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "kannst du mir helfen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "meisten gestiegen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "meisten gesunken?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "meisten gewonnen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "meisten verloren?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "meisten wert gewonnen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "meisten wert verloren?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "portfolio",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "preis anteil e, wenn nach oben",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 13,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "preis anteil e, wenn nach unten",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 13,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "preis anteil f, wenn sinkt",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 13,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "preis anteil f, wenn steigt",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 13,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "rat",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "rendite",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "soll ich alle meine anteile verkaufen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "soll ich alles in anteil investieren?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "soll ich anteil kaufen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "soll ich anteil verkaufen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "soll ich mein ganzes guthaben in anteil investieren?",
       "intent": "rat_geben",
       "entities": []
     },
@@ -149,6 +584,70 @@
       ]
     },
     {
+      "text": "was hat gewonnen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "was hat verloren?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "was ist der preis von anteil a, wenn er günstiger wird?",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 29,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "was ist der preis von anteil a, wenn er teurer wird?",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 29,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "was ist der preis von anteil e in der nächsten periode?",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 29,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "was ist die wahrscheinlichkeit, dass anteil b steigt?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 44,
+          "endPos": 44
+        }
+      ]
+    },
+    {
+      "text": "was ist gestiegen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
+      "text": "was ist gesunken?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
       "text": "was soll ich als nächstes kaufen?",
       "intent": "rat_geben",
       "entities": []
@@ -164,7 +663,17 @@
       "entities": []
     },
     {
+      "text": "was soll ich kaufen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
       "text": "was soll ich machen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "was soll ich verkaufen?",
       "intent": "rat_geben",
       "entities": []
     },
@@ -176,6 +685,11 @@
     {
       "text": "welche anteile soll ich verkaufen?",
       "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil +",
+      "intent": "anteil_typ",
       "entities": []
     },
     {
@@ -209,6 +723,16 @@
       "entities": []
     },
     {
+      "text": "welcher anteil hat die meisten preissenkungen?",
+      "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat die meisten preissteigerungen?",
+      "intent": "anteil_gewonnen_max",
+      "entities": []
+    },
+    {
       "text": "welcher anteil ist am häufigsten gestiegen?",
       "intent": "anteil_gewonnen_max",
       "entities": []
@@ -226,6 +750,21 @@
     {
       "text": "welcher anteil ist am meisten gesunken?",
       "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist vom typ --?",
+      "intent": "anteil_typ",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist vom typ o",
+      "intent": "anteil_typ",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil typ o",
+      "intent": "anteil_typ",
       "entities": []
     },
     {
@@ -328,6 +867,71 @@
       ]
     },
     {
+      "text": "wert anteile",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "wert portfolio",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil b, wenn er günstiger wird?",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 41,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil c, wenn er nach oben geht?",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 41,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil c, wenn er nach unten geht?",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 41,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil d, wenn er sinkt?",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 41,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil d, wenn er steigt?",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 41,
+          "endPos": 41
+        }
+      ]
+    },
+    {
       "text": "wie häufig hat anteil e an wert gewonnen?",
       "intent": "anteil_spezifisch_gewonnen",
       "entities": [
@@ -388,12 +992,39 @@
       "entities": []
     },
     {
+      "text": "wie hoch ist meine rendite?",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
       "text": "wie ist meine rendite?",
       "intent": "wert_portfolio",
       "entities": []
     },
     {
       "text": "wie oft hat anteil a bisher verloren?",
+      "intent": "anteil_spezifisch_verloren",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 19,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "wie oft hat anteil b gewinn gemacht?",
+      "intent": "anteil_spezifisch_gewonnen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 19,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "wie oft hat anteil b verlust gemacht?",
       "intent": "anteil_spezifisch_verloren",
       "entities": [
         {
@@ -492,14 +1123,104 @@
       ]
     },
     {
+      "text": "wie viel anteil soll ich kaufen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "wie viel anteil soll ich verkaufen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld habe ich bisher gewonnen?",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld habe ich bisher verloren?",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld ist mein portfolio wert?",
+      "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld sind meine anteile wert?",
+      "intent": "wert_portfolio",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 25,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "wie viel kostet anteil b, wenn er günstiger wird?",
+      "intent": "anteil_potentieller_verlust",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 23,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "wie viel kostet anteil b, wenn er teurer wird?",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 23,
+          "endPos": 23
+        }
+      ]
+    },
+    {
       "text": "wie viel sind alle meine anteile wert?",
       "intent": "wert_portfolio",
+      "entities": []
+    },
+    {
+      "text": "wie viel soll ich kaufen?",
+      "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "wie viel soll ich verkaufen?",
+      "intent": "rat_geben",
       "entities": []
     },
     {
       "text": "wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe?",
       "intent": "wert_portfolio",
       "entities": []
+    },
+    {
+      "text": "wie viel wird anteil a in der nächsten periode kosten?",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 21,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "wie viel wird anteil c in der nächsten periode wert sein?",
+      "intent": "anteil_potentieller_zuwachs",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 21,
+          "endPos": 21
+        }
+      ]
     },
     {
       "text": "wieviel geld würde ich erhalten wenn ich alles verkaufe?",
@@ -641,6 +1362,28 @@
       "text": "wieviele währungseinheiten sind alle meine anteile wert?",
       "intent": "wert_portfolio",
       "entities": []
+    },
+    {
+      "text": "wird anteil f steigen?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 12,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "wird f steigen?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
     }
   ],
   "settings": []

@@ -7,11 +7,14 @@ Wie heißt du
 Was bis du
 Wie alt bist du
 Wer hat dich programmiert
-Welcher Anteil ist vom Typ ++
-Welcher Anteil ist vom Typ --
 Was kannst du
 Hallo
 Hey
 Hola
 Moin
 Hi
+Danke
+Thanks
+Vielen Dank
+Danke vielmals
+Thx

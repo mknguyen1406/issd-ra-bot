@@ -1,17 +1,36 @@
 Label	Weight	Text
+l_luis	1	wie viel geld ist mein portfolio wert
 l_luis	1	was soll ich machen
-l_luis	1	wieviel sind meine anteile wert
-l_luis	1	wenn anteil a gewinnt, wieviel wird er dann wert sein
-l_luis	1	kannst du mir einen rat geben
-l_luis	1	wieviel ist c bisher gesunken
-l_luis	1	wenn a an wert verliert, wieviel wird er dann wert sein
-l_luis	1	welcher anteil ist am meisten gestiegen
+l_luis	1	wie viel geld habe ich bisher gewonnen
+l_luis	1	wie viel geld sind meine anteile wert
+l_luis	1	wie oft ist f gesunken
+l_luis	1	anteil a wert, wenn steigt
+l_luis	1	wie ist meine rendite
+l_luis	1	wieviel mehr wäre a wert wenn es gewinnt
+l_luis	1	wert portfolio
+l_luis	1	am mesiten preissenkungen
+l_luis	1	wie oft hat e an wert verloren
 l_luis	1	wenn anteil c an wert gewinnt, wie viel wird er in der folgenden periode wert sein
-l_luis	1	wie oft ist anteil c gesunken
-l_luis	1	wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein
-l_luis	1	wenn in der nächsten runde f gewinnt, wieviel ist es dann wert
-l_luis	1	wie häufig hat e an wert verloren
-l_luis	1	kannst du mir einen tipp geben
+l_luis	1	meisten gewonnen
+l_luis	1	wenn in der nächsten periode a steigt, wieviel ist es dann wert
+l_luis	1	welcher anteil +
+l_luis	1	soll ich alle meine anteile verkaufen
+l_luis	1	welche anteile soll ich kaufen
+l_luis	1	wie oft hat anteil a bisher verloren
+l_luis	1	wie häufig hat e verloren
+l_luis	1	wie viel soll ich verkaufen
+l_luis	1	wie häufig ist c gestiegen
+l_luis	1	wieviel ist mein portfolio gerade wert
+l_luis	1	was ist der preis von anteil a, wenn er teurer wird
+l_luis	1	wieviel wäre e wert wenn es verliert
+l_luis	1	wieviel weniger wäre anteil b wert wenn es im wert sinkt
+l_luis	1	wie entwickelt sich der preis von anteil d, wenn er sinkt
+l_luis	1	welcher anteil hat am häufigsten gewonnen
+l_luis	1	wie häufig hat anteil e an wert gewonnen
+l_luis	1	um wieviel würde anteil e steigen, wenn es nächste runde gewinnt
+l_luis	1	empfehlung
+l_luis	1	wird anteil f steigen
+q_qnamaker	1	Wer hat dich programmiert
 q_qnamaker	1	Wie geht's
-q_qnamaker	1	Wie alt bist du
-q_qnamaker	1	Wie geht's dir
+q_qnamaker	1	Thx
+q_qnamaker	1	Wer bist du

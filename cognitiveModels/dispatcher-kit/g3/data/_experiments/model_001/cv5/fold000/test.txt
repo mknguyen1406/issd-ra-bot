@@ -1,17 +1,36 @@
 Label	Weight	Text
-l_luis	1	wie oft hat b an wert gewonnen
+l_luis	1	meisten wert verloren
 l_luis	1	was soll ich als nächstes kaufen
-l_luis	1	wie oft hat anteil f an wert gewonnen
-l_luis	1	wenn in der nächsten periode a steigt, wieviel ist es dann wert
-l_luis	1	wieviele währungseinheiten sind alle meine anteile wert
-l_luis	1	wie oft hat anteil f an wert verloren
-l_luis	1	wieviel weniger wäre anteil b wert wenn es im wert sinkt
-l_luis	1	wie oft hat anteil a bisher verloren
-l_luis	1	welcher anteil hat bisher am meisten an wert gewonnen
-l_luis	1	kannst du mir eine empfehlung geben
+l_luis	1	wie entwickelt sich der preis von anteil c, wenn er nach unten geht
 l_luis	1	ich brauche einen ratschlag
+l_luis	1	welcher anteil hat am meisten wert gewonnen
+l_luis	1	wenn nächste runde anteil e steigt, wieviel wird es dann wert sein
+l_luis	1	wieviel weniger wäre anteil a wert wenn es verliert
+l_luis	1	wenn anteil a gewinnt, wieviel wird er dann wert sein
+l_luis	1	welcher anteil ist am meisten gestiegen
+l_luis	1	ist anteil b vom typ -
+l_luis	1	kannst du mir helfen
+l_luis	1	welcher anteil hat die meisten preissenkungen
+l_luis	1	anteil am mesiten gesunken
+l_luis	1	was soll ich verkaufen
+l_luis	1	wie viel wird anteil a in der nächsten periode kosten
+l_luis	1	wieviel weniger wäre f wert wenn es im wert sinkt
+l_luis	1	am meisten preissteigerungen
+l_luis	1	anteil e verlust gemacht
 l_luis	1	wieviel wäre anteil d wert wenn es sinkt
-l_luis	1	wie oft ist f gesunken
-q_qnamaker	1	Wie gehts
-q_qnamaker	1	Welcher Anteil ist vom Typ --
-q_qnamaker	1	Was kannst du
+l_luis	1	welcher anteil typ o
+l_luis	1	am häufigsten preissenkungen
+l_luis	1	hat anteil a verloren
+l_luis	1	wieviel mehr wäre b wert wenn es steigt in der nächsten runde
+l_luis	1	anteil c verloren
+l_luis	1	wie entwickelt sich der preis von anteil d, wenn er steigt
+l_luis	1	wie viel kostet anteil b, wenn er teurer wird
+l_luis	1	um wieviel würde anteil f sinken, wenn es nächste runde verliert
+l_luis	1	wie viel anteil soll ich verkaufen
+l_luis	1	welcher anteil hat die meisten preissteigerungen
+l_luis	1	preis anteil e, wenn nach oben
+l_luis	1	preis anteil f, wenn sinkt
+q_qnamaker	1	Wie alt bist du
+q_qnamaker	1	Hola
+q_qnamaker	1	Hi
+q_qnamaker	1	Wie geht's dir

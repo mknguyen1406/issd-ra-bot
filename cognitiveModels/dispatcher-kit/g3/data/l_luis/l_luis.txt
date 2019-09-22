@@ -1,26 +1,94 @@
+am häufigsten preissenkungen
+am häufigsten preissteigerungen
+am meisten preissteigerungen
+am mesiten preissenkungen
+anteil a hoch
+anteil a wert, wenn sinkt
+anteil a wert, wenn steigt
+anteil am häufigste gewonnen
+anteil am häufigsten gestiegen
+anteil am häufigsten gesunken
+anteil am häufigsten verloren
+anteil am meisten an wert gewonnen
+anteil am meisten an wert verloren
+anteil am meisten gestiegen
+anteil am mesiten gesunken
+anteil c gewonnen
+anteil c verloren
+anteil d gestiegen
+anteil d gesunken
+anteil d vom typ -
+anteil e gewinn gemacht
+anteil e verlust gemacht
+empfehlung
+hat anteil a gewonnen
+hat anteil a verloren
+hilfe
+ich brauche eine empfehlung
 ich brauche einen ratschlag
+ich brauche hilfe
+ist anteil a vom typ ++
+ist anteil b vom typ -
+ist anteil c typ o
+ist anteil f gestiegen
+ist anteil f gesunken
 kannst du mir eine empfehlung geben
 kannst du mir einen rat geben
 kannst du mir einen tipp geben
+kannst du mir helfen
+meisten gestiegen
+meisten gesunken
+meisten gewonnen
+meisten verloren
+meisten wert gewonnen
+meisten wert verloren
+portfolio
+preis anteil e, wenn nach oben
+preis anteil e, wenn nach unten
+preis anteil f, wenn sinkt
+preis anteil f, wenn steigt
+rat
+rendite
+soll ich alle meine anteile verkaufen
+soll ich alles in anteil investieren
+soll ich anteil kaufen
+soll ich anteil verkaufen
+soll ich mein ganzes guthaben in anteil investieren
 um wieviel würde anteil e steigen, wenn es nächste runde gewinnt
 um wieviel würde anteil f sinken, wenn es nächste runde verliert
 um wieviel würde c sinken, wenn es in der nächsten periode verliert
+was hat gewonnen
+was hat verloren
+was ist der preis von anteil a, wenn er günstiger wird
+was ist der preis von anteil a, wenn er teurer wird
+was ist der preis von anteil e in der nächsten periode
+was ist die wahrscheinlichkeit, dass anteil b steigt
+was ist gestiegen
+was ist gesunken
 was soll ich als nächstes kaufen
 was soll ich als nächstes verkaufen
 was soll ich kaufen / verkaufen
+was soll ich kaufen
 was soll ich machen
+was soll ich verkaufen
 welche anteile soll ich kaufen
 welche anteile soll ich verkaufen
+welcher anteil +
 welcher anteil hat am häufigsten gewonnen
 welcher anteil hat am häufigsten verloren
 welcher anteil hat am meisten wert gewonnen
 welcher anteil hat am meisten wert verloren
 welcher anteil hat bisher am meisten an wert gewonnen
 welcher anteil hat bisher am meisten an wert verloren
+welcher anteil hat die meisten preissenkungen
+welcher anteil hat die meisten preissteigerungen
 welcher anteil ist am häufigsten gestiegen
 welcher anteil ist am häufigsten gesunken
 welcher anteil ist am meisten gestiegen
 welcher anteil ist am meisten gesunken
+welcher anteil ist vom typ --
+welcher anteil ist vom typ o
+welcher anteil typ o
 wenn a an wert verliert, wieviel wird er dann wert sein
 wenn anteil a gewinnt, wieviel wird er dann wert sein
 wenn anteil a verliert, wieviel wird es dann wert sein
@@ -30,14 +98,24 @@ wenn in der nächsten periode a steigt, wieviel ist es dann wert
 wenn in der nächsten runde f gewinnt, wieviel ist es dann wert
 wenn nächste runde anteil d steigt, wieviel wir es dann wert sein
 wenn nächste runde anteil e steigt, wieviel wird es dann wert sein
+wert anteile
+wert portfolio
+wie entwickelt sich der preis von anteil b, wenn er günstiger wird
+wie entwickelt sich der preis von anteil c, wenn er nach oben geht
+wie entwickelt sich der preis von anteil c, wenn er nach unten geht
+wie entwickelt sich der preis von anteil d, wenn er sinkt
+wie entwickelt sich der preis von anteil d, wenn er steigt
 wie häufig hat anteil e an wert gewonnen
 wie häufig hat e an wert verloren
 wie häufig hat e verloren
 wie häufig ist anteil c gestiegen
 wie häufig ist c gestiegen
 wie hoch ist meine gesamtrendite
+wie hoch ist meine rendite
 wie ist meine rendite
 wie oft hat anteil a bisher verloren
+wie oft hat anteil b gewinn gemacht
+wie oft hat anteil b verlust gemacht
 wie oft hat anteil f an wert gewonnen
 wie oft hat anteil f an wert verloren
 wie oft hat b an wert gewonnen
@@ -46,8 +124,20 @@ wie oft ist a gestiegen bisher
 wie oft ist anteil a gestiegen bisher
 wie oft ist anteil c gesunken
 wie oft ist f gesunken
+wie viel anteil soll ich kaufen
+wie viel anteil soll ich verkaufen
+wie viel geld habe ich bisher gewonnen
+wie viel geld habe ich bisher verloren
+wie viel geld ist mein portfolio wert
+wie viel geld sind meine anteile wert
+wie viel kostet anteil b, wenn er günstiger wird
+wie viel kostet anteil b, wenn er teurer wird
 wie viel sind alle meine anteile wert
+wie viel soll ich kaufen
+wie viel soll ich verkaufen
 wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe
+wie viel wird anteil a in der nächsten periode kosten
+wie viel wird anteil c in der nächsten periode wert sein
 wieviel geld würde ich erhalten wenn ich alles verkaufe
 wieviel ist c bisher gesunken
 wieviel ist mein portfolio gerade wert
@@ -63,3 +153,5 @@ wieviel weniger wäre anteil a wert wenn es verliert
 wieviel weniger wäre anteil b wert wenn es im wert sinkt
 wieviel weniger wäre f wert wenn es im wert sinkt
 wieviele währungseinheiten sind alle meine anteile wert
+wird anteil f steigen
+wird f steigen

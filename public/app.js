@@ -7,7 +7,7 @@ let openForTrading = null;
 let shareManager = null;
 
 let userName = null;
-let answeredSuggestedActions = false;
+let showedExampleQuestions = false;
 
 // List that ensures that certain summaries cannot be outputted twice
 let forbiddenSummaries = [];
@@ -20,20 +20,20 @@ let times = [];
 
 // Container for advices
 let advice = {
-    0: 0,
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    6: 0,
-    7: 0,
-    8: 0,
-    9: 0,
-    10: 0,
-    11: 0,
-    12: 0,
-    13: 0,
+    0: [0,0,0],
+    1: [0,0,0],
+    2: [0,0,0],
+    3: [0,0,0],
+    4: [0,0,0],
+    5: [0,0,0],
+    6: [0,0,0],
+    7: [0,0,0],
+    8: [0,0,0],
+    9: [0,0,0],
+    10: [0,0,0],
+    11: [0,0,0],
+    12: [0,0,0],
+    13: [0,0,0]
 };
 
 // Get token from secret and start chat bot
@@ -85,6 +85,9 @@ let x = document.getElementById("chart");
 x.style.display = "none";
 x = document.getElementById("investments");
 x.style.display = "none";
+
+// Hide 'Klicke unten auf Weiter' button
+document.getElementById("end").style.display = "none";
 
 // =================================== Create Chat Bot =======================================
 
@@ -278,7 +281,10 @@ function startChatBot() {
                 // Dispatch welcome message and ask for user name
                 dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
                     // Dispatch click on 'Starte Experiment' message
-                    dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
+                    // dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
+
+                    // Ask user for example questions with suggested answers
+                    dispatchBotEvent("", "suggestedActionEvent", turnContext);
                 });
             }
 
@@ -291,15 +297,109 @@ function startChatBot() {
                 // Message sent to chat bot
                 const message = data.channelData.message;
 
+                // Check if user asked for example questions
+                const questions = ['Ja, sehr gerne!', 'Fragen', 'fragen'];
+
+                if (questions.includes(message)) {
+
+                    showedExampleQuestions = true;
+
+                    // Only available when experiment started
+                    if (group === 2) {
+
+                        chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                            "- Wer bist du?";
+                    } else if (group === 3) {
+                        chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
+                            "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
+                            "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
+                            "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
+                            "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
+                            "- Kannst du mir einen Rat geben?\n" +
+                            "- Wer bist du?";
+                    }
+
+                    // Dispatch example questions
+                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
+
+                        // Ask user for name
+                        if (userName == null) {
+                            // Dispatch click on 'Starte Experiment' message
+                            dispatchBotEvent("Mein Name ist übrigens Charles. Wie lautet deiner?", "chatEvent", turnContext);
+                        }
+                    });
+
+                } else {
+
+                    // Check if user said 'No' to example questions
+                    const noQuestions = ['Nein.'];
+                    if (noQuestions.includes(message)) {
+
+                        // Tell user that he can ask for example questions again
+                        chatbotResponse = "Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Fragen' schreibst.";
+
+                        // Dispatch example questions
+                        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
+
+                            // Ask user for name
+                            if (userName == null) {
+                                // Dispatch click on 'Starte Experiment' message
+                                dispatchBotEvent("Mein Name ist übrigens Charles. Wie lautet deiner?", "chatEvent", turnContext);
+                            }
+                        });
+                    } else {
+
+                        // If name is null then set name and send acknowledge message from bot to user. Only in round 0 and 3
+                        if (userName == null) {
+
+                            if (round === 0) {
+
+                                // Set name
+                                userName = message;
+
+                                // Acknowledge name
+                                chatbotResponse = `Danke, ${ userName }.`;
+                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
+                                    // Ask user for example questions with suggested answers
+                                    chatbotResponse = "Bitte klicke nun auf 'Starte Experiment', um zu beginnen.";
+                                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                                });
+                            } else if (round === 4) {
+
+                                // Set name
+                                userName = message;
+
+                                // Acknowledge name
+                                chatbotResponse = `Danke, ${ userName }.`;
+                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
+                            } else {
+
+                                // Process message with LUIS and QnA
+                                processMessage(chatbotResponse, data, turnContext);
+                            }
+                        } else {
+
+                            // Process message with LUIS and QnA
+                            processMessage(chatbotResponse, data, turnContext);
+                        }
+                    }
+                }
+
+
+                //=======================================================================================================
                 // If name is null then set name and send acknowledge message from bot to user
-                if (userName == null) {
+                /*if (userName == null) {
                     userName = message;
 
                     // Acknowledge name
                     chatbotResponse = `Danke, ${ userName }.`;
                     dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
                         // Ask user for example questions with suggested answers
-                        dispatchBotEvent("", "suggestedActionEvent", turnContext);
+                        // dispatchBotEvent("", "suggestedActionEvent", turnContext);
                     });
 
                 } else {
@@ -370,6 +470,9 @@ function startChatBot() {
                                     // Send QnA Maker response
                                     chatbotResponse = data.channelData.answer;
 
+                                    // Track advice
+                                    trackConversation(round - 1, "qna");
+
                                 } else if (typeof(data.channelData.intent) !== 'undefined') {
 
                                     // Trigger LUIS
@@ -379,21 +482,39 @@ function startChatBot() {
                                     switch (intent) {
                                         case "anteil_gewonnen_max":
                                             chatbotResponse = shareManager.mostUps(round - 1);
+
+                                            // Track advice
+                                            trackConversation(round - 1, "luis_allgemein");
                                             break;
                                         case "anteil_verloren_max":
                                             chatbotResponse = shareManager.mostDowns(round - 1);
+
+                                            // Track advice
+                                            trackConversation(round - 1, "luis_allgemein");
                                             break;
                                         case "anteil_potentieller_zuwachs":
                                             chatbotResponse = shareManager.potentialUp(entity);
+
+                                            // Track advice
+                                            trackConversation(round - 1, "luis_allgemein");
                                             break;
                                         case "anteil_potentieller_verlust":
                                             chatbotResponse = shareManager.potentialDown(entity);
+
+                                            // Track advice
+                                            trackConversation(round - 1, "luis_allgemein");
                                             break;
                                         case "anteil_spezifisch_gewonnen":
                                             chatbotResponse = shareManager.shareUps(entity, round - 1);
+
+                                            // Track advice
+                                            trackConversation(round - 1, "luis_allgemein");
                                             break;
                                         case "anteil_spezifisch_verloren":
                                             chatbotResponse = shareManager.shareDowns(entity, round - 1);
+
+                                            // Track advice
+                                            trackConversation(round - 1, "luis_allgemein");
                                             break;
                                         case "rat_geben":
                                             // Only for 3rd experiment group
@@ -401,11 +522,14 @@ function startChatBot() {
                                                 chatbotResponse = shareManager.getRecommendAlg(round - 1);
 
                                                 // Track advice
-                                                advice[round - 1] ++;
+                                                trackConversation(round - 1, "luis_rat");
                                             }
                                             break;
                                         case "wert_portfolio":
                                             chatbotResponse = shareManager.portfolioValue();
+
+                                            // Track advice
+                                            trackConversation(round - 1, "luis_allgemein");
                                             break;
                                         default:
                                             console.log(`Dispatch unrecognized intent: ${intent}.`);
@@ -418,7 +542,8 @@ function startChatBot() {
                             }
                         }
                     }
-                }
+                }*/
+                //=======================================================================================================
             }
 
             // Incoming example question event
@@ -519,3 +644,22 @@ function startChatBot() {
         }
     });
 }
+
+let input = null;
+
+$(document).ready(function () {
+    // Chatbot UI
+
+    setTimeout(function () {
+
+        input = document.getElementsByTagName("input");
+        console.log(input.length);
+
+        if (experimentGroup === "2") {
+            input.item(0).placeholder = "Stelle mir eine Frage";
+        } else if (experimentGroup === "3") {
+            input.item(0).placeholder = "Frage mich nach einem Rat";
+        }
+
+    }, 500);
+});

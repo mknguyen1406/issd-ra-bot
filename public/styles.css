@@ -163,6 +163,12 @@
     width: 160px;
 }
 
+.btn-outline-secondary-end {
+    color: #6c757d;
+    border-color: #6c757d;
+    width: 200px;
+}
+
 .vis-links {
     padding: 0px 5px 0px 5px;
 }
