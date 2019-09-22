@@ -35,7 +35,7 @@ $(document).ready(function () {
                     "prices: " + JSON.stringify(result.prices) + ", " +
                     "times: " + result.times + ", " +
                     "advice: " + JSON.stringify(result.advice) + ", " +
-                    "conversation: " + result.conversationHistory + ", " +
+                    "conversation: " + JSON.stringify(result.conversationHistory) + ", " +
                     "mapping_character: " + JSON.stringify(result.map_char) + ", " +
                     "mapping_number: " + JSON.stringify(result.map_no) + ", " +
                     "round: " + result.round + "\}";
