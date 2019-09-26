@@ -14,6 +14,7 @@ anteil am meisten an wert verloren
 anteil am meisten gestiegen
 anteil am mesiten gesunken
 anteil c gewonnen
+anteil c oder d ++
 anteil c verloren
 anteil d gestiegen
 anteil d gesunken
@@ -23,15 +24,22 @@ anteil e verlust gemacht
 empfehlung
 hat anteil a gewonnen
 hat anteil a verloren
+hat anteil b typ --
 hilfe
 ich brauche eine empfehlung
 ich brauche einen ratschlag
 ich brauche hilfe
+ist anteil a höchstwahrscheinlich vom typ +
 ist anteil a vom typ ++
+ist anteil b -
 ist anteil b vom typ -
 ist anteil c typ o
+ist anteil e oder anteil f vom typ +
+ist anteil e typ +
 ist anteil f gestiegen
 ist anteil f gesunken
+ist das vom typ ++
+ist dieser anteil vom typ 0
 kannst du mir eine empfehlung geben
 kannst du mir einen rat geben
 kannst du mir einen tipp geben
@@ -49,6 +57,7 @@ preis anteil f, wenn sinkt
 preis anteil f, wenn steigt
 rat
 rendite
+sind anteile a und b vom typ 0
 soll ich alle meine anteile verkaufen
 soll ich alles in anteil investieren
 soll ich anteil kaufen
@@ -71,8 +80,12 @@ was soll ich kaufen / verkaufen
 was soll ich kaufen
 was soll ich machen
 was soll ich verkaufen
+weche anteile sind typ ++
+welche anteile sind vom typ --
 welche anteile soll ich kaufen
 welche anteile soll ich verkaufen
+welche der anteile sind -
+welche der anteile sind typ o
 welcher anteil +
 welcher anteil hat am häufigsten gewonnen
 welcher anteil hat am häufigsten verloren
@@ -138,6 +151,10 @@ wie viel soll ich verkaufen
 wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe
 wie viel wird anteil a in der nächsten periode kosten
 wie viel wird anteil c in der nächsten periode wert sein
+wie wahrscheinlich ist anteil b vom typ ++
+wie wahrscheinlich ist dieser anteil 0
+wie wahrscheinlich ist es, dass anteil a steig
+wie wahrscheinlich ist es, dass anteil e sinkt
 wieviel geld würde ich erhalten wenn ich alles verkaufe
 wieviel ist c bisher gesunken
 wieviel ist mein portfolio gerade wert
@@ -153,5 +170,7 @@ wieviel weniger wäre anteil a wert wenn es verliert
 wieviel weniger wäre anteil b wert wenn es im wert sinkt
 wieviel weniger wäre f wert wenn es im wert sinkt
 wieviele währungseinheiten sind alle meine anteile wert
+wird anteil d mit hoher wahrscheinlichkeit steigen
+wird anteil f sinken
 wird anteil f steigen
 wird f steigen

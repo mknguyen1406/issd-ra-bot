@@ -249,6 +249,22 @@
       ]
     },
     {
+      "text": "anteil c oder d ++?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 7,
+          "endPos": 7
+        },
+        {
+          "entity": "Anteil",
+          "startPos": 14,
+          "endPos": 14
+        }
+      ]
+    },
+    {
       "text": "anteil c verloren?",
       "intent": "anteil_spezifisch_verloren",
       "entities": [
@@ -342,6 +358,17 @@
       ]
     },
     {
+      "text": "hat anteil b typ --?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
       "text": "hilfe",
       "intent": "rat_geben",
       "entities": []
@@ -362,7 +389,29 @@
       "entities": []
     },
     {
+      "text": "ist anteil a höchstwahrscheinlich vom typ +?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
       "text": "ist anteil a vom typ ++?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "ist anteil b -?",
       "intent": "anteil_typ_spezifisch",
       "entities": [
         {
@@ -395,6 +444,33 @@
       ]
     },
     {
+      "text": "ist anteil e oder anteil f vom typ +?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        },
+        {
+          "entity": "Anteil",
+          "startPos": 25,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "ist anteil e typ +?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 11,
+          "endPos": 11
+        }
+      ]
+    },
+    {
       "text": "ist anteil f gestiegen?",
       "intent": "anteil_spezifisch_gewonnen",
       "entities": [
@@ -415,6 +491,16 @@
           "endPos": 11
         }
       ]
+    },
+    {
+      "text": "ist das vom typ ++?",
+      "intent": "anteil_typ",
+      "entities": []
+    },
+    {
+      "text": "ist dieser anteil vom typ 0?",
+      "intent": "anteil_typ",
+      "entities": []
     },
     {
       "text": "kannst du mir eine empfehlung geben?",
@@ -524,6 +610,22 @@
       "text": "rendite",
       "intent": "wert_portfolio",
       "entities": []
+    },
+    {
+      "text": "sind anteile a und b vom typ 0?",
+      "intent": "anteil_typ_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 13,
+          "endPos": 13
+        },
+        {
+          "entity": "Anteil",
+          "startPos": 19,
+          "endPos": 19
+        }
+      ]
     },
     {
       "text": "soll ich alle meine anteile verkaufen?",
@@ -678,6 +780,16 @@
       "entities": []
     },
     {
+      "text": "weche anteile sind typ ++?",
+      "intent": "anteil_typ",
+      "entities": []
+    },
+    {
+      "text": "welche anteile sind vom typ --?",
+      "intent": "anteil_typ",
+      "entities": []
+    },
+    {
       "text": "welche anteile soll ich kaufen?",
       "intent": "rat_geben",
       "entities": []
@@ -685,6 +797,16 @@
     {
       "text": "welche anteile soll ich verkaufen?",
       "intent": "rat_geben",
+      "entities": []
+    },
+    {
+      "text": "welche der anteile sind -?",
+      "intent": "anteil_typ",
+      "entities": []
+    },
+    {
+      "text": "welche der anteile sind typ o?",
+      "intent": "anteil_typ",
       "entities": []
     },
     {
@@ -1223,6 +1345,44 @@
       ]
     },
     {
+      "text": "wie wahrscheinlich ist anteil b vom typ ++?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 30,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "wie wahrscheinlich ist dieser anteil 0?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": []
+    },
+    {
+      "text": "wie wahrscheinlich ist es, dass anteil a steig?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 39,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "wie wahrscheinlich ist es, dass anteil e sinkt?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 39,
+          "endPos": 39
+        }
+      ]
+    },
+    {
       "text": "wieviel geld würde ich erhalten wenn ich alles verkaufe?",
       "intent": "wert_portfolio",
       "entities": []
@@ -1362,6 +1522,28 @@
       "text": "wieviele währungseinheiten sind alle meine anteile wert?",
       "intent": "wert_portfolio",
       "entities": []
+    },
+    {
+      "text": "wird anteil d mit hoher wahrscheinlichkeit steigen?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 12,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "wird anteil f sinken?",
+      "intent": "anteil_wahrscheinlichkeit_spezifisch",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 12,
+          "endPos": 12
+        }
+      ]
     },
     {
       "text": "wird anteil f steigen?",

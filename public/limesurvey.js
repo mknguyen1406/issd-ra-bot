@@ -54,11 +54,11 @@ $(document).ready(function () {
                 $('#question{15394} input[type="text"]').val([result_conc]);
 
                 //window.alert(result_all);
-            }
 
-            // Show 'Weiter' button after last question
-            if (Math.round(parseFloat(result.round) === 13)) {
-                hideShowDom(document.getElementById('movenextbtn'), false);
+                // Show 'Weiter' button after last question
+                if (Math.round(parseFloat(result.round) === 13)) {
+                    hideShowDom(document.getElementById('movenextbtn'), false);
+                }
             }
         }
 

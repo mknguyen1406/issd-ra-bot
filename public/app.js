@@ -648,6 +648,22 @@ function startChatBot() {
 let input = null;
 
 $(document).ready(function () {
+
+    // Table UI
+    input = document.getElementsByTagName("th");
+
+    for (let i = 0; i < input.length; i++) {
+
+        const e = input[i];
+
+        // For first column
+        if (i === 0 || i === 15) {
+            e.style.width = "70px";
+        } else {
+            e.style.width = "6%";
+        }
+    }
+
     // Chatbot UI
 
     setTimeout(function () {

@@ -861,7 +861,12 @@ function processMessage(chatbotResponse, data, turnContext) {
                     trackConversation(round - 1, "luis_allgemein");
                     break;
                 case "anteil_wahrscheinlichkeit_spezifisch":
-                    chatbotResponse = "Das weiß ich leider nicht.";
+
+                    if (parseFloat(experimentGroup) === 3) {
+                        chatbotResponse = "So genau kann ich es dir leider nicht sagen.";
+                    } else {
+                        chatbotResponse = "Das weiß ich leider nicht.";
+                    }
 
                     // Track advice
                     trackConversation(round - 1, "luis_allgemein");
