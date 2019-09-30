@@ -92,7 +92,7 @@ class DispatchBot extends ActivityHandler {
                 await context.sendActivity({
                     name: 'messageEvent',
                     type: 'event',
-                    channelData: {message: context.activity.text}
+                    channelData: {message: turnContext.activity.text}
                 });
             } else {
 
