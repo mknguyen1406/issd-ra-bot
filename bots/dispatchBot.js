@@ -89,7 +89,7 @@ class DispatchBot extends ActivityHandler {
             // Check if this message contains name or initial question
             if (turnContext.activity.channelData.name === "noname") {
                 // Send message back
-                await context.sendActivity({
+                await turnContext.sendActivity({
                     name: 'messageEvent',
                     type: 'event',
                     channelData: {message: turnContext.activity.text}
