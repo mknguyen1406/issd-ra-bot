@@ -172,7 +172,7 @@ class DispatchBot extends ActivityHandler {
     }
 
     async sendSuggestedActions(turnContext) {
-        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein.'], 'Möchtest du beispielhafte Fragen sehen, die du mir stellen kannst?');
+        const reply = MessageFactory.suggestedActions(['Ja, sehr gerne!', 'Nein, danke.'], 'Möchtest du beispielhafte Fragen sehen, die du mir stellen kannst?');
         await turnContext.sendActivity(reply);
     }
 

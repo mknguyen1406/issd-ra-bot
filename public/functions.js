@@ -3,7 +3,15 @@ function showPrices() {
     document.getElementById("chart").style.display = "none";
     document.getElementById("investments").style.display = "none";
     document.getElementById("prices").style.display = "block";
-    document.getElementById("header_share_prices").innerHTML = "Preisübersicht";
+    document.getElementById("header_share_prices").innerHTML = "Preise und Transaktionen";
+}
+
+// Show chart
+function showChart() {
+    document.getElementById("prices").style.display = "none";
+    document.getElementById("investments").style.display = "none";
+    document.getElementById("chart").style.display = "block";
+    document.getElementById("header_share_prices").innerHTML = "Chart";
 }
 
 // Show investments when user clicks on button
@@ -359,9 +367,9 @@ function triggerNextRound() {
     if (res.reload === false) {
         const data = res.appendData;
         chart.appendData(data.prices);
-        appendTable("price", data.prices);
+        appendTable(data.prices, true);
         if (round !== 0) {
-            appendTable("invest", data.invests);
+            appendTable(data.invests, false);
         }
 
         // Only for last round
@@ -488,22 +496,22 @@ function sendRoundSummary(round) {
 
     let summary = null;
 
+    const defaultMessageRounds = [5,8,10,11];
+
     // Check for round
     if (round === 3) {
         // Send fixed summary that has number 0
         summary = getRoundSummary(0);
-    } else if ((round > 3) && (round < 12)) {
+    } else if (defaultMessageRounds.includes(round)) {
 
-        // Send randomized summary
+        // Send default message
         const randNo = getRandomNo();
-
         console.log("random number: " + randNo);
         summary = getRoundSummary(randNo);
 
-        // // Gather data for summary
-        // const holdings = {
-        //     holdings: shareManager.goodHoldings
-        // };
+    } else if (round === 6) {
+        // Send fixed summary that has number 11
+        summary = getRoundSummary(13);
     } else if (round === 12) {
         // Send fixed summary that has number 11
         summary = getRoundSummary(11);
@@ -598,7 +606,10 @@ function getRoundSummary(no) {
             }
             break;
         case 12:
-            res = "Das Experiment ist jetzt zu Ende. Bitte klicke jetzt unten auf 'Weiter'."
+            res = "Das Experiment ist jetzt zu Ende. Bitte klicke jetzt unten auf 'Weiter'.";
+            break;
+        case 13:
+            res = "Hast du eine Frage für mich?";
             break;
     }
 
@@ -928,30 +939,48 @@ function alertEarnings(cash) {
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
-    const euro = Math.round(total / 300);
+    const euro = Math.ceil(2 * (total/300)) / 2 + 4;
 
-    swal("Glückwunsch!", "Ihre Auszahlung beträgt " + total + " Währungseinheiten." + "\n\n" +
+    swal("Glückwunsch!", "Ihre Auszahlung beträgt " + euro + " € bzw. " + total + " Währungseinheiten. \n\n" +
         "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
         portfolio + " Währungseinheiten.", "success");
 }
 
-function appendTable(table, data) {
-    const prefix = "tab-row-" + table + "-";
+function appendTable(data, prices) {
+    const prefix = "tab-row-price-";
 
-    appendTableValue(prefix, Math.round(data[0]["data"][0]), "a");
-    appendTableValue(prefix, Math.round(data[1]["data"][0]), "b");
-    appendTableValue(prefix, Math.round(data[2]["data"][0]), "c");
-    appendTableValue(prefix, Math.round(data[3]["data"][0]), "d");
-    appendTableValue(prefix, Math.round(data[4]["data"][0]), "e");
-    appendTableValue(prefix, Math.round(data[5]["data"][0]), "f");
+    if (prices) {
+        // Append prices
+        appendTablePrice(prefix, data[0]["data"][0], "a");
+        appendTablePrice(prefix, data[1]["data"][0], "b");
+        appendTablePrice(prefix, data[2]["data"][0], "c");
+        appendTablePrice(prefix, data[3]["data"][0], "d");
+        appendTablePrice(prefix, data[4]["data"][0], "e");
+        appendTablePrice(prefix, data[5]["data"][0], "f");
+    } else {
+        //Append investments
+        appendTableInvest(prefix, data[0]["data"][0], "a");
+        appendTableInvest(prefix, data[1]["data"][0], "b");
+        appendTableInvest(prefix, data[2]["data"][0], "c");
+        appendTableInvest(prefix, data[3]["data"][0], "d");
+        appendTableInvest(prefix, data[4]["data"][0], "e");
+        appendTableInvest(prefix, data[5]["data"][0], "f");
+    }
+
 }
 
-function appendTableValue(parent, value, good) {
-    const pref = parent;
+function appendTablePrice(prefix, value, good) {
     const childNode = document.createElement("td");
     const textNode = document.createTextNode(value);
     childNode.appendChild(textNode);
-    document.getElementById(pref + good).appendChild(childNode);
+    childNode.classList.add('text-center');
+    childNode.id = good + round;
+    document.getElementById(prefix + good).appendChild(childNode);
+}
+
+function appendTableInvest(prefix, value, good) {
+    const node = document.getElementById(good + (round - 1));
+    node.innerHTML = node.innerHTML + "<br>" + value;
 }
 
 function generateRandomNo(min, max) {
@@ -1112,17 +1141,6 @@ function changeLanguage() {
         document.getElementById("button_sell5").innerText = "Sell";
         document.getElementById("button_sell6").innerText = "Sell";
     }
-}
-
-function showChart() {
-    let x = document.getElementById("prices");
-    x.style.display = "none";
-
-    x = document.getElementById("investments");
-    x.style.display = "none";
-
-    x = document.getElementById("chart");
-    x.style.display = "block";
 }
 
 */

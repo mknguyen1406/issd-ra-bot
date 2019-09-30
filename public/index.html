@@ -32,9 +32,9 @@
                     <div class="card-header">
                         <div class="d-flex flex-column flex-md-row align-items-center p-0 bg-transparent">
                             <h4 id="header_share_prices" class="my-0 mr-md-auto font-weight-normal">Preisübersicht</h4>
-                            <a id="price_link_prices" class="vis-links" onclick="showPrices()" href="#">Preise</a>
-                            <a id="price_link_invest" class="vis-links" onclick="showInvestments()" href="#">Transaktionen</a>
-                            <!--<a id="price_link_chart" class="vis-links" onclick="showChart()" href="#">Chart</a>-->
+                            <a id="price_link_prices" class="vis-links" onclick="showPrices()" href="#">Preise und Transaktionen</a>
+<!--                            <a id="price_link_invest" class="vis-links" onclick="showInvestments()" href="#">Transaktionen</a>-->
+                            <a id="price_link_chart" class="vis-links" onclick="showChart()" href="#">Chart</a>
                         </div>
                     </div>
                     <div class="card-body-custom-chart">
@@ -42,8 +42,8 @@
                         <div id="prices">
                             <table class="table table-sm table-hover table-responsive">
                                 <thead>
-                                <tr>
-                                    <th scope="col">Periode</th>
+                                <tr class="text-center">
+                                    <th scope="col" colspan="2">Periode</th>
                                     <th scope="col">0</th>
                                     <th scope="col">1</th>
                                     <th scope="col">2</th>
@@ -63,21 +63,27 @@
                                 <tbody>
                                 <tr id="tab-row-price-a">
                                     <th scope="row">Anteil A</th>
+                                    <td scope="row" style="border-right: 1px solid #dee2e6">Preise<br>Transaktionen</td>
                                 </tr>
                                 <tr id="tab-row-price-b">
                                     <th scope="row">Anteil B</th>
+                                    <td scope="row" style="border-right: 1px solid #dee2e6">Preise<br>Transaktionen</td>
                                 </tr>
                                 <tr id="tab-row-price-c">
                                     <th scope="row">Anteil C</th>
+                                    <td scope="row" style="border-right: 1px solid #dee2e6">Preise<br>Transaktionen</td>
                                 </tr>
                                 <tr id="tab-row-price-d">
                                     <th scope="row">Anteil D</th>
+                                    <td scope="row" style="border-right: 1px solid #dee2e6">Preise<br>Transaktionen</td>
                                 </tr>
                                 <tr id="tab-row-price-e">
                                     <th scope="row">Anteil E</th>
+                                    <td scope="row" style="border-right: 1px solid #dee2e6">Preise<br>Transaktionen</td>
                                 </tr>
                                 <tr id="tab-row-price-f">
                                     <th scope="row">Anteil F</th>
+                                    <td scope="row" style="border-right: 1px solid #dee2e6">Preise<br>Transaktionen</td>
                                 </tr>
                                 </tbody>
                             </table>

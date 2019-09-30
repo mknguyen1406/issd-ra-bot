@@ -298,7 +298,7 @@ class ShareManager {
         };
         if (open !== null) {
             if (open) {
-                if (this.budget - this.goodValues[good] >= 0) {
+                if (Math.round(this.budget) - Math.round(this.goodValues[good]) >= 0) {
                     obj.success = true;
                     this.goodHoldings[good]++;
                     this.budget = this.budget - this.goodValues[good];
@@ -405,7 +405,7 @@ class ShareManager {
             }
 
             const x = {
-                data: [this.goodValues[i]]
+                data: [Math.round(this.goodValues[i])]
             };
             prices.push(x);
             const y = {

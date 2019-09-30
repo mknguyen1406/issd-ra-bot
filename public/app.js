@@ -81,13 +81,54 @@ const chart = new ApexCharts(
 chart.render();
 
 // Show price table and hide chart and investment table
-let x = document.getElementById("chart");
-x.style.display = "none";
-x = document.getElementById("investments");
-x.style.display = "none";
+// let x = document.getElementById("chart");
+// x.style.display = "none";
+// x = document.getElementById("investments");
+// x.style.display = "none";
+showPrices();
 
 // Hide 'Klicke unten auf Weiter' button
 document.getElementById("end").style.display = "none";
+
+// Table
+let input = null;
+$(document).ready(function () {
+
+    // Table UI - headers
+    input = document.getElementsByTagName("th");
+    for (let i = 0; i < input.length; i++) {
+
+        const e = input[i];
+
+        // For first column
+        if (i === 0 || i === 15) {
+            e.style.width = "70px";
+        } else {
+            e.style.width = "39px";
+        }
+    }
+
+    // Table UI - Preise - Transaktionen
+    input = document.getElementsByTagName("td");
+    for (let i = 0; i < input.length; i++) {
+        const e = input[i];
+            e.style.width = "110px";
+    }
+
+    // Chatbot UI
+    setTimeout(function () {
+
+        input = document.getElementsByTagName("input");
+        console.log(input.length);
+
+        if (experimentGroup === "2") {
+            input.item(0).placeholder = "Stelle mir eine Frage";
+        } else if (experimentGroup === "3") {
+            input.item(0).placeholder = "Frage mich nach einem Rat";
+        }
+
+    }, 500);
+});
 
 // =================================== Create Chat Bot =======================================
 
@@ -336,7 +377,7 @@ function startChatBot() {
                 } else {
 
                     // Check if user said 'No' to example questions
-                    const noQuestions = ['Nein.'];
+                    const noQuestions = ['Nein, danke.'];
                     if (noQuestions.includes(message)) {
 
                         // Tell user that he can ask for example questions again
@@ -644,38 +685,3 @@ function startChatBot() {
         }
     });
 }
-
-let input = null;
-
-$(document).ready(function () {
-
-    // Table UI
-    input = document.getElementsByTagName("th");
-
-    for (let i = 0; i < input.length; i++) {
-
-        const e = input[i];
-
-        // For first column
-        if (i === 0 || i === 15) {
-            e.style.width = "70px";
-        } else {
-            e.style.width = "6%";
-        }
-    }
-
-    // Chatbot UI
-
-    setTimeout(function () {
-
-        input = document.getElementsByTagName("input");
-        console.log(input.length);
-
-        if (experimentGroup === "2") {
-            input.item(0).placeholder = "Stelle mir eine Frage";
-        } else if (experimentGroup === "3") {
-            input.item(0).placeholder = "Frage mich nach einem Rat";
-        }
-
-    }, 500);
-});

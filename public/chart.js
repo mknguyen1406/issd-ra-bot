@@ -1,6 +1,6 @@
 var options = {
     chart: {
-        height: 200,
+        height: 300,
         type: 'line',
         shadow: {
             enabled: true,
@@ -23,27 +23,27 @@ var options = {
     },
     series: [
         {
-            name: "Stock A",
+            name: "Anteil A",
             data: []
         },
         {
-            name: "Stock B",
+            name: "Anteil B",
             data: []
         },
         {
-            name: "Stock C",
+            name: "Anteil C",
             data: []
         },
         {
-            name: "Stock D",
+            name: "Anteil D",
             data: []
         },
         {
-            name: "Stock E",
+            name: "Anteil E",
             data: []
         },
         {
-            name: "Stock F",
+            name: "Anteil F",
             data: []
         }
 
@@ -64,7 +64,7 @@ var options = {
         //max: 13
     },
     yaxis: {
-        min: 60,
+        min: 50,
         max: 200,
     }    ,
     legend: {
