@@ -86,9 +86,19 @@ class DispatchBot extends ActivityHandler {
 
         this.onMessage(async (turnContext, next) => {
 
-            // Process message with LUIS and QnA Maker
-            await this.processMessage(turnContext, dispatchRecognizer, subLuisRecognizer);
+            // Check if this message contains name or initial question
+            if (turnContext.activity.channelData.name === "noname") {
+                // Send message back
+                await context.sendActivity({
+                    name: 'messageEvent',
+                    type: 'event',
+                    channelData: {message: context.activity.text}
+                });
+            } else {
 
+                // Process message with LUIS and QnA Maker
+                await this.processMessage(turnContext, dispatchRecognizer, subLuisRecognizer);
+            }
             // // Request welcome message
             // await turnContext.sendActivity({
             //     name: 'messageEvent',

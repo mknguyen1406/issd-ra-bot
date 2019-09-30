@@ -158,9 +158,10 @@ function startChatBot() {
             }
 
             // Use this to add custom data to channelData of the immutable action object
-            // if (action.type === 'DIRECT_LINE/POST_ACTIVITY') {
-            //     action = window.simpleUpdateIn(action, ['payload', 'activity', 'channelData', 'email'], () => 'johndoe@example.com');
-            // }
+            if (action.type === 'DIRECT_LINE/POST_ACTIVITY') {
+                const name = (userName === null) ? "noname" : userName;
+                action = window.simpleUpdateIn(action, ['payload', 'activity', 'channelData', 'name'], () => name);
+            }
 
             return next(action);
         }
