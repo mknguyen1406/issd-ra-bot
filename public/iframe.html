@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <title>ISSD Robo Advisor</title>
 <body>
-<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=2&experimentGroup=3" height="800px" width="1200px"></iframe>
-<!--<script src="./limesurvey.js"></script>-->
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=2&experimentGroup=2" height="800px" width="1200px"></iframe>
+<button type="button" id="movenextbtn">Weiter</button>
+
 <script>
+
+    // Hide or show result containers
+    function hideShowDom(dom, hide) {
+        if (dom !== null) {
+            if (hide) {
+                dom.style.display = "none";
+            } else {
+                dom.style.display = "block";
+            }
+        }
+    }
+
+    hideShowDom(document.getElementById('movenextbtn'), true);
+
     // Event listener for messages
     window.addEventListener('message', function(event) {
         if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net" || event.origin === "https://issd-trading.azurewebsites.net") {
@@ -46,6 +61,11 @@
                 console.log("Results: ");
                 console.log(result_all);
                 console.log(result_conc);
+
+                // Show 'Weiter' button after last question
+                if (Math.round(parseFloat(result.round) === 14)) {
+                    hideShowDom(document.getElementById('movenextbtn'), false);
+                }
 
             }
         }

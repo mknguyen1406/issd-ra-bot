@@ -59,13 +59,21 @@ var options = {
         size: 4
     },
     xaxis: {
-        categories: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]//,
-        //min: 0,
-        //max: 13
+        categories: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+        // min: 0,
+        // max: 13,
+        // tickAmount: 13,
+        title: {
+            text: "Perioden"
+        }
     },
     yaxis: {
-        min: 50,
-        max: 200,
+        min: 60,
+        max: 180,
+        tickAmount: 12,
+        title: {
+            text: "Preise"
+        }
     }    ,
     legend: {
         position: 'top',

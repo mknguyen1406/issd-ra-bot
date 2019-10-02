@@ -851,6 +851,8 @@ function processMessage(chatbotResponse, data, turnContext) {
 
                         // Track advice
                         trackConversation(round - 1, "luis_rat");
+                    } else if (parseFloat(experimentGroup) === 2){
+                        chatbotResponse = "Diese Frage kann ich leider nicht beantworten.";
                     }
                     break;
                 case "wert_portfolio":
@@ -939,9 +941,9 @@ function alertEarnings(cash) {
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
-    const euro = Math.ceil(2 * (total/300)) / 2 + 4;
+    const euro = Math.ceil(2 * (total/300)) / 2;
 
-    swal("Glückwunsch!", "Ihre Auszahlung beträgt " + euro + " € bzw. " + total + " Währungseinheiten. \n\n" +
+    swal("Glückwunsch!", "Ihr variabler Auszahlungsanteil beträgt " + euro + " Euro bzw. " + total + " Währungseinheiten. \n\n" +
         "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
         portfolio + " Währungseinheiten.", "success");
 }
