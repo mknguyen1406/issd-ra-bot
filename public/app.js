@@ -18,6 +18,11 @@ let mapping = getRandomMapping();
 // Array for timestamps
 let times = [];
 
+// Array for round budgets, portfolios and total cashout values
+let cashoutBudget = [];
+let cashoutPortfolio= [];
+let cashoutTotal = [];
+
 // Container for advices
 let advice = {
     0: [0,0,0],

@@ -416,6 +416,11 @@ function nextRound(round) {
         }
     }
 
+    // Add budget, portfolio and total cashout value
+    const cashoutResult = shareManager.cashout();
+    cashoutBudget.push(cashoutResult.budget);
+    cashoutPortfolio.push(cashoutResult.portfolio);
+    cashoutTotal.push(cashoutResult.total);
 
     console.log(round);
     if (round === 0) {
@@ -721,6 +726,9 @@ function sendResult() {
         experimentRound: experimentRound,
         experimentGroup: experimentGroup,
         cashout: shareManager.cashout(),
+        cashoutBudgetArray: cashoutBudget,
+        cashoutPortfolioArray: cashoutPortfolio,
+        cashoutTotalArray: cashoutTotal,
         holdings: shareManager.goodHoldingsHist,
         invests: shareManager.getInvests(), // for same length as other arrays
         prices: shareManager.goodPriceHist,
