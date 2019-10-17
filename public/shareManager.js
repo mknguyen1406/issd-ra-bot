@@ -446,7 +446,7 @@ class ShareManager {
             this.goodHoldings[5] * this.goodValues[5];
         const total_value = portfolio_value + this.budget;
         const euro_value = total_value/300 + 3;
-        const euro_value_rounded = Math.ceil(2 * (total_value/300)) / 2 + 4;
+        const euro_value_rounded = Math.ceil(2 * (total_value/400)) / 2 + 2;
 
         return {
             portfolio: portfolio_value,

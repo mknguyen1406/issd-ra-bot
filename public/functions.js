@@ -12,6 +12,14 @@ function showChart() {
     document.getElementById("investments").style.display = "none";
     document.getElementById("chart").style.display = "block";
     document.getElementById("header_share_prices").innerHTML = "Chart";
+
+    // To display chart on Firefox
+    chart.updateOptions({
+        yaxis: {
+            min: 60,
+            max: 180
+        }
+    })
 }
 
 // Show investments when user clicks on button
@@ -237,7 +245,9 @@ async function readTextFile(file, callback) {
  */
 function getToken(callback) {
     let request_ = new XMLHttpRequest();
-    let secret = 'hMRtBPdEIFY.Mak8ZsZLeFesVFma1ShIQlXkmWQaaxBO2usSPyoUrDc';
+    // let secret = 'hMRtBPdEIFY.Mak8ZsZLeFesVFma1ShIQlXkmWQaaxBO2usSPyoUrDc'; // student
+    let secret = 'y0Jj63oZj1U.SVEL1tUSNeuKuoznVLIpUhSX7A5IT4OpuEMZVe8xJFg'; // stefan
+
     // var encodedParams = encodeURIComponent(params);
     request_.open("POST", "https://directline.botframework.com/v3/directline/tokens/generate", true);
     request_.setRequestHeader("Authorization", "Bearer " + secret);
