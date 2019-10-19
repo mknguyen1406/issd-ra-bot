@@ -750,14 +750,6 @@ function sendResult() {
         conversationHistory: conversationHistory
     };
 
-    // Create a result event
-    const event = new CustomEvent('botEvent', {
-        detail: {
-            type: "result",
-            data: data
-        }
-    });
-
     // Create a result object
     const result = {
         detail: {
@@ -766,14 +758,7 @@ function sendResult() {
         }
     };
 
-    // Send event to own event handler
-    // window.document.dispatchEvent(event);
-
     // Send event to event handler of parent
-    // window.parent.document.dispatchEvent(event);
-
-    // Send event to event handler of parent
-    const jsonObj = JSON.parse(JSON.stringify(data));
     window.parent.postMessage(result, '*');
 }
 

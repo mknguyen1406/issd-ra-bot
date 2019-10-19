@@ -119,20 +119,6 @@ $(document).ready(function () {
         const e = input[i];
             e.style.width = "110px";
     }
-
-    // Chatbot UI
-    setTimeout(function () {
-
-        input = document.getElementsByTagName("input");
-        console.log(input.length);
-
-        if (experimentGroup === "2") {
-            input.item(0).placeholder = "Stelle mir eine Frage";
-        } else if (experimentGroup === "3") {
-            input.item(0).placeholder = "Frage mich nach einem Rat";
-        }
-
-    }, 500);
 });
 
 // =================================== Create Chat Bot =======================================
@@ -199,6 +185,23 @@ function startChatBot() {
         },
         document.getElementById('webchat')
     );
+
+    // Chatbot UI
+    setTimeout(function () {
+
+        input = document.getElementsByTagName("input");
+        console.log(input.length);
+
+        if (experimentGroup === "2") {
+            input.item(0).placeholder = "Stelle mir eine Frage";
+        } else if (experimentGroup === "3") {
+            input.item(0).placeholder = "Frage mich nach einem Rat";
+        }
+
+    }, 200);
+
+    // Send event to event handler of parent
+    window.parent.postMessage(obj, '*');
 
     document.querySelector('#next').addEventListener('click', (e) => {
         // store.dispatch({
