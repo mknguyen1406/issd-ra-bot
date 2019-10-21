@@ -200,9 +200,6 @@ function startChatBot() {
 
     }, 200);
 
-    // Send event to event handler of parent
-    window.parent.postMessage(obj, '*');
-
     document.querySelector('#next').addEventListener('click', (e) => {
         // store.dispatch({
         //     type: 'WEB_CHAT/SEND_EVENT',
