@@ -881,6 +881,15 @@ function processMessage(chatbotResponse, data, turnContext) {
                     // Track advice
                     trackConversation(round - 1, "luis_allgemein");
                     break;
+                case "was_kannst_du":
+
+                    if (parseFloat(experimentGroup) === 3) {
+                        chatbotResponse = "Ich kann grundlegende Fragen zu deinem Portfolio und der Preisentwicklung der Anteile beantworten. " +
+                            "Zudem kann ich dir, basierend auf den Preisentwicklungen, Kaufempfehlungen geben.";
+                    } else {
+                        chatbotResponse = "Ich kann grundlegende Fragen zu deinem Portfolio und der Preisentwicklung der Anteile beantworten.";
+                    }
+                    break;
                 default:
                     console.log(`Dispatch unrecognized intent: ${intent}.`);
                     break;
@@ -938,9 +947,9 @@ function alertEarnings(cash) {
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
-    const euro = cash.euro_rounded;
+    const euro_var = cash.euro_rounded - 2;
 
-    swal("Glückwunsch!", "Ihr variabler Auszahlungsanteil beträgt " + euro + " Euro bzw. " + total + " Währungseinheiten. \n\n" +
+    swal("Glückwunsch!", "Ihr variabler Auszahlungsanteil beträgt " + euro_var + " Euro bzw. " + total + " Währungseinheiten. \n\n" +
         "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
         portfolio + " Währungseinheiten.", "success");
 }

@@ -40,6 +40,9 @@
       "name": "rat_geben"
     },
     {
+      "name": "was_kannst_du"
+    },
+    {
       "name": "wert_portfolio"
     }
   ],
@@ -747,6 +750,46 @@
     {
       "text": "was ist gesunken?",
       "intent": "anteil_verloren_max",
+      "entities": []
+    },
+    {
+      "text": "was kannsch",
+      "intent": "was_kannst_du",
+      "entities": []
+    },
+    {
+      "text": "was kannst du",
+      "intent": "was_kannst_du",
+      "entities": []
+    },
+    {
+      "text": "was kannst du eig",
+      "intent": "was_kannst_du",
+      "entities": []
+    },
+    {
+      "text": "was kannst du eigentlich",
+      "intent": "was_kannst_du",
+      "entities": []
+    },
+    {
+      "text": "was kannst du machen",
+      "intent": "was_kannst_du",
+      "entities": []
+    },
+    {
+      "text": "was kannst du?",
+      "intent": "was_kannst_du",
+      "entities": []
+    },
+    {
+      "text": "was kannste",
+      "intent": "was_kannst_du",
+      "entities": []
+    },
+    {
+      "text": "was kannste eig",
+      "intent": "was_kannst_du",
       "entities": []
     },
     {

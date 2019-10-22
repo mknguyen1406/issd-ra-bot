@@ -4,10 +4,11 @@ Wie geht's
 Wie geht's dir
 Wer bist du
 Wie heißt du
-Was bis du
+Was bist du
+Bist du ein Mensch
+Bist du ein Chatbot
 Wie alt bist du
 Wer hat dich programmiert
-Was kannst du
 Hallo
 Hey
 Hola
@@ -18,3 +19,4 @@ Thanks
 Vielen Dank
 Danke vielmals
 Thx
+Was bist du

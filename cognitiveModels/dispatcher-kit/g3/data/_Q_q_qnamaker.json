@@ -27,7 +27,9 @@
       "questions": [
         "Wer bist du?",
         "Wie heißt du?",
-        "Was bis du?"
+        "Was bist du?",
+        "Bist du ein Mensch?",
+        "Bist du ein Chatbot?"
       ],
       "metadata": [],
       "alternateQuestions": "",
@@ -74,23 +76,6 @@
       }
     },
     {
-      "id": 6,
-      "answer": "Ich kann grundlegende Fragen zu deinem Portfolio und der Preisentwicklung der Anteile beantworten. Zudem kann ich dir, basierend auf den Preisentwicklungen, Kaufempfehlungen machen.",
-      "source": "G3.tsv",
-      "questions": [
-        "Was kannst du?"
-      ],
-      "metadata": [],
-      "alternateQuestions": "",
-      "alternateQuestionClusters": [],
-      "changeStatus": "NoChange",
-      "kbId": "3d46c199-6c21-42c9-b933-e347e5e58938",
-      "context": {
-        "isContextOnly": false,
-        "prompts": []
-      }
-    },
-    {
       "id": 7,
       "answer": "Hallo!",
       "source": "Editorial",
@@ -121,6 +106,23 @@
         "Vielen Dank",
         "Danke vielmals",
         "Thx"
+      ],
+      "metadata": [],
+      "alternateQuestions": "",
+      "alternateQuestionClusters": [],
+      "changeStatus": "NoChange",
+      "kbId": "3d46c199-6c21-42c9-b933-e347e5e58938",
+      "context": {
+        "isContextOnly": false,
+        "prompts": []
+      }
+    },
+    {
+      "id": 10,
+      "answer": "Ich bin Charles, dein persönlicher Robo Assistant. Du kannst mir Fragen zu deinem Portfolio stellen.",
+      "source": "Editorial",
+      "questions": [
+        "Was bist du?"
       ],
       "metadata": [],
       "alternateQuestions": "",
