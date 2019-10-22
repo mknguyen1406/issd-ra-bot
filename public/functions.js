@@ -950,7 +950,7 @@ function alertEarnings(cash) {
     const euro_var = cash.euro_rounded - 2;
 
     swal("Glückwunsch!", "Ihr variabler Auszahlungsanteil beträgt " + euro_var + " Euro bzw. " + total + " Währungseinheiten. \n\n" +
-        "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
+        "Dieser setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
         portfolio + " Währungseinheiten.", "success");
 }
 
