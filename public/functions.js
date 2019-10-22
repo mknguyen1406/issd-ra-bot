@@ -474,12 +474,6 @@ function nextRound(round) {
             invests: data.invests
         };
         obj.cashout = shareManager.cashout();
-        // obj.rename.push(
-        //     {
-        //         id: 'next',
-        //         content: 'Beenden'
-        //     }
-        // );
 
         // Hide next button
         document.getElementById("next").style.display = "none";
@@ -944,7 +938,7 @@ function alertEarnings(cash) {
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
-    const euro = Math.ceil(2 * (total/300)) / 2;
+    const euro = cash.euro_rounded;
 
     swal("Glückwunsch!", "Ihr variabler Auszahlungsanteil beträgt " + euro + " Euro bzw. " + total + " Währungseinheiten. \n\n" +
         "Diese setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
