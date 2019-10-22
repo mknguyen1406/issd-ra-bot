@@ -256,7 +256,7 @@ function getToken(callback) {
         if (request_.readyState === 4 && request_.status === 200) {
             const response = request_.responseText;
             const obj = JSON.parse(response);
-            console.log(obj);
+            // console.log(obj);
             token_ = obj.token;
             conversationId_ = obj.conversationId;
             callback();
@@ -275,7 +275,7 @@ function getConversationHistory(filterCallback, resultCallback) {
         if (request_.readyState === 4 && request_.status === 200) {
             const response = request_.responseText;
             const obj = JSON.parse(response);
-            console.log(obj);
+            // console.log(obj);
             // conversationHistory = obj;
 
             // Filter for messages only
@@ -314,7 +314,7 @@ function buttonActionEvent(e, action) {
     if (action === "buy") {
         // Get ID of button
         const buttonId = e.target.id;
-        console.log("Pressed button: " + buttonId);
+        // console.log("Pressed button: " + buttonId);
         // Get number of button, e.g. 1-6
         const lastChar = parseFloat(buttonId.substr(buttonId.length - 1)) - 1;
 
@@ -334,7 +334,7 @@ function buttonActionEvent(e, action) {
     } else if (action === "sell") {
         // Get ID of button
         const buttonId = e.target.id;
-        console.log("Pressed button: " + buttonId);
+        // console.log("Pressed button: " + buttonId);
         // Get number of button, e.g. 1-6
         const lastChar = parseFloat(buttonId.substr(buttonId.length - 1)) - 1;
 
@@ -432,7 +432,7 @@ function nextRound(round) {
     cashoutPortfolio.push(cashoutResult.portfolio);
     cashoutTotal.push(cashoutResult.total);
 
-    console.log(round);
+    // console.log(round);
     if (round === 0) {
         // Initiate game
         // Change from null to false so that the 'game not started' alert doesn't show up anymore
@@ -515,7 +515,7 @@ function sendRoundSummary(round) {
 
         // Send default message
         const randNo = getRandomNo();
-        console.log("random number: " + randNo);
+        // console.log("random number: " + randNo);
         summary = getRoundSummary(randNo);
 
     } else if (round === 6) {
@@ -529,7 +529,7 @@ function sendRoundSummary(round) {
         summary = getRoundSummary(12);
     }
 
-    console.log(summary);
+    // console.log(summary);
 
     // Create event to request summary
     const event = new CustomEvent('botEvent', {
@@ -671,7 +671,7 @@ function getRoundSummaryForTrades() {
         shareManager.goodInvestHist[4][round - 1] +
         shareManager.goodInvestHist[5][round - 1];
 
-    console.log(shareManager.goodInvestHist);
+    // console.log(shareManager.goodInvestHist);
 
     if (tradesLastPeriod === 0) {
         res = "In der letzten Periode war wohl nichts für dich dabei. Vielleicht willst du jetzt wieder Anteile handeln."
@@ -891,7 +891,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     }
                     break;
                 default:
-                    console.log(`Dispatch unrecognized intent: ${intent}.`);
+                    // console.log(`Dispatch unrecognized intent: ${intent}.`);
                     break;
             }
         }

@@ -57,12 +57,12 @@ const experimentGroup = (url.searchParams.get("experimentGroup") === null || url
 // Create unique user ID
 const userId = surveyId + "-" + pricePath + "-" + experimentRound + "-" + experimentGroup + "-" + cabinNo;
 
-console.log("Survey ID: " + surveyId + "\n",
-    "Price path: " + pricePath + "\n",
-    "Experiment round: " + experimentRound + "\n",
-    "Experiment group: " + experimentGroup + "\n",
-    "Cabin no: " + cabinNo
-);
+// console.log("Survey ID: " + surveyId + "\n",
+//     "Price path: " + pricePath + "\n",
+//     "Experiment round: " + experimentRound + "\n",
+//     "Experiment group: " + experimentGroup + "\n",
+//     "Cabin no: " + cabinNo
+// );
 
 let conversationHistory = null;
 
@@ -190,7 +190,7 @@ function startChatBot() {
     setTimeout(function () {
 
         input = document.getElementsByTagName("input");
-        console.log(input.length);
+        // console.log(input.length);
 
         if (experimentGroup === "2") {
             input.item(0).placeholder = "Stelle mir eine Frage";
@@ -276,7 +276,7 @@ function startChatBot() {
     window.document.addEventListener('botEvent', handleEvent, false);
 
     function handleEvent(e) {
-        console.log(e);
+        // console.log(e);
         const type = e.detail.type;
         const data = e.detail.data;
         const turnContext = e.detail.turnContext;
@@ -293,15 +293,15 @@ function startChatBot() {
         });
 
         if (type === "result") {
-            console.log("Result:");
-            console.log(data);
+            // console.log("Result:");
+            // console.log(data);
         }
     }
 
     // Listening for incoming response events of type buy, sell or next
     window.addEventListener('webchatincomingactivity', ({data}) => {
-        console.log(`Received a bot activity of type "${data.type}":`);
-        console.log(data);
+        // console.log(`Received a bot activity of type "${data.type}":`);
+        // console.log(data);
         // Don't jump into if clause at messages and webchat/join event
         if (data.type === "event" && data.name !== "webchat/join") {
             const channelData = data.channelData;
@@ -639,8 +639,8 @@ function startChatBot() {
                         const intent = channelData.intent;
                         const entity = channelData.entity;
 
-                        console.log("Intent: " + intent);
-                        console.log("Entity: " + entity);
+                        // console.log("Intent: " + intent);
+                        // console.log("Entity: " + entity);
 
                         // switch (intent) {
                         //     case "anteil_gewonnen_max":
