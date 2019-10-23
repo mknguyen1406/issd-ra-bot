@@ -103,7 +103,6 @@ function createShareManager(pricePath, budget, callback) {
 
 function getRandomMapping() {
     let randNo = generateRandomNo(0, 6);
-    randNo = 2;
     let map_no = null;
     let map_char = null;
 
