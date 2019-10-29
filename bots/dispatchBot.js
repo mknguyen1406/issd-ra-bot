@@ -27,12 +27,15 @@ class DispatchBot extends ActivityHandler {
             logger.log('[DispatchBot]: logger not passed in, defaulting to console');
         }
 
+        const applicationIdLuisDispatch = process.env.LuisAppId + "-" + process.env.LuisAPIKey + "-" + process.env.LuisAPIHostName;
+        const applicationIdLuisSub = process.env.LuisSubAppId + "-" + process.env.LuisSubAPIKey + "-" + process.env.LuisSubAPIHostName;
+
         //endpoint: "https://westeurope.api.cognitive.microsoft.com/luis/v2.0"
         //endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         const dispatchRecognizer = new LuisRecognizer({
             applicationId: process.env.LuisAppId,
             endpointKey: process.env.LuisAPIKey,
-            endpoint: process.env.LuisAPIHostName
+            endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         }, {
             includeAllIntents: true,
             includeInstanceData: true
@@ -41,7 +44,7 @@ class DispatchBot extends ActivityHandler {
         const subLuisRecognizer = new LuisRecognizer({
             applicationId: process.env.LuisSubAppId,
             endpointKey: process.env.LuisSubAPIKey,
-            endpoint: process.env.LuisSubAPIHostName
+            endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         }, {
             includeAllIntents: true,
             includeInstanceData: true
@@ -79,6 +82,8 @@ class DispatchBot extends ActivityHandler {
 
                     // Request welcome message
                     await context.sendActivity({name: 'welcomeEvent', type: 'event', channelData: {}});
+
+                    await context.sendActivity(applicationIdLuisDispatch + applicationIdLuisSub);
                 }
             }
 
@@ -167,11 +172,6 @@ class DispatchBot extends ActivityHandler {
     async processMessage(turnContext, dispatchRecognizer, subLuisRecognizer) {
 
         await turnContext.sendActivity("Debug1");
-
-        // Get result, sub intent and entity from sub LUIS model
-        const recognizerSubResult1 = await subLuisRecognizer.recognize(turnContext);
-
-        await turnContext.sendActivity("Debug1b");
 
         // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
         const recognizerResult = await dispatchRecognizer.recognize(turnContext);
