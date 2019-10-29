@@ -27,11 +27,12 @@ class DispatchBot extends ActivityHandler {
             logger.log('[DispatchBot]: logger not passed in, defaulting to console');
         }
 
+        //endpoint: "https://westeurope.api.cognitive.microsoft.com/luis/v2.0"
         //endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         const dispatchRecognizer = new LuisRecognizer({
             applicationId: process.env.LuisAppId,
             endpointKey: process.env.LuisAPIKey,
-            endpoint: "https://westeurope.api.cognitive.microsoft.com/luis/v2.0"
+            endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         }, {
             includeAllIntents: true,
             includeInstanceData: true
@@ -40,7 +41,7 @@ class DispatchBot extends ActivityHandler {
         const subLuisRecognizer = new LuisRecognizer({
             applicationId: process.env.LuisSubAppId,
             endpointKey: process.env.LuisAPIKeySub,
-            endpoint: "https://westeurope.api.cognitive.microsoft.com/luis/v2.0"
+            endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         }, {
             includeAllIntents: true,
             includeInstanceData: true

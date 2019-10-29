@@ -1,7 +1,7 @@
 {
   "luis_schema_version": "4.0.0",
   "versionId": "0.1",
-  "name": "ISSD-RA-LUIS",
+  "name": "issd",
   "desc": "LUIS for Trading Game",
   "culture": "de-de",
   "tokenizerVersion": "1.0.2",
