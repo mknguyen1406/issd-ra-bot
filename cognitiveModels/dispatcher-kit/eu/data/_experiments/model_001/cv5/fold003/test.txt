@@ -1,0 +1,42 @@
+Label	Weight	Text
+l_luis	1	welcher anteil hat bisher am meisten an wert verloren
+l_luis	1	wie viel soll ich verkaufen
+l_luis	1	welcher anteil ist am häufigsten gesunken
+l_luis	1	wie oft ist anteil a gestiegen bisher
+l_luis	1	wie entwickelt sich der preis von anteil c, wenn er nach unten geht
+l_luis	1	um wieviel würde anteil e steigen, wenn es nächste runde gewinnt
+l_luis	1	wie entwickelt sich der preis von anteil b, wenn er günstiger wird
+l_luis	1	wie wahrscheinlich ist es, dass anteil a steig
+l_luis	1	welche der anteile sind typ o
+l_luis	1	wenn anteil c an wert gewinnt, wie viel wird er in der folgenden periode wert sein
+l_luis	1	wie viel geld sind meine anteile wert
+l_luis	1	wenn in der nächsten runde f gewinnt, wieviel ist es dann wert
+l_luis	1	anteil am meisten an wert gewonnen
+l_luis	1	wieviel wäre e wert wenn es verliert
+l_luis	1	kannst du mir einen rat geben
+l_luis	1	anteil e gewinn gemacht
+l_luis	1	anteil am häufigste gewonnen
+l_luis	1	anteil d gestiegen
+l_luis	1	hat anteil b typ --
+l_luis	1	kannst du mir eine empfehlung geben
+l_luis	1	welcher anteil hat am meisten wert verloren
+l_luis	1	wie viel geld habe ich bisher verloren
+l_luis	1	anteil c oder d ++
+l_luis	1	preis anteil f, wenn sinkt
+l_luis	1	um wieviel würde c sinken, wenn es in der nächsten periode verliert
+l_luis	1	wie viel geld ist mein portfolio wert
+l_luis	1	ist dieser anteil vom typ 0
+l_luis	1	anteil a wert, wenn sinkt
+l_luis	1	was soll ich als nächstes verkaufen
+l_luis	1	welcher anteil hat die meisten preissenkungen
+l_luis	1	wieviel mehr wäre a wert wenn es gewinnt
+l_luis	1	wird f steigen
+l_luis	1	am meisten preissteigerungen
+l_luis	1	wie entwickelt sich der preis von anteil d, wenn er sinkt
+l_luis	1	ist anteil f gesunken
+l_luis	1	was ist der preis von anteil e in der nächsten periode
+l_luis	1	um wieviel würde anteil f sinken, wenn es nächste runde verliert
+q_qnamaker	1	Wer hat dich programmiert
+q_qnamaker	1	Danke
+q_qnamaker	1	Danke vielmals
+q_qnamaker	1	Thanks

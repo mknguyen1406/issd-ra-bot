@@ -1,0 +1,42 @@
+Label	Weight	Text
+l_luis	1	meisten wert verloren
+l_luis	1	wie häufig hat e verloren
+l_luis	1	welcher anteil hat die meisten preissteigerungen
+l_luis	1	wie entwickelt sich der preis von anteil d, wenn er steigt
+l_luis	1	was kannst du eig
+l_luis	1	was soll ich machen
+l_luis	1	wieviel weniger wäre anteil b wert wenn es im wert sinkt
+l_luis	1	welcher anteil ist am meisten gesunken
+l_luis	1	wie oft ist anteil c gesunken
+l_luis	1	ist anteil b vom typ -
+l_luis	1	was soll ich kaufen / verkaufen
+l_luis	1	was soll ich als nächstes kaufen
+l_luis	1	soll ich mein ganzes guthaben in anteil investieren
+l_luis	1	was kannste
+l_luis	1	kannst du mir einen tipp geben
+l_luis	1	wie oft hat anteil b verlust gemacht
+l_luis	1	wenn anteil a gewinnt, wieviel wird er dann wert sein
+l_luis	1	ist anteil c typ o
+l_luis	1	wieviel wäre anteil d wert wenn es sinkt
+l_luis	1	welche der anteile sind -
+l_luis	1	ich brauche einen ratschlag
+l_luis	1	wird anteil f sinken
+l_luis	1	meisten verloren
+l_luis	1	welche anteile soll ich kaufen
+l_luis	1	was soll ich kaufen
+l_luis	1	meisten gewonnen
+l_luis	1	soll ich anteil verkaufen
+l_luis	1	ich brauche eine empfehlung
+l_luis	1	wieviele währungseinheiten sind alle meine anteile wert
+l_luis	1	wie hoch ist meine gesamtrendite
+l_luis	1	ist anteil b -
+l_luis	1	rat
+l_luis	1	ist anteil e oder anteil f vom typ +
+l_luis	1	welcher anteil hat am meisten wert gewonnen
+l_luis	1	kannst du mir helfen
+l_luis	1	meisten gesunken
+l_luis	1	anteil a wert, wenn steigt
+q_qnamaker	1	Bist du ein Mensch
+q_qnamaker	1	Vielen Dank
+q_qnamaker	1	Bist du ein Chatbot
+q_qnamaker	1	Hallo

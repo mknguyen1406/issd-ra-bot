@@ -1,0 +1,32 @@
+{
+  "luis_schema_version": "3.2.0",
+  "versionId": "Dispatch",
+  "name": "issd-ra-dispatcher-kit-final",
+  "desc": "Dispatch model for issd-ra-dispatcher-kit-final",
+  "culture": "de-de",
+  "tokenizerVersion": "1.0.2",
+  "intents": [
+    {
+      "name": "l_luis"
+    },
+    {
+      "name": "q_qnamaker"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [],
+  "settings": [
+    {
+      "name": "NormalizeDiacritics",
+      "value": "true"
+    }
+  ]
+}
