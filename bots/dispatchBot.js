@@ -168,6 +168,11 @@ class DispatchBot extends ActivityHandler {
 
         await turnContext.sendActivity("Debug1");
 
+        // Get result, sub intent and entity from sub LUIS model
+        const recognizerSubResult1 = await subLuisRecognizer.recognize(turnContext);
+
+        await turnContext.sendActivity("Debug1b");
+
         // First, we use the dispatch model to determine which cognitive service (LUIS or QnA) to use.
         const recognizerResult = await dispatchRecognizer.recognize(turnContext);
 
