@@ -1,0 +1,42 @@
+Label	Weight	Text
+l_lui	1	was ist gesunken
+l_lui	1	was ist der preis von anteil a, wenn er teurer wird
+l_lui	1	wie viel geld habe ich bisher gewonnen
+l_lui	1	sind anteile a und b vom typ 0
+l_lui	1	wie oft hat e an wert verloren
+l_lui	1	welcher anteil typ o
+l_lui	1	wird anteil d mit hoher wahrscheinlichkeit steigen
+l_lui	1	wieviel ist mein portfolio gerade wert
+l_lui	1	am häufigsten preissteigerungen
+l_lui	1	soll ich alle meine anteile verkaufen
+l_lui	1	wie viel anteil soll ich kaufen
+l_lui	1	anteil am häufigsten verloren
+l_lui	1	was kannst du eigentlich
+l_lui	1	wie viel wird anteil c in der nächsten periode wert sein
+l_lui	1	welcher anteil +
+l_lui	1	rendite
+l_lui	1	ist anteil e typ +
+l_lui	1	anteil am häufigsten gesunken
+l_lui	1	am häufigsten preissenkungen
+l_lui	1	was ist die wahrscheinlichkeit, dass anteil b steigt
+l_lui	1	anteil e verlust gemacht
+l_lui	1	was ist gestiegen
+l_lui	1	anteil c verloren
+l_lui	1	preis anteil e, wenn nach unten
+l_lui	1	wie viel soll ich kaufen
+l_lui	1	weche anteile sind typ ++
+l_lui	1	welche anteile soll ich verkaufen
+l_lui	1	wieviel wäre anteil c wert wenn es steigt
+l_lui	1	welcher anteil ist am häufigsten gestiegen
+l_lui	1	ist anteil a vom typ ++
+l_lui	1	anteil am meisten gestiegen
+l_lui	1	wie viel wird anteil a in der nächsten periode kosten
+l_lui	1	wie wahrscheinlich ist dieser anteil 0
+l_lui	1	was kannst du
+l_lui	1	was hat gewonnen
+l_lui	1	wie oft hat anteil a bisher verloren
+l_lui	1	anteil am meisten an wert verloren
+q_qnamaker	1	Wie alt bist du
+q_qnamaker	1	Wie geht's
+q_qnamaker	1	Was bist du
+q_qnamaker	1	Was bist du

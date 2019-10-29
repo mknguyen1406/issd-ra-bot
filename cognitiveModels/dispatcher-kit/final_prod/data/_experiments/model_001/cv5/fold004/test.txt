@@ -1,0 +1,42 @@
+Label	Weight	Text
+l_lui	1	um wieviel würde anteil f sinken, wenn es nächste runde verliert
+l_lui	1	anteil a hoch
+l_lui	1	wert portfolio
+l_lui	1	anteil c gewonnen
+l_lui	1	anteil am mesiten gesunken
+l_lui	1	anteil d gesunken
+l_lui	1	wieviel weniger wäre anteil a wert wenn es verliert
+l_lui	1	wert anteile
+l_lui	1	anteil am häufigsten gestiegen
+l_lui	1	welcher anteil hat am häufigsten gewonnen
+l_lui	1	wieviel mehr wäre anteil b wert wenn es gewinnt
+l_lui	1	wie oft ist f gesunken
+l_lui	1	wie viel sind alle meine anteile wert
+l_lui	1	wie oft hat b an wert gewonnen
+l_lui	1	wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein
+l_lui	1	welcher anteil hat am häufigsten verloren
+l_lui	1	welche anteile sind vom typ --
+l_lui	1	wie viel kostet anteil b, wenn er günstiger wird
+l_lui	1	wie wahrscheinlich ist es, dass anteil e sinkt
+l_lui	1	was ist der preis von anteil a, wenn er günstiger wird
+l_lui	1	portfolio
+l_lui	1	wie ist meine rendite
+l_lui	1	was kannsch
+l_lui	1	welcher anteil ist vom typ --
+l_lui	1	wie häufig ist anteil c gestiegen
+l_lui	1	wie hoch ist meine rendite
+l_lui	1	hat anteil a verloren
+l_lui	1	wie entwickelt sich der preis von anteil c, wenn er nach oben geht
+l_lui	1	wie viel anteil soll ich verkaufen
+l_lui	1	empfehlung
+l_lui	1	wieviel weniger wäre f wert wenn es im wert sinkt
+l_lui	1	ist anteil a höchstwahrscheinlich vom typ +
+l_lui	1	was soll ich verkaufen
+l_lui	1	am mesiten preissenkungen
+l_lui	1	was hat verloren
+l_lui	1	welcher anteil ist vom typ o
+l_lui	1	wie wahrscheinlich ist anteil b vom typ ++
+q_qnamaker	1	Wie geht's dir
+q_qnamaker	1	Wie geht es dir
+q_qnamaker	1	Wer bist du
+q_qnamaker	1	Hey

@@ -1,0 +1,4 @@
+No	Intent	Utterance Count	Utterance Average Length	Utterance Maximum Length	Utterance Minimum Length	Utterance Length StdDev
+0	l_lui	183	33.50273	88	3	16.06644
+1	q_qnamaker	22	10.31818	25	2	6.01099
+ 	__ALL__	205	31.01463	88	2	16.90443
