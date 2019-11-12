@@ -888,6 +888,9 @@ function processMessage(chatbotResponse, data, turnContext) {
                     } else {
                         chatbotResponse = "Ich kann grundlegende Fragen zu deinem Portfolio und der Preisentwicklung der Anteile beantworten.";
                     }
+
+                    // Track advice
+                    trackConversation(round - 1, "qna");
                     break;
                 default:
                     // console.log(`Dispatch unrecognized intent: ${intent}.`);
