@@ -2,29 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ISSD Robo Advisor</title>
+    <title>Robo Assistant</title>
+    <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
 <body>
-<iframe id="child" align="middle" frameBorder="1" src="./index.html?surveyId=si456&pricePath=5&experimentRound=2&experimentGroup=2&cabinNo=6" height="700px" width="900px"></iframe>
-<script>
-    // window.document.addEventListener('myChildEvent', handleEvent, false);
-    // function handleEvent(e) {
-    //     //console.log(e.detail);
-    //
-    //     // Get the URL and send it back to the child
-    //     const data = { url: window.location.href };
-    //     const event = new CustomEvent('myParentEvent', { detail: data });
-    //     document.querySelector('#child').contentDocument.dispatchEvent(event);
-    // }
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=70&experimentGroup=2" height="800px" width="1200px"></iframe>
+<button type="button" id="movenextbtn">Weiter</button>
 
-    // Create event listener for summary and result event
-    // window.document.addEventListener('botEvent', handleEvent, false);
-    // function handleEvent(e) {
-    //     console.log(e);
-    //     const type = e.detail.type;
-    //     const data = e.detail.data;
-    //
-    //     window.alert("Type: " + type + "\nData: " + data);
-    // }
+<script>
+
+    // Hide or show result containers
+    function hideShowDom(dom, hide) {
+        if (dom !== null) {
+            if (hide) {
+                dom.style.display = "none";
+            } else {
+                dom.style.display = "block";
+            }
+        }
+    }
+
+    hideShowDom(document.getElementById('movenextbtn'), true);
+
+    // Event listener for messages
+    window.addEventListener('message', function(event) {
+        if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net" || event.origin === "https://issd-trading.azurewebsites.net") {
+            if (typeof(event.data.detail) !== 'undefined') {
+
+                console.log(event.data);
+
+                var result = event.data.detail.data;
+                var result_all = "\{" +
+                    "userId: " + result.userId + ", " +
+                    "surveyId: " + result.surveyId + ", " +
+                    "pricePath: " + result.pricePath + ", " +
+                    "cabinNo: " + result.cabinNo + ", " +
+                    "experimentRound: " + result.experimentRound + ", " +
+                    "experimentGroup: " + result.experimentGroup + ", " +
+                    "cashout: " + JSON.stringify(result.cashout) + ", " +
+                    "holdings: " + JSON.stringify(result.holdings) + ", " +
+                    "invests: " + JSON.stringify(result.invests) + ", " +
+                    "prices: " + JSON.stringify(result.prices) + ", " +
+                    "times: " + result.times + ", " +
+                    "advice: " + JSON.stringify(result.advice) + ", " +
+                    "conversation: " + JSON.stringify(result.conversationHistory) + ", " +
+                    "mapping_character: " + JSON.stringify(result.map_char) + ", " +
+                    "mapping_number: " + JSON.stringify(result.map_no) + ", " +
+                    "round: " + result.round +  "\}";
+
+                var result_cabinNo = result.cabinNo;
+                var result_cashout_GE = Math.round(parseFloat(result.cashout.total));
+                var result_cashout_EURO = result.cashout.euro_rounded;
+
+                var result_conc =
+                    "Kabine: " + result_cabinNo + " | " +
+                    "Ergebnis: " + result_cashout_GE + " GE | " +
+                    "Auszahlung: " + result_cashout_EURO + " €";
+
+                // Write data to question
+                console.log("Results: ");
+                // console.log(result_all);
+                console.log(JSON.stringify(result));
+                console.log(result_conc);
+
+                // Show 'Weiter' button after last question
+                if (Math.round(parseFloat(result.round) === 14)) {
+                    hideShowDom(document.getElementById('movenextbtn'), false);
+                }
+
+            }
+        }
+
+    });
 </script>
 </body>
 </html>

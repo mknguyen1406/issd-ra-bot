@@ -1,5 +1,15 @@
-// Once document is loaded
-$(document).ready(function () {
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robo Assistant</title>
+    <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
+<body>
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=70&experimentGroup=3" height="800px" width="1200px"></iframe>
+<button type="button" id="movenextbtn">Weiter</button>
+
+<script>
+
     // Hide or show result containers
     function hideShowDom(dom, hide) {
         if (dom !== null) {
@@ -11,18 +21,17 @@ $(document).ready(function () {
         }
     }
 
-    hideShowDom(document.getElementById('question13113'), true);
-    hideShowDom(document.getElementById('question15394'), true);
     hideShowDom(document.getElementById('movenextbtn'), true);
 
     // Event listener for messages
-    window.addEventListener('message', function (event) {
+    window.addEventListener('message', function(event) {
         if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net" || event.origin === "https://issd-trading.azurewebsites.net") {
-            // window.alert("Received the following message event: " + event);
-            if (typeof (event.data) !== 'undefined') {
+            if (typeof(event.data.detail) !== 'undefined') {
 
-                const result = event.data.detail.data;
-                const result_all = "\{" +
+                console.log(event.data);
+
+                var result = event.data.detail.data;
+                var result_all = "\{" +
                     "userId: " + result.userId + ", " +
                     "surveyId: " + result.surveyId + ", " +
                     "pricePath: " + result.pricePath + ", " +
@@ -38,30 +47,32 @@ $(document).ready(function () {
                     "conversation: " + JSON.stringify(result.conversationHistory) + ", " +
                     "mapping_character: " + JSON.stringify(result.map_char) + ", " +
                     "mapping_number: " + JSON.stringify(result.map_no) + ", " +
-                    "round: " + result.round + "\}";
+                    "round: " + result.round +  "\}";
 
-                const result_cabinNo = result.cabinNo;
-                const result_cashout_GE = Math.round(parseFloat(result.cashout.total));
-                const result_cashout_EURO = result.cashout.euro_rounded;
+                var result_cabinNo = result.cabinNo;
+                var result_cashout_GE = Math.round(parseFloat(result.cashout.total));
+                var result_cashout_EURO = result.cashout.euro_rounded;
 
-                const result_conc =
+                var result_conc =
                     "Kabine: " + result_cabinNo + " | " +
                     "Ergebnis: " + result_cashout_GE + " GE | " +
                     "Auszahlung: " + result_cashout_EURO + " €";
 
                 // Write data to question
-                $('#question{13113} input[type="text"]').val([result_all]);
-                $('#question{15394} input[type="text"]').val([result_conc]);
-
-                //window.alert(result_all);
+                console.log("Results: ");
+                // console.log(result_all);
+                console.log(JSON.stringify(result));
+                console.log(result_conc);
 
                 // Show 'Weiter' button after last question
-                if (Math.round(parseFloat(result.round) === 13)) {
+                if (Math.round(parseFloat(result.round) === 14)) {
                     hideShowDom(document.getElementById('movenextbtn'), false);
                 }
+
             }
         }
 
     });
-})
-;
+</script>
+</body>
+</html>

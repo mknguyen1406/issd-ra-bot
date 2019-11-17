@@ -201,74 +201,54 @@ function startChatBot() {
     }, 200);
 
     document.querySelector('#next').addEventListener('click', (e) => {
-        // store.dispatch({
-        //     type: 'WEB_CHAT/SEND_EVENT',
-        //     payload: {
-        //         name: 'next',
-        //         value: round
-        //     }
-        // });
-        // round ++;
         buttonActionEvent(e, "next");
     });
 
     document.querySelector('#button_buy1').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "buy");
         buttonActionEvent(e, "buy");
     });
 
     document.querySelector('#button_buy2').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "buy");
         buttonActionEvent(e, "buy");
     });
 
     document.querySelector('#button_buy3').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "buy");
         buttonActionEvent(e, "buy");
     });
 
     document.querySelector('#button_buy4').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "buy");
         buttonActionEvent(e, "buy");
     });
 
     document.querySelector('#button_buy5').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "buy");
         buttonActionEvent(e, "buy");
     });
 
     document.querySelector('#button_buy6').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "buy");
         buttonActionEvent(e, "buy");
     });
 
     document.querySelector('#button_sell1').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "sell");
         buttonActionEvent(e, "sell");
     });
 
     document.querySelector('#button_sell2').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "sell");
         buttonActionEvent(e, "sell");
     });
 
     document.querySelector('#button_sell3').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "sell");
         buttonActionEvent(e, "sell");
     });
 
     document.querySelector('#button_sell4').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "sell");
         buttonActionEvent(e, "sell");
     });
 
     document.querySelector('#button_sell5').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "sell");
         buttonActionEvent(e, "sell");
     });
 
     document.querySelector('#button_sell6').addEventListener('click', (e) => {
-        // buttonSendEvent(e, store, "sell");
         buttonActionEvent(e, "sell");
     });
 
@@ -435,162 +415,6 @@ function startChatBot() {
                         }
                     }
                 }
-
-
-                //=======================================================================================================
-                // If name is null then set name and send acknowledge message from bot to user
-                /*if (userName == null) {
-                    userName = message;
-
-                    // Acknowledge name
-                    chatbotResponse = `Danke, ${ userName }.`;
-                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
-                        // Ask user for example questions with suggested answers
-                        // dispatchBotEvent("", "suggestedActionEvent", turnContext);
-                    });
-
-                } else {
-
-                    // Check if user asked for example questions
-                    const questions = ['Ja, sehr gerne!', 'Fragen', 'fragen'];
-
-                    // Send example questions to user
-                    if (questions.includes(message)) {
-
-                        // Only available when experiment started
-                        if (group === 2) {
-
-                            chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                                "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                                "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                                "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                                "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                                "- Wer bist du?";
-                        } else if (group === 3) {
-                            chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                                "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                                "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                                "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                                "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                                "- Kannst du mir einen Rat geben?\n" +
-                                "- Wer bist du?";
-                        }
-
-                        // Dispatch example questions
-                        // Dispatch welcome message and ask for user name
-                        dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
-                            // Dispatch click on 'Starte Experiment' message
-                            if (openForTrading == null) {
-                                chatbotResponse = "Bitte klicke nun auf 'Starte Experiment', um zu beginnen.";
-                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                            }
-                        });
-
-                    } else {
-
-                        // Check if user said 'No' to example questions
-                        const noQuestions = ['Nein.'];
-                        if (noQuestions.includes(message)) {
-
-                            // Tell user that he can ask for example questions again
-                            chatbotResponse = "Verstanden. Du kannst mich jederzeit wieder danach fragen, indem du 'Fragen' schreibst.";
-                            dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                        } else {
-
-                            // Check if experiment started. If not, openForTrading is null
-                            if (openForTrading == null) {
-                                // Experiment did not started yet
-                                chatbotResponse = "Bitte starte erst das Experiment.";
-                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                            } else if (openForTrading === false) {
-
-                                // Experiment is over
-                                chatbotResponse = "Das Experiment ist vorbei. Bitte klicke unten auf 'Weiter'.";
-                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                            } else if (openForTrading === true){
-
-                                // Experiment started. Process message with LUIS and QnA Maker
-
-                                // Trigger Qna or LUIS processes
-                                if (typeof(data.channelData.answer) !== 'undefined') {
-
-                                    // Send QnA Maker response
-                                    chatbotResponse = data.channelData.answer;
-
-                                    // Track advice
-                                    trackConversation(round - 1, "qna");
-
-                                } else if (typeof(data.channelData.intent) !== 'undefined') {
-
-                                    // Trigger LUIS
-                                    const intent = data.channelData.intent;
-                                    const entity = data.channelData.entity;
-
-                                    switch (intent) {
-                                        case "anteil_gewonnen_max":
-                                            chatbotResponse = shareManager.mostUps(round - 1);
-
-                                            // Track advice
-                                            trackConversation(round - 1, "luis_allgemein");
-                                            break;
-                                        case "anteil_verloren_max":
-                                            chatbotResponse = shareManager.mostDowns(round - 1);
-
-                                            // Track advice
-                                            trackConversation(round - 1, "luis_allgemein");
-                                            break;
-                                        case "anteil_potentieller_zuwachs":
-                                            chatbotResponse = shareManager.potentialUp(entity);
-
-                                            // Track advice
-                                            trackConversation(round - 1, "luis_allgemein");
-                                            break;
-                                        case "anteil_potentieller_verlust":
-                                            chatbotResponse = shareManager.potentialDown(entity);
-
-                                            // Track advice
-                                            trackConversation(round - 1, "luis_allgemein");
-                                            break;
-                                        case "anteil_spezifisch_gewonnen":
-                                            chatbotResponse = shareManager.shareUps(entity, round - 1);
-
-                                            // Track advice
-                                            trackConversation(round - 1, "luis_allgemein");
-                                            break;
-                                        case "anteil_spezifisch_verloren":
-                                            chatbotResponse = shareManager.shareDowns(entity, round - 1);
-
-                                            // Track advice
-                                            trackConversation(round - 1, "luis_allgemein");
-                                            break;
-                                        case "rat_geben":
-                                            // Only for 3rd experiment group
-                                            if (parseFloat(experimentGroup) === 3) {
-                                                chatbotResponse = shareManager.getRecommendAlg(round - 1);
-
-                                                // Track advice
-                                                trackConversation(round - 1, "luis_rat");
-                                            }
-                                            break;
-                                        case "wert_portfolio":
-                                            chatbotResponse = shareManager.portfolioValue();
-
-                                            // Track advice
-                                            trackConversation(round - 1, "luis_allgemein");
-                                            break;
-                                        default:
-                                            console.log(`Dispatch unrecognized intent: ${intent}.`);
-                                            break;
-                                    }
-                                }
-
-                                // Send respond
-                                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext);
-                            }
-                        }
-                    }
-                }*/
-                //=======================================================================================================
             }
 
             // Incoming example question event
@@ -599,32 +423,6 @@ function startChatBot() {
                 let chatbotResponse = "";
                 const group = parseFloat(experimentGroup);
 
-                // // Only available when experiment started
-                // if (group === 2) {
-                //
-                //     chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                //         "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                //         "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                //         "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                //         "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                //         "- Wer bist du?";
-                // } else if (group === 3) {
-                //     chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
-                //         "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
-                //         "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
-                //         "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
-                //         "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
-                //         "- Kannst du mir einen Rat geben?\n" +
-                //         "- Wer bist du?";
-                // }
-                //
-                // // Dispatch example questions
-                // dispatchBotEvent(chatbotResponse, "chatEvent");
-                //
-                // // Dispatch click on 'Starte Experiment' message
-                // if (!openForTrading) {
-                //     dispatchBotEvent("Bitte klicke nun auf 'Starte Experiment', um zu beginnen.", "chatEvent");
-                // }
             }
 
             // Incoming luis und qna events
@@ -639,44 +437,6 @@ function startChatBot() {
                         const intent = channelData.intent;
                         const entity = channelData.entity;
 
-                        // console.log("Intent: " + intent);
-                        // console.log("Entity: " + entity);
-
-                        // switch (intent) {
-                        //     case "anteil_gewonnen_max":
-                        //         chatbotResponse = shareManager.mostUps(round - 1);
-                        //         break;
-                        //     case "anteil_verloren_max":
-                        //         chatbotResponse = shareManager.mostDowns(round - 1);
-                        //         break;
-                        //     case "anteil_potentieller_zuwachs":
-                        //         chatbotResponse = shareManager.potentialUp(entity);
-                        //         break;
-                        //     case "anteil_potentieller_verlust":
-                        //         chatbotResponse = shareManager.potentialDown(entity);
-                        //         break;
-                        //     case "anteil_spezifisch_gewonnen":
-                        //         chatbotResponse = shareManager.shareUps(entity, round - 1);
-                        //         break;
-                        //     case "anteil_spezifisch_verloren":
-                        //         chatbotResponse = shareManager.shareDowns(entity, round - 1);
-                        //         break;
-                        //     case "rat_geben":
-                        //         // Only for 3rd experiment group
-                        //         if (parseFloat(experimentGroup) === 3) {
-                        //             chatbotResponse = shareManager.getRecommendAlg(round - 1);
-                        //
-                        //             // Track advice
-                        //             advice[round - 1] ++;
-                        //         }
-                        //         break;
-                        //     case "wert_portfolio":
-                        //         chatbotResponse = shareManager.portfolioValue();
-                        //         break;
-                        //     default:
-                        //         console.log(`Dispatch unrecognized intent: ${intent}.`);
-                        //         break;
-                        // }
                     } else {
                         // QnA Maker response
                         // chatbotResponse = channelData.answer;
