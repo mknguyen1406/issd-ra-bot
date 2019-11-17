@@ -1,0 +1,1070 @@
+{
+  "luis_schema_version": "4.0.0",
+  "versionId": "Dispatch",
+  "name": "issd-ra-dispatcher-kit-final",
+  "desc": "Dispatch model for issd-ra-dispatcher-kit-final",
+  "culture": "de-de",
+  "tokenizerVersion": "1.0.2",
+  "intents": [
+    {
+      "name": "l_luis",
+      "serviceConnections": {
+        "type": "LUIS",
+        "appName": "EU-ISSD-LMU-RA",
+        "appId": "c61e06d3-2c5a-4f89-a72d-29e36478ce4b",
+        "appVersion": "0.1",
+        "region": "westeurope",
+        "luisIncludedIntentNames": []
+      }
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "q_qnamaker",
+      "serviceConnections": {
+        "type": "QnA",
+        "appId": "3d46c199-6c21-42c9-b933-e347e5e58938",
+        "luisIncludedIntentNames": [],
+        "subscriptionKey": "3595d6e00f66405fac343d26dac18cea"
+      }
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "am hÃ¤ufigsten preissenkungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "am hÃ¤ufigsten preissteigerungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "am meisten preissteigerungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "am mesiten preissenkungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil a hoch",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil a wert, wenn sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil a wert, wenn steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am hÃ¤ufigste gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am hÃ¤ufigsten gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am hÃ¤ufigsten gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am hÃ¤ufigsten verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten an wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am mesiten gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil c gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil c oder d ++",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil c verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil d gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil d gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil d vom typ -",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil e gewinn gemacht",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil e verlust gemacht",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "bist du ein chatbot",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "bist du ein mensch",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "danke",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "danke vielmals",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "empfehlung",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "hallo",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "hat anteil a gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "hat anteil a verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "hat anteil b typ --",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "hilfe",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "hola",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "ich brauche eine empfehlung",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ich brauche einen ratschlag",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ich brauche hilfe",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil a hÃ¶chstwahrscheinlich vom typ +",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil a vom typ ++",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil b -",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil b vom typ -",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil c typ o",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil e oder anteil f vom typ +",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil e typ +",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil f gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil f gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist das vom typ ++",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist dieser anteil vom typ 0",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "kannst du mir eine empfehlung geben",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "kannst du mir einen rat geben",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "kannst du mir einen tipp geben",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "kannst du mir helfen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "meisten gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "meisten gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "meisten gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "meisten verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "meisten wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "meisten wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "moin",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "portfolio",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "preis anteil e, wenn nach oben",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "preis anteil e, wenn nach unten",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "preis anteil f, wenn sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "preis anteil f, wenn steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "rat",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "rendite",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "sind anteile a und b vom typ 0",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich alle meine anteile verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich alles in anteil investieren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich anteil kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich anteil verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich mein ganzes guthaben in anteil investieren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "thanks",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "thx",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "um wieviel wÃ¼rde anteil e steigen, wenn es nÃ¤chste runde gewinnt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "um wieviel wÃ¼rde anteil f sinken, wenn es nÃ¤chste runde verliert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "um wieviel wÃ¼rde c sinken, wenn es in der nÃ¤chsten periode verliert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "vielen dank",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "was bist du",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "was hat gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was hat verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist der preis von anteil a, wenn er gÃ¼nstiger wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist der preis von anteil a, wenn er teurer wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist der preis von anteil e in der nÃ¤chsten periode",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist die wahrscheinlichkeit, dass anteil b steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannsch",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannst du",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannst du eig",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannst du eigentlich",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannst du machen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannste",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannste eig",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich als nÃ¤chstes kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich als nÃ¤chstes verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich kaufen / verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich machen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "weche anteile sind typ ++",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welche anteile sind vom typ --",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welche anteile soll ich kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welche anteile soll ich verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welche der anteile sind -",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welche der anteile sind typ o",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil +",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat am hÃ¤ufigsten gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat am hÃ¤ufigsten verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat am meisten wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat am meisten wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat bisher am meisten an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat bisher am meisten an wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat die meisten preissenkungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat die meisten preissteigerungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist am hÃ¤ufigsten gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist am hÃ¤ufigsten gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist am meisten gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist am meisten gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist vom typ --",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist vom typ o",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil typ o",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn a an wert verliert, wieviel wird er dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn anteil a gewinnt, wieviel wird er dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn anteil a verliert, wieviel wird es dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn anteil c an wert gewinnt, wie viel wird er in der folgenden periode wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn in der nÃ¤chsten periode a steigt, wieviel ist es dann wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn in der nÃ¤chsten runde f gewinnt, wieviel ist es dann wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn nÃ¤chste runde anteil d steigt, wieviel wir es dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn nÃ¤chste runde anteil e steigt, wieviel wird es dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wer bist du",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wer hat dich programmiert",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wert anteile",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wert portfolio",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie alt bist du",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil b, wenn er gÃ¼nstiger wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil c, wenn er nach oben geht",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil c, wenn er nach unten geht",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil d, wenn er sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil d, wenn er steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie geht es dir",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie gehts",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie geht's",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie geht's dir",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie hÃ¤ufig hat anteil e an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie hÃ¤ufig hat e an wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie hÃ¤ufig hat e verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie hÃ¤ufig ist anteil c gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie hÃ¤ufig ist c gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie heiÃŸt du",
+      "intent": "q_qnamaker",
+      "entities": []
+    },
+    {
+      "text": "wie hoch ist meine gesamtrendite",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie hoch ist meine rendite",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie ist meine rendite",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat anteil a bisher verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat anteil b gewinn gemacht",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat anteil b verlust gemacht",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat anteil f an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat anteil f an wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat b an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat e an wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft ist a gestiegen bisher",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft ist anteil a gestiegen bisher",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft ist anteil c gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft ist f gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel anteil soll ich kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel anteil soll ich verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld habe ich bisher gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld habe ich bisher verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld ist mein portfolio wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld sind meine anteile wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel kostet anteil b, wenn er gÃ¼nstiger wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel kostet anteil b, wenn er teurer wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel sind alle meine anteile wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel soll ich kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel soll ich verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel wÃ¤hrungseinheiten wÃ¼rde ich erhalten, wenn ich all meine anteile verkaufe",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel wird anteil a in der nÃ¤chsten periode kosten",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel wird anteil c in der nÃ¤chsten periode wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie wahrscheinlich ist anteil b vom typ ++",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie wahrscheinlich ist dieser anteil 0",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie wahrscheinlich ist es, dass anteil a steig",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie wahrscheinlich ist es, dass anteil e sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel geld wÃ¼rde ich erhalten wenn ich alles verkaufe",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel ist c bisher gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel ist mein portfolio gerade wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel mehr wÃ¤re a wert wenn es gewinnt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel mehr wÃ¤re anteil a wert wenn es im wert steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel mehr wÃ¤re anteil b wert wenn es gewinnt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel mehr wÃ¤re b wert wenn es steigt in der nÃ¤chsten runde",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel sind meine anteile wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel wÃ¤re anteil c wert wenn es steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel wÃ¤re anteil d wert wenn es sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel wÃ¤re e wert wenn es verliert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel weniger wÃ¤re anteil a wert wenn es verliert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel weniger wÃ¤re anteil b wert wenn es im wert sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel weniger wÃ¤re f wert wenn es im wert sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviele wÃ¤hrungseinheiten sind alle meine anteile wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wird anteil d mit hoher wahrscheinlichkeit steigen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wird anteil f sinken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wird anteil f steigen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wird f steigen",
+      "intent": "l_luis",
+      "entities": []
+    }
+  ],
+  "settings": [
+    {
+      "name": "NormalizeDiacritics",
+      "value": "true"
+    }
+  ]
+}
