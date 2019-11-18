@@ -31,24 +31,6 @@
                 console.log(event.data);
 
                 var result = event.data.detail.data;
-                var result_all = "\{" +
-                    "userId: " + result.userId + ", " +
-                    "surveyId: " + result.surveyId + ", " +
-                    "pricePath: " + result.pricePath + ", " +
-                    "cabinNo: " + result.cabinNo + ", " +
-                    "experimentRound: " + result.experimentRound + ", " +
-                    "experimentGroup: " + result.experimentGroup + ", " +
-                    "cashout: " + JSON.stringify(result.cashout) + ", " +
-                    "holdings: " + JSON.stringify(result.holdings) + ", " +
-                    "invests: " + JSON.stringify(result.invests) + ", " +
-                    "prices: " + JSON.stringify(result.prices) + ", " +
-                    "times: " + result.times + ", " +
-                    "advice: " + JSON.stringify(result.advice) + ", " +
-                    "conversation: " + JSON.stringify(result.conversationHistory) + ", " +
-                    "mapping_character: " + JSON.stringify(result.map_char) + ", " +
-                    "mapping_number: " + JSON.stringify(result.map_no) + ", " +
-                    "round: " + result.round +  "\}";
-
                 var result_cabinNo = result.cabinNo;
                 var result_cashout_GE = Math.round(parseFloat(result.cashout.total));
                 var result_cashout_EURO = result.cashout.euro_rounded;

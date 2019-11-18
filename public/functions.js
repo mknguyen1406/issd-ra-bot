@@ -22,14 +22,6 @@ function showChart() {
     })
 }
 
-// Show investments when user clicks on button
-function showInvestments() {
-    document.getElementById("prices").style.display = "none";
-    document.getElementById("investments").style.display = "block";
-    document.getElementById("chart").style.display = "none";
-    document.getElementById("header_share_prices").innerHTML = "Transaktionsübersicht";
-}
-
 // Hide chat bot for certain experiment groups
 function hideChatBot() {
     let x = document.getElementById("webchat-card");
