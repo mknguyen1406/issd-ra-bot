@@ -9,15 +9,11 @@ class DispatchBot extends ActivityHandler {
     /**
      * @param {any} logger object for logging events, defaults to console if none is provided
      */
-    constructor(logger) {
+    constructor() {
         super();
-        if (!logger) {
-            logger = console;
-            logger.log('[DispatchBot]: logger not passed in, defaulting to console');
-        }
+        const logger = console;
+        logger.log('[DispatchBot]: logger not passed in, defaulting to console');
 
-        //endpoint: "https://westeurope.api.cognitive.microsoft.com/luis/v2.0"
-        //endpoint: `https://${process.env.LuisAPIHostName}.api.cognitive.microsoft.com`
         const dispatchRecognizer = new LuisRecognizer({
             applicationId: process.env.LuisAppId,
             endpointKey: process.env.LuisAPIKey,
@@ -104,14 +100,6 @@ class DispatchBot extends ActivityHandler {
 
                 // Send user suggested actions
                 await this.sendSuggestedActions(context);
-            }
-
-            if (context.activity.name === "result") {
-
-                // Get data
-                const result = context.activity.value.data;
-
-                await context.sendActivity("Result received.");
             }
 
             // By calling next() you ensure that the next BotHandler is run.

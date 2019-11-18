@@ -37,20 +37,8 @@ adapter.onTurnError = async (context, error) => {
     await context.sendActivity(`\n [onTurnError]: ${ error }`);
 };
 
-// Define state store for your bot.
-// See https://aka.ms/about-bot-state to learn more about bot state.
-const memoryStorage = new MemoryStorage();
-
-// Create conversation and user state with in-memory storage provider.
-const conversationState = new ConversationState(memoryStorage);
-const userState = new UserState(memoryStorage);
-
-// Pass in a logger to the bot. For this sample, the logger is the console, but alternatives such as Application Insights and Event Hub exist for storing the logs of the bot.
-const logger = console;
-
 // Create the main dialog.
-// let bot = new DispatchBot(logger, shareManager); -- shifted back to client
-let bot = new DispatchBot(logger, conversationState, userState);
+let bot = new DispatchBot();
 
 // Create HTTP server
 let server = restify.createServer();
