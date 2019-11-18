@@ -134,7 +134,7 @@ class DispatchBot extends ActivityHandler {
         const entity = this.parseCompositeEntity(recognizerSubResult, 'Anteil', 'Anteil_Typ');
 
         // Next, we call the dispatcher with the top intent.
-        await this.dispatchToTopIntentAsync(turnContext, intent, intentSub, entity, recognizerResult);
+        await this.dispatchToTopIntent(turnContext, intent, intentSub, entity, recognizerResult);
     }
 
     async sendSuggestedActions(turnContext) {
@@ -142,7 +142,7 @@ class DispatchBot extends ActivityHandler {
         await turnContext.sendActivity(reply);
     }
 
-    async dispatchToTopIntentAsync(context, intent, intentSub, entity) {
+    async dispatchToTopIntent(context, intent, intentSub, entity) {
 
         console.log("Intent: " + intent);
 
