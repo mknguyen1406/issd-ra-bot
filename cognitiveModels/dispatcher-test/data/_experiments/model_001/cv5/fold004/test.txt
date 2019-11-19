@@ -1,7 +1,0 @@
-Label	Weight	Text
-l_luis	1	buy a
-q_qnamaker	1	Was ist Cortana Intelligence? What is Cortana Intelligence
-q_qnamaker	1	Was geschieht mit meinem für REST und das Bot Framework-Protokoll 3.1 entwickelten Bot? What happens to my bot written to REST & Bot Framework Protocol 3.1
-q_qnamaker	1	Wie erkenne ich, ob ich betroffen bin? How will I know if I’m impacted
-q_qnamaker	1	Hallo
-q_qnamaker	1	In welcher Beziehung steht Bot Framework zu Cognitive Services? How does the Bot Framework relate to Cognitive Services

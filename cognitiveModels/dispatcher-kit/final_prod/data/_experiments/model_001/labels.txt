@@ -1,3 +1,0 @@
-Label	LabelName	Samples
-0	l_lui	184
-1	q_qnamaker	22

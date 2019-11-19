@@ -1,7 +1,0 @@
-Label	Weight	Text
-l_luis	1	sell c
-q_qnamaker	1	Wann werden dem Bot Framework weitere Konversationsmöglichkeiten hinzugefügt? When will you add more conversation experiences to the Bot Framework
-q_qnamaker	1	Sammeln Bots, die bei Bot Framework registriert sind, personenbezogene Informationen? Do the bots registered with the Bot Framework collect personal information? Wenn dies der Fall ist: Wie kann ich sicherstellen, dass die Daten sicher und geschützt sind? If yes, how can I be sure the data is safe and secure? Was ist mit Datenschutz? What about privacy
-q_qnamaker	1	Welche spezifischen URLs müssen der Whitelist meiner Unternehmensfirewall hinzugefügt werden, um auf Bot Framework-Dienste Zugriff zu erhalten? Which specific URLs do I need to whitelist in my corporate firewall to access Bot Framework services
-q_qnamaker	1	Wie erfolgen Ratenbegrenzungen? How does rate limiting occur
-q_qnamaker	1	Was ist der Direct Line-Kanal? What is the Direct Line channel
