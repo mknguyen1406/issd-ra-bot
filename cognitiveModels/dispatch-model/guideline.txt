@@ -3,18 +3,18 @@ https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch/read
 https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=js
 
 Create .dispatch file:
-dispatch init -n issd-ra-dispatcher-kit-final --luisAuthoringKey "7b9bf7bbaac648fabbf030ba8aa9de4d" --luisAuthoringRegion westeurope
+dispatch init -n eu-issd-luis-dispatcher --luisAuthoringKey "6ad724cd60fe463baf7f5e0089f06d91" --luisAuthoringRegion westeurope
 
 Add LUIS and QnA Models to dispatch file:
 
-dispatch add -t luis -i "c61e06d3-2c5a-4f89-a72d-29e36478ce4b" -n "EU-ISSD-LMU-RA" -v 0.1 -k "7b9bf7bbaac648fabbf030ba8aa9de4d" --intentName l_luis
+dispatch add -t luis -i "84b015e6-8fd7-48a8-ae8b-c8476bb97924" -n "eu-issd-luis-main" -v 0.1 -k "6ad724cd60fe463baf7f5e0089f06d91" --intentName l_luis
 
-dispatch add -t qna -i "3d46c199-6c21-42c9-b933-e347e5e58938" -n "ISSD-Trading-QnA-G3" -k "3595d6e00f66405fac343d26dac18cea" --intentName q_qnamaker
+dispatch add -t qna -i "3d46c199-6c21-42c9-b933-e347e5e58938" -n "ISSD-Trading-QnA" -k "3595d6e00f66405fac343d26dac18cea" --intentName q_qnamaker
 
 dispatch create
 Result:
 {
-  "authoringRegion": "westus",
+  "authoringRegion": "westeurope",
   "hierarchical": true,
   "useAllTrainingData": false,
   "dontReviseUtterance": false,
@@ -23,12 +23,12 @@ Result:
   "services": [
     {
       "intentName": "l_luis",
-      "appId": "34df4333-7401-45ed-830a-5ef94bf5a6db",
-      "authoringKey": "db39f3fc41884d849a7c4a7994d7b049",
+      "appId": "84b015e6-8fd7-48a8-ae8b-c8476bb97924",
+      "authoringKey": "6ad724cd60fe463baf7f5e0089f06d91",
       "version": "0.1",
-      "region": "westus",
+      "region": "westeurope",
       "type": "luis",
-      "name": "ISSD-RA-LUIS",
+      "name": "eu-issd-luis-main",
       "id": "1"
     },
     {
@@ -36,7 +36,7 @@ Result:
       "kbId": "3d46c199-6c21-42c9-b933-e347e5e58938",
       "subscriptionKey": "3595d6e00f66405fac343d26dac18cea",
       "type": "qna",
-      "name": "ISSD-Trading-QnA-G3",
+      "name": "ISSD-Trading-QnA",
       "id": "2"
     }
   ],
@@ -44,10 +44,10 @@ Result:
     "1",
     "2"
   ],
-  "appId": "4df70e47-40ba-42b9-b047-69ee19880e0a",
-  "authoringKey": "db39f3fc41884d849a7c4a7994d7b049",
+  "appId": "fab11f54-6cef-4206-8a33-f4b94f3b7327",
+  "authoringKey": "6ad724cd60fe463baf7f5e0089f06d91",
   "version": "Dispatch",
-  "region": "westus",
+  "region": "westeurope",
   "type": "dispatch",
-  "name": "issd-ra-dispatcher-kit-g3"
+  "name": "eu-issd-luis-dispatcher"
 }

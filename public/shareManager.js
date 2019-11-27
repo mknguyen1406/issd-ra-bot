@@ -68,18 +68,58 @@ class ShareManager {
     }
 
     //=================================== Bot questions =========================================
-    getRecommendAlg(round) {
+    getRecommendation(round, intent_sell) {
+
+        const recs = this.getRecommendedShares(round);
+        const owned = this.getSharesInPosession();
+
+        const placeholder_recs = this.parseShareResults(recs, "oder");
+        let response = "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, dein ganzes Vermögen in " + placeholder_recs + " zu investieren.";
+
+        const sharesInPosessionToBeSold = this.getSharesInPosessionToBeSold(owned, recs);
+        if (sharesInPosessionToBeSold.length > 0) {
+            const placeholder_sell = this.parseShareResults(sharesInPosessionToBeSold, "und");
+            response = response + " Daher empfehle ich dir, " + placeholder_sell + " zu verkaufen.";
+        } else {
+            if (intent_sell) {
+                response = response + " Daher empfehle ich dir, keine Anteile zu verkaufen.";
+            }
+        }
+        return response
+    }
+
+    getRecommendedShares(round) {
         let recs = [0];
-    for (let i = 1; i < 6; i++) {
+        for (let i = 1; i < 6; i++) {
             if (this.goodUpsHist[i][round] > this.goodUpsHist[recs[0]][round]) {
                 recs = [i];
             } else if (this.goodUpsHist[i][round] === this.goodUpsHist[recs[0]][round]) {
                 recs.push(i);
             }
         }
+        return recs
+    }
 
-        const placeholder = this.parseShareResults(recs, "oder");
-        return "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, " + placeholder + " zu kaufen.";
+    getSharesInPosession() {
+        let owned = [];
+        for (let i = 1; i < 6; i++) {
+            if (this.goodHoldings[i] > 0) {
+                owned.push(i);
+            }
+        }
+        return owned
+    }
+
+    getSharesInPosessionToBeSold(owned, recs) {
+
+        let sharesInPosessionToBeSold = [];
+
+        for (let i = 0; i < owned.length; i++) {
+            if (!recs.includes(owned[i])) {
+                sharesInPosessionToBeSold.push(owned[i]);
+            }
+        }
+        return sharesInPosessionToBeSold
     }
 
     mostUps(round) {

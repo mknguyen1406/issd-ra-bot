@@ -59,10 +59,10 @@ rat
 rendite
 sind anteile a und b vom typ 0
 soll ich alle meine anteile verkaufen
-soll ich alles in anteil investieren
-soll ich anteil kaufen
-soll ich anteil verkaufen
-soll ich mein ganzes guthaben in anteil investieren
+soll ich alles in anteil b investieren
+soll ich anteil a kaufen
+soll ich anteil a verkaufen
+soll ich mein ganzes guthaben in anteil f investieren
 um wieviel würde anteil e steigen, wenn es nächste runde gewinnt
 um wieviel würde anteil f sinken, wenn es nächste runde verliert
 um wieviel würde c sinken, wenn es in der nächsten periode verliert
@@ -84,7 +84,6 @@ was kannste
 was kannste eig
 was soll ich als nächstes kaufen
 was soll ich als nächstes verkaufen
-was soll ich kaufen / verkaufen
 was soll ich kaufen
 was soll ich machen
 was soll ich verkaufen
@@ -145,8 +144,8 @@ wie oft ist a gestiegen bisher
 wie oft ist anteil a gestiegen bisher
 wie oft ist anteil c gesunken
 wie oft ist f gesunken
-wie viel anteil soll ich kaufen
-wie viel anteil soll ich verkaufen
+wie viel anteil d soll ich kaufen
+wie viel anteil e soll ich verkaufen
 wie viel geld habe ich bisher gewonnen
 wie viel geld habe ich bisher verloren
 wie viel geld ist mein portfolio wert

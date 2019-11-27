@@ -832,10 +832,21 @@ function processMessage(chatbotResponse, data, turnContext) {
                     // Track advice
                     trackConversation(round - 1, "luis_allgemein");
                     break;
-                case "rat_geben":
+                case "rat_geben_kaufen":
                     // Only for 3rd experiment group
                     if (parseFloat(experimentGroup) === 3) {
-                        chatbotResponse = shareManager.getRecommendAlg(round - 1);
+                        chatbotResponse = shareManager.getRecommendation(round - 1, false);
+
+                        // Track advice
+                        trackConversation(round - 1, "luis_rat");
+                    } else if (parseFloat(experimentGroup) === 2){
+                        chatbotResponse = "Diese Frage kann ich leider nicht beantworten.";
+                    }
+                    break;
+                case "rat_geben_verkaufen":
+                    // Only for 3rd experiment group
+                    if (parseFloat(experimentGroup) === 3) {
+                        chatbotResponse = shareManager.getRecommendation(round - 1, true);
 
                         // Track advice
                         trackConversation(round - 1, "luis_rat");

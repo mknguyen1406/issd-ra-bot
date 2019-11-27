@@ -8,12 +8,12 @@
   "services": [
     {
       "intentName": "l_luis",
-      "appId": "c61e06d3-2c5a-4f89-a72d-29e36478ce4b",
-      "authoringKey": "7b9bf7bbaac648fabbf030ba8aa9de4d",
+      "appId": "84b015e6-8fd7-48a8-ae8b-c8476bb97924",
+      "authoringKey": "6ad724cd60fe463baf7f5e0089f06d91",
       "version": "0.1",
       "region": "westeurope",
       "type": "luis",
-      "name": "EU-ISSD-LMU-RA",
+      "name": "eu-issd-luis-main",
       "id": "1"
     },
     {
@@ -21,7 +21,7 @@
       "kbId": "3d46c199-6c21-42c9-b933-e347e5e58938",
       "subscriptionKey": "3595d6e00f66405fac343d26dac18cea",
       "type": "qna",
-      "name": "ISSD-Trading-QnA-G3",
+      "name": "ISSD-Trading-QnA",
       "id": "2"
     }
   ],
@@ -29,10 +29,10 @@
     "1",
     "2"
   ],
-  "appId": "41112312-0fc3-4da6-b8c1-af8874d6e8d8",
-  "authoringKey": "7b9bf7bbaac648fabbf030ba8aa9de4d",
+  "appId": "fab11f54-6cef-4206-8a33-f4b94f3b7327",
+  "authoringKey": "6ad724cd60fe463baf7f5e0089f06d91",
   "version": "Dispatch",
   "region": "westeurope",
   "type": "dispatch",
-  "name": "issd-ra-dispatcher-kit-final"
+  "name": "eu-issd-luis-dispatcher"
 }

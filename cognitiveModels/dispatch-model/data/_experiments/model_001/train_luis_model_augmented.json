@@ -1,8 +1,8 @@
 ﻿{
   "luis_schema_version": "3.2.0",
   "versionId": "Dispatch",
-  "name": "issd-ra-dispatcher-kit-final",
-  "desc": "Dispatch model for issd-ra-dispatcher-kit-final",
+  "name": "eu-issd-luis-dispatcher",
+  "desc": "Dispatch model for eu-issd-luis-dispatcher",
   "culture": "de-de",
   "tokenizerVersion": "1.0.2",
   "intents": [
@@ -29,27 +29,27 @@
       "entities": []
     },
     {
-      "text": "wie häufig hat e verloren",
+      "text": "anteil c verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist am häufigsten gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie häufig hat anteil e an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannst du",
       "intent": "l_luis",
       "entities": []
     },
     {
       "text": "welcher anteil hat die meisten preissteigerungen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie entwickelt sich der preis von anteil d, wenn er steigt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "was kannst du eig",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "was soll ich machen",
       "intent": "l_luis",
       "entities": []
     },
@@ -74,7 +74,7 @@
       "entities": []
     },
     {
-      "text": "was soll ich kaufen / verkaufen",
+      "text": "was soll ich kaufen",
       "intent": "l_luis",
       "entities": []
     },
@@ -84,32 +84,32 @@
       "entities": []
     },
     {
-      "text": "soll ich mein ganzes guthaben in anteil investieren",
+      "text": "empfehlung",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "was kannste",
+      "text": "anteil am häufigsten verloren",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "kannst du mir einen tipp geben",
+      "text": "wie entwickelt sich der preis von anteil d, wenn er steigt",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie oft hat anteil b verlust gemacht",
+      "text": "hat anteil a verloren",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wenn anteil a gewinnt, wieviel wird er dann wert sein",
+      "text": "am meisten preissteigerungen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "ist anteil c typ o",
+      "text": "wieviele währungseinheiten sind alle meine anteile wert",
       "intent": "l_luis",
       "entities": []
     },
@@ -129,7 +129,7 @@
       "entities": []
     },
     {
-      "text": "wird anteil f sinken",
+      "text": "wird anteil f steigen",
       "intent": "l_luis",
       "entities": []
     },
@@ -139,42 +139,37 @@
       "entities": []
     },
     {
-      "text": "welche anteile soll ich kaufen",
+      "text": "welche anteile soll ich verkaufen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "was soll ich kaufen",
+      "text": "was soll ich machen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "meisten gewonnen",
+      "text": "welcher anteil ist am häufigsten gesunken",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "soll ich anteil verkaufen",
+      "text": "soll ich anteil a kaufen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "ich brauche eine empfehlung",
+      "text": "welcher anteil hat am häufigsten verloren",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wieviele währungseinheiten sind alle meine anteile wert",
+      "text": "wird anteil d mit hoher wahrscheinlichkeit steigen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie hoch ist meine gesamtrendite",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "ist anteil b -",
+      "text": "wie hoch ist meine rendite",
       "intent": "l_luis",
       "entities": []
     },
@@ -184,17 +179,22 @@
       "entities": []
     },
     {
+      "text": "wie viel kostet anteil b, wenn er günstiger wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
       "text": "ist anteil e oder anteil f vom typ +",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "welcher anteil hat am meisten wert gewonnen",
+      "text": "kannst du mir helfen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "kannst du mir helfen",
+      "text": "welcher anteil typ o",
       "intent": "l_luis",
       "entities": []
     },
@@ -214,17 +214,17 @@
       "entities": []
     },
     {
-      "text": "was ist der preis von anteil a, wenn er teurer wird",
+      "text": "ist anteil f gestiegen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie viel geld habe ich bisher gewonnen",
+      "text": "anteil d gesunken",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "sind anteile a und b vom typ 0",
+      "text": "welcher anteil hat bisher am meisten an wert gewonnen",
       "intent": "l_luis",
       "entities": []
     },
@@ -234,37 +234,37 @@
       "entities": []
     },
     {
-      "text": "welcher anteil typ o",
+      "text": "wenn a an wert verliert, wieviel wird er dann wert sein",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wird anteil d mit hoher wahrscheinlichkeit steigen",
+      "text": "wird anteil f sinken",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wieviel ist mein portfolio gerade wert",
+      "text": "wieviel mehr wäre a wert wenn es gewinnt",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "am häufigsten preissteigerungen",
+      "text": "welcher anteil hat am meisten wert gewonnen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "soll ich alle meine anteile verkaufen",
+      "text": "sind anteile a und b vom typ 0",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie viel anteil soll ich kaufen",
+      "text": "anteil am meisten gestiegen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "anteil am häufigsten verloren",
+      "text": "wie oft hat anteil a bisher verloren",
       "intent": "l_luis",
       "entities": []
     },
@@ -279,12 +279,7 @@
       "entities": []
     },
     {
-      "text": "welcher anteil +",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "rendite",
+      "text": "ich brauche eine empfehlung",
       "intent": "l_luis",
       "entities": []
     },
@@ -294,12 +289,12 @@
       "entities": []
     },
     {
-      "text": "anteil am häufigsten gesunken",
+      "text": "anteil d vom typ -",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "am häufigsten preissenkungen",
+      "text": "anteil am häufigsten gesunken",
       "intent": "l_luis",
       "entities": []
     },
@@ -309,7 +304,52 @@
       "entities": []
     },
     {
-      "text": "anteil e verlust gemacht",
+      "text": "wie ist meine rendite",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten an wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil ist vom typ o",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "am häufigsten preissteigerungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel soll ich verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil a hoch",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist der preis von anteil e in der nächsten periode",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil a höchstwahrscheinlich vom typ +",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist der preis von anteil a, wenn er günstiger wird",
       "intent": "l_luis",
       "entities": []
     },
@@ -319,47 +359,7 @@
       "entities": []
     },
     {
-      "text": "anteil c verloren",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "preis anteil e, wenn nach unten",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie viel soll ich kaufen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "weche anteile sind typ ++",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welche anteile soll ich verkaufen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wieviel wäre anteil c wert wenn es steigt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil ist am häufigsten gestiegen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "ist anteil a vom typ ++",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "anteil am meisten gestiegen",
+      "text": "anteil c gewonnen",
       "intent": "l_luis",
       "entities": []
     },
@@ -374,52 +374,52 @@
       "entities": []
     },
     {
-      "text": "was kannst du",
+      "text": "meisten wert gewonnen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "was hat gewonnen",
+      "text": "wie viel soll ich kaufen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie oft hat anteil a bisher verloren",
+      "text": "wie häufig hat e an wert verloren",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "anteil am meisten an wert verloren",
+      "text": "was kannst du eig",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wenn a an wert verliert, wieviel wird er dann wert sein",
+      "text": "wieviel mehr wäre anteil b wert wenn es gewinnt",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "meisten gestiegen",
+      "text": "wie oft hat anteil b verlust gemacht",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie oft hat anteil b gewinn gemacht",
+      "text": "portfolio",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe",
+      "text": "welche anteile sind vom typ --",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "was kannst du machen",
+      "text": "wenn nächste runde anteil e steigt, wieviel wird es dann wert sein",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wenn nächste runde anteil d steigt, wieviel wir es dann wert sein",
+      "text": "wieviel sind meine anteile wert",
       "intent": "l_luis",
       "entities": []
     },
@@ -429,12 +429,12 @@
       "entities": []
     },
     {
-      "text": "wie häufig hat anteil e an wert gewonnen",
+      "text": "wieviel weniger wäre anteil a wert wenn es verliert",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wieviel mehr wäre anteil a wert wenn es im wert steigt",
+      "text": "soll ich mein ganzes guthaben in anteil f investieren",
       "intent": "l_luis",
       "entities": []
     },
@@ -459,152 +459,37 @@
       "entities": []
     },
     {
-      "text": "preis anteil f, wenn steigt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
       "text": "hilfe",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "soll ich alles in anteil investieren",
+      "text": "welcher anteil hat die meisten preissenkungen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "was kannste eig",
+      "text": "wie häufig hat e verloren",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie häufig hat e an wert verloren",
+      "text": "wie oft ist f gesunken",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "soll ich anteil kaufen",
+      "text": "hat anteil b typ --",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wie häufig ist c gestiegen",
+      "text": "wieviel ist mein portfolio gerade wert",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "wieviel ist c bisher gesunken",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wieviel sind meine anteile wert",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "ist anteil f gestiegen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "ich brauche hilfe",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wieviel geld würde ich erhalten wenn ich alles verkaufe",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wird anteil f steigen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil ist am meisten gestiegen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil hat bisher am meisten an wert gewonnen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "anteil d vom typ -",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wenn nächste runde anteil e steigt, wieviel wird es dann wert sein",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wenn anteil a verliert, wieviel wird es dann wert sein",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie viel kostet anteil b, wenn er teurer wird",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wieviel mehr wäre b wert wenn es steigt in der nächsten runde",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "meisten wert gewonnen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie oft hat anteil f an wert gewonnen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie oft ist a gestiegen bisher",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil hat bisher am meisten an wert verloren",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie viel soll ich verkaufen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil ist am häufigsten gesunken",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie oft ist anteil a gestiegen bisher",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie entwickelt sich der preis von anteil c, wenn er nach unten geht",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "um wieviel würde anteil e steigen, wenn es nächste runde gewinnt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie entwickelt sich der preis von anteil b, wenn er günstiger wird",
+      "text": "wieviel wäre anteil c wert wenn es steigt",
       "intent": "l_luis",
       "entities": []
     },
@@ -614,7 +499,122 @@
       "entities": []
     },
     {
-      "text": "welche der anteile sind typ o",
+      "text": "ich brauche hilfe",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat am meisten wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "um wieviel würde c sinken, wenn es in der nächsten periode verliert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "preis anteil e, wenn nach unten",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat bisher am meisten an wert verloren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "am mesiten preissenkungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil b, wenn er günstiger wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wert anteile",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel sind alle meine anteile wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wert portfolio",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "meisten gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel mehr wäre anteil a wert wenn es im wert steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat anteil f an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel ist c bisher gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "weche anteile sind typ ++",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich anteil a verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel geld würde ich erhalten wenn ich alles verkaufe",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am häufigsten gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "kannst du mir einen tipp geben",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "kannst du mir einen rat geben",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "um wieviel würde anteil e steigen, wenn es nächste runde gewinnt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie wahrscheinlich ist es, dass anteil e sinkt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welche anteile soll ich kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil +",
       "intent": "l_luis",
       "entities": []
     },
@@ -629,12 +629,12 @@
       "entities": []
     },
     {
-      "text": "wenn in der nächsten runde f gewinnt, wieviel ist es dann wert",
+      "text": "anteil e verlust gemacht",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "anteil am meisten an wert gewonnen",
+      "text": "wie häufig ist anteil c gestiegen",
       "intent": "l_luis",
       "entities": []
     },
@@ -644,7 +644,7 @@
       "entities": []
     },
     {
-      "text": "kannst du mir einen rat geben",
+      "text": "wie entwickelt sich der preis von anteil d, wenn er sinkt",
       "intent": "l_luis",
       "entities": []
     },
@@ -659,12 +659,12 @@
       "entities": []
     },
     {
-      "text": "anteil d gestiegen",
+      "text": "was hat gewonnen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "hat anteil b typ --",
+      "text": "was kannste",
       "intent": "l_luis",
       "entities": []
     },
@@ -674,7 +674,7 @@
       "entities": []
     },
     {
-      "text": "welcher anteil hat am meisten wert verloren",
+      "text": "meisten gestiegen",
       "intent": "l_luis",
       "entities": []
     },
@@ -694,12 +694,127 @@
       "entities": []
     },
     {
-      "text": "um wieviel würde c sinken, wenn es in der nächsten periode verliert",
+      "text": "wie wahrscheinlich ist anteil b vom typ ++",
       "intent": "l_luis",
       "entities": []
     },
     {
       "text": "wie viel geld ist mein portfolio wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich alle meine anteile verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was soll ich als nächstes verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn anteil a gewinnt, wieviel wird er dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "preis anteil f, wenn steigt",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "soll ich alles in anteil b investieren",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wird f steigen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wieviel mehr wäre b wert wenn es steigt in der nächsten runde",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn nächste runde anteil d steigt, wieviel wir es dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was ist der preis von anteil a, wenn er teurer wird",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "um wieviel würde anteil f sinken, wenn es nächste runde verliert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft hat b an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie häufig ist c gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel währungseinheiten würde ich erhalten, wenn ich all meine anteile verkaufe",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am mesiten gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel anteil e soll ich verkaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannste eig",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn anteil a verliert, wieviel wird es dann wert sein",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil c typ o",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welcher anteil hat am häufigsten gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft ist a gestiegen bisher",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil d gestiegen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "was kannsch",
       "intent": "l_luis",
       "entities": []
     },
@@ -714,177 +829,12 @@
       "entities": []
     },
     {
-      "text": "was soll ich als nächstes verkaufen",
+      "text": "was kannst du machen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "welcher anteil hat die meisten preissenkungen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wieviel mehr wäre a wert wenn es gewinnt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wird f steigen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "am meisten preissteigerungen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie entwickelt sich der preis von anteil d, wenn er sinkt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "ist anteil f gesunken",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "was ist der preis von anteil e in der nächsten periode",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "um wieviel würde anteil f sinken, wenn es nächste runde verliert",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "anteil a hoch",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wert portfolio",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "anteil c gewonnen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "anteil am mesiten gesunken",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "anteil d gesunken",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wieviel weniger wäre anteil a wert wenn es verliert",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wert anteile",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "anteil am häufigsten gestiegen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil hat am häufigsten gewonnen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wieviel mehr wäre anteil b wert wenn es gewinnt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie oft ist f gesunken",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie viel sind alle meine anteile wert",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie oft hat b an wert gewonnen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wenn anteil b an wert verliert, wie viel wird er dann in der folgenden periode wert sein",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil hat am häufigsten verloren",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welche anteile sind vom typ --",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie viel kostet anteil b, wenn er günstiger wird",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie wahrscheinlich ist es, dass anteil e sinkt",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "was ist der preis von anteil a, wenn er günstiger wird",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "portfolio",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie ist meine rendite",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "was kannsch",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "welcher anteil ist vom typ --",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie häufig ist anteil c gestiegen",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie hoch ist meine rendite",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "hat anteil a verloren",
+      "text": "wie oft hat anteil b gewinn gemacht",
       "intent": "l_luis",
       "entities": []
     },
@@ -894,12 +844,62 @@
       "entities": []
     },
     {
-      "text": "wie viel anteil soll ich verkaufen",
+      "text": "ist anteil b -",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "empfehlung",
+      "text": "wie hoch ist meine gesamtrendite",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie oft ist anteil a gestiegen bisher",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel anteil d soll ich kaufen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil a vom typ ++",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "am häufigsten preissenkungen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wenn in der nächsten runde f gewinnt, wieviel ist es dann wert",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "anteil am meisten an wert gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "ist anteil f gesunken",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie entwickelt sich der preis von anteil c, wenn er nach unten geht",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "wie viel geld habe ich bisher gewonnen",
+      "intent": "l_luis",
+      "entities": []
+    },
+    {
+      "text": "welche der anteile sind typ o",
       "intent": "l_luis",
       "entities": []
     },
@@ -909,17 +909,17 @@
       "entities": []
     },
     {
-      "text": "ist anteil a höchstwahrscheinlich vom typ +",
+      "text": "wie viel kostet anteil b, wenn er teurer wird",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "was soll ich verkaufen",
+      "text": "welcher anteil ist am meisten gestiegen",
       "intent": "l_luis",
       "entities": []
     },
     {
-      "text": "am mesiten preissenkungen",
+      "text": "welcher anteil ist vom typ --",
       "intent": "l_luis",
       "entities": []
     },
@@ -929,12 +929,7 @@
       "entities": []
     },
     {
-      "text": "welcher anteil ist vom typ o",
-      "intent": "l_luis",
-      "entities": []
-    },
-    {
-      "text": "wie wahrscheinlich ist anteil b vom typ ++",
+      "text": "rendite",
       "intent": "l_luis",
       "entities": []
     },

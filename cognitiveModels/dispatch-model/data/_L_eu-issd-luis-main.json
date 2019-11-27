@@ -1,7 +1,7 @@
 {
   "luis_schema_version": "4.0.0",
   "versionId": "0.1",
-  "name": "EU-ISSD-LMU-RA",
+  "name": "eu-issd-luis-main",
   "desc": "LUIS for Trading Game",
   "culture": "de-de",
   "tokenizerVersion": "1.0.2",
@@ -37,7 +37,10 @@
       "name": "None"
     },
     {
-      "name": "rat_geben"
+      "name": "rat_geben_kaufen"
+    },
+    {
+      "name": "rat_geben_verkaufen"
     },
     {
       "name": "was_kannst_du"
@@ -68,27 +71,9 @@
       "name": "Anteil_Typ",
       "subLists": [
         {
-          "canonicalForm": "A",
+          "canonicalForm": "F",
           "list": [
-            "a"
-          ]
-        },
-        {
-          "canonicalForm": "B",
-          "list": [
-            "b"
-          ]
-        },
-        {
-          "canonicalForm": "C",
-          "list": [
-            "c"
-          ]
-        },
-        {
-          "canonicalForm": "D",
-          "list": [
-            "d"
+            "f"
           ]
         },
         {
@@ -98,9 +83,27 @@
           ]
         },
         {
-          "canonicalForm": "F",
+          "canonicalForm": "D",
           "list": [
-            "f"
+            "d"
+          ]
+        },
+        {
+          "canonicalForm": "C",
+          "list": [
+            "c"
+          ]
+        },
+        {
+          "canonicalForm": "B",
+          "list": [
+            "b"
+          ]
+        },
+        {
+          "canonicalForm": "A",
+          "list": [
+            "a"
           ]
         }
       ],
@@ -110,13 +113,13 @@
       "name": "Kategorie_Typ",
       "subLists": [
         {
-          "canonicalForm": "++",
+          "canonicalForm": "--",
           "list": [
-            "+ +"
+            "- -"
           ]
         },
         {
-          "canonicalForm": "+",
+          "canonicalForm": "-",
           "list": []
         },
         {
@@ -127,13 +130,13 @@
           ]
         },
         {
-          "canonicalForm": "-",
+          "canonicalForm": "+",
           "list": []
         },
         {
-          "canonicalForm": "--",
+          "canonicalForm": "++",
           "list": [
-            "- -"
+            "+ +"
           ]
         }
       ],
@@ -335,7 +338,7 @@
     },
     {
       "text": "empfehlung",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
@@ -373,22 +376,22 @@
     },
     {
       "text": "hilfe",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "ich brauche eine empfehlung",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "ich brauche einen ratschlag",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "ich brauche hilfe",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
@@ -507,22 +510,22 @@
     },
     {
       "text": "kannst du mir eine empfehlung geben?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "kannst du mir einen rat geben?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "kannst du mir einen tipp geben?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "kannst du mir helfen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
@@ -606,7 +609,7 @@
     },
     {
       "text": "rat",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
@@ -632,28 +635,52 @@
     },
     {
       "text": "soll ich alle meine anteile verkaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_verkaufen",
       "entities": []
     },
     {
-      "text": "soll ich alles in anteil investieren?",
-      "intent": "rat_geben",
-      "entities": []
+      "text": "soll ich alles in anteil b investieren?",
+      "intent": "rat_geben_kaufen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 25,
+          "endPos": 25
+        }
+      ]
     },
     {
-      "text": "soll ich anteil kaufen?",
-      "intent": "rat_geben",
-      "entities": []
+      "text": "soll ich anteil a kaufen?",
+      "intent": "rat_geben_kaufen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 16,
+          "endPos": 16
+        }
+      ]
     },
     {
-      "text": "soll ich anteil verkaufen?",
-      "intent": "rat_geben",
-      "entities": []
+      "text": "soll ich anteil a verkaufen?",
+      "intent": "rat_geben_verkaufen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 16,
+          "endPos": 16
+        }
+      ]
     },
     {
-      "text": "soll ich mein ganzes guthaben in anteil investieren?",
-      "intent": "rat_geben",
-      "entities": []
+      "text": "soll ich mein ganzes guthaben in anteil f investieren?",
+      "intent": "rat_geben_kaufen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 40,
+          "endPos": 40
+        }
+      ]
     },
     {
       "text": "um wieviel würde anteil e steigen, wenn es nächste runde gewinnt?",
@@ -794,32 +821,27 @@
     },
     {
       "text": "was soll ich als nächstes kaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "was soll ich als nächstes verkaufen?",
-      "intent": "rat_geben",
-      "entities": []
-    },
-    {
-      "text": "was soll ich kaufen / verkaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_verkaufen",
       "entities": []
     },
     {
       "text": "was soll ich kaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "was soll ich machen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "was soll ich verkaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_verkaufen",
       "entities": []
     },
     {
@@ -834,12 +856,12 @@
     },
     {
       "text": "welche anteile soll ich kaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "welche anteile soll ich verkaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_verkaufen",
       "entities": []
     },
     {
@@ -1288,14 +1310,26 @@
       ]
     },
     {
-      "text": "wie viel anteil soll ich kaufen?",
-      "intent": "rat_geben",
-      "entities": []
+      "text": "wie viel anteil d soll ich kaufen?",
+      "intent": "rat_geben_kaufen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 16,
+          "endPos": 16
+        }
+      ]
     },
     {
-      "text": "wie viel anteil soll ich verkaufen?",
-      "intent": "rat_geben",
-      "entities": []
+      "text": "wie viel anteil e soll ich verkaufen?",
+      "intent": "rat_geben_verkaufen",
+      "entities": [
+        {
+          "entity": "Anteil",
+          "startPos": 16,
+          "endPos": 16
+        }
+      ]
     },
     {
       "text": "wie viel geld habe ich bisher gewonnen?",
@@ -1352,12 +1386,12 @@
     },
     {
       "text": "wie viel soll ich kaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_kaufen",
       "entities": []
     },
     {
       "text": "wie viel soll ich verkaufen?",
-      "intent": "rat_geben",
+      "intent": "rat_geben_verkaufen",
       "entities": []
     },
     {
