@@ -74,12 +74,12 @@ class ShareManager {
         const owned = this.getSharesInPosession();
 
         const placeholder_recs = this.parseShareResults(recs, "oder");
-        let response = "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, dein ganzes Vermögen in " + placeholder_recs + " zu investieren.";
+        let response = "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, dein gesamtes Vermögen in " + placeholder_recs + " zu investieren.";
 
         const sharesInPosessionToBeSold = this.getSharesInPosessionToBeSold(owned, recs);
         if (sharesInPosessionToBeSold.length > 0) {
             const placeholder_sell = this.parseShareResults(sharesInPosessionToBeSold, "und");
-            response = response + " Daher empfehle ich dir, " + placeholder_sell + " zu verkaufen.";
+            response = response + " Daher empfehle ich dir, " + placeholder_sell + " zu verkaufen und " + placeholder_recs + " zu kaufen.";
         } else {
             if (intent_sell) {
                 response = response + " Daher empfehle ich dir, keine Anteile zu verkaufen.";
@@ -102,7 +102,7 @@ class ShareManager {
 
     getSharesInPosession() {
         let owned = [];
-        for (let i = 1; i < 6; i++) {
+        for (let i = 0; i < 6; i++) {
             if (this.goodHoldings[i] > 0) {
                 owned.push(i);
             }
