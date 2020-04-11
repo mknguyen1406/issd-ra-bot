@@ -134,6 +134,14 @@
     width: 45px;
 }
 
+.btn-advice {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+    margin: -10px 0px 0px 0px;
+    width: 100%;
+}
+
 .list-text {
     margin: 0px 5px 0px 5px;
 }
