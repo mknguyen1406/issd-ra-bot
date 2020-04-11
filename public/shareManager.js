@@ -478,6 +478,8 @@ class ShareManager {
     }
 
     cashout() {
+        const conversionRate = 350;
+        const fixedCashout = 6;
         const portfolio_value = this.goodHoldings[0] * this.goodValues[0] +
             this.goodHoldings[1] * this.goodValues[1] +
             this.goodHoldings[2] * this.goodValues[2] +
@@ -485,8 +487,8 @@ class ShareManager {
             this.goodHoldings[4] * this.goodValues[4] +
             this.goodHoldings[5] * this.goodValues[5];
         const total_value = portfolio_value + this.budget;
-        const euro_value = total_value/400 + 2;
-        const euro_value_rounded = Math.ceil(2 * (total_value/400)) / 2 + 2;
+        const euro_value = total_value/conversionRate + fixedCashout;
+        const euro_value_rounded = Math.ceil(2 * (total_value/conversionRate)) / 2 + fixedCashout;
 
         return {
             portfolio: portfolio_value,

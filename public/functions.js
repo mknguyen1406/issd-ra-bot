@@ -351,10 +351,12 @@ function buttonActionEvent(e, action) {
                 triggerNextRound();
             }
 
-            // Ask user for name again
-            if (userName === null) {
-                let chatbotResponse = "Bitte nenne mir deinen Namen.";
-                dispatchBotEvent(chatbotResponse, "chatEvent", null);
+            // Ask user for name again -- only for experiment group 2 and 3
+            if ((experimentGroup === 2) || (experimentGroup === 3)) {
+                if (userName === null) {
+                    let chatbotResponse = "Bitte nenne mir deinen Namen.";
+                    dispatchBotEvent(chatbotResponse, "chatEvent", null);
+                }
             }
         } else {
             triggerNextRound()
@@ -486,8 +488,10 @@ function nextRound(round) {
         };
     }
 
-    // Generate round summaries
-    sendRoundSummary(round);
+    // Generate round summaries -- only for experiment groups 1 to 3
+    if (experimentGroup !== 4) {
+        sendRoundSummary(round);
+    }
 
     return obj;
 }
