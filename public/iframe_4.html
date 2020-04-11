@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robo Assistant</title>
+    <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
+<body>
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=70&experimentGroup=4" height="800px" width="1200px"></iframe>
+<button type="button" id="movenextbtn">Weiter</button>
+
+<script>
+
+    // Hide or show result containers
+    function hideShowDom(dom, hide) {
+        if (dom !== null) {
+            if (hide) {
+                dom.style.display = "none";
+            } else {
+                dom.style.display = "block";
+            }
+        }
+    }
+
+    hideShowDom(document.getElementById('movenextbtn'), true);
+
+    // Event listener for messages
+    window.addEventListener('message', function(event) {
+        if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net" || event.origin === "https://issd-trading.azurewebsites.net") {
+            if (typeof(event.data.detail) !== 'undefined') {
+
+                console.log(event.data);
+
+                var result = event.data.detail.data;
+                var result_cabinNo = result.cabinNo;
+                var result_cashout_GE = Math.round(parseFloat(result.cashout.total));
+                var result_cashout_EURO = result.cashout.euro_rounded;
+
+                var result_conc =
+                    "Kabine: " + result_cabinNo + " | " +
+                    "Ergebnis: " + result_cashout_GE + " GE | " +
+                    "Auszahlung: " + result_cashout_EURO + " €";
+
+                // Write data to question
+                console.log("Results: ");
+                // console.log(result_all);
+                console.log(JSON.stringify(result));
+                console.log(result_conc);
+
+                // Show 'Weiter' button after last question
+                if (Math.round(parseFloat(result.round) === 14)) {
+                    hideShowDom(document.getElementById('movenextbtn'), false);
+                }
+
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

@@ -52,7 +52,7 @@ const surveyId = (url.searchParams.get("surveyId") === null || url.searchParams.
 const pricePath = (url.searchParams.get("pricePath") === null || url.searchParams.get("pricePath") === "") ? 1 : url.searchParams.get("pricePath"); // 1 as default
 const experimentRound = (url.searchParams.get("experimentRound") === null || url.searchParams.get("experimentRound") === "") ? 0 : url.searchParams.get("experimentRound"); // 0 as default
 const cabinNo = (url.searchParams.get("cabinNo") === null || url.searchParams.get("cabinNo") === "") ? 0 : url.searchParams.get("cabinNo"); // 0 as default
-const experimentGroup = (url.searchParams.get("experimentGroup") === null || url.searchParams.get("experimentGroup") === "") ? 3 : url.searchParams.get("experimentGroup"); // 2 as default
+const experimentGroup = parseFloat((url.searchParams.get("experimentGroup") === null || url.searchParams.get("experimentGroup") === "") ? 3 : url.searchParams.get("experimentGroup")); // 2 as default
 
 // Create unique user ID
 const userId = surveyId + "-" + pricePath + "-" + experimentRound + "-" + experimentGroup + "-" + cabinNo;
@@ -74,7 +74,7 @@ const pricesArray = createShareManager(pricePath, 2000, function (budget, prices
 // =================================== User Interface =======================================
 
 // Hide or show chat bot based on experiment , e.g. 1 for hide, 2 for show
-if (parseFloat(experimentGroup) === 1) {
+if (experimentGroup === 1) {
     hideChatBot();
 }
 
@@ -192,9 +192,9 @@ function startChatBot() {
         input = document.getElementsByTagName("input");
         // console.log(input.length);
 
-        if (experimentGroup === "2") {
+        if (experimentGroup === 2) {
             input.item(0).placeholder = "Stelle mir eine Frage";
-        } else if (experimentGroup === "3") {
+        } else if (experimentGroup === 3) {
             input.item(0).placeholder = "Frage mich nach einem Rat";
         }
 
@@ -292,27 +292,29 @@ function startChatBot() {
             if (data.name === 'welcomeEvent') {
 
                 let chatbotResponse = "";
-                const group = parseFloat(experimentGroup);
 
                 // Only available when experiment started
-                if (group === 2) {
+                if (experimentGroup === 2) {
                     chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
                         "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen.";
 
-                } else if (group === 3) {
+                } else if (experimentGroup === 3) {
                     chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
                         "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen. " +
                         "Außerdem kannst du mich nach einer Investitionsempfehlung fragen.";
                 }
 
-                // Dispatch welcome message and ask for user name
-                dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
-                    // Dispatch click on 'Starte Experiment' message
-                    // dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
+                // No welcome message for experiment group 4
+                if (experimentGroup !== 4) {
+                    // Dispatch welcome message and ask for user name
+                    dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
+                        // Dispatch click on 'Starte Experiment' message
+                        // dispatchBotEvent("Mein Name ist Charles. Wie lautet deiner?", "chatEvent", turnContext);
 
-                    // Ask user for example questions with suggested answers
-                    dispatchBotEvent("", "suggestedActionEvent", turnContext);
-                });
+                        // Ask user for example questions with suggested answers
+                        dispatchBotEvent("", "suggestedActionEvent", turnContext);
+                    });
+                }
             }
 
             // Incoming message event, e.g. user just sent a message to bot and bot sent this message event in turn
