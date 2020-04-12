@@ -252,6 +252,10 @@ function startChatBot() {
         buttonActionEvent(e, "sell");
     });
 
+    document.querySelector('#button_advice').addEventListener('click', (e) => {
+        buttonActionEvent(e, "advice");
+    });
+
     // Create event listener for summary and result event
     window.document.addEventListener('botEvent', handleEvent, false);
 

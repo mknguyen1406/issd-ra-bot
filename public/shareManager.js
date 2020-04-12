@@ -74,15 +74,29 @@ class ShareManager {
         const owned = this.getSharesInPosession();
 
         const placeholder_recs = this.parseShareResults(recs, "oder");
-        let response = "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, dein gesamtes Vermögen in " + placeholder_recs + " zu investieren.";
 
+        // Construct recommendation for shares to invest in based on experiment group
+        let response = "";
+        if (experimentGroup === 3) {
+            response = "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, dein gesamtes Vermögen in " + placeholder_recs + " zu investieren.";
+        } else if (experimentGroup === 4) {
+            response = "Aktuelle Empfehlung aufgrund des bisherigen Preisverlaufs:\n - Investiere das gesamte Vermögen in " + placeholder_recs;
+        }
+
+        // Complement recommendation with shares to be sold based on experiment group
         const sharesInPosessionToBeSold = this.getSharesInPosessionToBeSold(owned, recs);
         if (sharesInPosessionToBeSold.length > 0) {
             const placeholder_sell = this.parseShareResults(sharesInPosessionToBeSold, "und");
-            response = response + " Daher empfehle ich dir, " + placeholder_sell + " zu verkaufen und " + placeholder_recs + " zu kaufen.";
+            if (experimentGroup === 3) {
+                response = response + " Daher empfehle ich dir, " + placeholder_sell + " zu verkaufen und " + placeholder_recs + " zu kaufen.";
+            } else if (experimentGroup === 4) {
+                response = response + "\n - Verkaufe " + placeholder_sell;
+            }
         } else {
-            if (intent_sell) {
-                response = response + " Daher empfehle ich dir, keine Anteile zu verkaufen.";
+            if (experimentGroup === 3) {
+                if (intent_sell) {
+                    response = response + " Daher empfehle ich dir, keine Anteile zu verkaufen.";
+                }
             }
         }
         return response

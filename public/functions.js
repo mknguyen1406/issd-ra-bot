@@ -342,7 +342,7 @@ function buttonActionEvent(e, action) {
             alertNotStarted();
         }
         renameElements(res.rename);
-    } else {
+    } else if (action === "next") {
         // 'Next' event
         if (round === 0) {
 
@@ -360,6 +360,27 @@ function buttonActionEvent(e, action) {
             }
         } else {
             triggerNextRound()
+        }
+    } else if (action === "advice") {
+        // Advice event
+        // Check if game started
+        if (openForTrading !== null) {
+            if (openForTrading === false) {
+                alertNotOpen();
+            } else {
+                // Get advice
+                if (experimentGroup === 4) {
+
+                    // Get and send recommendation
+                    const chatbotResponse = shareManager.getRecommendation(round - 1, false);
+                    dispatchBotEvent(chatbotResponse, "chatEvent", null);
+
+                    // Track advice
+                    trackConversation(round - 1, "luis_rat");
+                }
+            }
+        } else {
+            alertNotStarted();
         }
     }
 }
@@ -838,23 +859,23 @@ function processMessage(chatbotResponse, data, turnContext) {
                     break;
                 case "rat_geben_kaufen":
                     // Only for 3rd experiment group
-                    if (parseFloat(experimentGroup) === 3) {
+                    if (experimentGroup === 3) {
                         chatbotResponse = shareManager.getRecommendation(round - 1, false);
 
                         // Track advice
                         trackConversation(round - 1, "luis_rat");
-                    } else if (parseFloat(experimentGroup) === 2){
+                    } else if (experimentGroup === 2){
                         chatbotResponse = "Diese Frage kann ich leider nicht beantworten.";
                     }
                     break;
                 case "rat_geben_verkaufen":
                     // Only for 3rd experiment group
-                    if (parseFloat(experimentGroup) === 3) {
+                    if (experimentGroup === 3) {
                         chatbotResponse = shareManager.getRecommendation(round - 1, true);
 
                         // Track advice
                         trackConversation(round - 1, "luis_rat");
-                    } else if (parseFloat(experimentGroup) === 2){
+                    } else if (experimentGroup === 2){
                         chatbotResponse = "Diese Frage kann ich leider nicht beantworten.";
                     }
                     break;
@@ -878,7 +899,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     break;
                 case "anteil_wahrscheinlichkeit_spezifisch":
 
-                    if (parseFloat(experimentGroup) === 3) {
+                    if (experimentGroup === 3) {
                         chatbotResponse = "So genau kann ich es dir leider nicht sagen.";
                     } else {
                         chatbotResponse = "Das weiß ich leider nicht.";
@@ -889,7 +910,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     break;
                 case "was_kannst_du":
 
-                    if (parseFloat(experimentGroup) === 3) {
+                    if (experimentGroup === 3) {
                         chatbotResponse = "Ich kann grundlegende Fragen zu deinem Portfolio und der Preisentwicklung der Anteile beantworten. " +
                             "Zudem kann ich dir, basierend auf den Preisentwicklungen, Kaufempfehlungen geben.";
                     } else {
