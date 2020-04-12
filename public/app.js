@@ -460,3 +460,7 @@ function startChatBot() {
         }
     });
 }
+
+//==================== Send result every 60 seconds to prevent session timeout in LimeSurvey ===============
+setInterval(function(){
+    sendResult()}, 60 * 1000);
