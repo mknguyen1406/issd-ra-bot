@@ -160,7 +160,7 @@ function startChatBot() {
 
     // Style bot
     const styleOptions = {
-        botAvatarImage: 'https://issd-ra-web-app.azurewebsites.net/images/type_3a.png',
+        botAvatarImage: ((experimentGroup !== 4) ? 'https://issd-ra-web-app.azurewebsites.net/images/type_3a.png' : ""),
         // botAvatarInitials: 'BF',
         // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
         // userAvatarInitials: 'WC',
@@ -252,9 +252,12 @@ function startChatBot() {
         buttonActionEvent(e, "sell");
     });
 
-    document.querySelector('#button_advice').addEventListener('click', (e) => {
-        buttonActionEvent(e, "advice");
-    });
+    // Only for experiment group 4
+    if (experimentGroup === 4) {
+        document.querySelector('#button_advice').addEventListener('click', (e) => {
+            buttonActionEvent(e, "advice");
+        });
+    }
 
     // Create event listener for summary and result event
     window.document.addEventListener('botEvent', handleEvent, false);
