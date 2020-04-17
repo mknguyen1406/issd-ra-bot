@@ -78,6 +78,11 @@ if (experimentGroup === 1) {
     hideChatBot();
 }
 
+// Create "Empfehlung" Button
+if (experimentGroup === 4) {
+    createRecButton();
+}
+
 // Create chart
 const chart = new ApexCharts(
     document.querySelector("#chart"),

@@ -54,6 +54,19 @@ function hideAll() {
     document.getElementById("navigation-bar").style.display = "none";
 }
 
+// Create recommendation button
+function createRecButton() {
+    const button = document.createElement("button");
+    button.setAttribute("id", "button_advice");
+    button.setAttribute("type", "button");
+    button.setAttribute("class", "btn btn-advice");
+    const text = document.createElement("span");
+    text.innerHTML = "Empfehlung";
+    button.appendChild(text);
+    const element = document.getElementById("recommendation-div");
+    element.appendChild(button);
+}
+
 // Create share manager object for a certain price path
 function createShareManager(pricePath, budget, callback) {
 

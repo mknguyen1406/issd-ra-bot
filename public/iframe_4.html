@@ -5,10 +5,21 @@
     <title>Robo Assistant</title>
     <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
 <body>
-<iframe id="child" align="middle" frameBorder="1" src="./index_4.html?pricePath=70&experimentGroup=4" height="800px" width="1200px"></iframe>
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=70&experimentGroup=4" height="800px" width="1200px"></iframe>
 <button type="button" id="movenextbtn">Weiter</button>
 
 <script>
+    // if ({INSERTANS:612334X2237X17102} !== 4) {
+    // const src = "https://issd-trading.azurewebsites.net/index.html?surveyId={SID}&amp;pricePath={INSERTANS:612334X2237X17098}&amp;experimentRound={INSERTANS:612334X2237X17099}&amp;cabinNo={INSERTANS:612334X2237X17100}&amp;experimentGroup={INSERTANS:612334X2237X17102}"
+    // } else {
+    //     const src = "https://issd-trading.azurewebsites.net/index_4.html?surveyId={SID}&pricePath={INSERTANS:612334X2237X17098}&experimentRound={INSERTANS:612334X2237X17099}&cabinNo={INSERTANS:612334X2237X17100}&experimentGroup={INSERTANS:612334X2237X17102}"
+    // }
+
+    // Load different index.html file based on experiment group
+    // console.log({INSERTANS:612334X2237X17102});
+    // const mainUrl = (({INSERTANS:612334X2237X17102} !== "4") ? "https://issd-trading.azurewebsites.net/index.html?" : "https://issd-trading.azurewebsites.net/index_4.html?");
+    // const fullUrl = mainUrl + "surveyId={SID}&amp;pricePath={INSERTANS:612334X2237X17098}&amp;experimentRound={INSERTANS:612334X2237X17099}&amp;cabinNo={INSERTANS:612334X2237X17100}&amp;experimentGroup={INSERTANS:612334X2237X17102}";
+    // document.getElementById('iframe').setAttribute("src", fullUrl)
 
     // Hide or show result containers
     function hideShowDom(dom, hide) {
