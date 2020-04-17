@@ -527,6 +527,9 @@ function nextRound(round) {
         sendRoundSummary(round);
     }
 
+    // Get conversation history and send result
+    getConversationHistory(filterMessages, sendResult);
+
     return obj;
 }
 
@@ -570,9 +573,6 @@ function sendRoundSummary(round) {
 
     // Send event to own event handler
     window.document.dispatchEvent(event);
-
-    // Get conversation history and send result
-    getConversationHistory(filterMessages, sendResult);
 }
 
 function getRandomNo() {
