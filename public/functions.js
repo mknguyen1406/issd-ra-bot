@@ -977,7 +977,7 @@ function alertEarnings(cash) {
     const portfolio = Math.round(cash.portfolio);
     const budget = Math.round(cash.budget);
     const total = Math.round(portfolio + budget);
-    const euro_var = cash.euro_rounded - 2;
+    const euro_var = cash.euro_rounded - 6;
 
     swal("Glückwunsch!", "Ihr variabler Auszahlungsanteil beträgt " + euro_var + " Euro bzw. " + total + " Währungseinheiten. \n\n" +
         "Dieser setzt sich zusammen aus einem Restguthaben in Höhe von " + budget + " Währungseinheiten und einem Portfoliowert in Höhe von " +
