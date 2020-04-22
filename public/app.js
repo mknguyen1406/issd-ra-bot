@@ -81,6 +81,7 @@ if (experimentGroup === 1) {
 // Create "Empfehlung" Button
 if (experimentGroup === 4) {
     createRecButton();
+    hideCardHeader();
 }
 
 // Create chart

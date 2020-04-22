@@ -67,6 +67,12 @@ function createRecButton() {
     element.appendChild(button);
 }
 
+// Hide card header of chat card for experiment group 4
+function hideCardHeader() {
+    document.getElementById("chat-card-header").style.display = "none";
+    document.getElementById("webchat").style.height = "662px";
+}
+
 // Create share manager object for a certain price path
 function createShareManager(pricePath, budget, callback) {
 
