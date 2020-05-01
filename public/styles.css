@@ -208,13 +208,13 @@
 }
 
 .col-4 {
-    -ms-flex: 0 0 34%;
-    flex: 0 0 34%;
-    max-width: 34%;
+    -ms-flex: 0 0 35%;
+    flex: 0 0 35%;
+    max-width: 35%;
 }
 
 .col-8 {
-    -ms-flex: 0 0 66%;
-    flex: 0 0 66%;
-    max-width: 66%;
+    -ms-flex: 0 0 65%;
+    flex: 0 0 65%;
+    max-width: 65%;
 }
