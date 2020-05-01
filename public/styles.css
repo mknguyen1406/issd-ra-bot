@@ -206,3 +206,15 @@
 #chart {
     margin-right: 15px;
 }
+
+.col-4 {
+    -ms-flex: 0 0 34%;
+    flex: 0 0 34%;
+    max-width: 34%;
+}
+
+.col-8 {
+    -ms-flex: 0 0 66%;
+    flex: 0 0 66%;
+    max-width: 66%;
+}
