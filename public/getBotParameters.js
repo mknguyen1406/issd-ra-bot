@@ -7,9 +7,6 @@ httpReq.onreadystatechange = function () {
         const obj = JSON.parse(response);
         console.log(obj);
 
-        // token_ = obj.token;
-        // conversationId_ = obj.conversationId;
-
         window.alert("pricePath: " + obj.pricePath + "\nexperimentGroup: " + obj.experimentGroup);
     }
 };

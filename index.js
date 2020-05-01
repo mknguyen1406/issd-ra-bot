@@ -97,16 +97,23 @@ function readParameterList(id, res, next) {
             .map(e => e.trim()) // remove white spaces for each line
             .map(e => e.split(',').map(e => e.trim())); // split each line to array
 
+        // Current parameter list csv
+        // console.log(x);
+
         let nextRowNum = parseInt(x[1][0]);
         const nextRow = x[nextRowNum];
 
         // Get next bot parameter values
         const pricePath = nextRow[2];
         const experimentGroup = nextRow[3];
+        const experimentRound = nextRow[4];
+        const cabinNo = nextRow[5];
 
         const resObject = {
             pricePath: pricePath,
             experimentGroup: experimentGroup,
+            experimentRound: experimentRound,
+            cabinNo: cabinNo,
         };
 
         res.send(resObject);
@@ -124,13 +131,20 @@ function readParameterList(id, res, next) {
             return d.join();
         }).join('\n');
 
-        console.log("this is x as csv");
-        console.log(csv);
+        // console.log("this is x as csv");
+        // console.log(csv);
 
-        const newFilePath = "./parameterList/parameterList2.csv";
-        fs.writeFile(newFilePath, csv, (err) => {
+        // const newFilePath = "./parameterList/parameterList2.csv";
+        fs.writeFile(filePath, csv, (err) => {
             if (err) throw err;
-            console.log('The file has been saved!');
+            console.log('The parameter list has been saved!');
+        });
+
+        // Create copy of file in public folder for download
+        const filePathDownload = "./public/parameterList.csv";
+        fs.writeFile(filePathDownload, csv, (err) => {
+            if (err) throw err;
+            console.log('The parameter list for download has been saved!');
         });
 
         return next();
@@ -139,18 +153,13 @@ function readParameterList(id, res, next) {
 
 
 const getBotParameters = (req, res, next) => {
+
     const id = req.params.id;
+    console.log("Current user ID: " + id);
 
     // Call function to read csv file
     readParameterList(id, res, next);
 
-    // const resObject = {
-    //   pricePath: 1,
-    //   experimentGroup: 1,
-    // };
-    //
-    // res.send(resObject);
-    // return next();
 };
 
 server.get('/parameters/get/:id', getBotParameters);
