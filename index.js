@@ -6,6 +6,7 @@
 // Import required packages
 const path = require('path');
 const restify = require('restify');
+const fs = require('fs');
 
 //=========================================================================================================================
 
@@ -46,6 +47,15 @@ let server = restify.createServer();
 // Middlerware for database
 server.use(restify.plugins.bodyParser());
 
+// Allow CORS
+server.use(
+    function crossOrigin(req,res,next){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        return next();
+    }
+);
+
 // Start server
 server.listen(process.env.port || process.env.PORT || 3978, function() {
     console.log(`\n${ server.name } listening to ${ server.url }`);
@@ -73,3 +83,114 @@ server.get('/results/*', restify.plugins.serveStatic({
     default: "index.html",
     appendRequestPath: false
 }));
+
+// Get bot parameters
+function readParameterList(id, res, next) {
+
+    const filePath = "./parameterList/parameterList.csv";
+
+    fs.readFile(filePath, 'utf8', function(err, contents) {
+
+        // Convert csv file to array
+        let x = contents.toString() // convert Buffer to string
+            .split('\n') // split string to lines
+            .map(e => e.trim()) // remove white spaces for each line
+            .map(e => e.split(',').map(e => e.trim())); // split each line to array
+
+        let nextRowNum = parseInt(x[1][0]);
+        const nextRow = x[nextRowNum];
+
+        // Get next bot parameter values
+        const pricePath = nextRow[2];
+        const experimentGroup = nextRow[3];
+
+        const resObject = {
+            pricePath: pricePath,
+            experimentGroup: experimentGroup,
+        };
+
+        res.send(resObject);
+
+        // Set id
+        x[nextRowNum][1] = id;
+
+        // Set new row num
+        nextRowNum ++;
+        for (let i = 1; i < x.length - 1; i++) {
+            x[i][0] = nextRowNum.toString();
+        }
+
+        const csv = x.map(function(d){
+            return d.join();
+        }).join('\n');
+
+        console.log("this is x as csv");
+        console.log(csv);
+
+        const newFilePath = "./parameterList/parameterList2.csv";
+        fs.writeFile(newFilePath, csv, (err) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
+        });
+
+        return next();
+    });
+}
+
+
+const getBotParameters = (req, res, next) => {
+    const id = req.params.id;
+
+    // Call function to read csv file
+    readParameterList(id, res, next);
+
+    // const resObject = {
+    //   pricePath: 1,
+    //   experimentGroup: 1,
+    // };
+    //
+    // res.send(resObject);
+    // return next();
+};
+
+server.get('/parameters/get/:id', getBotParameters);
+
+// Create bot parameter list
+function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+const createBotParameterList = (req, res, next) => {
+
+    const numPricePaths =  req.params.numPricePaths;
+    const numExpGroup = req.params.numExpGroup;
+
+    const resObject = {
+        pricePath: 1,
+        experimentRound: 1,
+        cabinNo: 1,
+        experimentGroup: 1,
+    };
+
+    // console.log(req.params);
+
+    res.send(resObject);
+    return next();
+};
+
+server.get('/parameters/create/:numPricePaths/:numExpGroup', createBotParameterList);
