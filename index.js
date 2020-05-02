@@ -109,6 +109,26 @@ function toCSV(path, data) {
 
 }
 
+// Check if user id is already registered
+function getRowNums(id, parameterList) {
+
+    let targetRowNum = parseInt(parameterList[1][0]); // Row to get bot parameters from
+    let nextRowNum = parseInt(parameterList[1][0]) + 1; // Row for next iteration
+
+    let x, x_length = parameterList.length;
+    let y = 1; // id column
+
+    for (x = 0; x < x_length; x++) {
+        if (parameterList[x][y] === id.toString()) {
+            targetRowNum = x;
+            nextRowNum = nextRowNum - 1;
+        }
+    }
+
+    return [targetRowNum, nextRowNum]
+
+}
+
 // Get bot parameters
 function readParameterList(id, res, next) {
 
@@ -119,14 +139,19 @@ function readParameterList(id, res, next) {
         // Convert csv file to array
         let parameterList = parseCSV(contents);
 
-        let nextRowNum = parseInt(parameterList[1][0]); // Next row num always saved in first column of second row
-        const nextRow = parameterList[nextRowNum];
+        // Get target row number and row number for next iteration
+        let nextRowNum = getRowNums(id, parameterList)[1];
+        let targetRowNum = getRowNums(id, parameterList)[0];
+        const targetRow = parameterList[targetRowNum];
+
+        // Set id
+        parameterList[targetRowNum][1] = id;
 
         // Get next bot parameter values -- IMPORTANT: Make sure the numerical references for the columns are correct!!
-        const pricePath = nextRow[2];
-        const experimentRound = nextRow[3];
-        const cabinNo = nextRow[4];
-        const experimentGroup = nextRow[5];
+        const pricePath = targetRow[2];
+        const experimentRound = targetRow[3];
+        const cabinNo = targetRow[4];
+        const experimentGroup = targetRow[5];
 
         const resObject = {
             pricePath: pricePath,
@@ -139,17 +164,11 @@ function readParameterList(id, res, next) {
         res.send(resObject);
 
         // =========================== Update parameter list for next retrieval ======================================
-        // Set id
-        parameterList[nextRowNum][1] = id;
-
-        // Set new row num
-        nextRowNum ++;
 
         let x, x_length = parameterList.length;
         let y, y_length = 6;
         let map = [];
 
-        // Don't be lazy
         for (x = 0; x < x_length; x++) {
             map[x] = [];
             for (y = 0; y < y_length; y++) {
