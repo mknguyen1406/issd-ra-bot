@@ -84,6 +84,31 @@ server.get('/results/*', restify.plugins.serveStatic({
     appendRequestPath: false
 }));
 
+// Parse csv
+function parseCSV(contents) {
+    // Convert csv file to array
+    return (
+        contents.toString() // convert Buffer to string
+        .split('\n') // split string to lines
+        .map(e => e.trim()) // remove white spaces for each line
+        .map(e => e.split(',').map(e => e.trim())) // split each line to array
+    )
+}
+
+// Save array of arrays to CSV
+function toCSV(path, data) {
+
+    const csv = data.map(function(d){
+        return d.join();
+    }).join('\n');
+
+    fs.writeFile(path, csv, (err) => {
+        if (err) throw err;
+        console.log('The data has been saved to ' + path);
+    });
+
+}
+
 // Get bot parameters
 function readParameterList(id, res, next) {
 
@@ -92,65 +117,63 @@ function readParameterList(id, res, next) {
     fs.readFile(filePath, 'utf8', function(err, contents) {
 
         // Convert csv file to array
-        let x = contents.toString() // convert Buffer to string
-            .split('\n') // split string to lines
-            .map(e => e.trim()) // remove white spaces for each line
-            .map(e => e.split(',').map(e => e.trim())); // split each line to array
+        let parameterList = parseCSV(contents);
 
-        // Current parameter list csv
-        // console.log(x);
+        let nextRowNum = parseInt(parameterList[1][0]); // Next row num always saved in first column of second row
+        const nextRow = parameterList[nextRowNum];
 
-        let nextRowNum = parseInt(x[1][0]);
-        const nextRow = x[nextRowNum];
-
-        // Get next bot parameter values
+        // Get next bot parameter values -- IMPORTANT: Make sure the numerical references for the columns are correct!!
         const pricePath = nextRow[2];
-        const experimentGroup = nextRow[3];
-        const experimentRound = nextRow[4];
-        const cabinNo = nextRow[5];
+        const experimentRound = nextRow[3];
+        const cabinNo = nextRow[4];
+        const experimentGroup = nextRow[5];
 
         const resObject = {
             pricePath: pricePath,
-            experimentGroup: experimentGroup,
             experimentRound: experimentRound,
             cabinNo: cabinNo,
+            experimentGroup: experimentGroup,
         };
 
+        // Send bot parameters back to client
         res.send(resObject);
 
+        // =========================== Update parameter list for next retrieval ======================================
         // Set id
-        x[nextRowNum][1] = id;
+        parameterList[nextRowNum][1] = id;
 
         // Set new row num
         nextRowNum ++;
-        for (let i = 1; i < x.length - 1; i++) {
-            x[i][0] = nextRowNum.toString();
+
+        let x, x_length = parameterList.length;
+        let y, y_length = 6;
+        let map = [];
+
+        // Don't be lazy
+        for (x = 0; x < x_length; x++) {
+            map[x] = [];
+            for (y = 0; y < y_length; y++) {
+                if (y === 0 && x > 0) {
+                    map[x][y] = nextRowNum.toString();
+                } else {
+                    map[x][y] = parameterList[x][y];
+                }
+            }
         }
 
-        const csv = x.map(function(d){
-            return d.join();
-        }).join('\n');
+        parameterList = map.slice(0, map.length);
+        console.log(parameterList);
 
-        // console.log("this is x as csv");
-        // console.log(csv);
-
-        // const newFilePath = "./parameterList/parameterList2.csv";
-        fs.writeFile(filePath, csv, (err) => {
-            if (err) throw err;
-            console.log('The parameter list has been saved!');
-        });
+        // Save updated parameter list to CSV
+        toCSV(filePath, parameterList);
 
         // Create copy of file in public folder for download
         const filePathDownload = "./public/parameterList.csv";
-        fs.writeFile(filePathDownload, csv, (err) => {
-            if (err) throw err;
-            console.log('The parameter list for download has been saved!');
-        });
+        toCSV(filePathDownload, parameterList);
 
         return next();
     });
 }
-
 
 const getBotParameters = (req, res, next) => {
 
@@ -186,20 +209,41 @@ function shuffle(array) {
 
 const createBotParameterList = (req, res, next) => {
 
-    const numPricePaths =  req.params.numPricePaths;
-    const numExpGroup = req.params.numExpGroup;
+    console.log(req.params);
 
-    const resObject = {
-        pricePath: 1,
-        experimentRound: 1,
-        cabinNo: 1,
-        experimentGroup: 1,
-    };
+    const numPricePath =  parseInt(req.params.numPricePath);
+    const numExpRound =  parseInt(req.params.numExpRound);
+    const numCabinNo =  parseInt(req.params.numCabinNo);
+    const numExpGroup = parseInt(req.params.numExpGroup);
 
-    // console.log(req.params);
+    // Create parameter list as array of arrays
+    let parameterList = [["ref", "id", "pricePath", "experimentRound", "cabinNo", "experimentGroup"]];
+
+    for (let pricePath = (numPricePath !== 0 ? 1 : 0); pricePath <= numPricePath; pricePath++) {
+        for (let experimentRound = (numExpRound !== 0 ? 1 : 0); experimentRound <= numExpRound; experimentRound++) {
+            for (let cabinNo = (numCabinNo !== 0 ? 1 : 0); cabinNo <= numCabinNo; cabinNo++) {
+                for (let experimentGroup = (numExpGroup !== 0 ? 1 : 0); experimentGroup <= numExpGroup; experimentGroup++) {
+
+                    const row = [1, "", pricePath, experimentRound, cabinNo, experimentGroup];
+                    parameterList.push(row);
+
+                }
+            }
+        }
+    }
+
+    // Save new parameter list to CSV
+    const path = "./parameterList/parameterList.csv";
+    toCSV(path, parameterList);
+
+    // Create copy of file in public folder for download
+    const filePathDownload = "./public/parameterList.csv";
+    toCSV(filePathDownload, parameterList);
+
+    const resObject = `The new parameter list has been successfully created with ${numPricePath} price paths, ${numExpRound} experiment rounds, ${numCabinNo} cabin numbers, and ${numExpGroup} experiment groups.`;
 
     res.send(resObject);
     return next();
 };
 
-server.get('/parameters/create/:numPricePaths/:numExpGroup', createBotParameterList);
+server.get('/parameters/create/:numPricePath/:numExpRound/:numCabinNo/:numExpGroup', createBotParameterList);
