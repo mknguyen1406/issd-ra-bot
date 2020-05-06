@@ -207,33 +207,75 @@ const getBotParameters = (req, res, next) => {
 server.get('/parameters/get/:id', getBotParameters);
 
 // Create bot parameter list
-function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+// function shuffle(array) {
+//     let currentIndex = array.length, temporaryValue, randomIndex;
+//
+//     // While there remain elements to shuffle...
+//     while (0 !== currentIndex) {
+//
+//         // Pick a remaining element...
+//         randomIndex = Math.floor(Math.random() * currentIndex);
+//         currentIndex -= 1;
+//
+//         // And swap it with the current element.
+//         temporaryValue = array[currentIndex];
+//         array[currentIndex] = array[randomIndex];
+//         array[randomIndex] = temporaryValue;
+//     }
+//
+//     return array;
+// }
+//
+// const createBotParameterList = (req, res, next) => {
+//
+//     console.log(req.params);
+//
+//     const numPricePath =  parseInt(req.params.numPricePath);
+//     const numExpRound =  parseInt(req.params.numExpRound);
+//     const numCabinNo =  parseInt(req.params.numCabinNo);
+//     const numExpGroup = parseInt(req.params.numExpGroup);
+//
+//     // Create parameter list as array of arrays
+//     let parameterList = [["ref", "id", "pricePath", "experimentRound", "cabinNo", "experimentGroup"]];
+//
+//     for (let pricePath = (numPricePath !== 0 ? 1 : 0); pricePath <= numPricePath; pricePath++) {
+//         for (let experimentRound = (numExpRound !== 0 ? 1 : 0); experimentRound <= numExpRound; experimentRound++) {
+//             for (let cabinNo = (numCabinNo !== 0 ? 1 : 0); cabinNo <= numCabinNo; cabinNo++) {
+//                 for (let experimentGroup = (numExpGroup !== 0 ? 1 : 0); experimentGroup <= numExpGroup; experimentGroup++) {
+//
+//                     const row = [1, "", pricePath, experimentRound, cabinNo, experimentGroup];
+//                     parameterList.push(row);
+//
+//                 }
+//             }
+//         }
+//     }
+//
+//     // Save new parameter list to CSV
+//     const path = "./parameterList/parameterList.csv";
+//     toCSV(path, parameterList);
+//
+//     // Create copy of file in public folder for download
+//     const filePathDownload = "./public/parameterList.csv";
+//     toCSV(filePathDownload, parameterList);
+//
+//     const resObject = `The new parameter list has been successfully created with ${numPricePath} price paths, ${numExpRound} experiment rounds, ${numCabinNo} cabin numbers, and ${numExpGroup} experiment groups.`;
+//
+//     res.send(resObject);
+//     return next();
+// };
+//
+// server.get('/parameters/create/:numPricePath/:numExpRound/:numCabinNo/:numExpGroup', createBotParameterList);
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
+// Create parameter list with POST request
+const createBotParameters = (req, res, next) => {
 
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
+    console.log(req.body);
 
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
-const createBotParameterList = (req, res, next) => {
-
-    console.log(req.params);
-
-    const numPricePath =  parseInt(req.params.numPricePath);
-    const numExpRound =  parseInt(req.params.numExpRound);
-    const numCabinNo =  parseInt(req.params.numCabinNo);
-    const numExpGroup = parseInt(req.params.numExpGroup);
+    const numPricePath =  req.body.numPricePath;
+    const numExpRound =  req.body.numExpRound;
+    const numCabinNo =  req.body.numCabinNo;
+    const expGroupList = req.body.expGroup;
 
     // Create parameter list as array of arrays
     let parameterList = [["ref", "id", "pricePath", "experimentRound", "cabinNo", "experimentGroup"]];
@@ -241,12 +283,10 @@ const createBotParameterList = (req, res, next) => {
     for (let pricePath = (numPricePath !== 0 ? 1 : 0); pricePath <= numPricePath; pricePath++) {
         for (let experimentRound = (numExpRound !== 0 ? 1 : 0); experimentRound <= numExpRound; experimentRound++) {
             for (let cabinNo = (numCabinNo !== 0 ? 1 : 0); cabinNo <= numCabinNo; cabinNo++) {
-                for (let experimentGroup = (numExpGroup !== 0 ? 1 : 0); experimentGroup <= numExpGroup; experimentGroup++) {
-
-                    const row = [1, "", pricePath, experimentRound, cabinNo, experimentGroup];
+                expGroupList.forEach(expGroup => {
+                    const row = [1, "", pricePath, experimentRound, cabinNo, expGroup];
                     parameterList.push(row);
-
-                }
+                })
             }
         }
     }
@@ -259,10 +299,35 @@ const createBotParameterList = (req, res, next) => {
     const filePathDownload = "./public/parameterList.csv";
     toCSV(filePathDownload, parameterList);
 
-    const resObject = `The new parameter list has been successfully created with ${numPricePath} price paths, ${numExpRound} experiment rounds, ${numCabinNo} cabin numbers, and ${numExpGroup} experiment groups.`;
+    console.log(parameterList);
 
+    const resObject = `The new parameter list has been successfully created with ${numPricePath} price paths, ${numExpRound} experiment rounds, ${numCabinNo} cabin numbers, and the following experiment groups: ${expGroupList}.`;
     res.send(resObject);
+
     return next();
 };
 
-server.get('/parameters/create/:numPricePath/:numExpRound/:numCabinNo/:numExpGroup', createBotParameterList);
+server.post('/parameters/create', createBotParameters);
+
+const uploadBotParameters = (req, res, next) => {
+
+    console.log(req.body);
+
+    const parameterList = parseCSV(req.body);
+
+    // Save new parameter list to CSV
+    const path = "./parameterList/parameterList.csv";
+    toCSV(path, parameterList);
+
+    // Create copy of file in public folder for download
+    const filePathDownload = "./public/parameterList.csv";
+    toCSV(filePathDownload, parameterList);
+
+    // const resObject = `The new parameter list has been successfully created with ${numPricePath} price paths, ${numExpRound} experiment rounds, ${numCabinNo} cabin numbers, and the following experiment groups: ${expGroupList}.`;
+    const resObject = `The parameter list has been successfully uploaded.`;
+    res.send(resObject);
+
+    return next();
+};
+
+server.post('/parameters/upload', uploadBotParameters);
