@@ -28,6 +28,21 @@ function hideChatBot() {
     x.style.display = "none";
 }
 
+// Set font size of chat bot
+function setBotFontSize() {
+    let cDiv = document.getElementById("webchat").children;
+
+    for (let i = 0; i < cDiv.length; i++) {
+        if (cDiv[i].tagName === "DIV") {
+            // const fontSize = parseInt((window.screen.width * window.devicePixelRatio) / 120 );
+            // cDiv[i].style.fontSize = fontSize + 'px';
+            cDiv[i].style.fontSize = '15px';
+        }
+    }
+
+    console.log(cDiv);
+}
+
 // Show chat bot for certain experiment groups
 function showBlankChatBot() {
     let x = document.getElementById("webchat");
@@ -60,7 +75,7 @@ function createRecButton() {
 
     button.setAttribute("id", "button_advice");
     button.setAttribute("type", "button");
-    button.setAttribute("class", "btn btn-advice");
+    button.setAttribute("class", "btn-btn-advice btn-advice");
     button.style.backgroundColor="white";
     button.style.borderColor="#d7d1de";
     button.innerHTML="Empfehlung";

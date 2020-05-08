@@ -78,6 +78,9 @@ if (experimentGroup === 1) {
     hideChatBot();
 }
 
+// // Set font size of chat bot
+// setBotFontSize();
+
 // Create "Empfehlung" Button
 if (experimentGroup === 4) {
     createRecButton();
@@ -164,6 +167,16 @@ function startChatBot() {
         }
     );
 
+    console.log(window.screen.width + "x" + window.screen.height);
+    console.log(window.devicePixelRatio);
+
+    let fontSize = "100%";
+    // if (window.screen.width < 1000) {
+    //     fontSize = "60%";
+    // } else {
+    //     fontSize = "80%";
+    // }
+
     // Style bot
     const styleOptions = {
         botAvatarImage: ((experimentGroup !== 4) ? 'https://issd-trading.azurewebsites.net/images/type_3a.png' : ""),
@@ -175,8 +188,7 @@ function startChatBot() {
         bubbleFromUserBackground: '#DCF8C6',
         bubbleFromUserBorderRadius: 10,
         bubbleBorderRadius: 10,
-        fontSizeSmall: '60%'
-
+        fontSizeSmall: fontSize
     };
 
     window.WebChat.renderWebChat(
@@ -191,6 +203,9 @@ function startChatBot() {
         },
         document.getElementById('webchat')
     );
+
+    // Set font size of chat bot once loaded
+    setBotFontSize();
 
     // Chatbot UI
     setTimeout(function () {
