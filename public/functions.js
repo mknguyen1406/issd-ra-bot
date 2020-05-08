@@ -57,12 +57,14 @@ function hideAll() {
 // Create recommendation button
 function createRecButton() {
     const button = document.createElement("button");
+
     button.setAttribute("id", "button_advice");
     button.setAttribute("type", "button");
     button.setAttribute("class", "btn btn-advice");
-    const text = document.createElement("span");
-    text.innerHTML = "Empfehlung";
-    button.appendChild(text);
+    button.style.backgroundColor="white";
+    button.style.borderColor="#d7d1de";
+    button.innerHTML="Empfehlung";
+
     const element = document.getElementById("recommendation-div");
     element.appendChild(button);
 }
@@ -70,7 +72,6 @@ function createRecButton() {
 // Hide card header of chat card for experiment group 4
 function hideCardHeader() {
     document.getElementById("chat-card-header").style.display = "none";
-    document.getElementById("webchat").style.height = "662px";
 }
 
 // Create share manager object for a certain price path
