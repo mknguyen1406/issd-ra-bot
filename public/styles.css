@@ -1,11 +1,8 @@
 #webchat {
-    height: 100%;
+    height: 92%; /* for experiment group 2 and 3 - experiment group 4 will be set explicitly */
     width: 100%;
+    position: absolute;
 }
-
-/*#webchat>* {*/
-/*    font-size: 15px;*/
-/*}*/
 
 .card-custom {
     position: relative;

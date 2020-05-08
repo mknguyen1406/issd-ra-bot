@@ -78,10 +78,15 @@ function createRecButton() {
     button.setAttribute("class", "btn-btn-advice btn-advice");
     button.style.backgroundColor="white";
     button.style.borderColor="#d7d1de";
+    button.style.position = "absolute";
+    button.style.bottom = "0px";
     button.innerHTML="Empfehlung";
 
     const element = document.getElementById("recommendation-div");
     element.appendChild(button);
+
+    // Increase height of webchat
+    document.getElementById("webchat").style.height = "100%";
 }
 
 // Hide card header of chat card for experiment group 4
