@@ -8,6 +8,7 @@ This robo advisor was built with 3 Microsoft Azure services.
 3. The QnA Maker Service allows the robo advisor to respond to questions with pre-defined answers.
 
 # Screenshot
+<kbd><img src="https://github.com/mknguyen1406/issd-ra-bot/blob/master/screenshots/screenshot_1.png?raw=true" /></kbd>
 ![alt text](https://github.com/mknguyen1406/issd-ra-bot/blob/master/screenshots/screenshot_1.png?raw=true)
 ![alt text](https://github.com/mknguyen1406/issd-ra-bot/blob/master/screenshots/screenshot_2.png?raw=true)
 ![alt text](https://github.com/mknguyen1406/issd-ra-bot/blob/master/screenshots/screenshot_3.png?raw=true)
