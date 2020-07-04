@@ -276,23 +276,44 @@ async function readTextFile(file, callback) {
  */
 function getToken(callback) {
     let request_ = new XMLHttpRequest();
-    // let secret = 'hMRtBPdEIFY.Mak8ZsZLeFesVFma1ShIQlXkmWQaaxBO2usSPyoUrDc'; // student
-    let secret = 'y0Jj63oZj1U.SVEL1tUSNeuKuoznVLIpUhSX7A5IT4OpuEMZVe8xJFg'; // stefan
+    let secret = '';
 
-    // var encodedParams = encodeURIComponent(params);
-    request_.open("POST", "https://directline.botframework.com/v3/directline/tokens/generate", true);
-    request_.setRequestHeader("Authorization", "Bearer " + secret);
-    request_.send();
-    request_.onreadystatechange = function () {
-        if (request_.readyState === 4 && request_.status === 200) {
-            const response = request_.responseText;
-            const obj = JSON.parse(response);
-            // console.log(obj);
-            token_ = obj.token;
-            conversationId_ = obj.conversationId;
-            callback();
-        }
-    };
+    // Call function to read csv file
+    readTextFile("secret.txt", function (obj) {
+
+        // Get secret
+        secret = obj.toString();
+
+        // var encodedParams = encodeURIComponent(params);
+        request_.open("POST", "https://directline.botframework.com/v3/directline/tokens/generate", true);
+        request_.setRequestHeader("Authorization", "Bearer " + secret);
+        request_.send();
+        request_.onreadystatechange = function () {
+            if (request_.readyState === 4 && request_.status === 200) {
+                const response = request_.responseText;
+                const obj = JSON.parse(response);
+                // console.log(obj);
+                token_ = obj.token;
+                conversationId_ = obj.conversationId;
+                callback();
+            }
+        };
+    });
+
+    // // var encodedParams = encodeURIComponent(params);
+    // request_.open("POST", "https://directline.botframework.com/v3/directline/tokens/generate", true);
+    // request_.setRequestHeader("Authorization", "Bearer " + secret);
+    // request_.send();
+    // request_.onreadystatechange = function () {
+    //     if (request_.readyState === 4 && request_.status === 200) {
+    //         const response = request_.responseText;
+    //         const obj = JSON.parse(response);
+    //         // console.log(obj);
+    //         token_ = obj.token;
+    //         conversationId_ = obj.conversationId;
+    //         callback();
+    //     }
+    // };
 }
 
 function getConversationHistory(filterCallback, resultCallback) {
