@@ -180,7 +180,7 @@ function startChatBot() {
     // Style bot
     const styleOptions = {
         botAvatarImage: ((experimentGroup !== 4) ? 'https://issd-trading.azurewebsites.net/images/type_3a.png' : ""),
-        // botAvatarInitials: 'BF',
+        botAvatarInitials: 'BF',
         // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
         // userAvatarInitials: 'WC',
         hideUploadButton: true,
