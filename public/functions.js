@@ -413,7 +413,7 @@ function buttonActionEvent(e, action) {
             }
 
             // Ask user for name again -- only for experiment group 2 and 3
-            if ((experimentGroup === 2) || (experimentGroup === 3)) {
+            if ([2,3,5].includes(experimentGroup)) {
                 if (userName === null) {
                     let chatbotResponse = "Bitte nenne mir deinen Namen.";
                     dispatchBotEvent(chatbotResponse, "chatEvent", null);
@@ -571,7 +571,7 @@ function nextRound(round) {
     }
 
     // Generate round summaries -- only for experiment groups 1 to 3
-    if (experimentGroup !== 4) {
+    if ([1,2,3].includes(experimentGroup)) {
         sendRoundSummary(round);
     }
 
