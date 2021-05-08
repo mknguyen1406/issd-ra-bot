@@ -570,9 +570,11 @@ function nextRound(round) {
         };
     }
 
-    // Generate round summaries -- only for experiment groups 1 to 3
-    if ([1,2,3].includes(experimentGroup)) {
-        sendRoundSummary(round);
+    // Generate round summaries -- only for experiment groups 1 to 3 and 5
+    if ([1,2,3,5].includes(experimentGroup)) {
+        setTimeout(function () {
+            sendRoundSummary(round);
+        }, 500);
     }
 
     // Send advice automatically -- only for exp group 5 and 6
@@ -581,13 +583,6 @@ function nextRound(round) {
         // Get advice only from round 3 until round 13
         if ([3,4,5,6,7,8,9,10,11,12,13].includes(round)) {
             getAdvice();
-        }
-
-        // Send round summaries only in round 12 and 13 and for exp group 5
-        if ([12,13].includes(round) && (experimentGroup === 5)) {
-            setTimeout(function () {
-                sendRoundSummary(round);
-            }, 1000);
         }
     }
 
@@ -601,7 +596,7 @@ function sendRoundSummary(round) {
 
     let summary = null;
 
-    const defaultMessageRounds = [5,8,10,11];
+    const defaultMessageRounds = [];
 
     // Check for round
     if (round === 3) {
@@ -613,10 +608,13 @@ function sendRoundSummary(round) {
         const randNo = getRandomNo();
         // console.log("random number: " + randNo);
         summary = getRoundSummary(randNo);
+    
+    //////////////////// Removed ///////////////////////
+    // } else if (round === 6) {
+    //     // Send fixed summary that has number 11
+    //     summary = getRoundSummary(13);
+    ////////////////////////////////////////////////////
 
-    } else if (round === 6) {
-        // Send fixed summary that has number 11
-        summary = getRoundSummary(13);
     } else if (round === 12) {
         // Send fixed summary that has number 11
         summary = getRoundSummary(11);
