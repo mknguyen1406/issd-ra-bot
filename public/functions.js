@@ -423,26 +423,26 @@ function buttonActionEvent(e, action) {
             triggerNextRound()
         }
     } else if (action === "advice") {
-        // Advice event
-        // Check if game started
-        if (openForTrading !== null) {
-            if (openForTrading === false) {
-                alertNotOpen();
-            } else {
-                // Get advice
-                if (experimentGroup === 4) {
+        getAdvice();
+    }
+}
 
-                    // Get and send recommendation
-                    const chatbotResponse = shareManager.getRecommendation(round - 1, false);
-                    dispatchBotEvent(chatbotResponse, "chatEvent", null);
-
-                    // Track advice
-                    trackConversation(round - 1, "luis_rat");
-                }
-            }
+// Get advice
+function getAdvice() {
+    // Check if game started
+    if (openForTrading !== null) {
+        if (openForTrading === false) {
+            alertNotOpen();
         } else {
-            alertNotStarted();
+            // Get and send recommendation
+            const chatbotResponse = shareManager.getRecommendation(round - 1, false);
+            dispatchBotEvent(chatbotResponse, "chatEvent", null);
+
+            // Track advice
+            trackConversation(round - 1, "luis_rat");
         }
+    } else {
+        alertNotStarted();
     }
 }
 
@@ -573,6 +573,22 @@ function nextRound(round) {
     // Generate round summaries -- only for experiment groups 1 to 3
     if ([1,2,3].includes(experimentGroup)) {
         sendRoundSummary(round);
+    }
+
+    // Send advice automatically -- only for exp group 5 and 6
+    if ([5,6].includes(experimentGroup)) {
+
+        // Get advice only from round 3 until round 13
+        if ([3,4,5,6,7,8,9,10,11,12,13].includes(round)) {
+            getAdvice();
+        }
+
+        // Send round summaries only in round 12 and 13
+        if ([12,13].includes(round)) {
+            setTimeout(function () {
+                sendRoundSummary(round);
+            }, 1000);
+        }
     }
 
     // Get conversation history and send result
@@ -919,7 +935,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     trackConversation(round - 1, "luis_allgemein");
                     break;
                 case "rat_geben_kaufen":
-                    // Only for 3rd experiment group
+                    // Only for experiment group 3 and 5
                     if ([3,5].includes(experimentGroup)) {
                         chatbotResponse = shareManager.getRecommendation(round - 1, false);
 
@@ -930,7 +946,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     }
                     break;
                 case "rat_geben_verkaufen":
-                    // Only for 3rd experiment group
+                    // Only for experiment group 3 and 5
                     if ([3,5].includes(experimentGroup)) {
                         chatbotResponse = shareManager.getRecommendation(round - 1, true);
 
