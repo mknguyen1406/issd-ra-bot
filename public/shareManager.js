@@ -77,7 +77,7 @@ class ShareManager {
 
         // Construct recommendation for shares to invest in based on experiment group
         let response = "";
-        if (experimentGroup === 3) {
+        if ([3,5].includes(experimentGroup)) {
             response = "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, dein gesamtes Vermögen in " + placeholder_recs + " zu investieren.";
         } else if (experimentGroup === 4) {
             response = "Aktuelle Empfehlung aufgrund des bisherigen Preisverlaufs:\n - Investiere das gesamte Vermögen in " + placeholder_recs;
@@ -87,13 +87,13 @@ class ShareManager {
         const sharesInPosessionToBeSold = this.getSharesInPosessionToBeSold(owned, recs);
         if (sharesInPosessionToBeSold.length > 0) {
             const placeholder_sell = this.parseShareResults(sharesInPosessionToBeSold, "und");
-            if (experimentGroup === 3) {
+            if ([3,5].includes(experimentGroup)) {
                 response = response + " Daher empfehle ich dir, " + placeholder_sell + " zu verkaufen und " + placeholder_recs + " zu kaufen.";
             } else if (experimentGroup === 4) {
                 response = response + "\n - Verkaufe " + placeholder_sell;
             }
         } else {
-            if (experimentGroup === 3) {
+            if ([3,5].includes(experimentGroup)) {
                 if (intent_sell) {
                     response = response + " Daher empfehle ich dir, keine Anteile zu verkaufen.";
                 }

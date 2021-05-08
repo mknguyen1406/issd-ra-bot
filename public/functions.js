@@ -920,7 +920,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     break;
                 case "rat_geben_kaufen":
                     // Only for 3rd experiment group
-                    if (experimentGroup === 3) {
+                    if ([3,5].includes(experimentGroup)) {
                         chatbotResponse = shareManager.getRecommendation(round - 1, false);
 
                         // Track advice
@@ -931,7 +931,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     break;
                 case "rat_geben_verkaufen":
                     // Only for 3rd experiment group
-                    if (experimentGroup === 3) {
+                    if ([3,5].includes(experimentGroup)) {
                         chatbotResponse = shareManager.getRecommendation(round - 1, true);
 
                         // Track advice
@@ -960,7 +960,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     break;
                 case "anteil_wahrscheinlichkeit_spezifisch":
 
-                    if (experimentGroup === 3) {
+                    if ([3,5].includes(experimentGroup)) {
                         chatbotResponse = "So genau kann ich es dir leider nicht sagen.";
                     } else {
                         chatbotResponse = "Das weiß ich leider nicht.";
@@ -971,7 +971,7 @@ function processMessage(chatbotResponse, data, turnContext) {
                     break;
                 case "was_kannst_du":
 
-                    if (experimentGroup === 3) {
+                    if ([3,5].includes(experimentGroup)) {
                         chatbotResponse = "Ich kann grundlegende Fragen zu deinem Portfolio und der Preisentwicklung der Anteile beantworten. " +
                             "Zudem kann ich dir, basierend auf den Preisentwicklungen, Kaufempfehlungen geben.";
                     } else {
