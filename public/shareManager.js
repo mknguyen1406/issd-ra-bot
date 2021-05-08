@@ -79,7 +79,7 @@ class ShareManager {
         let response = "";
         if ([3,5].includes(experimentGroup)) {
             response = "Aufgrund des bisherigen Preisverlaufs kann ich dir empfehlen, dein gesamtes Vermögen in " + placeholder_recs + " zu investieren.";
-        } else if (experimentGroup === 4) {
+        } else if ([4,6].includes(experimentGroup)) {
             response = "Aktuelle Empfehlung aufgrund des bisherigen Preisverlaufs:\n - Investiere das gesamte Vermögen in " + placeholder_recs;
         }
 
@@ -89,7 +89,7 @@ class ShareManager {
             const placeholder_sell = this.parseShareResults(sharesInPosessionToBeSold, "und");
             if ([3,5].includes(experimentGroup)) {
                 response = response + " Daher empfehle ich dir, " + placeholder_sell + " zu verkaufen und " + placeholder_recs + " zu kaufen.";
-            } else if (experimentGroup === 4) {
+            } else if ([4,6].includes(experimentGroup)) {
                 response = response + "\n - Verkaufe " + placeholder_sell;
             }
         } else {

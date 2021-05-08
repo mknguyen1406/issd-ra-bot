@@ -82,7 +82,7 @@ if (experimentGroup === 1) {
 // setBotFontSize();
 
 // Create "Empfehlung" Button
-if (experimentGroup === 4) {
+if ([4,6].includes(experimentGroup)) {
     createRecButton();
     hideCardHeader();
 }
@@ -179,8 +179,8 @@ function startChatBot() {
 
     // Style bot
     const styleOptions = {
-        botAvatarImage: ((experimentGroup !== 4) ? 'https://issd-trading.azurewebsites.net/images/type_3a.png' : ""),
-        botAvatarInitials: 'BF',
+        botAvatarImage: (![4,6].includes(experimentGroup) ? 'https://issd-trading.azurewebsites.net/images/type_3a.png' : ""),
+        // botAvatarInitials: 'BF',
         // userAvatarImage: 'https://www.ksri.kit.edu/img/personen/Morana_Stefan_2016.jpg',
         // userAvatarInitials: 'WC',
         hideUploadButton: true,
@@ -274,7 +274,7 @@ function startChatBot() {
     });
 
     // Only for experiment group 4
-    if (experimentGroup === 4) {
+    if ([4,6].includes(experimentGroup)) {
         document.querySelector('#button_advice').addEventListener('click', (e) => {
             buttonActionEvent(e, "advice");
         });
@@ -332,8 +332,8 @@ function startChatBot() {
                         "Außerdem kannst du mich nach einer Investitionsempfehlung fragen.";
                 }
 
-                // No welcome message for experiment group 4
-                if (experimentGroup !== 4) {
+                // No welcome message for experiment group 4 and 6
+                if (![4,6].includes(experimentGroup)) {
                     // Dispatch welcome message and ask for user name
                     dispatchBotEvent(chatbotResponse, "chatEvent", turnContext, function () {
                         // Dispatch click on 'Starte Experiment' message

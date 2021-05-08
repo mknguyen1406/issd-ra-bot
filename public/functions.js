@@ -583,8 +583,8 @@ function nextRound(round) {
             getAdvice();
         }
 
-        // Send round summaries only in round 12 and 13
-        if ([12,13].includes(round)) {
+        // Send round summaries only in round 12 and 13 and for exp group 5
+        if ([12,13].includes(round) && (experimentGroup === 5)) {
             setTimeout(function () {
                 sendRoundSummary(round);
             }, 1000);
