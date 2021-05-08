@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robo Assistant</title>
+    <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
+<body>
+<iframe id="child" align="middle" frameBorder="1" src="./index.html?pricePath=70&experimentGroup=5" height="780" width="1254px"></iframe>
+<button type="button" id="movenextbtn">Weiter</button>
+
+<script>
+    // if ({INSERTANS:612334X2237X17102} !== 4) {
+    // const src = "https://issd-trading.azurewebsites.net/index.html?surveyId={SID}&amp;pricePath={INSERTANS:612334X2237X17098}&amp;experimentRound={INSERTANS:612334X2237X17099}&amp;cabinNo={INSERTANS:612334X2237X17100}&amp;experimentGroup={INSERTANS:612334X2237X17102}"
+    // } else {
+    //     const src = "https://issd-trading.azurewebsites.net/index_4.html?surveyId={SID}&pricePath={INSERTANS:612334X2237X17098}&experimentRound={INSERTANS:612334X2237X17099}&cabinNo={INSERTANS:612334X2237X17100}&experimentGroup={INSERTANS:612334X2237X17102}"
+    // }
+
+    // Load different index.html file based on experiment group
+    // console.log({INSERTANS:612334X2237X17102});
+    // const mainUrl = (({INSERTANS:612334X2237X17102} !== "4") ? "https://issd-trading.azurewebsites.net/index.html?" : "https://issd-trading.azurewebsites.net/index_4.html?");
+    // const fullUrl = mainUrl + "surveyId={SID}&amp;pricePath={INSERTANS:612334X2237X17098}&amp;experimentRound={INSERTANS:612334X2237X17099}&amp;cabinNo={INSERTANS:612334X2237X17100}&amp;experimentGroup={INSERTANS:612334X2237X17102}";
+    // document.getElementById('iframe').setAttribute("src", fullUrl)
+
+    // Hide or show result containers
+    function hideShowDom(dom, hide) {
+        if (dom !== null) {
+            if (hide) {
+                dom.style.display = "none";
+            } else {
+                dom.style.display = "block";
+            }
+        }
+    }
+
+    hideShowDom(document.getElementById('movenextbtn'), true);
+
+    // Event listener for messages
+    window.addEventListener('message', function(event) {
+        if (event.origin === "http://localhost:63342" || event.origin === "https://issd-ra-web-app.azurewebsites.net" || event.origin === "https://issd-trading.azurewebsites.net") {
+            if (typeof(event.data.detail) !== 'undefined') {
+
+                console.log(event.data);
+
+                var result = event.data.detail.data;
+                var result_cabinNo = result.cabinNo;
+                var result_cashout_GE = Math.round(parseFloat(result.cashout.total));
+                var result_cashout_EURO = result.cashout.euro_rounded;
+
+                var result_conc =
+                    "Kabine: " + result_cabinNo + " | " +
+                    "Ergebnis: " + result_cashout_GE + " GE | " +
+                    "Auszahlung: " + result_cashout_EURO + " €";
+
+                // Write data to question
+                console.log("Results: ");
+                // console.log(result_all);
+                console.log(JSON.stringify(result));
+                console.log(result_conc);
+
+                // Show 'Weiter' button after last question
+                if (Math.round(parseFloat(result.round) === 14)) {
+                    hideShowDom(document.getElementById('movenextbtn'), false);
+                }
+
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

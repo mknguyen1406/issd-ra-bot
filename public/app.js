@@ -215,7 +215,7 @@ function startChatBot() {
 
         if (experimentGroup === 2) {
             input.item(0).placeholder = "Stelle mir eine Frage";
-        } else if (experimentGroup === 3) {
+        } else if ([3,5].includes(experimentGroup)) {
             input.item(0).placeholder = "Frage mich nach einem Rat";
         }
 
@@ -326,7 +326,7 @@ function startChatBot() {
                     chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
                         "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen.";
 
-                } else if (experimentGroup === 3) {
+                } else if ([3,5].includes(experimentGroup)) {
                     chatbotResponse = "Hallo, ich bin dein Robo Assistant.\n" +
                         "Du kannst mir Fragen zu deinem Portfolio oder zu den Preisentwicklungen der Anteile stellen. " +
                         "Außerdem kannst du mich nach einer Investitionsempfehlung fragen.";
