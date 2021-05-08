@@ -370,7 +370,7 @@ function startChatBot() {
                             "- Wie oft hat Anteil F an Wert gewonnen/ verloren?\n" +
                             "- Wie hoch ist die Gesamtrendite meines Portfolios?\n" +
                             "- Wer bist du?";
-                    } else if (group === 3) {
+                    } else if ([3,5].includes(group)) {
                         chatbotResponse = "**Folgende Fragen kannst du mir beispielsweise stellen:**\n" +
                             "- Welcher Anteil hat am meisten an Wert gewonnen/ verloren?\n" +
                             "- Wenn Anteil C an Wert gewinnt/ verliert, wie viel wird er in der folgenden Periode wert sein?\n" +
