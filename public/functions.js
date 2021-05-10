@@ -422,6 +422,16 @@ function buttonActionEvent(e, action) {
         } else {
             triggerNextRound()
         }
+
+        // Send advice automatically -- only for exp group 5 and 6
+        if ([5,6].includes(experimentGroup)) {
+
+            // Get advice only from round 3 until round 13
+            if ([3,4,5,6,7,8,9,10,11,12,13].includes(round)) {
+                getAdvice();
+            }
+        }
+
     } else if (action === "advice") {
         getAdvice();
     }
@@ -575,15 +585,6 @@ function nextRound(round) {
         setTimeout(function () {
             sendRoundSummary(round);
         }, 500);
-    }
-
-    // Send advice automatically -- only for exp group 5 and 6
-    if ([5,6].includes(experimentGroup)) {
-
-        // Get advice only from round 3 until round 13
-        if ([3,4,5,6,7,8,9,10,11,12,13].includes(round)) {
-            getAdvice();
-        }
     }
 
     // Get conversation history and send result

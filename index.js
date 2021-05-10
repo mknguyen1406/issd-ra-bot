@@ -259,7 +259,6 @@ const uploadBotParameters = (req, res, next) => {
     const filePathDownload = "./public/parameterList.csv";
     toCSV(filePathDownload, parameterList);
 
-    // const resObject = `The new parameter list has been successfully created with ${numPricePath} price paths, ${numExpRound} experiment rounds, ${numCabinNo} cabin numbers, and the following experiment groups: ${expGroupList}.`;
     const resObject = `The parameter list has been successfully uploaded.`;
     res.send(resObject);
 
